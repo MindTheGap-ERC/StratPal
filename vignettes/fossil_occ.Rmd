@@ -17,3 +17,35 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(StratPal)
 ```
+
+```{r, eval=FALSE}
+remotes::install_github(repo = "MindTheGap-ERC/admtools",
+                        build_vignettes = TRUE,
+                        ref = "HEAD",
+                        dependencies = TRUE)
+```
+
+
+```{r}
+library("admtools")
+```
+```{r}
+p = p3(10, 0, 2)
+```
+
+```{r}
+a = CarboCATLite_data
+
+adm = tp_to_adm(a$time_myr, a$height_2_km_offshore_m)
+
+plot(adm)
+```
+
+```{r}
+p3(rate = 10, from = 0, to = 2) |>                  # simulate fossil occurrences in time
+  get_height(adm, t = _, destructive = FALSE) |>    #   transfrom into depth domain
+  hist(breaks = seq(0, 150, by = 10),               # plot
+       main = "Fossil occurrences",
+       xlab = "Height [m]")
+```
+
