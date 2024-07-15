@@ -1,0 +1,20 @@
+thin = function(x, thin){
+  #'
+  #' @export
+  #'
+  #' @title thin a series of events (e.g. fossil occurrences)
+  #'
+  #' @param x numeric vectors with events (e.g. locations, height, times)
+  #' @param thin a function used for thinning
+  #'
+  #'
+  #' @description
+    #' Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by _thin (x(i))_. Values of
+    #' `thin` below 0 and above 1 are ignored
+    #'
+  p = pmax(pmin(thin(x), rep(1, length(x))), rep(0, length(x))) # cut off at 0 and 1
+  ind = stats::rbinom(n = length(x), size = 1, prob = p)
+  y = x[ind]
+  return(y)
+
+}
