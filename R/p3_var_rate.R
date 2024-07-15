@@ -16,14 +16,14 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, fmax = 1, n = NULL){
     stop("\"from\" must be smaller than \"to\".")
   }
   if (!is.function(x)){
-    f = approxfun(x, y, method = "linear", rule = 2)
+    f = stats::approxfun(x, y, method = "linear", rule = 2)
   } else {
     f = x
   }
 
   if (is.null(n)){
     vol = stats::integrate(f, lower = from, upper = to)$value
-    n = rpois(1, lambda = vol)
+    n = stats::rpois(1, lambda = vol)
   }
 
   s = c()

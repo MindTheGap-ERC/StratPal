@@ -2,4 +2,5 @@
 
 export(p3)
 export(p3_var_rate)
+export(stasis)
 export(thin)
