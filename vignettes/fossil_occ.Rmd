@@ -58,3 +58,35 @@ p3(rate = 100, from = min_time(adm), to = max_time(adm)) |>                  # s
        xlab = "Height [m]")
 ```
 
+```{r}
+t = scenarioA$t_myr
+wd = scenarioA$wd_m[,"2km"]
+f = cnd(20, 10, 40)
+w = seq(0, 50, by = 1)
+plot(w, f(w))
+
+plot(x = t,
+     y = f(wd),
+     type = "l",
+     xlab = "Time [Myr]",
+     ylab = "Niche Preference [0 = hate it, 1 = love it]")
+```
+
+```{r}
+ y = p3(30, from = min_time(adm), to = max_time(adm), n = 1000)
+
+
+apply_niche_pref(y, niche = cnd(10, 10, 40), temp_change = approxfun(t, wd)) |> hist()
+
+temp_change = approxfun(t, wd, rule = 2)
+plot(t, temp_change(t))
+niche = cnd(2, 5, 40)
+w = seq(0, 50, by = 1)
+plot(w, niche(w))
+plot(t, niche(temp_change(t)), type = "l")
+f = function(x) niche(temp_change(x))
+xx = sort(thin(y, f))
+hist(xx, breaks = seq(0, 2, by = 0.05))
+
+```
+

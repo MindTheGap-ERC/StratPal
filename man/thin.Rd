@@ -15,3 +15,11 @@ thin(x, thin)
 Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by \emph{thin (x(i))}. Values of
 \code{thin} below 0 and above 1 are ignored
 }
+\examples{
+x = p3(rate = 100, from = 0, to = 3 * pi) # simulate Poisson point process
+y = thin(x, sin)
+hist(y) # not how negative values of sin are treated as 0
+yy = thin(x, function(x) 5 * sin(x))
+hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
+
+}
