@@ -18,6 +18,6 @@ random_walk = function(t, sigma = 1, mu = 0, y0 = 0){
   y = sigma * acc + mu * (t-min(t)) + y0
   l = list(t = t,
            y = y)
-  class(l) = c("stratlist", "list")
+  class(l) = c("timelist", "list")
   return(l)
 }

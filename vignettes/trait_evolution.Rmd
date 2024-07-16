@@ -45,7 +45,6 @@ Basic forward projection:
 sampling_time = seq(from = min_time(adm), to = max_time(adm), by = 0.01) # sample every 10 kyr 
 stasis(sampling_time) |> 
   time_to_strat(adm, destructive = FALSE) |>
-  as_stratlist() |>
   plot(type = "l", orientation = "lr")
 
 ```
@@ -62,7 +61,6 @@ sampling_loc_m |>         # sampling locations
   strat_to_time(adm) |>   # determine times where lineage is sampled
   random_walk(mu = 1) |>             # simulate trait values at these times
   time_to_strat(adm) |>   # transform trait values and times back into stratigraphic domain
-  as_stratlist() |>       # turn into a 'stratlist' object for convenient plotting
   plot(orientation = "lr",
        type = "l",        # plot fossil time series
        ylab = "Trait Value",
