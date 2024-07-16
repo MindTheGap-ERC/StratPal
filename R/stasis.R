@@ -12,6 +12,7 @@ stasis = function(t, mean = 0, sd = 1){
     #'
   l = list(t = t,
            y = stats::rnorm(n = length(t), mean = mean, sd = sd))
+  class(l) = c("timelist", "list")
 
   return(l)
 }
