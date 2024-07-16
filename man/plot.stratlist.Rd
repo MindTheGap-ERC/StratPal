@@ -4,7 +4,12 @@
 \alias{plot.stratlist}
 \title{plot strat list}
 \usage{
-\method{plot}{stratlist}(x, ...)
+\method{plot}{stratlist}(x, orientation = "du", ...)
+}
+\arguments{
+\item{x}{stratlist object}
+
+\item{orientation}{charachter, either "du" (down-up) or "lr" (left-right). Orientation of plotting}
 }
 \description{
 plot strat list

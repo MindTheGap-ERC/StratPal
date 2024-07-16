@@ -60,12 +60,12 @@ sampling_loc_m = seq(from = 0.5 * dist_between_samples_m,
                      by = dist_between_samples_m)
 sampling_loc_m |>         # sampling locations
   strat_to_time(adm) |>   # determine times where lineage is sampled
-  stasis() |>             # simulate trait values at these times
+  random_walk(mu = 1) |>             # simulate trait values at these times
   time_to_strat(adm) |>   # transform trait values and times back into stratigraphic domain
   as_stratlist() |>       # turn into a 'stratlist' object for convenient plotting
   plot(orientation = "lr",
        type = "l",        # plot fossil time series
-       xlab = "Trait Value",
-       ylab = "Stratigraphic Height [m]")
+       ylab = "Trait Value",
+       xlab = "Stratigraphic Height [m]")
 ```
 
