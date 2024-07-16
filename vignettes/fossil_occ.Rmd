@@ -51,10 +51,10 @@ L_axis_lab() # add length axis label
 ```
 
 ```{r}
-p3(rate = 10, from = 0, to = 2) |>                  # simulate fossil occurrences in time
+p3(rate = 100, from = min_time(adm), to = max_time(adm)) |>                  # simulate fossil occurrences in time
   get_height(adm, t = _, destructive = FALSE) |>    #   transfrom into depth domain
-  hist(breaks = seq(0, 150, by = 10),               # plot
-       main = "Fossil occurrences",
+  hist(breaks = seq(min_height(adm), to = max_height(adm), length.out = 20),
+      main = "Fossil occurrences",
        xlab = "Height [m]")
 ```
 
