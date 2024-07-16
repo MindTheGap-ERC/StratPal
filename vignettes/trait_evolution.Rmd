@@ -1,0 +1,71 @@
+---
+title: "trait_evolution"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{trait_evolution}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(StratPal)
+library(admtools)
+```
+```{r}
+# define age-depth model
+dist = scenarioA$dist_from_shore[2]
+
+# define age-depth model and attach units to it
+adm = tp_to_adm(t = scenarioA$t_myr,
+                h = scenarioA$h_m[,dist],
+                T_unit = "Myr",
+                L_unit = "m")
+# plot age-depth model
+plot(adm,
+     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
+     lty_destr = 0) # don't plot destructive intervals (lty = line type)
+T_axis_lab() # add time axis label
+L_axis_lab() # add length axis label
+```
+```{r}
+t = scenarioA$t_myr
+```
+
+
+Basic forward projection:
+
+```{r}
+sampling_time = seq(from = min_time(adm), to = max_time(adm), by = 0.01) # sample every 10 kyr 
+stasis(sampling_time) |> 
+  time_to_strat(adm, destructive = FALSE) |>
+  as_stratlist() |>
+  plot(type = "l", orientation = "lr")
+
+```
+
+## more elaborate: define sampling regimen
+
+```{r}
+# what is happening here with the gaps?
+dist_between_samples_m = 2
+sampling_loc_m = seq(from = 0.5 * dist_between_samples_m,
+                     to = max_height(adm),
+                     by = dist_between_samples_m)
+sampling_loc_m |>         # sampling locations
+  strat_to_time(adm) |>   # determine times where lineage is sampled
+  stasis() |>             # simulate trait values at these times
+  time_to_strat(adm) |>   # transform trait values and times back into stratigraphic domain
+  as_stratlist() |>       # turn into a 'stratlist' object for convenient plotting
+  plot(orientation = "lr",
+       type = "l",        # plot fossil time series
+       xlab = "Trait Value",
+       ylab = "Stratigraphic Height [m]")
+```
+
