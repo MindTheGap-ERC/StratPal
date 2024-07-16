@@ -33,12 +33,21 @@ library("admtools")
 p = p3(10, 0, 2)
 ```
 
+
 ```{r}
-a = CarboCATLite_data
+dist = scenarioA$dist_from_shore[2]
 
-adm = tp_to_adm(a$time_myr, a$height_2_km_offshore_m)
-
-plot(adm)
+# define age-depth model and attach units to it
+adm = tp_to_adm(t = scenarioA$t_myr,
+                h = scenarioA$h_m[,dist],
+                T_unit = "Myr",
+                L_unit = "m")
+# plot age-depth model
+plot(adm,
+     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
+     lty_destr = 0) # don't plot destructive intervals (lty = line type)
+T_axis_lab() # add time axis label
+L_axis_lab() # add length axis label
 ```
 
 ```{r}
