@@ -2,5 +2,6 @@
 
 export(p3)
 export(p3_var_rate)
+export(rej_samp)
 export(stasis)
 export(thin)

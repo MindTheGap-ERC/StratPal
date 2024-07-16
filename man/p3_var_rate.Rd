@@ -4,21 +4,36 @@
 \alias{p3_var_rate}
 \title{simulate variable rate Poisson point process}
 \usage{
-p3_var_rate(x, y = NULL, from = 0, to = 1, fmax = 1, n = NULL)
+p3_var_rate(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL)
 }
 \arguments{
 \item{x}{numeric vector or function. If x is a function, it is used to specify the variable rate. If x is a vector, x and y together specify the variable rate using linear interpolation}
 
 \item{y}{numeric vector. If specified, determines the variable rate. This is done by using linear interpolation between the values of y. Here x specifies the ordinate and y the abscissa}
 
-\item{from}{lower limit on the event}
+\item{from}{lower boundary of the observed interval}
 
-\item{to}{upper limit on the event}
+\item{to}{upper boundary of the observed}
 
-\item{fmax}{maximum rate in the ovserved interval. Required for rejection sampling, If this value is too low, results will be biased}
+\item{f_max}{maximum value of \code{x} in the interval from \code{x_min} to \code{x_max}. If x attains values larger than \code{f_max} a warning is throw, \code{f_max} is adjusted, and sampling is started again}
 
 \item{n}{NULL or an integer. Number of events drawn. If NULL, the number of events is determined by the rate (specified by x and y). If an integer is passed, n events are returned.}
 }
 \description{
-simulate variable rate Poisson point process
+simulates events based on a variable rate Poisson point process. Rates can be either specified by a function passed to \code{x}, or by providing two vectors \code{x} and \code{y}. In this case the rate is specified by approxfun(x, y, rule = 2), i.e. by linear interpolation between the values of x (abscissa) and y (ordinate)
+}
+\examples{
+\dontrun{
+linear decrease in rate from 50 at x = 0 to 0 at x = 1
+x = c(0, 1)
+y = c(50, 0)
+s = p3_var_rate(x, y, f_max = 50)
+hist(s)
+# conditoned to return 100 samples
+s = p3_var_rate(x, y, f_max = 50, n = 100)
+# hand over function
+s = p3_var_rate(x = sin, from = 0 , to = 3 * pi, n = 50)
+hist(s) # note that negative values of f (sin) are ignored in sampling
+}
+
 }
