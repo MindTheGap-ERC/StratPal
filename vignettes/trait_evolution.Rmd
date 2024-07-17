@@ -18,11 +18,40 @@ knitr::opts_chunk$set(
 library(StratPal)
 library(admtools)
 ```
-```{r}
-# define age-depth model
-dist = scenarioA$dist_from_shore[2]
 
-# define age-depth model and attach units to it
+## Introduction
+
+Here we describe the modeling pipeline for the stratigraphic paleobiology of trait evolution.
+
+## Time domain
+
+The `StratPal` package provides three functions for simulating trait evolution in the time domain:
+
+-   `stasis` simulates evolutionary stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`.
+
+-   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0`. Setting `mu` to a negative (positive) value will make the random walk increase (decrease) over time, `sigma` determines the effect of randomness on the trait values.
+
+-   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines the strength of selection, `sigma` the influence of chance, and `y0` the initial trait value.
+
+You can visualize them using the following pipeline:
+
+```{r}
+seq(0, 1, by = 0.01) |> # times of simulation in myr. simulate over 1 Myr years with 10 kyr resolution
+  random_walk(sigma = 1, mu = 3) |> # simulate random walk with incresing trait values
+  plot(type = "l", # plot results
+       xlab = "Time [Myr]",
+       ylab = "Trait value")
+```
+
+## Stratigraphic domain
+
+We are interested in the stratigraphic expression of phenotypic evolution, i.e. how is trait evolution within a lineage preserved at a specific location in the stratigraphic record.
+
+For this, we first define an age-depth model:
+
+```{r}
+# define ADM 4 km from shore
+dist = scenarioA$dist_from_shore[2]
 adm = tp_to_adm(t = scenarioA$t_myr,
                 h = scenarioA$h_m[,dist],
                 T_unit = "Myr",
@@ -34,36 +63,49 @@ plot(adm,
 T_axis_lab() # add time axis label
 L_axis_lab() # add length axis label
 ```
-```{r}
-t = scenarioA$t_myr
-```
 
-
-Basic forward projection:
+Now we can use the age-depth model to transform the simulated trait values from the time domain into the depth domain using `time_to_strat`:
 
 ```{r}
-sampling_time = seq(from = min_time(adm), to = max_time(adm), by = 0.01) # sample every 10 kyr 
-stasis(sampling_time) |> 
+# sample every 10 kyr over the interval covered by the adm 
+# simulate random walk
+# transform data from time to strat domain
+seq(from = min_time(adm), to = max_time(adm), by = 0.01) |> 
+   random_walk(sigma = 1, mu = 3) |> # simulate random walk
   time_to_strat(adm, destructive = FALSE) |>
-  plot(type = "l", orientation = "lr")
+  plot(type = "l",
+       orientation = "lr",
+       xlab = "Stratigraphic height [m]",
+       ylab = "Trait value")
 
 ```
 
-## more elaborate: define sampling regimen
+Here we can already see the large jumps in trait values over the gaps, because we are missing a lot of time.
+
+This is already a good start, but there are some small issues: Because we simulate the lineage every 10 kyr, the lineage is sampled irregular in the stratigraphic domain. For example, we get multiple conflicting trait values at height with gaps longer than 10 kyr. To get a more realistic result, we need to prescribe a sampling strategy in the stratigraphic domain. We do this in the following steps:
+
+1.  Determine sampling locations
+2.  Calculate what times correspond to said sampling locations via `strat_to_time`
+3.  Simulate a lineage at said times
+4.  Transform the simulated trait values back into the stratigraphic domain using `time_to_strat`
+5.  Plot the result
+
+Let's assume we take a sample every 2 meters. Then our five steps above result in the following modeling pipeline:
 
 ```{r}
-# what is happening here with the gaps?
 dist_between_samples_m = 2
 sampling_loc_m = seq(from = 0.5 * dist_between_samples_m,
                      to = max_height(adm),
                      by = dist_between_samples_m)
+
 sampling_loc_m |>         # sampling locations
   strat_to_time(adm) |>   # determine times where lineage is sampled
-  random_walk(mu = 1) |>             # simulate trait values at these times
-  time_to_strat(adm) |>   # transform trait values and times back into stratigraphic domain
+  random_walk(sigma = 1, mu = 3) |> # simulate trait values at these times
+  time_to_strat(adm, destructive = FALSE) |>   # transform trait values to stratigraphic domain
   plot(orientation = "lr",
        type = "l",        # plot fossil time series
        ylab = "Trait Value",
        xlab = "Stratigraphic Height [m]")
 ```
 
+There we have it! This is what the lineage would look like if it would be sampled every 2 meters in a sections 2 km offshore. You nicely see the large jumps over the prolonged hiatuses.
