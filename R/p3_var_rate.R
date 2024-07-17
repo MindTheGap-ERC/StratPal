@@ -13,14 +13,16 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
   #'
   #' @description
     #' simulates events based on a variable rate Poisson point process. Rates can be either specified by a function passed to `x`, or by providing two vectors `x` and `y`. In this case the rate is specified by approxfun(x, y, rule = 2), i.e. by linear interpolation between the values of x (abscissa) and y (ordinate)
-    #'
+    #' In the context of paleontology, these events can be interpreted as fossil occurrences or first/last occurrences of species. In this case, the rate is the average number of fossil occurrences (resp first/last occurrences) per unit
   #' @examples
     #' \dontrun{
+    #' # assuming events are fossil occurrences
+    #' # then rate is the avg rate of fossil occ. per unit
     #' linear decrease in rate from 50 at x = 0 to 0 at x = 1
     #' x = c(0, 1)
     #' y = c(50, 0)
     #' s = p3_var_rate(x, y, f_max = 50)
-    #' hist(s)
+    #' hist(s, xlab = "Time (myr)", main = "Fossil Occurrences")
     #' # conditoned to return 100 samples
     #' s = p3_var_rate(x, y, f_max = 50, n = 100)
     #' # hand over function

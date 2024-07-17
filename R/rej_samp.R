@@ -4,9 +4,9 @@ rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1){
   #' @title rejection sampling
   #'
   #' @description
-    #' rejection sampling from the (pseudo) pdf `f` in the interval between `x_min` and `x_max`. Returns `n` samples. Note that values of `f` below 0 are rounded up to zero
+    #' rejection sampling from the (pseudo) pdf `f` in the interval between `x_min` and `x_max`. Returns `n` samples. Note that values of `f` below 0 are capped to zero
     #'
-  #' @param f function. (pseude) pdf from which the sample is drawn
+  #' @param f function. (pseudo) pdf from which the sample is drawn
   #' @param x_min scalar. lower limit of the examined interval
   #' @param x_max scalar. upper limit of the examined interval
   #' @param n integer. number of samples drawn
