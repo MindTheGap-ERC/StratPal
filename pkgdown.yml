@@ -1,0 +1,11 @@
+pandoc: 3.1.11
+pkgdown: 2.1.0
+pkgdown_sha: ~
+articles:
+  fossil_occ: fossil_occ.html
+  StratPal: StratPal.html
+  trait_evolution: trait_evolution.html
+last_built: 2024-07-17T19:06Z
+urls:
+  reference: https://mindthegap-erc.github.io/StratPal/reference
+  article: https://mindthegap-erc.github.io/StratPal/articles
