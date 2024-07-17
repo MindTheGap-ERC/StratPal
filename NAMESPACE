@@ -2,6 +2,7 @@
 
 export(apply_niche_pref)
 export(cnd)
+export(ornstein_uhlenbeck)
 export(p3)
 export(p3_var_rate)
 export(random_walk)
