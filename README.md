@@ -25,6 +25,15 @@ install.packages("remotes")
 in the R console. Then, run
 
 ```R
+remotes::install_github(repo = "MindTheGap-ERC/admtools",
+                        build_vignettes = TRUE,
+                        ref = "HEAD",
+                        dependencies = TRUE)
+```
+
+to install the latest verision of the `admtools` package. Last, run
+
+```R
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
