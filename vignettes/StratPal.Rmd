@@ -87,6 +87,7 @@ seq(0, 1, by = 0.01) |> # define times of simulation
   random_walk() |>      # simulate random walk
   plot(type = "l")      # plot
 ```
+
 You see that the code does the same thing: it plots a random walk, but it does so in one step without intermediate variables by chaining together the commands using the pipe `|>`. This becomes a powerful tool once we combine more and more components into longer modeling pipelines. It also makes the code readable, as you can simply read it from left to right, without having to track any intermediate steps.
  
 Semantically, you can read the `|>` as "take the data on the left of `|>` and use it as the first argument in the function to the right of `|>`.
