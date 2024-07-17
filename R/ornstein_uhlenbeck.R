@@ -13,6 +13,17 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
     #' simulates ornstein-uhlenbeck using the Euler-Maruyame method. The process is simulated on a scale of 0.25 * min(diff(t)) and then interpolated to the values of `t`.
     #'
   #' @returns a list with two elements: `t` and `y`. `t` is a duplicate of the input `t`, `y` are the values of the OU process at these times. Outputs are of class `timelist` and can thus be plotted directly using `plot`, see `?plot.timelist`
+  #'
+  #' @examples
+    #' \dontrun{
+    #' library("admtools") # required for plotting of results
+    #' t = seq(0, 3, by = 0.01)
+    #' l = ornstein_uhlenbeck(t, y0 = 3) # start away from optimum (mu)
+    #' plot(l, type = "l")
+    #' l2 = ornstein_uhlenbeck(t, y0 = 0) # start in optimum
+    #' lines(l2$t, l2$y, col = "red")
+    #' }
+    #'
 
   if (y0 == "stationary"){
     y0 = stats::rnorm(1, mean = mu, sd = sigma / sqrt(2 * theta))

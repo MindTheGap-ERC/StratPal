@@ -1,5 +1,10 @@
 # StratPal
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+
 R package for Stratigraphic Paleobiology. IN DEVELOPMENT
 
 ## Authors

@@ -11,6 +11,19 @@ cnd = function(mean, sd, inc = 1, cut_neg = TRUE){
   #'
   #' @returns a function
   #'
+  #' @examples
+    #' \dontrun{
+    #' # using water depht as niche
+    #' wd = seq(-3, 40, by = 0.5)
+    #' f = cnd(mean = 10, sd = 5, inc = 15, cut_neg = FALSE)
+    #' # 1 indicates high preference, 0 indicates low preference
+    #' plot(wd, f(wd), xlab = "Water depth", ylab = "Env. preference")
+    #' # set value at neg wd to 0 - non-terrestrial species.
+    #' f = cnd(mean = 10, sd = 5, inc = 15, cut_neg = TRUE)
+    #' plot(wd, f(wd), xlab = "Water depth", ylab = "Env. preference")
+    #' }
+    #'
+  #'
   #' @description
     #' returns a function that defines a niche based on a capped normal distribution, i.e. a pdf of a normal distribution where all values above 1 are capped. Mathematically, this is f(x) = min( inc * pdf(x), 1)
 
