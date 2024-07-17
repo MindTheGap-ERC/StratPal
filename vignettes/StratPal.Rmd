@@ -16,4 +16,178 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(StratPal)
+library(admtools)
 ```
+
+## Overview
+
+Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through _dependencies_, _piping_, and working with _age-depth models_.
+
+If you want to skip the introduction, go to
+
+```{r, eval=FALSE}
+vignette("fossil_occ")
+```
+
+for details on how to model stratigraphic paleobiology of events such as fossil occurrences and first/last occurrences. Go to 
+
+```{r, eval=FALSE}
+vignette("trait_evolution")
+```
+
+for details on how to model stratigraphic paleobiology of trait evolution.
+
+## Dependencies
+
+The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package. To make sure you have the latest version of the package installed, first install the `remotes` package by running
+
+```{r, eval=FALSE}
+install.packages("remotes")
+```
+
+in your console. Then you can install the latest version of `admtools` from _GitHub_ by running
+
+```{r, eval=FALSE}
+remotes::install_github(repo = "MindTheGap-ERC/admtools",
+                        build_vignettes = TRUE,
+                        ref = "HEAD",
+                        dependencies = TRUE)
+```
+
+This will also ask you to update all dependent packages.
+
+Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
+
+```{r, eval=FALSE}
+browseVignettes(package = "admtools") # opens in Browser
+```
+
+or by visiting the package website at https://mindthegap-erc.github.io/admtools/.
+
+## Piping
+
+In the `StratPal` package and its vignettes, we make heavy use of the base R _pipe_ operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling _pipeline_ clearer.
+
+This functionality is available from R version 4.2 on.
+
+### Motivation and usage
+
+Consider the following code for simulating and plotting a random walk using the `random_walk` function:
+
+```{r}
+t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
+l = random_walk(t)       # simulate the random walk
+plot(l, type = "l")      # line plot of the results
+```
+
+This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are doing: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
+
+```{r}
+seq(0, 1, by = 0.01) |> # define times of simulation  
+  random_walk() |>      # simulate random walk
+  plot(type = "l")      # plot
+```
+You see that the code does the same thing: it plots a random walk, but it does so in one step without intermediate variables by chaining together the commands using the pipe `|>`. This becomes a powerful tool once we combine more and more components into longer modeling pipelines. It also makes the code readable, as you can simply read it from left to right, without having to track any intermediate steps.
+ 
+Semantically, you can read the `|>` as "take the data on the left of `|>` and use it as the first argument in the function to the right of `|>`.
+
+### Advanced usage
+
+You can also use `|>` to pass arguments that are not in the first place. For this, simply replace the argument with a underscore `_`:
+
+```{r}
+# calculate deciles of normal distribution
+seq(0, 1, by = 0.1) |> quantile(x = runif(100), p = _) # pass left hand side to the p argument
+```
+
+## Age-depth models
+
+The `StratPal` package makes heavy use of age-depth modeling functionality from the `admtools` package. Here we go through some basics of dealing with age-depth models. For more details on available functionality you can browse through the package vignettes using
+
+```{r, eval=FALSE}
+browseVignettes(package = "admtools") # opens in Browser
+```
+
+or visit the package website at https://mindthegap-erc.github.io/admtools/.
+
+To get started, first load the package using
+
+```{r}
+library("admtools")
+```
+
+The `StratPal` package comes with some example data fro age-depth models, which are available in the variable `scenarioA`, see `?scenarioA` for details on it content.
+
+### Defining age-depth models
+
+Let's start with defining an age-depth model. This can be done with `tp_to_adm` (tie points to age-depth model):
+
+```{r}
+t = scenarioA$t_myr # extract time tie points
+h = scenarioA$h_m[,"2km"] # get height tie points 2 km offshore in the carbonate plarform of scenario A from Hohmann et al. 2024
+
+# define age-depth model
+# h[i] is the stratigraphic position at time t[i]
+adm = tp_to_adm(t = t, # tie points in time
+                h = h, # tie points at height
+                T_unit = "Myr", # time unit of adm
+                L_unit = "m")   # Length unit
+```
+
+
+### Plotting
+
+Now you can plot the adm using the basic `plot` command:
+
+```{r}
+# plot age-depth model, see ?plot.adm for details
+plot(adm,
+     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
+     lty_destr = 0) # don't plot destructive intervals (lty = line type)
+T_axis_lab() # add time axis label
+L_axis_lab() # add length axis label
+```
+
+### Extracting information
+
+There is a lot of functionality available to extract information from an age-depth model:
+
+```{r}
+get_total_duration(adm) # time interval covered by adm
+get_total_thickness(adm) # sediment accumulated 
+get_completeness(adm) # stratigraphic completeness
+summary(adm) # some summary statistics
+```
+We can now use the pipe operator to do some first analysis of the age-depth model
+
+```{r}
+
+# plot histogram of hiatus durations
+adm |>    
+  get_hiat_duration() |>
+  hist( xlab = paste("Hiatus duration", "[", get_T_unit(adm),"]"))
+```
+
+Here it becomes clear that there are a 8 shorter hiatuses (below 100 kyr) and 2 long hiatuses with a duration of more than 500 kyr.
+
+### Transforming data
+
+Given a stratigraphic position, an age-depth model can tell us how old that positions is. Conversely, if we know the timing of an event, an age-depth model can tell us at what stratigraphic position that event will occur. This can be used to transfrom all types of data from the time domain to the stratigraphic domain and vice versa.
+
+In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigrahic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the other vignettes (see section below).
+
+## Getting started
+
+With the preliminaries out of the way, you can go to go to
+
+```{r, eval=FALSE}
+vignette("fossil_occ")
+```
+
+for details on how to model stratigraphic paleobiology of events such as fossil occurrences and first/last occurrences. Go to 
+
+```{r, eval=FALSE}
+vignette("trait_evolution")
+```
+
+for details on how to model stratigraphic paleobiology of trait evolution.
