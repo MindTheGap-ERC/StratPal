@@ -4,8 +4,7 @@
 [![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-
-R package for Stratigraphic Paleobiology. IN DEVELOPMENT
+R package for stratigraphic paleobiology modeling pipelines.
 
 ## Authors
 
@@ -17,7 +16,7 @@ Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
 
 ## Requirements
 
-R verion >= 4.2
+R version >= 4.2
 
 ## Installation
 
@@ -30,30 +29,29 @@ install.packages("remotes")
 in the R console. Then, run
 
 ```R
-remotes::install_github(repo = "MindTheGap-ERC/admtools",
-                        build_vignettes = TRUE,
-                        ref = "HEAD",
-                        dependencies = TRUE)
-```
-
-to install the latest verision of the `admtools` package. Last, run
-
-```R
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
                         dependencies = TRUE)
 ```
 
+to install the lastest stable version of the package.
+
 ## Usage
 
 Run
 
 ```R
+library(StratPal)
+```
+
+to load the package. Use
+
+```R
 browseVignettes(package = "StratPal")
 ```
 
-to view the available vignettes with use cases.
+to view the available vignettes (long form documentation) with use cases or visit the package webpage ([mindthegap-erc.github.io/StratPal](https://mindthegap-erc.github.io/StratPal/)) to get started.
 
 ## License
 
@@ -65,11 +63,11 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 ## References
 
-This package used data from
+This package uses data from
 
 * Identification of the mode of evolution in incomplete carbonate successions
 Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska
-bioRxiv 2023.12.18.572098; doi: https://doi.org/10.1101/2023.12.18.572098
+bioRxiv 2023.12.18.572098; doi: [10.1101/2023.12.18.572098](https://doi.org/10.1101/2023.12.18.572098), published under a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Funding information
 
