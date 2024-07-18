@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Modeling Stratigraphic Paleobiology • StratPal</title>
+<title>Stratigraphic Paleobiology Modeling Pipelines • StratPal</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Modeling Stratigraphic Paleobiology">
-<meta name="description" content="Models for Stratigraphic Paleobiology.">
-<meta property="og:description" content="Models for Stratigraphic Paleobiology.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Stratigraphic Paleobiology Modeling Pipelines">
+<meta name="description" content="Models for stratigraphic paleobiology, including niche modeling and age-depth modeling.">
+<meta property="og:description" content="Models for stratigraphic paleobiology, including niche modeling and age-depth modeling.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -40,11 +40,13 @@
     <li><a class="dropdown-item" href="articles/trait_evolution.html">trait_evolution</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/MindTheGap-ERC/StratPal/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -57,7 +59,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>R package for Stratigraphic Paleobiology. IN DEVELOPMENT</p>
+<p>R package for stratigraphic paleobiology modeling pipelines.</p>
 <div class="section level2">
 <h2 id="authors">Authors<a class="anchor" aria-label="anchor" href="#authors"></a>
 </h2>
@@ -70,7 +72,7 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 <div class="section level2">
 <h2 id="requirements">Requirements<a class="anchor" aria-label="anchor" href="#requirements"></a>
 </h2>
-<p>R verion &gt;= 4.2</p>
+<p>R version &gt;= 4.2</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -80,24 +82,22 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span></code></pre></div>
 <p>in the R console. Then, run</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"MindTheGap-ERC/admtools"</span>,</span>
-<span>                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                        ref <span class="op">=</span> <span class="st">"HEAD"</span>,</span>
-<span>                        dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>to install the latest verision of the <code>admtools</code> package. Last, run</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"MindTheGap-ERC/StratPal"</span>,</span>
 <span>                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                        ref <span class="op">=</span> <span class="st">"HEAD"</span>,</span>
 <span>                        dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>to install the lastest stable version of the package.</p>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>Run</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span></code></pre></div>
+<p>to load the package. Use</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html" class="external-link">browseVignettes</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"StratPal"</span><span class="op">)</span></span></code></pre></div>
-<p>to view the available vignettes with use cases.</p>
+<p>to view the available vignettes (long form documentation) with use cases or visit the package webpage (<a href="https://mindthegap-erc.github.io/StratPal/">mindthegap-erc.github.io/StratPal</a>) to get started.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
@@ -112,10 +112,9 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>This package used data from</p>
+<p>This package uses data from</p>
 <ul>
-<li>Identification of the mode of evolution in incomplete carbonate successions Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska bioRxiv 2023.12.18.572098; doi: <a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link uri">https://doi.org/10.1101/2023.12.18.572098</a>
-</li>
+<li>Identification of the mode of evolution in incomplete carbonate successions Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska bioRxiv 2023.12.18.572098; doi: <a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link">10.1101/2023.12.18.572098</a>, published under a <a href="https://creativecommons.org/licenses/by/4.0/" class="external-link">CC-BY 4.0</a> license.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -124,13 +123,27 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 <p>Funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them. <img src="https://erc.europa.eu/sites/default/files/2023-06/LOGO_ERC-FLAG_FP.png" alt="European Union and European Research Council logos"></p>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/MindTheGap-ERC/StratPal/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/MindTheGap-ERC/StratPal/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>Apache License (&gt;= 2)</li>
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
