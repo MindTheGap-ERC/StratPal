@@ -18,4 +18,5 @@ VignetteBuilder: knitr
 Depends: 
     R (>= 4.2)
 LazyData: true
-URL: https://mindthegap-erc.github.io/StratPal/
+URL: https://mindthegap-erc.github.io/StratPal/ , https://github.com/MindTheGap-ERC/StratPal
+BugReports: https://github.com/MindTheGap-ERC/StratPal/issues
