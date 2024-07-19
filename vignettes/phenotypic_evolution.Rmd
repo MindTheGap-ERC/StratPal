@@ -33,17 +33,16 @@ The `StratPal` package provides three functions for simulating different modes o
 
 -   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0`. Setting `mu` to a negative (positive) value will make the random walk decrease (increase) over time, `sigma` determines the effect of randomness on the trait values.
 
--   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines how fast `mu` is approaches, `sigma` the noise level, and `y0` the initial trait value.
+-   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines how fast `mu` is approached, `sigma` the noise level, and `y0` the initial trait value.
 
 ### Visualization
 
 You can visualize the different modes of evolution using the following pipeline:
 
 ```{r}
-# times of simulation in myr. simulate over 1 Myr years with 10 kyr resolution
-seq(0, 1, by = 0.01) |> 
+seq(0, 1, by = 0.01) |>             # times of simulation in myr. simulate over 1 Myr years with 10 kyr resolution
   random_walk(sigma = 1, mu = 3) |> # simulate random walk with increasing trait values
-  plot(type = "l", # plot results
+  plot(type = "l",                  # plot results
        xlab = "Time [Myr]",
        ylab = "Trait value")
 ```
@@ -52,11 +51,11 @@ seq(0, 1, by = 0.01) |>
 
 ## Stratigraphic domain
 
-We are interested in how phenotypic evolution is preserved in the stratigraphic record, i.e. how is trait evolution within a lineage preserved at a specific location in the stratigraphic record. Here we develop the modeling pipelines to do so.
+We are interested in how phenotypic evolution is preserved in the stratigraphic record, i.e. how is trait evolution within a lineage preserved at a specific location in the stratigraphic record. Here we develop the modeling pipelines to answer this question.
 
 ### Age-depth models
 
-We will compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenarion A (see `?scenarioA`). For this, first define the age-depth models
+As an example, we compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenarion A (see `?scenarioA`). For this, first define the age-depth models
 
 ```{r, figures-side, fig.show="hold", out.width="50%", fig.align='left'}
 # define ADM 2 km from shore
@@ -88,13 +87,11 @@ L_axis_lab() # add length axis label
 We use the defined age-depth models to transform the simulated trait values from the time domain into the depth domain via `time_to_strat`:
 
 ```{r}
-# sample every 10 kyr over the interval covered by the adm 
-# simulate random walk
-# transform data from time to strat domain
-seq(from = min_time(adm_2km), to = max_time(adm_2km), by = 0.01) |> 
-  random_walk(sigma = 1, mu = 3) |> # simulate random walk
-  time_to_strat(adm_2km, destructive = FALSE) |>
-  plot(type = "l",
+
+seq(from = min_time(adm_2km), to = max_time(adm_2km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
+  random_walk(sigma = 1, mu = 3) |>                                 # simulate random walk
+  time_to_strat(adm_2km, destructive = FALSE) |>                    # transform data from time to strat domain
+  plot(type = "l",                                                  # plot
        orientation = "lr",
        xlab = "Stratigraphic height [m]",
        ylab = "Trait value")
@@ -106,30 +103,26 @@ This is what a biased random walk in the time domain would look like if it was o
 12 km offshore, the preservation is very different:
 
 ```{r}
-# sample every 10 kyr over the interval covered by the adm 
-# simulate random walk
-# transform data from time to strat domain
-seq(from = min_time(adm_12km), to = max_time(adm_12km), by = 0.01) |> 
-  random_walk(sigma = 1, mu = 3) |> # simulate random walk
-  time_to_strat(adm_12km, destructive = FALSE) |>
-  plot(type = "l",
+seq(from = min_time(adm_12km), to = max_time(adm_12km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
+  random_walk(sigma = 1, mu = 3) |>                                   # simulate random walk
+  time_to_strat(adm_12km, destructive = FALSE) |>                     # transform data from time to strat domain
+  plot(type = "l",                                                    # plot results
        orientation = "lr",
        xlab = "Stratigraphic height [m]",
        ylab = "Trait value")
-
 ```
 
 You can also see two jumps, but the first is at a different location compared to the section 2 km offshore. Looking at the age-depth models, we can see why this is: 2 km offshore, the jumps are caused by prolonged hiatuses that are associated with the massive drops in sea level around 0.5 Myr and 1.5 Myr. 12 km offshore, the age-depth model shows fewer gaps, but prolonged intervals with low sedimentation rates at the beginning of the simulation and at around 1.5 Myr. This leads to stratigraphically condensed intervals, at which phenotypic evolution appears to be accelerated. You can see that not all artefactual jumps in traits observable in the stratigraphic record are caused by gaps.
 
-**Task:** How does this effect vary between different modes of evolution (with different parameter choices), and at different places in the platfrom? Can you make any general statements about where you see the strongest effects?
+**Task:** How does this effect vary between different modes of evolution (with different parameter choices), and at different locations in the platform (e.g., along an onshore-offshore gradient)? Can you make any general statements about where you see the strongest effects?
 
 ### Prescribing a sampling strategy
 
 The above plots already give us a good idea of how stratigraphic effects can change our interpretation of trait evolution.
 
-However, there is a small imperfection. Because we simulate the lineage every 10 kyr, it is sampled irregularly in the stratigraphic domain: If sedimentation rates are high, samples can be multiple meters apart, and if sedimentation rates are low, they are only a few centimeters apart.
+However, there is a small imperfection. Because we simulate the lineage every 10 kyr, it is sampled irregularly in the stratigraphic domain: If sedimentation rates are high, samples can be multiple meters apart, but if sedimentation rates are low, they are only a few centimeters apart.
 
-To fix this, we want to prescribe where in the stratigraphic domain samples are taken. This allows us to emulate the effects of different sampling strategies have on our perception of trait evolution. We do this in the following steps:
+To fix this, we want to prescribe where in the stratigraphic domain samples are taken. This allows us to examine the effect that different sampling strategies have on our perception of trait evolution. We do this in the following steps:
 
 1.  Determine sampling locations in the stratigraphic domain
 2.  Calculate what times correspond to said sampling locations via `strat_to_time`
@@ -167,16 +160,14 @@ Go to
 vignette("phenotypic_evolution")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online on the package webpage here: [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
+for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online on the package webpage ([mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html)).
 
 See also
-
-Go to
 
 ```{r, eval=FALSE}
 vignette("advanced_functionality")
 ```
 
-for details on how to expand on the modeling pipelines described here, or explore the vignette online on the package webpage here: [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
+for details on how to expand on the modeling pipelines described here, or explore the vignette online on the package webpage ([mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html)).
 
 
