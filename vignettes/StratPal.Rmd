@@ -21,48 +21,61 @@ library(admtools)
 
 ## Overview
 
-Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through _dependencies_, _piping_, and working with _age-depth models_.
+Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through _installation_, _dependencies_, provide an overview of the available _example data_, _piping_, and working with _age-depth models_.
 
 If you want to skip the introduction, go to
 
 ```{r, eval=FALSE}
-vignette("fossil_occ")
+vignette("phenotypic_evolution")
 ```
 
-for details on how to model stratigraphic paleobiology of events such as fossil occurrences and first/last occurrences. Go to 
+for details on how to model stratigraphic paleobiology of phenotypic evolution. Go to
 
 ```{r, eval=FALSE}
-vignette("trait_evolution")
+vignette("event_data")
 ```
 
-for details on how to model stratigraphic paleobiology of trait evolution.
+for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa.
 
-## Dependencies
+## Installation
 
-The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package. To make sure you have the latest version of the package installed, first install the `remotes` package by running
+To install the `StratPal` package, first install the `remotes` package by running
 
-```{r, eval=FALSE}
+```R
 install.packages("remotes")
 ```
 
-in your console. Then you can install the latest version of `admtools` from _GitHub_ by running
+in the R console. Then, run
 
-```{r, eval=FALSE}
-remotes::install_github(repo = "MindTheGap-ERC/admtools",
+```R
+remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
                         dependencies = TRUE)
 ```
 
-This will also ask you to update all dependent packages.
+to install the latest stable version of the package and all its dependencies.
 
-Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
+## Dependencies
+
+The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package, which is _automatically_ installed when you install `StratPal`.
+
+To use its functionality, you need to run
+
+```{r}
+library(admtools)
+```
+
+
+before running any of the provided examples. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
 
 ```{r, eval=FALSE}
 browseVignettes(package = "admtools") # opens in Browser
 ```
 
 or by visiting the package website at https://mindthegap-erc.github.io/admtools/.
+
+## Example data
 
 ## Piping
 
@@ -182,13 +195,13 @@ In `admtools`, the transformation of data is done by the functions `time_to_stra
 With the preliminaries out of the way, you can go to go to
 
 ```{r, eval=FALSE}
-vignette("fossil_occ")
+vignette("event_data")
 ```
 
 for details on how to model stratigraphic paleobiology of events such as fossil occurrences and first/last occurrences. Go to 
 
 ```{r, eval=FALSE}
-vignette("trait_evolution")
+vignette("phenotypic_evolution")
 ```
 
 for details on how to model stratigraphic paleobiology of trait evolution.
