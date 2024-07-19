@@ -53,6 +53,10 @@ browseVignettes(package = "StratPal")
 
 to view the available vignettes (long form documentation) with use cases or visit the package webpage ([mindthegap-erc.github.io/StratPal](https://mindthegap-erc.github.io/StratPal/)) to get started.
 
+## Contribution
+
+For contribution guidelines see the CONTRIBUTING.md file
+
 ## License
 
 Apache 2.0, see LICENSE file for license text.
