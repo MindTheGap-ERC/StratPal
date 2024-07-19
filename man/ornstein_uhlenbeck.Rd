@@ -21,7 +21,7 @@ ornstein_uhlenbeck(t, mu = 0, theta = 1, sigma = 1, y0 = 0)
 a list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Outputs are of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?plot.timelist}
 }
 \description{
-simulates ornstein-uhlenbeck using the Euler-Maruyame method. The process is simulated on a scale of 0.25 * min(diff(t)) and then interpolated to the values of \code{t}.
+simulates the Ornstein-Uhlenbeck process using the Euler-Maruyame method. The process is simulated on a scale of 0.25 * min(diff(t)) and then interpolated to the values of \code{t}.
 }
 \examples{
 \dontrun{

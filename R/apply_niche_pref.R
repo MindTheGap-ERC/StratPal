@@ -38,7 +38,11 @@ apply_niche_pref = function(x, niche_def, gc){
     #'
     #' }
     #'
-  niche_with_time = function(t) niche_def(gc(t))
-  r = thin(x, niche_with_time)
+  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the sampe principle, [thin()] for the underlying mathematical procedure
+
+  # function that returns niche preference as a function of y (typically time)
+  change_in_niche = function(y) niche_def(gc(y))
+  # thin events based on niche preference
+  r = thin(x, change_in_niche)
   return(r)
   }

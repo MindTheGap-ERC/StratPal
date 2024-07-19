@@ -7,3 +7,5 @@
 ^pkgdown$
 
 ^CONTRIBUTING.md$
+^doc$
+^Meta$

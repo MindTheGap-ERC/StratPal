@@ -45,3 +45,6 @@ Combines the functions niche_def and gc ("gradient change") to determine how the
 }
 
 }
+\seealso{
+\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the sampe principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure
+}
