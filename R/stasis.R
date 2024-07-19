@@ -8,7 +8,7 @@ stasis = function(t, mean = 0, sd = 1){
   #' @param sd standard deviation
   #'
   #' @description
-    #' simulates stasis as independent, normally distributed random variables with mean `mean` and standard deviatin `sd`
+    #' simulates stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`
     #'
   #' @examples
     #' \dontrun{

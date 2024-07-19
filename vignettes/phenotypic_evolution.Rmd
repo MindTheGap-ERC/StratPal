@@ -31,7 +31,7 @@ The `StratPal` package provides three functions for simulating different modes o
 
 -   `stasis` simulates evolutionary stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`.
 
--   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0`. Setting `mu` to a negative (positive) value will make the random walk decrease (increase) over time, `sigma` determines the effect of randomness on the trait values.
+-   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0`. Setting `mu` to a negative (positive) value will make the value of the random walk decrease (increase) over time, `sigma` determines the effect of randomness on the trait values.
 
 -   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines how fast `mu` is approached, `sigma` the noise level, and `y0` the initial trait value.
 
@@ -55,7 +55,7 @@ We are interested in how phenotypic evolution is preserved in the stratigraphic 
 
 ### Age-depth models
 
-As an example, we compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenarion A (see `?scenarioA`). For this, first define the age-depth models
+As an example, we compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenario A (see `?scenarioA`). For this, first define the age-depth models
 
 ```{r, figures-side, fig.show="hold", out.width="50%", fig.align='left'}
 # define ADM 2 km from shore
@@ -148,7 +148,7 @@ sampling_loc_m |>                                  # sampling locations
        xlab = "Stratigraphic Height [m]")
 ```
 
-There we have it! This is what the lineage would look like if it would be sampled every 2 meters in a sections 2 km offshore.
+There we have it! This is what the lineage would look like if it was sampled every 2 meters in a sections 2 km offshore.
 
 **Task:** How does prescribing a sampling strategy change the interpretations of your last task? Can you draw any conclusions about which sampling strategy is best suited for a given environment or mode of evolution?
 
