@@ -23,19 +23,21 @@ library(admtools)
 
 Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through _installation_, _dependencies_, provide an overview of the available _example data_, _piping_, and working with _age-depth models_.
 
+Throughout the vignettes there are several **tasks** that you can solve. They are not mandatory for understanding the functionality of the package. Their aim is to explore the available models and data and develop an intuition for stratigraphic paleobiology.
+
 If you want to skip the introduction, go to
 
 ```{r, eval=FALSE}
 vignette("phenotypic_evolution")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution. Go to
+for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online on the package webpage here: [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html). Go to
 
 ```{r, eval=FALSE}
 vignette("event_data")
 ```
 
-for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa.
+for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online on the package website here: [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
 
 ## Installation
 
@@ -77,6 +79,8 @@ or by visiting the package website at https://mindthegap-erc.github.io/admtools/
 
 ## Example data
 
+`StratPal` comes with some example data. This data is taken from Hohmann et al. (2024), who simulated a carbonate platform over 2 Myr. More details can be found via `?scenarionA`.
+
 ## Piping
 
 In the `StratPal` package and its vignettes, we make heavy use of the base R _pipe_ operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling _pipeline_ clearer.
@@ -111,7 +115,8 @@ You can also use `|>` to pass arguments that are not in the first place. For thi
 
 ```{r}
 # calculate deciles of normal distribution
-seq(0, 1, by = 0.1) |> quantile(x = runif(100), p = _) # pass left hand side to the p argument
+seq(0, 1, by = 0.1) |>
+  quantile(x = runif(100), p = _) # pass left hand side to the p argument
 ```
 
 ## Age-depth models
@@ -205,3 +210,7 @@ vignette("phenotypic_evolution")
 ```
 
 for details on how to model stratigraphic paleobiology of trait evolution.
+
+## References
+
+* Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska. Identification of the mode of evolution in incomplete carbonate successions.bioRxiv 2023.12.18.572098; doi: [10.1101/2023.12.18.572098](https://doi.org/10.1101/2023.12.18.572098), Data published under a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
