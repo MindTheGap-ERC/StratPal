@@ -35,7 +35,7 @@ remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         dependencies = TRUE)
 ```
 
-to install the lastest stable version of the package.
+to install the latest stable version of the package.
 
 ## Usage
 
