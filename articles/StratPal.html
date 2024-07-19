@@ -34,7 +34,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+<li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
+    <li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
   </ul>
 </li>
@@ -79,15 +80,23 @@ efficiently use it. We go through <em>installation</em>,
 <em>dependencies</em>, provide an overview of the available <em>example
 data</em>, <em>piping</em>, and working with <em>age-depth
 models</em>.</p>
+<p>Throughout the vignettes there are several <strong>tasks</strong>
+that you can solve. They are not mandatory for understanding the
+functionality of the package. Their aim is to explore the available
+models and data and develop an intuition for stratigraphic
+paleobiology.</p>
 <p>If you want to skip the introduction, go to</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"phenotypic_evolution"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to model stratigraphic paleobiology of phenotypic
-evolution. Go to</p>
+evolution, or explore the vignette online on the package webpage here:
+<a href="https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html">mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution</a>.
+Go to</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"event_data"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to model stratigraphic paleobiology of event data
-such as individual fossils and first/last occurrences of taxa.</p>
+such as individual fossils and first/last occurrences of taxa, or
+explore the vignette online on the package website here: <a href="https://mindthegap-erc.github.io/StratPal/articles/event_data.html">mindthegap-erc.github.io/StratPal/articles/event_data</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -126,6 +135,9 @@ vignettes using</p>
 <div class="section level2">
 <h2 id="example-data">Example data<a class="anchor" aria-label="anchor" href="#example-data"></a>
 </h2>
+<p><code>StratPal</code> comes with some example data. This data is
+taken from Hohmann et al. (2024), who simulated a carbonate platform
+over 2 Myr. More details can be found via <code>?scenarionA</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="piping">Piping<a class="anchor" aria-label="anchor" href="#piping"></a>
@@ -173,7 +185,8 @@ the first place. For this, simply replace the argument with a underscore
 <code>_</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate deciles of normal distribution</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, p <span class="op">=</span> <span class="va">_</span><span class="op">)</span> <span class="co"># pass left hand side to the p argument</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, p <span class="op">=</span> <span class="va">_</span><span class="op">)</span> <span class="co"># pass left hand side to the p argument</span></span>
 <span><span class="co">#&gt;          0%         10%         20%         30%         40%         50% </span></span>
 <span><span class="co">#&gt; 0.007208941 0.093878876 0.203263406 0.288367090 0.383532604 0.481074212 </span></span>
 <span><span class="co">#&gt;         60%         70%         80%         90%        100% </span></span>
@@ -286,6 +299,17 @@ as fossil occurrences and first/last occurrences. Go to</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"phenotypic_evolution"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to model stratigraphic paleobiology of trait
 evolution.</p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<ul>
+<li>Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska.
+Identification of the mode of evolution in incomplete carbonate
+successions.bioRxiv 2023.12.18.572098; doi: <a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link">10.1101/2023.12.18.572098</a>,
+Data published under a <a href="https://creativecommons.org/licenses/by/4.0/" class="external-link">CC-BY 4.0</a>
+license.</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
