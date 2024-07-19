@@ -70,8 +70,135 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span></code></pre></div>
-<p>TBA</p>
-  </main>
+<p>Here we go through how the presented workflows can be generalized and
+expanded upon.</p>
+<div class="section level2">
+<h2 id="different-forward-models">Different forward models<a class="anchor" aria-label="anchor" href="#different-forward-models"></a>
+</h2>
+<p>In the examples, we used age-depth models from a carbonate platform
+simulated with CarboCAT lite. This can easily be expanded to any other
+sedimentary forward model (be it marine or terrestrial, siliciclastic,
+mixed, or carbonate system).</p>
+<p>For this, age-depth information needs to be extracted from the
+forward model. The vectors of elapsed model time vs. accumulated height
+can then be handed over to <code>tp_to_adm</code> to define age-depth
+model objects. These can then be used in the pipelines as in the
+examples.</p>
+<p>If the forward model included erosion, you need to first account for
+time intervals where sediment is first deposited and later removed. For
+this, first define a sediment accumulation curve using
+<code>tp_to_sac</code>, and pass it to <code>sac_to_adm</code> to turn
+it into an age-depth model. You can then use the resulting age-depth
+model for your analysis pipeline.</p>
+</div>
+<div class="section level2">
+<h2 id="empirical-age-depth-models">Empirical age-depth models<a class="anchor" aria-label="anchor" href="#empirical-age-depth-models"></a>
+</h2>
+<p>Of course you can use empirical age-depth models in your pipeline.
+You can create them from tie points using <code>tp_to_adm</code> just as
+in the case with forward models.</p>
+<p>The workflow in <code>StratPal</code> does not work with
+<code>multiadm</code> objects as defined by <code>admtools</code>. These
+objects store multiple age-depth models to account for uncertainty. You
+can however reduce their complexity, e.g. via
+<code><a href="https://mindthegap-erc.github.io/admtools/reference/median_adm.html" class="external-link">admtools::median_adm</a></code>, and use the resulting age-depth model
+for the modeling pipeline.</p>
+</div>
+<div class="section level2">
+<h2 id="other-ecological-gradients-and-niche-definitions">Other ecological gradients and niche definitions<a class="anchor" aria-label="anchor" href="#other-ecological-gradients-and-niche-definitions"></a>
+</h2>
+<p>In the examples we used water depth as ecological gradient. This was
+because water depth was stored by the forward model used. The approach
+for niche modeling used in <code>StratPal</code> works for all types of
+niches. Potentially relevant niches where information can be extracted
+from forward models are e.g. substrate consistency, temperature, water
+energy, and many others.</p>
+<p>We used a simple niche definition based on a probability density
+function of a normal distribution. This can be expanded to arbitrary
+niche definitions along a gradient.</p>
+<p>For niche modeling, two components are needed:</p>
+<ol style="list-style-type: decimal">
+<li>A function <code>niche_def</code> . It takes as input values of the
+gradient, and returns numbers returns numbers between 0 and 1 as output
+(where 1 corresponds to the taxon being in its preferred niche, and 0 to
+it being completely out of its preferred niche). It must take vectorized
+input, and return a vector of equal length</li>
+<li>A function <code>gc</code> that describes how the gradient changes
+with time. It must take vectorized inputs, and return a vector of equal
+length.</li>
+</ol>
+<p>As long as these conditions are met, niche preferences along any
+gradient can be modeled using <code>apply_niche_pref</code>.</p>
+</div>
+<div class="section level2">
+<h2 id="different-models-of-phenotypic-evolution">Different models of phenotypic evolution<a class="anchor" aria-label="anchor" href="#different-models-of-phenotypic-evolution"></a>
+</h2>
+<p>Other types of phenotypic evolution in the time domain can easily be
+incorporated. They should stick to the following conventions to be
+seamlessly integrated:</p>
+<ul>
+<li><p>They should take a vector of times as first argument</p></li>
+<li><p>The implementation should be for a continuous time version of the
+mode of interest, as the time domain is generally sampled at irregular
+times (see Hohmann et al. 2024, methods section, for details)</p></li>
+<li><p>They should return a list with two elements: One named
+<code>t</code> that is a duplicate of the first argument handed to the
+function. The second should be named <code>y</code> and should contain
+the simulated trait values.</p></li>
+<li><p>The output list <code>l</code> should be assigned both the class
+“list” and “timelist” via the command
+<code>class(l) = c("timelist", "list")</code> , see
+<code>random_walk</code> as example</p></li>
+</ul>
+<p>The last two points make sure plotting via <code>plot.timelist</code>
+and <code>plot.stratlist</code> works seamlessly.</p>
+</div>
+<div class="section level2">
+<h2 id="different-models-of-event-type-data">Different models of event type data<a class="anchor" aria-label="anchor" href="#different-models-of-event-type-data"></a>
+</h2>
+<p>We used (constant and variable rate) Poisson point processes to
+simulate event type data. Any model of event-type data can be used
+(e.g. with temporal correlation), as long as it returns a vector with
+the timing of the events</p>
+</div>
+<div class="section level2">
+<h2 id="taphonomy-for-event-type-data">Taphonomy for event type data<a class="anchor" aria-label="anchor" href="#taphonomy-for-event-type-data"></a>
+</h2>
+<p>Taphonomic effects can be incorporated using using the
+<code>apply_taphonomy</code> function. This is based on the same
+principle as niche modeling, and makes use of the <code>thin</code>
+function, but was not shown in the examples.</p>
+</div>
+<div class="section level2">
+<h2 id="transform-different-types-of-data">Transform different types of data<a class="anchor" aria-label="anchor" href="#transform-different-types-of-data"></a>
+</h2>
+<p><code>strat_to_time</code> and <code>time_to_strat</code> are generic
+functions of the <code>admtools</code> package that can transform
+different types of data. Currently they transform phylogenetic trees
+(<code>phylo</code> objects), lists (<code>list</code> class), and
+numeric data such as the event type data (class
+<code>numeric</code>).</p>
+<p>In general, any type temporal (resp. stratigraphic) data can be
+transformed. For this, you need define an <code>S3</code> class for the
+object you would like to transform, and then implement the
+transformation of this object for <code>time_to_strat</code> and
+<code>strat_to_time</code>.</p>
+<p>If you would like to add transformations for new S3 classes to the
+<code>admtools</code> package, please see the contribution guidelines of
+the <code>admtools</code> package for details on how to contribute
+code.</p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>* Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia
+Jarochowska. Identification of the mode of evolution in incomplete
+carbonate successions.bioRxiv 2023.12.18.572098; doi: <a href="%5Bhttps://doi.org/10.1101/2023.12.18.572098" class="external-link">10.1101/2023.12.18.572098</a>,](<a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link uri">https://doi.org/10.1101/2023.12.18.572098</a>),) Data
+published under a <a href="%5Bhttps://creativecommons.org/licenses/by/4.0/" class="external-link">CC-BY 4.0</a>](<a href="https://creativecommons.org/licenses/by/4.0/" class="external-link uri">https://creativecommons.org/licenses/by/4.0/</a>))
+license.</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

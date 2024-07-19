@@ -68,22 +68,28 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MindTheGap-ERC/admtools" class="external-link">admtools</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>This vignette provides an introduction to stratigraphic paleobiology
-applied to fossil occurrences and first/last taxon occurrences.</p>
+applied to “<em>event type data</em>” such as location and age of
+specimens, and first/last occurrences of taxa.</p>
+<p>First, let’s load the required packages:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MindTheGap-ERC/admtools" class="external-link">admtools</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="modeling-fossil-occurrences-and-firstlast-fossil-occurrences">Modeling fossil occurrences and first/last fossil occurrences<a class="anchor" aria-label="anchor" href="#modeling-fossil-occurrences-and-firstlast-fossil-occurrences"></a>
 </h2>
-<p>Fossil occurrences and first/last occurrences can be considered
-distinct events that occur at specific points in time or stratigraphic
-position. We model them as point processes. In the <code>StratPal</code>
-package, we provide two functions to simulate point processes:</p>
+<p>Location and age of fossil specimens and first/last occurrences of
+taxa can be considered distinct events that occur at specific points in
+time or stratigraphic positions. Up to a few notable exceptions, the
+same principles apply to this “<em>event type data</em>”, so we treat
+them together.</p>
+<p>We model events as <em>point processes</em>. In the
+<code>StratPal</code> package, we provide two functions to simulate
+point processes:</p>
 <ul>
 <li><p><code>p3</code>, short for Poisson point process, to simulate
 events that occur at a constant rate</p></li>
@@ -91,18 +97,19 @@ events that occur at a constant rate</p></li>
 processes to simulate events that occur at variable rates
 (e.g. extinction events etc.)</p></li>
 </ul>
-<p>The usage of <code>p3</code> is straightforward:</p>
+<p>The usage of <code>p3</code> is straightforward.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># simulate fossil occurrences over one Myr with an average of 8 occurrences per Myr</span></span>
-<span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">8</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">15</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>main <span class="op">=</span> <span class="st">"Fossil occurrences"</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span><span class="op">)</span></span></code></pre></div>
+<span>       xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
+<span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <p>For <code>p3_var_rate</code>, you can pass either a function that
-specifies the rate:</p>
+specifies the rate to <code>x</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># return 100 occurrences by setting n parameter</span></span>
-<span><span class="fu"><a href="../reference/p3_var_rate.html">p3_var_rate</a></span><span class="op">(</span><span class="va">sin</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">9</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu"><a href="../reference/p3_var_rate.html">p3_var_rate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sin</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">9</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>, main <span class="op">=</span> <span class="st">"Fossil occurrences"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -110,88 +117,107 @@ specifies the rate:</p>
 <p>Alternatively, you can pass it two vectors <code>x</code> and
 <code>y</code>. The rate is then determined by linear interpolation
 between these vectors. This is equivalent to using the function
-<code>approxfun(x,y)</code></p>
+<code>approxfun(x,y, rule = 2)</code> as input for <code>x</code></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># decline in fossil occurrences from 50 to 0 over 1 Myr</span></span>
 <span><span class="fu"><a href="../reference/p3_var_rate.html">p3_var_rate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0</span><span class="op">)</span>, from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">1</span>, f_max <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>, main <span class="op">=</span> <span class="st">"Fossil occurrences"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<p>Note that it is only a matter of interpretation whether the “events”
-produced by <code>p3</code> and <code>p3_var_rate</code> are fossil
-occurrences or first/last occurrences. The conceptual framework holds
-nonetheless.</p>
+<p>Keep in mind that it is only a matter of interpretation whether the
+“events” produced by <code>p3</code> and <code>p3_var_rate</code> are
+age/timing or locations of specimens from one taxon or of first/last
+occurrences of multiple taxa. The conceptual framework holds for all
+event type data.</p>
+<p><strong>Task:</strong> Model an “extinction event” with a background
+rate of 3 species disappearing per Myr, and a peak in extinction rate
+where the rate is 10-fold increased over an interval of 200 kyr. How
+distinct is the peak in the histogram, and how much do the results
+differe due to randomness when you run the analysis multiple times?</p>
 </div>
 <div class="section level2">
 <h2 id="age-depth-models">Age-depth models<a class="anchor" aria-label="anchor" href="#age-depth-models"></a>
 </h2>
-<p>Throughout the examples, we use the same two age-depth model, which
-is from 2 km and 12 km offshore in scenario A. We define them</p>
+<p>Throughout this examples, we the age-depth models from 2 km and 12 km
+offshore in scenario A.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># define ADM 2 km from shore</span></span>
-<span><span class="va">adm_2km</span> <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/tp_to_adm.html" class="external-link">tp_to_adm</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,</span>
+<code class="sourceCode R"><span><span class="va">adm_2km</span> <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/tp_to_adm.html" class="external-link">tp_to_adm</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,   <span class="co"># 2 km from shore</span></span>
 <span>                h <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">h_m</span><span class="op">[</span>,<span class="st">"2km"</span><span class="op">]</span>,</span>
 <span>                T_unit <span class="op">=</span> <span class="st">"Myr"</span>,</span>
 <span>                L_unit <span class="op">=</span> <span class="st">"m"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">adm_12km</span> <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/tp_to_adm.html" class="external-link">tp_to_adm</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,</span>
+<span><span class="va">adm_12km</span> <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/tp_to_adm.html" class="external-link">tp_to_adm</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,  <span class="co"># 12 km from shore</span></span>
 <span>                h <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">h_m</span><span class="op">[</span>,<span class="st">"12km"</span><span class="op">]</span>,</span>
 <span>                T_unit <span class="op">=</span> <span class="st">"Myr"</span>,</span>
 <span>                L_unit <span class="op">=</span> <span class="st">"m"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># plot age-depth model</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm_2km</span>,</span>
-<span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   <span class="co"># plot thicker lines for accumulative intervals (lwd = line width)</span></span>
-<span>     lty_destr <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># don't plot destructive intervals (lty = line type)</span></span>
-<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add time axis label</span></span>
-<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add length axis label</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm_12km</span>,</span>
-<span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   <span class="co"># plot thicker lines for accumulative intervals (lwd = line width)</span></span>
-<span>     lty_destr <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># don't plot destructive intervals (lty = line type)</span></span>
-<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add time axis label</span></span>
-<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># add length axis label</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm_2km</span>,       <span class="co"># plot age-depth model 2 km from shore</span></span>
+<span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   <span class="co"># plot thicker lines for intervals with sediment accumulation (lwd = line width)</span></span>
+<span>     lty_destr <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># don't plot destructive intervals/gaps (lty = line type)</span></span>
+<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add time axis label</span></span>
+<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add length axis label</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 2 km from shore"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm_12km</span>,      <span class="co"># plot age-depth model 12 km from shore</span></span>
+<span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   </span>
+<span>     lty_destr <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/figures-side-1.png" width="50%" style="display: block; margin: auto auto auto 0;"><img src="event_data_files/figure-html/figures-side-2.png" width="50%" style="display: block; margin: auto auto auto 0;"></p>
+<p><strong>Task:</strong> Plot the sea level curve for scenarion A, and
+the water depth curves at the two locations. How is this connected to
+the age-depth models, specifically to the presence and duration of gaps
+and low/high sedimentation rates? You can use
+<code>plot_sed_rate_t</code>, <code>get_hiat_list</code> and
+<code>get_hiat_duration</code> from <code>admtools</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="stratigraphic-distortions-of-event-type-data">Stratigraphic distortions of “event” type data<a class="anchor" aria-label="anchor" href="#stratigraphic-distortions-of-event-type-data"></a>
 </h2>
+<p>Any event type of data can directly be transformed using an age-depth
+model via <code>time_to_strat</code>. Depending on how the events are
+interpreted, we need to choose different options.</p>
 <div class="section level3">
-<h3 id="fossil-occurrences">Fossil occurrences<a class="anchor" aria-label="anchor" href="#fossil-occurrences"></a>
+<h3 id="fossil-specimens">Fossil specimens<a class="anchor" aria-label="anchor" href="#fossil-specimens"></a>
 </h3>
-<p>Any “event” type data can directly transformed using
-<code>time_to_strat</code>:</p>
+<p>Assuming the events are fossil specimens of one taxon, we can examine
+where specimens appear in the stratigraphic column:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Stratigraphic height [m]"</span>,</span>
-<span>       main <span class="op">=</span> <span class="st">"Fossil occurrences 2 km offshore"</span>,</span>
+<span>       main <span class="op">=</span> <span class="st">"Fossil abundance 2 km offshore"</span>,</span>
+<span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>Note the option <code>destructive = TRUE</code> in
-<code>time_to_strat</code>. It makes sure any fossil occurrences that
-coincide with a hiatus are destroyed, and do not appear in the
-stratigraphic domain.</p>
-<p>The pattern looks very different 2 km offshore:</p>
+<code>time_to_strat</code>. This is because we assume specimens that
+lived during a hiatus are destroyed.</p>
+<p>Assuming the same rate of fossil specimens, we get a very different
+pattern 12 km from shore:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_12km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Stratigraphic height [m]"</span>,</span>
-<span>       main <span class="op">=</span> <span class="st">"Fossil occurrences 12 km offshore"</span>,</span>
+<span>       main <span class="op">=</span> <span class="st">"Fossil abundance 12 km offshore"</span>,</span>
+<span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
-<p>Not only is the section much shorter (not even 20 m), but ther are 2
+<p>Not only is the section much shorter (not even 20 m), but there are 2
 distinct peaks at the bottom of the section and around 13 m. Comparing
 with the age-depth model shows that these locations correspond to times
 of extreme stratigraphic condensation (low sedimentation rates,
 indicated by a near-horizontal age-depth model). As a result, more time
 is represented per stratigraphic increment, leading to accumulations of
-fossil occurrences.</p>
+fossil occurrences (Hohmann 2021).</p>
 </div>
 <div class="section level3">
-<h3 id="last-occurrences-of-common-taxa">Last occurrences of common taxa<a class="anchor" aria-label="anchor" href="#last-occurrences-of-common-taxa"></a>
+<h3 id="firstlast-occurrences-of-common-taxa">First/Last occurrences of common taxa<a class="anchor" aria-label="anchor" href="#firstlast-occurrences-of-common-taxa"></a>
 </h3>
-<p>Last (and first) occurrences can also directly be transformed using
-<code>time_to_strat</code> under the condition that the taxa are very
-common. This assumption will be explored further below.</p>
+<p>In the fossil record, we can not directly observe origination and
+extinction rates of taxa, but only their first and last occurrences.
+This type of event data can also directly be transformed using
+<code>time_to_strat</code> when taxa are very common. This assumption
+will be explored further below.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -199,16 +225,16 @@ common. This assumption will be explored further below.</p>
 <span>       main <span class="op">=</span> <span class="st">"Last occurrences 2 km offshore"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
-<p>This would be the pattern of last occurrences in a section 2 km
-offshore when the extinction rate is constant! The peaks coincide with
-the hiatuses, as the last occurrences of the species that disappear
-during the hiatus cluster at the hiatus surface. Note here that we used
-the option <code>destructive = FALSE</code> for
+<p>This would be the pattern of last occurrences in the section 2 km
+offshore when the rate of last occurrences is constant! The peaks
+coincide with the hiatuses, as the last occurrences of the species that
+disappear during the hiatus cluster at the hiatus surface. Note here
+that we used the option <code>destructive = FALSE</code> for
 <code>time_to_strat</code> to make sure the last occurrences appear at
 the location of the hiatus. This is why the assumption of abundant taxa
 is important: If taxa are rare, their last occurrence does not match
 their actual time of extinction (Signor-Lipps effect), and the last
-occurrences can be found further below the hiats.</p>
+occurrences can be found further below the hiatus.</p>
 <p>The patter 12 km offshore is very different:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -345,6 +371,30 @@ depth on the platform is decreasing:</p>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"lr"</span>, type <span class="op">=</span> <span class="st">"l"</span>, xlab <span class="op">=</span> <span class="st">"Stratigraphic position [m]"</span>, ylab <span class="op">=</span> <span class="st">"Water depth [m]"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="further-reading">Further reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
+</h2>
+<p>Go to</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"phenotypic_evolution"</span><span class="op">)</span></span></code></pre></div>
+<p>for details on how to model stratigraphic paleobiology of phenotypic
+evolution, or explore the vignette online under (<a href="https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html">mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution</a>).</p>
+<p>See also</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"advanced_functionality"</span><span class="op">)</span></span></code></pre></div>
+<p>for details on how to expand on the modeling pipelines described
+here, or explore the vignette online under (<a href="https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html">mindthegap-erc.github.io/StratPal/articles/advanced_functionality</a>).</p>
+</div>
+<div class="section level2">
+<h2 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>
+</h2>
+<ul>
+<li>NIKLAS HOHMANN; INCORPORATING INFORMATION ON VARYING SEDIMENTATION
+RATES INTO PALEONTOLOGICAL ANALYSES. PALAIOS 2021;; 36 (2): 53–67. doi:
+<a href="https://doi.org/10.2110/palo.2020.038" class="external-link uri">https://doi.org/10.2110/palo.2020.038</a>
+</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
