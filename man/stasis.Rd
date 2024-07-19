@@ -14,7 +14,7 @@ stasis(t, mean = 0, sd = 1)
 \item{sd}{standard deviation}
 }
 \description{
-simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviatin \code{sd}
+simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
 }
 \examples{
 \dontrun{

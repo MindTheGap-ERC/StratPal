@@ -14,6 +14,8 @@ thin(x, thin)
 \description{
 Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by \emph{thin (x(i))}. Values of
 \code{thin} below 0 and above 1 are ignored
+Is used to model niche preferences in apply_niche_pref, where events are thinned based on how close they are to their preferred niche
+Can also be used to model taphonomic effects. In this case, \code{thin} describes the preservation potential.
 }
 \examples{
 x = p3(rate = 100, from = 0, to = 3 * pi) # simulate Poisson point process
@@ -22,4 +24,7 @@ hist(y) # not how negative values of sin are treated as 0
 yy = thin(x, function(x) 5 * sin(x))
 hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
 
+}
+\seealso{
+\code{\link[=apply_niche_pref]{apply_niche_pref()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for use cases with biological meaning
 }
