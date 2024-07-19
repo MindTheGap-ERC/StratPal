@@ -1,8 +1,8 @@
 ---
-title: "trait_evolution"
+title: "Stratigraphic Paleobiology for Phenotypic Evolution"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{trait_evolution}
+  %\VignetteIndexEntry{Stratigraphic Paleobiology for Phenotypic Evolution}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
