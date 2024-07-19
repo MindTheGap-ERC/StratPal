@@ -1,8 +1,8 @@
 ---
-title: "Stratigraphic Paleobiology for fossil occurrences"
+title: "Stratigraphic Paleobiology for Event Data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Stratigraphic Paleobiology for fossil occurrences}
+  %\VignetteIndexEntry{Stratigraphic Paleobiology for Event Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

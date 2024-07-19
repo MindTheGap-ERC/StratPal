@@ -10,7 +10,7 @@ R package for stratigraphic paleobiology modeling pipelines.
 
 __Niklas Hohmann__  
 Utrecht University  
-email: n.hohmann [at] uu.nl  
+email: n.h.hohmann [at] uu.nl  
 Web page: [uu.nl/staff/NHohmann](https://www.uu.nl/staff/NHHohmann)  
 Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
 
@@ -35,7 +35,7 @@ remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         dependencies = TRUE)
 ```
 
-to install the lastest stable version of the package.
+to install the latest stable version of the package.
 
 ## Usage
 
@@ -52,6 +52,10 @@ browseVignettes(package = "StratPal")
 ```
 
 to view the available vignettes (long form documentation) with use cases or visit the package webpage ([mindthegap-erc.github.io/StratPal](https://mindthegap-erc.github.io/StratPal/)) to get started.
+
+## Contribution
+
+For contribution guidelines see the CONTRIBUTING.md file
 
 ## License
 
