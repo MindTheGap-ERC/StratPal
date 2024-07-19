@@ -29,11 +29,13 @@ library(admtools)
 
 The `StratPal` package provides three functions for simulating different modes of evolution in the time domain:
 
--   `stasis` simulates evolutionary stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`.
+-   `stasis` simulates evolutionary stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd` (Hunt 2006).
 
--   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0`. Setting `mu` to a negative (positive) value will make the value of the random walk decrease (increase) over time, `sigma` determines the effect of randomness on the trait values.
+-   `random_walk` simulates trait evolution following a (potentially biased) random walk with variability `sigma`, directionality `mu`, and initial trait value `y0` (e.g. Bookstein 1987). Setting `mu` to a negative (positive) value will make the value of the random walk decrease (increase) over time, `sigma` determines the effect of randomness on the trait values.
 
--   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines how fast `mu` is approached, `sigma` the noise level, and `y0` the initial trait value.
+-   `ornstein_uhlenbeck` corresponds to convergence to a phenotypic optimum, where `mu` is the optimal value (long term mean), `theta` determines how fast `mu` is approached, `sigma` the noise level, and `y0` the initial trait value (Lande 1976).
+
+Use `vignette("advanced_functionality")` for guidelines to implement your own modes of evolution.
 
 ### Visualization
 
@@ -55,31 +57,35 @@ We are interested in how phenotypic evolution is preserved in the stratigraphic 
 
 ### Age-depth models
 
-As an example, we compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenario A (see `?scenarioA`). For this, first define the age-depth models
+As an example, we compare the the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenario A. See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
+
+First define the age-depth models:
 
 ```{r, figures-side, fig.show="hold", out.width="50%", fig.align='left'}
-# define ADM 2 km from shore
-adm_2km = tp_to_adm(t = scenarioA$t_myr,
+adm_2km = tp_to_adm(t = scenarioA$t_myr,    # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
                 L_unit = "m")
 
-adm_12km = tp_to_adm(t = scenarioA$t_myr,
+adm_12km = tp_to_adm(t = scenarioA$t_myr,   # 12 km from shore
                 h = scenarioA$h_m[,"12km"],
                 T_unit = "Myr",
                 L_unit = "m")
 
-# plot age-depth model
-plot(adm_2km,
-     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
-     lty_destr = 0) # don't plot destructive intervals (lty = line type)
-T_axis_lab() # add time axis label
-L_axis_lab() # add length axis label
-plot(adm_12km,
-     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
-     lty_destr = 0) # don't plot destructive intervals (lty = line type)
-T_axis_lab() # add time axis label
-L_axis_lab() # add length axis label
+
+plot(adm_2km,       # plot age-depth model 2 km from shore
+     lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
+     lty_destr = 0) # don't plot destructive intervals/gaps (lty = line type)
+T_axis_lab()        # add time axis label
+L_axis_lab()        # add length axis label
+title("Age-depth model 2 km from shore")
+
+plot(adm_12km,      # plot age-depth model 12 km from shore
+     lwd_acc = 2,   
+     lty_destr = 0) 
+T_axis_lab() 
+L_axis_lab() 
+title("Age-depth model 12 km from shore")
 ```
 
 ### Stratigraphic expression of phenotypic evolution
@@ -93,12 +99,12 @@ seq(from = min_time(adm_2km), to = max_time(adm_2km), by = 0.01) |> # sample eve
   time_to_strat(adm_2km, destructive = FALSE) |>                    # transform data from time to strat domain
   plot(type = "l",                                                  # plot
        orientation = "lr",
-       xlab = "Stratigraphic height [m]",
+       xlab = paste0("Stratigraphic height [", get_L_unit(adm_2km), "]"),
        ylab = "Trait value")
 
 ```
 
-This is what a biased random walk in the time domain would look like if it was observed 2 km offshore in the simulated carbonate platform. The large jumps in traits correspond to long hiatuses caused by prolonged drops in relative sea level. Compare this figure to the random walk in the time domain (without stratigraphic distortions.)
+This is what a biased random walk in the time domain would look like if it was observed 2 km offshore in the simulated carbonate platform. The large jumps in traits correspond to long hiatuses caused by prolonged drops in relative sea level (Hohmann et al. 2024). Compare this figure to the random walk in the time domain (without stratigraphic distortions).
 
 12 km offshore, the preservation is very different:
 
@@ -108,11 +114,11 @@ seq(from = min_time(adm_12km), to = max_time(adm_12km), by = 0.01) |> # sample e
   time_to_strat(adm_12km, destructive = FALSE) |>                     # transform data from time to strat domain
   plot(type = "l",                                                    # plot results
        orientation = "lr",
-       xlab = "Stratigraphic height [m]",
+       xlab = paste0("Stratigraphic height [", get_L_unit(adm_12km), "]"),
        ylab = "Trait value")
 ```
 
-You can also see two jumps, but the first is at a different location compared to the section 2 km offshore. Looking at the age-depth models, we can see why this is: 2 km offshore, the jumps are caused by prolonged hiatuses that are associated with the massive drops in sea level around 0.5 Myr and 1.5 Myr. 12 km offshore, the age-depth model shows fewer gaps, but prolonged intervals with low sedimentation rates at the beginning of the simulation and at around 1.5 Myr. This leads to stratigraphically condensed intervals, at which phenotypic evolution appears to be accelerated. You can see that not all artefactual jumps in traits observable in the stratigraphic record are caused by gaps.
+You can also see two jumps, but the first is at a different location compared to the section 2 km offshore. Looking at the age-depth models, we can see why this is: 2 km offshore, the jumps are caused by prolonged hiatuses that are associated with the massive drops in sea level around 0.5 Myr and 1.5 Myr. 12 km offshore, the age-depth model shows fewer gaps, but prolonged intervals with low sedimentation rates at the beginning of the simulation and at around 1.5 Myr. This leads to intervals where the rate phenotypic evolution appears to be accelerated because of stratigraphic condensation (Hohmann 2021). You can see that not all artefactual jumps in traits observable in the stratigraphic record are caused by gaps.
 
 **Task:** How does this effect vary between different modes of evolution (with different parameter choices), and at different locations in the platform (e.g., along an onshore-offshore gradient)? Can you make any general statements about where you see the strongest effects?
 
@@ -145,22 +151,22 @@ sampling_loc_m |>                                  # sampling locations
   plot(orientation = "lr",                         # plot stratigrahic data
        type = "l",        
        ylab = "Trait Value",
-       xlab = "Stratigraphic Height [m]")
+       xlab = paste0("Stratigraphic height [", get_L_unit(adm_2km), "]"))
 ```
 
-There we have it! This is what the lineage would look like if it was sampled every 2 meters in a sections 2 km offshore.
+There we have it! This is what the lineage would look like if it was sampled every 2 meters in a sections 2 km from shore.
 
 **Task:** How does prescribing a sampling strategy change the interpretations of your last task? Can you draw any conclusions about which sampling strategy is best suited for a given environment or mode of evolution?
 
 ## Further reading
 
-Go to
+Run
 
 ```{r, eval=FALSE}
-vignette("phenotypic_evolution")
+vignette("event_data")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online on the package webpage ([mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html)).
+for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
 
 See also
 
@@ -168,6 +174,19 @@ See also
 vignette("advanced_functionality")
 ```
 
-for details on how to expand on the modeling pipelines described here, or explore the vignette online on the package webpage ([mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html)).
+for details on how to expand on the modeling pipelines described here, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
+
+## References
+
+* Bookstein, Fred L. 1987. "Random walk and the existence of evolutionary rates." Paleobiology. https://doi.org/10.1017/S0094837300009039.
+
+* Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. https://doi.org/10.2110/palo.2020.038.
+
+* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions". BMC Ecology and Evolution. https://doi.org/10.1101/2023.12.18.572098.
+
+* Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.
+
+* Lande, Russell. 1976. "Natural selection and random gentic drift in phenotypic evolution." Evolution. https://doi.org/10.1111/j.1558-5646.1976.tb00911.x
+
 
 
