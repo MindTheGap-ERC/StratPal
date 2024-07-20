@@ -89,19 +89,20 @@ simulating different modes of evolution in the time domain:</p>
 <ul>
 <li><p><code>stasis</code> simulates evolutionary stasis as independent,
 normally distributed random variables with mean <code>mean</code> and
-standard deviation <code>sd</code> (Hunt 2006).</p></li>
+standard deviation <code>sd</code> (<a href="#References">Hunt
+2006</a>).</p></li>
 <li><p><code>random_walk</code> simulates trait evolution following a
 (potentially biased) random walk with variability <code>sigma</code>,
 directionality <code>mu</code>, and initial trait value <code>y0</code>
-(e.g. Bookstein 1987). Setting <code>mu</code> to a negative (positive)
-value will make the value of the random walk decrease (increase) over
-time, <code>sigma</code> determines the effect of randomness on the
-trait values.</p></li>
+(e.g. <a href="#References">Bookstein 1987</a>). Setting <code>mu</code>
+to a negative (positive) value will make the value of the random walk
+decrease (increase) over time, <code>sigma</code> determines the effect
+of randomness on the trait values.</p></li>
 <li><p><code>ornstein_uhlenbeck</code> corresponds to convergence to a
 phenotypic optimum, where <code>mu</code> is the optimal value (long
 term mean), <code>theta</code> determines how fast <code>mu</code> is
 approached, <code>sigma</code> the noise level, and <code>y0</code> the
-initial trait value (Lande 1976).</p></li>
+initial trait value (<a href="#References">Lande 1976</a>).</p></li>
 </ul>
 <p>Use <code><a href="../articles/advanced_functionality.html">vignette("advanced_functionality")</a></code> for guidelines to
 implement your own modes of evolution.</p>
@@ -112,7 +113,7 @@ implement your own modes of evolution.</p>
 <p>You can visualize the different modes of evolution using the
 following pipeline:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span>             <span class="co"># times of simulation in myr. simulate over 1 Myr years with 10 kyr resolution</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span>             <span class="co"># times of simulation in Myr. Simulate over 1 Myr years with 10 kyr resolution</span></span>
 <span>  <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span>sigma <span class="op">=</span> <span class="fl">1</span>, mu <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># simulate random walk with increasing trait values</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,                  <span class="co"># plot results</span></span>
 <span>       xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
@@ -127,14 +128,14 @@ parameters, and what is their biological meaning?</p>
 <h2 id="stratigraphic-domain">Stratigraphic domain<a class="anchor" aria-label="anchor" href="#stratigraphic-domain"></a>
 </h2>
 <p>We are interested in how phenotypic evolution is preserved in the
-stratigraphic record, i.e. how is trait evolution within a lineage
+stratigraphic record, i.e. how trait evolution within a lineage is
 preserved at a specific location in the stratigraphic record. Here we
 develop the modeling pipelines to answer this question.</p>
 <div class="section level3">
 <h3 id="age-depth-models">Age-depth models<a class="anchor" aria-label="anchor" href="#age-depth-models"></a>
 </h3>
-<p>As an example, we compare the the preservation of trait evolution 2
-km and 12 km offshore in the carbonate platform in scenario A. See
+<p>As an example, we compare the preservation of trait evolution 2 km
+and 12 km offshore in the carbonate platform in scenario A from <a href="#References">Hohmann et al. (2024)</a>. See
 <code><a href="../reference/scenarioA.html">?scenarioA</a></code> and <code><a href="../articles/StratPal.html">vignette("StratPal")</a></code> for
 details on scenario A.</p>
 <p>First define the age-depth models:</p>
@@ -149,7 +150,6 @@ details on scenario A.</p>
 <span>                T_unit <span class="op">=</span> <span class="st">"Myr"</span>,</span>
 <span>                L_unit <span class="op">=</span> <span class="st">"m"</span><span class="op">)</span></span>
 <span></span>
-<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm_2km</span>,       <span class="co"># plot age-depth model 2 km from shore</span></span>
 <span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   <span class="co"># plot thicker lines for intervals with sediment accumulation (lwd = line width)</span></span>
 <span>     lty_destr <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># don't plot destructive intervals/gaps (lty = line type)</span></span>
@@ -163,7 +163,7 @@ details on scenario A.</p>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/figures-side-1.png" width="50%" style="display: block; margin: auto auto auto 0;"><img src="phenotypic_evolution_files/figure-html/figures-side-2.png" width="50%" style="display: block; margin: auto auto auto 0;"></p>
+<p><img src="phenotypic_evolution_files/figure-html/figures-side-1.png" width="50%"><img src="phenotypic_evolution_files/figure-html/figures-side-2.png" width="50%"></p>
 </div>
 <div class="section level3">
 <h3 id="stratigraphic-expression-of-phenotypic-evolution">Stratigraphic expression of phenotypic evolution<a class="anchor" aria-label="anchor" href="#stratigraphic-expression-of-phenotypic-evolution"></a>
@@ -179,14 +179,15 @@ values from the time domain into the depth domain via
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,                                                  <span class="co"># plot</span></span>
 <span>       orientation <span class="op">=</span> <span class="st">"lr"</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
-<span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span><span class="op">)</span></span></code></pre></div>
+<span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span>,</span>
+<span>       main <span class="op">=</span> <span class="st">"Trait evolution 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 <p>This is what a biased random walk in the time domain would look like
 if it was observed 2 km offshore in the simulated carbonate platform.
 The large jumps in traits correspond to long hiatuses caused by
-prolonged drops in relative sea level (Hohmann et al. 2024). Compare
-this figure to the random walk in the time domain (without stratigraphic
-distortions).</p>
+prolonged drops in relative sea level (<a href="#References">Hohmann et
+al. 2024</a>). Compare this figure to the random walk in the time domain
+(without stratigraphic distortions).</p>
 <p>12 km offshore, the preservation is very different:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># sample every 10 kyr over the interval covered by the adm </span></span>
@@ -195,7 +196,8 @@ distortions).</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,                                                    <span class="co"># plot results</span></span>
 <span>       orientation <span class="op">=</span> <span class="st">"lr"</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
-<span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span><span class="op">)</span></span></code></pre></div>
+<span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span>,</span>
+<span>       main <span class="op">=</span> <span class="st">"Trait evolution 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <p>You can also see two jumps, but the first is at a different location
 compared to the section 2 km offshore. Looking at the age-depth models,
@@ -205,9 +207,9 @@ hiatuses that are associated with the massive drops in sea level around
 gaps, but prolonged intervals with low sedimentation rates at the
 beginning of the simulation and at around 1.5 Myr. This leads to
 intervals where the rate phenotypic evolution appears to be accelerated
-because of stratigraphic condensation (Hohmann 2021). You can see that
-not all artefactual jumps in traits observable in the stratigraphic
-record are caused by gaps.</p>
+because of (sedimentological) condensation (<a href="#References">Hohmann 2021</a>). You can see that not all
+artefactual jumps in traits observable in the stratigraphic record are
+caused by gaps.</p>
 <p><strong>Task:</strong> How does this effect vary between different
 modes of evolution (with different parameter choices), and at different
 locations in the platform (e.g., along an onshore-offshore gradient)?
@@ -229,15 +231,13 @@ samples are taken. This allows us to examine the effect that different
 sampling strategies have on our perception of trait evolution. We do
 this in the following steps:</p>
 <ol style="list-style-type: decimal">
-<li>Determine sampling locations in the stratigraphic domain</li>
+<li>Determine sampling locations in the stratigraphic domain.</li>
 <li>Calculate what times correspond to said sampling locations via
-<code>strat_to_time</code>
-</li>
-<li>Simulate a lineage at said times</li>
+<code>strat_to_time</code>.</li>
+<li>Simulate a lineage at said times.</li>
 <li>Transform the simulated trait values back into the stratigraphic
-domain using <code>time_to_strat</code>
-</li>
-<li>Plot the result</li>
+domain using <code>time_to_strat</code>.</li>
+<li>Plot the result.</li>
 </ol>
 <p>Let’s assume we take a sample every 2 meters. Then our five steps
 above result in the following modeling pipeline:</p>
@@ -254,7 +254,8 @@ above result in the following modeling pipeline:</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"lr"</span>,                         <span class="co"># plot stratigrahic data</span></span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>,        </span>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait Value"</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
+<span>       main <span class="op">=</span> <span class="st">"Trait evolution 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <p>There we have it! This is what the lineage would look like if it was
 sampled every 2 meters in a sections 2 km from shore.</p>
@@ -280,7 +281,7 @@ explore the vignette online under <a href="https://mindthegap-erc.github.io/Stra
 here, or explore the vignette online under <a href="https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html">mindthegap-erc.github.io/StratPal/articles/advanced_functionality</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<h2 id="References">References<a class="anchor" aria-label="anchor" href="#References"></a>
 </h2>
 <ul>
 <li><p>Bookstein, Fred L. 1987. “Random walk and the existence of
