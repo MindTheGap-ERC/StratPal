@@ -7,21 +7,21 @@
 ornstein_uhlenbeck(t, mu = 0, theta = 1, sigma = 1, y0 = 0)
 }
 \arguments{
-\item{t}{times at which the process is simulated}
+\item{t}{times at which the process is simulated. Can be heterodistant}
 
-\item{mu}{numeric, long term mean}
+\item{mu}{scalar, long term mean}
 
-\item{theta}{numeric, mean reversion speed}
+\item{theta}{scalar, mean reversion speed}
 
 \item{sigma}{positive scalar, strength of randomness}
 
-\item{y0}{scalar. initial value (value of process at the first entry of t)}
+\item{y0}{scalar, initial value (value of process at the first entry of t)}
 }
 \value{
-a list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Outputs are of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?plot.timelist}
+A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-simulates the Ornstein-Uhlenbeck process using the Euler-Maruyame method. The process is simulated on a scale of 0.25 * min(diff(t)) and then interpolated to the values of \code{t}.
+Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}.
 }
 \examples{
 \dontrun{

@@ -3,15 +3,15 @@ random_walk = function(t, sigma = 1, mu = 0, y0 = 0){
   #'
   #' @title continuous time random walk
   #'
-  #' @param t numeric vector with strictly increasing elements. Times at which the random walk is evaluated
-  #' @param sigma variance parameter
-  #' @param mu directionality parameter
-  #' @param y0 starting value, i.e. value of the random walk at the first entry of `t`
+  #' @param t numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated
+  #' @param sigma positive scalar, variance parameter
+  #' @param mu scalar, directionality parameter
+  #' @param y0 scalar, starting value (value of the random walk at the first entry of `t`)
   #'
   #' @description
-    #' simulates a random walk as a Brownian drift
+    #' Simulates a (continuous time) random walk as a Brownian drift
     #'
-  #' @returns a list with elements `t` and `y`. `t` is a duplicate of the input parameter and is the times at which the random walk is evaluated. `y` are the values of the random walk at said times
+  #' @returns A list with elements `t` and `y`. `t` is a duplicate of the input parameter and is the times at which the random walk is evaluated. `y` are the values of the random walk at said times. Output list is of class `timelist` and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
   #'
   #' @examples
     #' \dontrun{

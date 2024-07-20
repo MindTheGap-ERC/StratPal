@@ -18,18 +18,23 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
     #' \dontrun{
     #' # assuming events are fossil occurrences
     #' # then rate is the avg rate of fossil occ. per unit
-    #' linear decrease in rate from 50 at x = 0 to 0 at x = 1
+    #' #linear decrease in rate from 50 at x = 0 to 0 at x = 1
     #' x = c(0, 1)
     #' y = c(50, 0)
     #' s = p3_var_rate(x, y, f_max = 50)
     #' hist(s, xlab = "Time (myr)", main = "Fossil Occurrences")
-    #' # conditoned to return 100 samples
+    #' # conditioned to return 100 samples
     #' s = p3_var_rate(x, y, f_max = 50, n = 100)
     #' # hand over function
     #' s = p3_var_rate(x = sin, from = 0 , to = 3 * pi, n = 50)
     #' hist(s) # note that negative values of f (sin) are ignored in sampling
+    #'
+    #' # see also
+    #' vignette("event_data")
+    #' # for details on usage and applications to paleontology
     #' }
     #'
+  #' @seealso [p3()] for the constant rate implementation, [rej_samp()] for the underlying random number generation.
 
   if (from >= to){
     stop("\"from\" must be smaller than \"to\".")

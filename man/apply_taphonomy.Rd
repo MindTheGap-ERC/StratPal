@@ -2,20 +2,20 @@
 % Please edit documentation in R/apply_taphonomy.R
 \name{apply_taphonomy}
 \alias{apply_taphonomy}
-\title{model taphonomy}
+\title{Model taphonomic effects}
 \usage{
 apply_taphonomy(x, pres_potential, ctc)
 }
 \arguments{
-\item{x}{numeric vector. event type data, e.g. fossil occurrences}
+\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position.}
 
-\item{pres_potential}{function. takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1)}
+\item{pres_potential}{function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1)}
 
-\item{ctc}{function, change in taphonomic conditions (ctc) with time.}
+\item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position.}
 }
 \description{
-models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}
+Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.
 }
 \seealso{
-\code{\link[=apply_niche_pref]{apply_niche_pref()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure
+\code{\link[=apply_niche_pref]{apply_niche_pref()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
 }

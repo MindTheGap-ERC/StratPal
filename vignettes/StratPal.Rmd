@@ -14,42 +14,30 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, include=FALSE}
 library(StratPal)
 library(admtools)
 ```
 
 ## Overview
 
-Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through _installation_, _dependencies_, provide an overview of the available _example data_, _piping_, and working with _age-depth models_.
+Welcome to the `StratPal` package. This vignette provides an overview of the structure of the package and preliminaries needed to efficiently use it. We go through [*installation*](#installation), [*dependencies*](#dependencies), provide an overview of the available [*example data*](#example-data), [*piping*](#piping), and working with [*age-depth models*](#adm).
 
-Throughout the vignettes there are several **tasks** that you can solve. They are not mandatory for understanding the functionality of the package. Their aim is to explore the available models and data and develop an intuition for stratigraphic paleobiology.
+If you want to skip the introduction, you can also [get started](#getting-started) right away.
 
-If you want to skip the introduction, go to
+Throughout the vignettes there are several **tasks** that you can solve. They are not required for understanding the functionality of the package. Their aim is to explore the available models and data and develop an intuition for stratigraphic paleobiology.
 
-```{r, eval=FALSE}
-vignette("phenotypic_evolution")
-```
-
-for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online on the package webpage here: [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html). Go to
-
-```{r, eval=FALSE}
-vignette("event_data")
-```
-
-for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online on the package website here: [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
-
-## Installation
+## Installation {#installation}
 
 To install the `StratPal` package, first install the `remotes` package by running
 
-```R
+``` r
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
-```R
+``` r
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -58,32 +46,48 @@ remotes::install_github(repo = "MindTheGap-ERC/StratPal",
 
 to install the latest stable version of the package and all its dependencies.
 
-## Dependencies
+## Dependencies {#dependencies}
 
-The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package, which is _automatically_ installed when you install `StratPal`.
+The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package, which is *automatically* installed when you install `StratPal`.
 
 To use its functionality, you need to run
 
-```{r}
+```{r, eval=FALSE}
 library(admtools)
 ```
 
-
-before running any of the provided examples. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
+before running any of the examples. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
 
 ```{r, eval=FALSE}
 browseVignettes(package = "admtools") # opens in Browser
 ```
 
-or by visiting the package website at https://mindthegap-erc.github.io/admtools/.
+or by visiting the package website at <https://mindthegap-erc.github.io/admtools/>.
 
-## Example data
+## Example data {#example-data}
 
-`StratPal` comes with some example data. This data is taken from Hohmann et al. (2024), who simulated a carbonate platform over 2 Myr. More details can be found via `?scenarionA`.
+`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). 
+The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
 
-## Piping
+The data is taken from scenario A in [Hohmann et al. (2023)](#References), the modeling procedure is described in detail in [Hohmann et al. 2024](#References), see therein for a chronostratigraphic diagram and a transect through the carbonate platform.
 
-In the `StratPal` package and its vignettes, we make heavy use of the base R _pipe_ operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling _pipeline_ clearer.
+The data contains information on the eustatic sea level curve used for the model run, elapsed model time, as well information on accumulated sediment thickness, water depth, and bed thicknesses and facies at locations 2, 4, 6, 8, 10, and 12 km from shore in the simulated carbonate platform.
+
+As an example, here is the eustatic sea level curve used for the model run:
+
+```{r}
+plot(x = scenarioA$t_myr,
+     y = scenarioA$sl_m,
+     type = "l",
+     xlab = "Time [Myr]",
+     ylab = "Eustatic sea level [m]",
+     main = "Sea level curve used as model input")
+```
+
+
+## Piping {#piping}
+
+In the `StratPal` package and its vignettes, we make heavy use of the base R *pipe* operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling *pipeline* clearer.
 
 This functionality is available from R version 4.2 on.
 
@@ -97,7 +101,7 @@ l = random_walk(t)       # simulate the random walk
 plot(l, type = "l")      # line plot of the results
 ```
 
-This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are doing: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
+This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are trying to achieve: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
 
 ```{r}
 seq(0, 1, by = 0.01) |> # define times of simulation  
@@ -106,7 +110,7 @@ seq(0, 1, by = 0.01) |> # define times of simulation
 ```
 
 You see that the code does the same thing: it plots a random walk, but it does so in one step without intermediate variables by chaining together the commands using the pipe `|>`. This becomes a powerful tool once we combine more and more components into longer modeling pipelines. It also makes the code readable, as you can simply read it from left to right, without having to track any intermediate steps.
- 
+
 Semantically, you can read the `|>` as "take the data on the left of `|>` and use it as the first argument in the function to the right of `|>`.
 
 ### Advanced usage
@@ -119,7 +123,7 @@ seq(0, 1, by = 0.1) |>
   quantile(x = runif(100), p = _) # pass left hand side to the p argument
 ```
 
-## Age-depth models
+## Age-depth models {#adm}
 
 The `StratPal` package makes heavy use of age-depth modeling functionality from the `admtools` package. Here we go through some basics of dealing with age-depth models. For more details on available functionality you can browse through the package vignettes using
 
@@ -127,7 +131,7 @@ The `StratPal` package makes heavy use of age-depth modeling functionality from 
 browseVignettes(package = "admtools") # opens in Browser
 ```
 
-or visit the package website at https://mindthegap-erc.github.io/admtools/.
+or visit the package website at <https://mindthegap-erc.github.io/admtools/>.
 
 To get started, first load the package using
 
@@ -135,36 +139,38 @@ To get started, first load the package using
 library("admtools")
 ```
 
-The `StratPal` package comes with some example data fro age-depth models, which are available in the variable `scenarioA`, see `?scenarioA` for details on it content.
+The `StratPal` package comes with some example data for age-depth models stored in the `scenarioA` variable, see the section on [example data](#example-data) or `?scenarioA` for details.
 
 ### Defining age-depth models
 
 Let's start with defining an age-depth model. This can be done with `tp_to_adm` (tie points to age-depth model):
 
 ```{r}
-t = scenarioA$t_myr # extract time tie points
-h = scenarioA$h_m[,"2km"] # get height tie points 2 km offshore in the carbonate plarform of scenario A from Hohmann et al. 2024
+t = scenarioA$t_myr       # extract time tie points
+h = scenarioA$h_m[,"2km"] # get height tie points 2 km offshore in scenario A
 
 # define age-depth model
 # h[i] is the stratigraphic position at time t[i]
-adm = tp_to_adm(t = t, # tie points in time
-                h = h, # tie points at height
-                T_unit = "Myr", # time unit of adm
-                L_unit = "m")   # Length unit
+adm = tp_to_adm(t = t,          # tie points in time
+                h = h,          # tie points at height
+                T_unit = "Myr", # add time unit 
+                L_unit = "m")   # add length unit
 ```
 
+The nice thing about constructing age-depth models this way is that there is plenty of functionality available to extract data from age-depth models, plot them, or transform data using them.
 
 ### Plotting
 
-Now you can plot the adm using the basic `plot` command:
+Now you can plot the age-depth model using the basic `plot` command:
 
 ```{r}
 # plot age-depth model, see ?plot.adm for details
 plot(adm,
-     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
-     lty_destr = 0) # don't plot destructive intervals (lty = line type)
-T_axis_lab() # add time axis label
-L_axis_lab() # add length axis label
+     lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
+     lty_destr = 0) # don't plot destructive intervals/gaps (lty = line type)
+T_axis_lab()        # add time axis label
+L_axis_lab()        # add length axis label
+title("Age-depth model 2 km from shore")
 ```
 
 ### Extracting information
@@ -177,6 +183,7 @@ get_total_thickness(adm) # sediment accumulated
 get_completeness(adm) # stratigraphic completeness
 summary(adm) # some summary statistics
 ```
+
 We can now use the pipe operator to do some first analysis of the age-depth model
 
 ```{r}
@@ -187,30 +194,46 @@ adm |>
   hist( xlab = paste("Hiatus duration", "[", get_T_unit(adm),"]"))
 ```
 
-Here it becomes clear that there are a 8 shorter hiatuses (below 100 kyr) and 2 long hiatuses with a duration of more than 500 kyr.
+You can see that there are a 8 shorter hiatuses (below 100 kyr) and 2 long hiatuses with a duration of more than 500 kyr. To get a detailed list with information on hiatuses you can use `get_hiat_list`.
 
 ### Transforming data
 
-Given a stratigraphic position, an age-depth model can tell us how old that positions is. Conversely, if we know the timing of an event, an age-depth model can tell us at what stratigraphic position that event will occur. This can be used to transfrom all types of data from the time domain to the stratigraphic domain and vice versa.
+Given a stratigraphic position, an age-depth model can tell us how old that positions is. Conversely, if we know the timing of an event, an age-depth model can tell us at what stratigraphic position that event will occur. This can be used to transform all types of data from the time domain to the stratigraphic domain and vice versa.
 
-In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigrahic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the other vignettes (see section below).
+In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigrahic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the [vignette of the `admtools` package](https://mindthegap-erc.github.io/admtools/articles/admtools.html), for applications to stratigraphic paleobiology see the vignettes linked below under ["Getting started"](#getting-started).
 
-## Getting started
+## Getting started {#getting-started}
 
-With the preliminaries out of the way, you can go to go to
-
-```{r, eval=FALSE}
-vignette("event_data")
-```
-
-for details on how to model stratigraphic paleobiology of events such as fossil occurrences and first/last occurrences. Go to 
+With the preliminaries out of the way, you can go to
 
 ```{r, eval=FALSE}
 vignette("phenotypic_evolution")
 ```
 
-for details on how to model stratigraphic paleobiology of trait evolution.
+for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
 
-## References
+Go to
 
-* Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska. Identification of the mode of evolution in incomplete carbonate successions.bioRxiv 2023.12.18.572098; doi: [10.1101/2023.12.18.572098](https://doi.org/10.1101/2023.12.18.572098), Data published under a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+```{r, eval=FALSE}
+vignette("event_data")
+```
+
+for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
+
+See also
+
+```{r, eval=FALSE}
+vignette("advanced_functionality")
+```
+
+for details on how to expand on the modeling pipelines described here, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
+
+## References {#References}
+
+-   Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. <https://doi.org/10.1016/j.cageo.2011.08.026>.
+
+-   Burgess, Peter. 2023. "CarboCATLite v1.0.1." Zenodo. <https://doi.org/10.5281/zenodo.8402578>
+
+-   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. <https://doi.org/10.1101/2023.12.18.572098>.
+
+-   Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. "Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data." Open Science Framework. <https://doi.org/10.17605/OSF.IO/ZBPWA>, published under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.

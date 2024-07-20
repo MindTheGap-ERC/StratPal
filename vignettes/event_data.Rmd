@@ -14,10 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 ## Introduction
 
-This vignette provides an introduction to stratigraphic paleobiology applied to "_event type data_" such as location and age of specimens, and first/last occurrences of taxa.
+This vignette provides an introduction to stratigraphic paleobiology applied to "*event type data*" such as location and age of specimens, and first/last occurrences of taxa.
 
 First, let's load the required packages:
 
@@ -28,50 +27,56 @@ library(admtools)
 
 ## Modeling fossil occurrences and first/last fossil occurrences
 
-Location and age of fossil specimens and first/last occurrences of taxa can be considered distinct events that occur at specific points in time or stratigraphic positions. Up to a few notable exceptions, the same principles apply to this "_event type data_", so we treat them together.
+Location and age of fossil specimens and first/last occurrences of taxa can be considered distinct events that occur at specific points in time or stratigraphic positions. Up to a few notable exceptions, the same principles apply to this "*event type data*", so we treat them together.
 
-We model events as _point processes_. In the `StratPal` package, we provide two functions to simulate point processes:
+We model events as *point processes*. In the `StratPal` package, we provide two functions to simulate point processes:
 
-* `p3`, short for Poisson point process, to simulate events that occur at a constant rate
+-   `p3`, short for Poisson point process, to simulate events that occur at a constant rate
 
-* `p3_var_rate` for variable rate Poisson point processes to simulate events that occur at variable rates (e.g. extinction events etc.)
+-   `p3_var_rate` for variable rate Poisson point processes to simulate events that occur at variable rates (e.g. extinction events)
 
-The usage of `p3` is straightforward.
+The usage of `p3` is straightforward:
 
 ```{r}
-# simulate fossil occurrences over one Myr with an average of 8 occurrences per Myr
+# simulate fossil occurrences over one Myr with an average of 15 occurrences per Myr
 p3(rate = 15, from = 0, to = 1) |>
-  hist(main = "Fossil occurrences",
+  hist(main = "Fossil abundance",
        xlab = "Time [Myr]",
-       ylab = "# Fossils")
+       ylab = "# Specimens")
 ```
+
+Note that due to to random fluctuations, the histogram can differ a lot from the constant rate that we simulated. This effect is more pronounced for low rates.
 
 For `p3_var_rate`, you can pass either a function that specifies the rate to `x`:
 
 ```{r}
 # return 100 occurrences by setting n parameter
-p3_var_rate(x = sin, from = 0, to = 9, n = 100) |>
-  hist(xlab = "Time [Myr]", main = "Fossil occurrences")
 # note that negative rates (where sin < 0) are ignored
+p3_var_rate(x = sin, from = 0, to = 9, n = 100) |>
+  hist(xlab = "Time [Myr]",
+       ylab= "# Specimens",
+       main = "Fossil abundance")
 ```
 
-Alternatively, you can pass it two vectors `x` and `y`. The rate is then determined by linear interpolation between these vectors. This is equivalent to using the function `approxfun(x,y, rule = 2)` as input for `x`
+Alternatively, you can pass it two vectors `x` and `y`. The rate is then determined by linear interpolation between these vectors. This is equivalent to using the function `approxfun(x,y, rule = 2)` as input for `x`.
 
 ```{r}
-# decline in fossil occurrences from 50 to 0 over 1 Myr
+# decline in last occurrences from 50 to 0 over 1 Myr
 p3_var_rate(x = c(0,1), y = c(50, 0), from = 0, to = 1, f_max = 50) |>
-  hist(xlab = "Time [Myr]", main = "Fossil occurrences")
+  hist(xlab = "Time [Myr]",
+       main = "Last occurrences",
+       ylab = "# Last occurrences")
 ```
 
-Keep in mind that it is only a matter of interpretation whether the "events" produced by `p3` and `p3_var_rate` are age/timing or locations of specimens from one taxon or of first/last occurrences of multiple taxa. The conceptual framework holds for all event type data.
+Keep in mind that it is only a matter of interpretation whether the "events" produced by `p3` and `p3_var_rate` are age/timing or locations of specimens from one taxon or of first/last occurrences of multiple taxa. The conceptual framework holds for any type of event type.
 
-**Task:** Model an "extinction event" with a background rate of 3 species disappearing per Myr, and a peak in extinction rate where the rate is 10-fold increased over an interval of 200 kyr. How distinct is the peak in the histogram, and how much do the results differe due to randomness when you run the analysis multiple times?
+**Task:** Model an "extinction event" with a background rate of 3 species disappearing per Myr, and a peak in extinction rate where the rate is 10-fold increased over an interval of 200 kyr. How distinct is the peak in the histogram, and how much do the results differ due to randomness when you run the simulation multiple times?
 
 ## Age-depth models
 
-Throughout this examples, we the age-depth models from 2 km and 12 km offshore in scenario A.
+Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
 
-```{r, figures-side, fig.show="hold", out.width="50%", fig.align='left'}
+```{r, figures-side, fig.show="hold", out.width="50%"}
 adm_2km = tp_to_adm(t = scenarioA$t_myr,   # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
@@ -96,20 +101,20 @@ L_axis_lab()
 title("Age-depth model 12 km from shore")
 ```
 
-**Task:** Plot the sea level curve for scenarion A, and the water depth curves at the two locations. How is this connected to the age-depth models, specifically to the presence and duration of gaps and low/high sedimentation rates? You can use `plot_sed_rate_t`, `get_hiat_list` and `get_hiat_duration` from `admtools`.
+**Task:** Plot the sea level curve for scenario A, and the water depth curves at the two locations. How is this connected to the age-depth models, specifically to the presence and duration of gaps and low/high sedimentation rates? You can use `plot_sed_rate_t`, `get_hiat_list` and `get_hiat_duration` from `admtools`.
 
-## Stratigraphic distortions of "event" type data
+## Stratigraphic distortions of "event" type data {#Stratigraphic-distortions}
 
-Any event type of data can directly be transformed using an age-depth model via `time_to_strat`. Depending on how the events are interpreted, we need to choose different options. 
+Any event type data can directly be transformed using an age-depth model via `time_to_strat`. Depending on how the events are interpreted, we need to choose different options.
 
 ### Fossil specimens
 
 Assuming the events are fossil specimens of one taxon, we can examine where specimens appear in the stratigraphic column:
 
 ```{r}
-p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |>
-  time_to_strat(adm_2km, destructive = TRUE) |>
-  hist(xlab = "Stratigraphic height [m]",
+p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
+  time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
+  hist(xlab = "Stratigraphic height [m]",                           # plot
        main = "Fossil abundance 2 km offshore",
        ylab = "# Fossils",
        breaks = seq(from = min_height(adm_2km), to = max_height(adm_2km), length.out = 20))
@@ -120,29 +125,32 @@ Note the option `destructive = TRUE` in `time_to_strat`. This is because we assu
 Assuming the same rate of fossil specimens, we get a very different pattern 12 km from shore:
 
 ```{r}
-p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>
-  time_to_strat(adm_12km, destructive = TRUE) |>
-  hist(xlab = "Stratigraphic height [m]",
+p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>  # same rate as 2 km from shore
+  time_to_strat(adm_12km, destructive = TRUE) |>                       # use different adm for transformation
+  hist(xlab = "Stratigraphic height [m]",                              # plot histogram
        main = "Fossil abundance 12 km offshore",
        ylab = "# Fossils",
        breaks = seq(from = min_height(adm_12km), to = max_height(adm_12km), length.out = 20))
 ```
 
-Not only is the section much shorter (not even 20 m), but there are 2 distinct peaks at the bottom of the section and around 13 m. Comparing with the age-depth model shows that these locations correspond to times of extreme stratigraphic condensation (low sedimentation rates, indicated by a near-horizontal age-depth model). As a result, more time is represented per stratigraphic increment, leading to accumulations of fossil occurrences (Hohmann 2021).
+Not only is the section much shorter (not even 20 m), but there are 2 distinct peaks at the bottom of the section and around 13 m. Comparing with the age-depth model shows that these locations correspond to times of extreme stratigraphic condensation (low sedimentation rates, indicated by a near-horizontal age-depth model). As a result, more time is represented per stratigraphic increment, leading to fossil accumulations ([Hohmann 2021](#References)).
+
+**Task:** How does fossil abundance change along an onshore-offshore gradient when you assume the same rate of fossil occurrences in the time domain? Are there intervals where you can not recover spikes in fossil abundance, i.e. an increase in rate? How are these intervals linked to the external drivers of the platform architecture such as sea level and water depth?
 
 ### First/Last occurrences of common taxa
 
-In the fossil record, we can not directly observe origination and extinction rates of taxa, but only their first and last occurrences. This type of event data can also directly be transformed using `time_to_strat` when taxa are very common. This assumption will be explored further below.
+In the fossil record, we can not directly observe origination and extinction rates of taxa, but only their first and last occurrences. This type of event data can directly be transformed using `time_to_strat` when we assume taxa are very common. This assumption will be explored further below.
 
 ```{r}
-p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |>
-  time_to_strat(adm_2km, destructive = FALSE) |>
-  hist(xlab = "Stratigraphic height [m]",
+p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate of last occ
+  time_to_strat(adm_2km, destructive = FALSE) |>                    # non-destructive transformation!
+  hist(xlab = "Stratigraphic height [m]",                           # plot histogram
        main = "Last occurrences 2 km offshore",
+       ylab = "# Last occurrences",
        breaks = seq(from = min_height(adm_2km), to = max_height(adm_2km), length.out = 20))
 ```
 
-This would be the pattern of last occurrences in the section 2 km offshore when the rate of last occurrences is constant! The peaks coincide with the hiatuses, as the last occurrences of the species that disappear during the hiatus cluster at the hiatus surface. Note here that we used the option `destructive = FALSE` for `time_to_strat` to make sure the last occurrences appear at the location of the hiatus. This is why the assumption of abundant taxa is important: If taxa are rare, their last occurrence does not match their actual time of extinction (Signor-Lipps effect), and the last occurrences can be found further below the hiatus.
+This would be the pattern of last occurrences in the section 2 km offshore when the rate of last occurrences is constant in the time domain! The peaks coincide with the hiatuses, as the last occurrences of the species that disappear during the hiatus cluster at the hiatus surface ([Holland and Patzkowsky 2015](#References)). Note here that we used the option `destructive = FALSE` for `time_to_strat` to make sure last occurrences that happen during a hiatus appear at the hiatus surface. This is why the assumption of abundant taxa is important: If taxa are rare, their last occurrence does not match their actual time of extinction (Signor-Lipps effect, [Signor and Lipps 1982](#References)), and their last occurrences would be found below the hiatus surface. We explore the role of abundance on the location of last occurrences further in the section on [range offset](#Range-offset).
 
 The patter 12 km offshore is very different:
 
@@ -151,125 +159,149 @@ p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>
   time_to_strat(adm_12km, destructive = TRUE) |>
   hist(xlab = "Stratigraphic height [m]",
        main = "Last occurrences 12 km offshore",
+       ylab = "# Last occurrences",
        breaks = seq(from = min_height(adm_12km), to = max_height(adm_12km), length.out = 20))
 ```
 
-It almost perfectly matches the pattern of the fossil occurrences. This is because the offshore section is much more dominated by condensation (which influences both fossil occurrences and first/last occurrences equally), while the onshore section is dominated by hiatuses (which affect first/last occurrences). This shows it is important to understand how "event" type data is affected by hiatuses: is it preserved, or is it destroyed?
+It almost perfectly matches the pattern of fossil abundance. This is because the offshore section is much more dominated by condensation (which influences both fossil abundance and first/last occurrences equally), while the onshore section is dominated by hiatuses (which affect first/last occurrences). This shows that it is important to understand how "event" type data is affected by hiatuses: is it preserved, or is it destroyed?
 
-### Range offset
+Naturally, the same modeling pipeline is valid for first occurrences of common taxa.
+
+**Task:** How does the pattern of last occurrences change across an onshore-offshore gradient? If you observed a spike in last occurrences in one of the section, for what stratigraphic information do you need to look to exclude the possibility that the spike is a stratigraphic artifact?
+
+### Range offset {#Range-offset}
+
+Here we explore the idea of *range offset*, which is the offset between the last occurrence of a taxon and its actual time of extinction ([Holland and Patzkowsky 2002](#References)).
+
+First, we model all occurrences of the taxon up to its extinction in the time domain, and save it in a variable:
 
 ```{r}
 t_ext = 1.5 # time of "true" extinction
-r = 30 # rate of fossil occurrences
+r = 30      # rate of fossil occurrences
 # simulate rate fossil occurrences of taxon 
 f_occ = p3(r, from = min_time(adm_2km), to = t_ext)
-hist(f_occ)
+hist(f_occ,
+     xlab = "Time [Myr]",
+     ylab = "# Fossils",
+     main = "Fossil abundance",
+     breaks = seq(from = min_time(adm_2km), to = max_time(adm_2km), length.out = 20))
+```
 
-# stratigraphically highest fossil found
-highest_occ = f_occ |>
-  time_to_strat(adm_2km, destructive = TRUE) |> # destroy fossil occurrences
-  max(na.rm = TRUE)
+Then we can determine the stratigraphic position of the highest preserved fossil:
 
-# stratigraphic position of "true" extinction
-h_true_ext = t_ext |>
+```{r}
+highest_occ = f_occ |>                          # take fossil occ. in time domain
+  time_to_strat(adm_2km, destructive = TRUE) |> # transform into stratigraphic domain, destroying fossils that coincide with hiatuses
+  max(na.rm = TRUE)                             # find highest preserved fossil (destroyed fossils are NA)
+```
+
+Now we can determine two types of range offset. The first is the distance in meters between the position of the last preserved fossil and the position where the taxon actually goes extinct: 
+
+```{r}
+h_true_ext = t_ext |>                           # stratigraphic position of "true" extinction
   time_to_strat(adm_2km, destructive = FALSE) 
 
-# distance between last occurence of taxon and location where they actually go extinct
+# distance between last occurrence of taxon and location where they actually go extinct
 strat_range_offset_m = h_true_ext - highest_occ
+```
 
-# time when last preserved fossil lived
-t_last_occ = highest_occ |> 
+In this example, the stratigraphic range offset is `r signif(strat_range_offset_m, digits = 3)` meters.
+
+The second type of range offset is the difference in time between the age of the last occurrence and the actual time of extinction:
+
+```{r}
+t_last_occ = highest_occ |> # time when last preserved fossil lived
   strat_to_time(adm_2km)
-
 # time offset between true extinction and time when last fossil lived.
 time_range_offset_myr = t_ext - t_last_occ
 ```
 
+In this example, the temporal range offset is `r signif(time_range_offset_myr, digits = 3)` Myr years.
 
+**Task:** How does the (temporal and stratigraphic) range offset change with the rate parameter? For which rate values are taxa abundant enough to make the Signor-Lipps effect negligible (i.e. the stratigraphic range offset is sufficiently small)? How do the results vary with (1) different times of "true" extinction within a fixed section and (2) across the onshore-offshore gradient?
+
+## Niche modeling
+
+So far, we have only examined the effects of stratigraphic distortions (i.e., gaps and changes in sedimentation rates) on event type data. Here, we increase the complexity of the pipeline by incorporating niche modeling. For this, we need two components:
+
+-   a niche definition that describes how "comfortable" a taxon feels along an (environmental or eclogical) gradient
+
+-   information on how that gradient changes with time
+
+In this example we focus on *water depth* as gradient. The general modeling framework works for any type of gradient, see the "advanced functionality" vignette for details.
+
+First, we define a function that determines how water depth (our gradient) changes with time:
 
 ```{r}
-dist = scenarioA$dist_from_shore[2]
+t = scenarioA$t_myr           # time steps of the model
+wd = scenarioA$wd_m[,"2km"]   # water depth 2 km offshore at model time steps
+gc = approxfun(t, wd)         # define function that defines how the gradient changes with time (gc = *G*radient *C*hange)
 
-# define age-depth model and attach units to it
-adm = tp_to_adm(t = scenarioA$t_myr,
-                h = scenarioA$h_m[,dist],
-                T_unit = "Myr",
-                L_unit = "m")
-# plot age-depth model
-plot(adm,
-     lwd_acc = 2,   # plot thicker lines for accumulative intervals (lwd = line width)
-     lty_destr = 0) # don't plot destructive intervals (lty = line type)
-T_axis_lab() # add time axis label
-L_axis_lab() # add length axis label
+plot(t, gc(t), 
+     type = "l", 
+     xlab = "Time [Myr]",
+     ylab = "Water depth [m]",
+     main = "Water depth 2 km offshore")
 ```
 
+Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. Here a 1 reflects that the taxon is fully within its preferred niche, and a 0 reflects that it is completely outside of its preferred niche. Values between 0 and 1 are interpreted as probabilities that the taxon is observed locally.
+
+For our example, we use the helper function `cnd` (capped normal distribution) to define a niche. It is a probability density function of the normal distribution, multiplied by the factor `inc` and capped at 1. This is identical to the *probability of collection* model by [Holland and Patzkowsky (2002)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions.
+
 ```{r}
-p3(rate = 100, from = min_time(adm), to = max_time(adm)) |>                  # simulate fossil occurrences in time
-  get_height(adm, t = _, destructive = FALSE) |>    #   transfrom into depth domain
-  hist(breaks = seq(min_height(adm), to = max_height(adm), length.out = 20),
-      main = "Fossil occurrences",
-       xlab = "Height [m]")
-```
-
-
-## Influence of niches
-
-We increase the complexity of the pipeline by incorporating niche modeling. For this we need two components:
-
-* a niche definition that describes how "comfortable" a species feels along an environmental gradient
-
-* information on how that gradient changes with time
-
-In this example we focus on _water depth_ as gradient as it is included in the model outputs. The general modeling framework works for any type of gradient.
-
-First, we define the niche. We do this using the helper function `cnd` (capped normal distribution). It is a probability density function of the normal distribution, multiplied by the factor `inc` and capped at 1. A 1 reflects that the taxon is fully within its prefferred environment, and a 0 reflects that is is outside of its environment.
-```{r}
-my_niche = cnd(mean = 10, # preffered water depth 
-               sd = 5, # tolerance to water depth fluctiations
-               inc = 15, # multiplier
-               cut_neg = TRUE) # cut off negative avalues - the species does not surviva at land
+my_niche = cnd(mean = 10,       # preferred water depth 
+               sd = 5,          # depth tolerance
+               inc = 15,        # multiplier
+               cut_neg = TRUE)  # cut off negative values - the taxon does not survive at land
 x = seq(-2, 30, by = 0.1)
-plot(x, my_niche(x), type = "l", xlab = "water depth", ylab = "preference")
+plot(x, my_niche(x),
+     type = "l",
+     xlab = "Water depth [m]",
+     ylab = "Preference",
+     main = "Water depth preference")
 ```
 
-To get the gradient change with time, we extract water depth 2 km offshore from the example data:
+The taxon we are modeling prefers to live in 10 m water depth (`mean = 10`), is moderately tolerant to fluctuations in water depth (`sd = 5`) and does not survive on land (`cut_neg = TRUE`). 
+
+With the niche and the change in gradient defined, we can use `apply_niche_pref` for niche modeling.
 
 ```{r}
-t = scenarioA$t_myr
-wd = scenarioA$wd_m[,"2km"]
-gc = approxfun(t, wd) # define gradient change
-plot(t, gc(t), type = "l", xlab = "Time [Myr]", ylab = "Water depth [m]")
-
-```
-
-Now we can combine these two ingredients to examine how the preffered niche changes the fossil abundance in the time domain.
-
-```{r}
-p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |>
-  apply_niche_pref(niche_def = my_niche, gc = gc) |>
-  hist(xlab = "Time [Myr]", main = "Fossil abundance")
+p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences of taxon based on a constant rate
+  apply_niche_pref(niche_def = my_niche, gc = gc) |>                # apply the niche preferenc of the taxon as defined above
+  hist(xlab = "Time [Myr]",
+       main = "Fossil abundance",
+       ylab = "# Fossils",
+       breaks = seq(from = min_time(adm_2km), to = max_time(adm_2km), length.out = 40))
 ```
 
 Here you can see that the taxon only occurs at times where the water depth is favorable for it. Around 2 Myr, the water depth is too shallow, and the fossil abundance is reduced.
 
-With the basic niche modeling done, we can now combine it with the stratigrahic distortion by age-depth models to get an idea how niche preferences change the fossil abundance in the section.
+With the basic niche modeling done, we can incorporate it into our modeling pipeline to examine the joint effects of stratigraphic distortion by age-depth models and niche preferences.
 
 ```{r}
-p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |>
-  apply_niche_pref(niche_def = my_niche, gc = gc) |>
-  time_to_strat(adm_2km, destructive = TRUE) |>
-  hist(xlab = "Stratigraphic height [m]",
-       main = "Fossil abundance")
+p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences based on constant rate
+  apply_niche_pref(niche_def = my_niche, gc = gc) |>                # apply niche preference
+  time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into strat. domain, destroy fossils that coincide with hiatuses 
+  hist(xlab = "Stratigraphic height [m]",                           # plot results
+       main = "Fossil abundance 2 km from shore",
+       ylab = "# Fossils",
+       breaks = seq(from = min_height(adm_2km), to = max_height(adm_2km), length.out = 40))
 
 ```
 
-We can see a general decrease in fossil abundance, but no longer gaps as were visible in the time domain. The latter is because the gaps in fossil abundance in the time domain coincide with hiatuses, and will thus not be visible in the stratigraphic domain. The general decrease in fossil abundance is because as the carbonate platform ages, the water depth on the platform is decreasing:
+In most cases, you can see a general decrease in fossil abundance, but in contrast to the time domain, no prolonged intervals without fossil are visible. This latter is because the gaps in fossil abundance in the time domain coincide with hiatuses, and will thus not be visible in the stratigraphic domain. The general decrease in fossil abundance is because as the carbonate platform ages, the water depth on top of the platform decreases:
 
 ```{r}
-list("t" = t, "y" = wd) |>
-  time_to_strat(adm_2km) |> 
-  plot(orientation = "lr", type = "l", xlab = "Stratigraphic position [m]", ylab = "Water depth [m]")
+list("t" = t, "y" = wd) |>    # create list with time - water depth information
+  time_to_strat(adm_2km) |>   # transform into the strat. domain
+  plot(orientation = "lr",    # plot water depth information in the stratigraphic domain
+       type = "l",
+       xlab = "Stratigraphic position [m]",
+       ylab = "Water depth [m]",
+       main = "Water depth in section 2 km from shore")
 ```
+
+**Task:** How does the effect of niche preference change across the onshore-offshore gradient? There is a dependency between stratigraphic effects (gaps, changes in sedimentation rate) and water depth/eustatic sea level. Does linking ecology to water depth strengthen or weaken the effects of stratigraphic distortions examined in section ["stratigraphic distortions of event type data"](#Stratigraphic-distortions)?
 
 ## Further reading
 
@@ -279,7 +311,7 @@ Go to
 vignette("phenotypic_evolution")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online under ([mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html)).
+for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
 
 See also
 
@@ -287,8 +319,16 @@ See also
 vignette("advanced_functionality")
 ```
 
-for details on how to expand on the modeling pipelines described here, or explore the vignette online under ([mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html)).
+for details on how to expand on the modeling pipelines described here, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
 
-## Reference
+## References {#References}
 
-* NIKLAS HOHMANN; INCORPORATING INFORMATION ON VARYING SEDIMENTATION RATES INTO PALEONTOLOGICAL ANALYSES. PALAIOS 2021;; 36 (2): 53–67. doi: https://doi.org/10.2110/palo.2020.038
+* Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. https://doi.org/10.2110/palo.2020.038.
+
+* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. https://doi.org/10.1101/2023.12.18.572098.
+
+* Holland, Steven M. and Patzkowsky, Mark E. 2002. "Stratigraphic variation in the timing of first and last occurrences." PALAIOS. https://doi.org/10.1669/0883-1351(2002)017<0134:SVITTO>2.0.CO;2
+
+* Holland, Steven M. and Patzkowsky, Mark E. 2015. "The stratigraphy of mass extinction." Palaeontology. https://doi.org/10.1111/pala.12188.
+
+* Signor, Philip W.; Lipps, Jere H. 1982. "Sampling bias, gradual extinction patterns and catastrophes in the fossil record." Geological Society of America Special Paper 190.
