@@ -57,7 +57,7 @@ We are interested in how phenotypic evolution is preserved in the stratigraphic 
 
 ### Age-depth models
 
-As an example, we compare the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenario A. See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
+As an example, we compare the preservation of trait evolution 2 km and 12 km offshore in the carbonate platform in scenario A from [Hohmann et al. 2024](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
 
 First define the age-depth models:
 
