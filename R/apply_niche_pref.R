@@ -3,13 +3,13 @@ apply_niche_pref = function(x, niche_def, gc){
   #'
   #' @title apply niche preference
   #'
-  #' @param x events, e.g. fossil occurrences
-  #' @param niche_def function, specifying the niche along a gradient. should return 0 when taxon is outside of niche, and 1 when fully inside niche. Values between 0 and 1 are interpreted as probabilities.
+  #' @param x events, e.g. times/ages of fossil occurrences or their stratigraphic position.
+  #' @param niche_def function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when fully inside niche. Values between 0 and 1 are interpreted as probabilities.
   #' @param gc function, stands for "gradient change". Specifies how the gradient changes, e.g. with time
   #'
   #' @description
-    #' models niche preferences by removing events (fossil occurrences) when they are outside of their preferred niche using the function `thin`
-    #' Combines the functions niche_def and gc ("gradient change") to determine how the taxons preferred environment changes with time. This is done by composing `niche_def` and `gc`. The result is then used as a thinning.
+    #' Models niche preferences by removing events (fossil occurrences) when they are outside of a preferred niche using the function `thin`.
+    #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' preferred environment changes with time. This is done by composing `niche_def` and `gc`. The result is then used as a thinning on the events `x`.
   #'
   #' @examples
     #' \dontrun{
@@ -36,9 +36,13 @@ apply_niche_pref = function(x, niche_def, gc){
     #'  # fossil occurrences with niche preference
     #'  hist(foss_occ_niche, xlab = "time")
     #'
+    #'  # see also
+    #'  vignette("event_data")
+    #'  # for a longer example
+    #'
     #' }
     #'
-  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the sampe principle, [thin()] for the underlying mathematical procedure
+  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] for the underlying mathematical procedure.
 
   # function that returns niche preference as a function of y (typically time)
   change_in_niche = function(y) niche_def(gc(y))

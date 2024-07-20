@@ -9,17 +9,18 @@ thin = function(x, thin){
   #'
   #'
   #' @description
-    #' Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by _thin (x(i))_. Values of
-    #' `thin` below 0 and above 1 are ignored
-    #' Is used to model niche preferences in apply_niche_pref, where events are thinned based on how close they are to their preferred niche
-    #' Can also be used to model taphonomic effects. In this case, `thin` describes the preservation potential.
+    #' Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by _thin(x(i))_. Values of
+    #' `thin` below 0 and above 1 are ignored.
+    #' Is used to model niche preferences in `apply_niche_pref` and taphonomic effects in `apply_taphonomy`.
     #'
   #' @examples
+    #' \dontrun{
     #' x = p3(rate = 100, from = 0, to = 3 * pi) # simulate Poisson point process
     #' y = thin(x, sin)
     #' hist(y) # not how negative values of sin are treated as 0
     #' yy = thin(x, function(x) 5 * sin(x))
     #' hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
+    #' }
     #'
   #' @seealso [apply_niche_pref()] and [apply_taphonomy()] for use cases with biological meaning
 

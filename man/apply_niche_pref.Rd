@@ -7,15 +7,15 @@
 apply_niche_pref(x, niche_def, gc)
 }
 \arguments{
-\item{x}{events, e.g. fossil occurrences}
+\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position.}
 
-\item{niche_def}{function, specifying the niche along a gradient. should return 0 when taxon is outside of niche, and 1 when fully inside niche. Values between 0 and 1 are interpreted as probabilities.}
+\item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when fully inside niche. Values between 0 and 1 are interpreted as probabilities.}
 
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
 }
 \description{
-models niche preferences by removing events (fossil occurrences) when they are outside of their preferred niche using the function \code{thin}
-Combines the functions niche_def and gc ("gradient change") to determine how the taxons preferred environment changes with time. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning.
+Models niche preferences by removing events (fossil occurrences) when they are outside of a preferred niche using the function \code{thin}.
+Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' preferred environment changes with time. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
 }
 \examples{
 \dontrun{
@@ -42,9 +42,13 @@ Combines the functions niche_def and gc ("gradient change") to determine how the
  # fossil occurrences with niche preference
  hist(foss_occ_niche, xlab = "time")
 
+ # see also
+ vignette("event_data")
+ # for a longer example
+
 }
 
 }
 \seealso{
-\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the sampe principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure
+\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
 }

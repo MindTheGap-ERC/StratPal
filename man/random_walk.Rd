@@ -7,19 +7,19 @@
 random_walk(t, sigma = 1, mu = 0, y0 = 0)
 }
 \arguments{
-\item{t}{numeric vector with strictly increasing elements. Times at which the random walk is evaluated}
+\item{t}{numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated}
 
-\item{sigma}{variance parameter}
+\item{sigma}{positive scalar, variance parameter}
 
-\item{mu}{directionality parameter}
+\item{mu}{scalar, directionality parameter}
 
-\item{y0}{starting value, i.e. value of the random walk at the first entry of \code{t}}
+\item{y0}{scalar, starting value (value of the random walk at the first entry of \code{t})}
 }
 \value{
-a list with elements \code{t} and \code{y}. \code{t} is a duplicate of the input parameter and is the times at which the random walk is evaluated. \code{y} are the values of the random walk at said times
+A list with elements \code{t} and \code{y}. \code{t} is a duplicate of the input parameter and is the times at which the random walk is evaluated. \code{y} are the values of the random walk at said times. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-simulates a random walk as a Brownian drift
+Simulates a (continuous time) random walk as a Brownian drift
 }
 \examples{
 \dontrun{

@@ -4,7 +4,7 @@ rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1){
   #' @title rejection sampling
   #'
   #' @description
-    #' rejection sampling from the (pseudo) pdf `f` in the interval between `x_min` and `x_max`. Returns `n` samples. Note that values of `f` below 0 are capped to zero
+    #' Rejection sampling from the (pseudo) pdf `f` in the interval between `x_min` and `x_max`. Returns `n` samples. Note that values of `f` below 0 are capped to zero
     #'
   #' @param f function. (pseudo) pdf from which the sample is drawn
   #' @param x_min scalar. lower limit of the examined interval
@@ -18,7 +18,7 @@ rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1){
     #' x = rej_samp(f, 0, 3*pi, n = 100)
     #' hist(x) # note that no samples are drawn where sin is negative
     #' }
-    #'
+  #' @seealso [p3_var_rate()] for the derived variable rate Poisson point process implementation.
   x = c()
   warn = FALSE
   if (f_max <= 0) {stop("`f_max` must be positive.")}

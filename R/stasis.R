@@ -3,13 +3,14 @@ stasis = function(t, mean = 0, sd = 1){
   #'
   #' @title simulate phenotypic stasis
   #'
-  #' @param t times at which the phenotype is determined
-  #' @param mean mean value
-  #' @param sd standard deviation
+  #' @param t times at which the traits are determined
+  #' @param mean scalar, mean trait value
+  #' @param sd strictly positive scalar, standard deviation of traits
   #'
   #' @description
-    #' simulates stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`
+    #' Simulates stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`
     #'
+  #' @returns A list with two elements: `t` and `y`. `t` is a duplicate of the input `t`, `y` are the corresponding trait values. Output list is of class `timelist` and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
   #' @examples
     #' \dontrun{
     #'  library("admtools") # required for plotting of results

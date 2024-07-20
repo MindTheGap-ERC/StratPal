@@ -7,14 +7,17 @@
 stasis(t, mean = 0, sd = 1)
 }
 \arguments{
-\item{t}{times at which the phenotype is determined}
+\item{t}{times at which the traits are determined}
 
-\item{mean}{mean value}
+\item{mean}{scalar, mean trait value}
 
-\item{sd}{standard deviation}
+\item{sd}{strictly positive scalar, standard deviation of traits}
+}
+\value{
+A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
+Simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
 }
 \examples{
 \dontrun{
