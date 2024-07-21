@@ -11,7 +11,7 @@ cnd(mean, sd, inc = 1, cut_neg = TRUE)
 
 \item{sd}{standard deviation}
 
-\item{inc}{scalar, factor by which the pdf in multiplied}
+\item{inc}{scalar, factor by which the pdf is multiplied}
 
 \item{cut_neg}{logical. should negative values be set to 0?}
 }

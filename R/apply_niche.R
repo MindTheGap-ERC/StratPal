@@ -1,4 +1,4 @@
-apply_niche_pref = function(x, niche_def, gc){
+apply_niche = function(x, niche_def, gc){
   #' @export
   #'
   #' @title apply niche preference
@@ -32,7 +32,7 @@ apply_niche_pref = function(x, niche_def, gc){
     #'  foss_occ = p3(rate = 100, from = 0, to = max(t))
     #'  # foss occ without niche pref
     #'  hist(foss_occ, xlab = "time")
-    #'  foss_occ_niche = apply_niche_pref(foss_occ, niche_def, gc)
+    #'  foss_occ_niche = apply_niche(foss_occ, niche_def, gc)
     #'  # fossil occurrences with niche preference
     #'  hist(foss_occ_niche, xlab = "time")
     #'
