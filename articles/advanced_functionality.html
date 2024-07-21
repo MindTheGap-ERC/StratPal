@@ -112,9 +112,9 @@ types of niches and gradient. Potentially relevant gradients that can be
 extracted from forward models are for example substrate consistency,
 temperature, or water energy.</p>
 <p>We used a simple niche definition based on a probability density
-function of a normal distribution implemented in <code>cnd</code>. This
-can be expanded to arbitrary niche definitions along a gradient. For
-integration with <code>apply_niche_pref</code>, niche definitions must
+function of a normal distribution implemented in <code>snd_niche</code>.
+This can be expanded to arbitrary niche definitions along a gradient.
+For integration with <code>apply_niche</code>, niche definitions must
 meet the following criteria:</p>
 <ol style="list-style-type: decimal">
 <li>They are functions that take gradient values as input and return
@@ -133,7 +133,7 @@ must return a vector of equal length.</li>
 </ol>
 <p>As long as these conditions for <code>gc</code> and
 <code>niche_def</code> are met, arbitrary niche preferences along any
-gradient can be modeled using <code>apply_niche_pref</code>.</p>
+gradient can be modeled using <code>apply_niche</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="different-models-of-phenotypic-evolution">Different models of phenotypic evolution<a class="anchor" aria-label="anchor" href="#different-models-of-phenotypic-evolution"></a>

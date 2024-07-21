@@ -282,7 +282,7 @@ spike is a stratigraphic artifact?</p>
 </h3>
 <p>Here we explore the idea of <em>range offset</em>, which is the
 offset between the last occurrence of a taxon and its actual time of
-extinction (<a href="#References">Holland and Patzkowsky 2002</a>).</p>
+extinction (<a href="#References">Holland and Patzkowsky 1999</a>).</p>
 <p>First, we model all occurrences of the taxon up to its extinction in
 the time domain, and save it in a variable:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -302,9 +302,11 @@ preserved fossil:</p>
 <code class="sourceCode R"><span><span class="va">highest_occ</span> <span class="op">=</span> <span class="va">f_occ</span> <span class="op">|&gt;</span>                          <span class="co"># take fossil occ. in time domain</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># transform into stratigraphic domain, destroying fossils that coincide with hiatuses</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>                             <span class="co"># find highest preserved fossil (destroyed fossils are NA)</span></span></code></pre></div>
-<p>Now we can determine two types of range offset. The first is the
-distance in meters between the position of the last preserved fossil and
-the position where the taxon actually goes extinct:</p>
+<p>Now we can determine two types of range offset, stratigraphic range
+offset and temporal range offset. Stratigraphic range offset distance
+(length dimension, SI units meter) between the position of the last
+preserved fossil and the stratigraphic position where the taxon actually
+goes extinct:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h_true_ext</span> <span class="op">=</span> <span class="va">t_ext</span> <span class="op">|&gt;</span>                           <span class="co"># stratigraphic position of "true" extinction</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span>
@@ -312,8 +314,9 @@ the position where the taxon actually goes extinct:</p>
 <span><span class="co"># distance between last occurrence of taxon and location where they actually go extinct</span></span>
 <span><span class="va">strat_range_offset_m</span> <span class="op">=</span> <span class="va">h_true_ext</span> <span class="op">-</span> <span class="va">highest_occ</span></span></code></pre></div>
 <p>In this example, the stratigraphic range offset is 0.0895 meters.</p>
-<p>The second type of range offset is the difference in time between the
-age of the last occurrence and the actual time of extinction:</p>
+<p>The temporal range offset (time dimension, SI units seconds and
+derived units such as years) is the difference in time between the age
+of the last occurrence and the actual time of extinction:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_last_occ</span> <span class="op">=</span> <span class="va">highest_occ</span> <span class="op">|&gt;</span> <span class="co"># time when last preserved fossil lived</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/strat_to_time.html" class="external-link">strat_to_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span></span>
@@ -336,12 +339,13 @@ distortions (i.e., gaps and changes in sedimentation rates) on event
 type data. Here, we increase the complexity of the pipeline by
 incorporating niche modeling. For this, we need two components:</p>
 <ul>
-<li><p>a niche definition that describes how “comfortable” a taxon feels
-along an (environmental or eclogical) gradient</p></li>
+<li><p>a niche definition that describes a taxon’s optimum value along
+an environmental gradient (cline), i.e. where is it the most abundant,
+and its tolerance along this gradient</p></li>
 <li><p>information on how that gradient changes with time</p></li>
 </ul>
 <p>In this example we focus on <em>water depth</em> as gradient. The
-general modeling framework works for any type of gradient, see the
+general modeling framework works for any type of cline, see the
 “advanced functionality” vignette for details.</p>
 <p>First, we define a function that determines how water depth (our
 gradient) changes with time:</p>
@@ -358,38 +362,40 @@ gradient) changes with time:</p>
 <p><img src="event_data_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <p>Next, we define the niche. This is done using a function that takes
 water depth (our gradient) as input, and returns numbers between 0 and
-1. Here a 1 reflects that the taxon is fully within its preferred niche,
-and a 0 reflects that it is completely outside of its preferred niche.
-Values between 0 and 1 are interpreted as probabilities that the taxon
-is observed locally.</p>
-<p>For our example, we use the helper function <code>cnd</code> (capped
-normal distribution) to define a niche. It is a probability density
-function of the normal distribution, multiplied by the factor
-<code>inc</code> and capped at 1. This is identical to the
-<em>probability of collection</em> model by <a href="#References">Holland and Patzkowsky (2002)</a>. See the “advanced
+1. A 1 corresponds to the taxon’s environmental optimum, and a 0
+reflects that it is completely outside of its niche. Values between 0
+and 1 are are interpreted as observation or collection probabilities. If
+a specimen is present at a given time, the collection probability is the
+probability to observe it at the specified gradient.</p>
+<p>For our example, we use the helper function <code>snd_niche</code>
+(<em>snd</em> standing for “scaled normal distribution”) to define a
+niche. The collection probability in this model follows the shape of a
+bell curve with a peak at the environmental optimum, and a width
+specified by the <code>tol</code> parameter. This is identical to the
+<em>probability of collection</em> model by <a href="#References">Holland and Patzkowsky (1999)</a>. See the “advanced
 functionality” vignette for details how to construct other niche
-definitions.</p>
+definitions, or <code><a href="../reference/bounded_niche.html">?bounded_niche</a></code> for another template niche
+model.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_niche</span> <span class="op">=</span> <span class="fu"><a href="../reference/cnd.html">cnd</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fl">10</span>,       <span class="co"># preferred water depth </span></span>
-<span>               sd <span class="op">=</span> <span class="fl">5</span>,          <span class="co"># depth tolerance</span></span>
-<span>               inc <span class="op">=</span> <span class="fl">15</span>,        <span class="co"># multiplier</span></span>
-<span>               cut_neg <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># cut off negative values - the taxon does not survive at land</span></span>
+<code class="sourceCode R"><span><span class="va">my_niche</span> <span class="op">=</span> <span class="fu"><a href="../reference/snd_niche.html">snd_niche</a></span><span class="op">(</span>opt <span class="op">=</span> <span class="fl">10</span>,       <span class="co"># preferred water depth </span></span>
+<span>                     tol <span class="op">=</span> <span class="fl">5</span>,        <span class="co"># tolerance to water depth fluctuations</span></span>
+<span>                     cutoff_val <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="co"># cut off negative values - the taxon does not survive on land</span></span>
 <span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">30</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu">my_niche</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Water depth [m]"</span>,</span>
-<span>     ylab <span class="op">=</span> <span class="st">"Preference"</span>,</span>
-<span>     main <span class="op">=</span> <span class="st">"Water depth preference"</span><span class="op">)</span></span></code></pre></div>
+<span>     ylab <span class="op">=</span> <span class="st">"Collection probability"</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"Collection probability of taxon"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
-<p>The taxon we are modeling prefers to live in 10 m water depth
-(<code>mean = 10</code>), is moderately tolerant to fluctuations in
-water depth (<code>sd = 5</code>) and does not survive on land
-(<code>cut_neg = TRUE</code>).</p>
+<p>The taxon we are modeling has its environmental niche optimum in 10 m
+water depth (<code>opt = 10</code>), is moderately tolerant to
+fluctuations in water depth (<code>tol = 5</code>) and does not survive
+on land (<code>cutoff_val = 0</code>).</p>
 <p>With the niche and the change in gradient defined, we can use
-<code>apply_niche_pref</code> for niche modeling.</p>
+<code>apply_niche</code> for niche modeling.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">300</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># model occurrences of taxon based on a constant rate</span></span>
-<span>  <span class="fu"><a href="../reference/apply_niche_pref.html">apply_niche_pref</a></span><span class="op">(</span>niche_def <span class="op">=</span> <span class="va">my_niche</span>, gc <span class="op">=</span> <span class="va">gc</span><span class="op">)</span> <span class="op">|&gt;</span>                <span class="co"># apply the niche preferenc of the taxon as defined above</span></span>
+<span>  <span class="fu"><a href="../reference/apply_niche.html">apply_niche</a></span><span class="op">(</span>niche_def <span class="op">=</span> <span class="va">my_niche</span>, gc <span class="op">=</span> <span class="va">gc</span><span class="op">)</span> <span class="op">|&gt;</span>                     <span class="co"># apply the niche model</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
@@ -403,20 +409,23 @@ modeling pipeline to examine the joint effects of stratigraphic
 distortion by age-depth models and niche preferences.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">300</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># model occurrences based on constant rate</span></span>
-<span>  <span class="fu"><a href="../reference/apply_niche_pref.html">apply_niche_pref</a></span><span class="op">(</span>niche_def <span class="op">=</span> <span class="va">my_niche</span>, gc <span class="op">=</span> <span class="va">gc</span><span class="op">)</span> <span class="op">|&gt;</span>                <span class="co"># apply niche preference</span></span>
+<span>  <span class="fu"><a href="../reference/apply_niche.html">apply_niche</a></span><span class="op">(</span>niche_def <span class="op">=</span> <span class="va">my_niche</span>, gc <span class="op">=</span> <span class="va">gc</span><span class="op">)</span> <span class="op">|&gt;</span>                     <span class="co"># apply niche model</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span>                     <span class="co"># transform into strat. domain, destroy fossils that coincide with hiatuses </span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Stratigraphic height [m]"</span>,                           <span class="co"># plot results</span></span>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance 2 km from shore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">40</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
-<p>In most cases, you can see a general decrease in fossil abundance,
-but in contrast to the time domain, no prolonged intervals without
-fossil are visible. This latter is because the gaps in fossil abundance
-in the time domain coincide with hiatuses, and will thus not be visible
-in the stratigraphic domain. The general decrease in fossil abundance is
-because as the carbonate platform ages, the water depth on top of the
-platform decreases:</p>
+<p>You can see a general decrease in fossil abundance, but in contrast
+to the time domain, no prolonged intervals without the fossil are
+visible. This is because the gaps in fossil abundance in the time domain
+coincide with hiatuses, and will thus not be visible in the
+stratigraphic domain. The decrease in fossil abundance seen here is
+because the carbonate platform stratigraphy used here is characterized
+by continuous growth of carbonates, which fill in the available
+accommodation space, thus reducing the water depth over time. This is a
+typical scenario in many carbonate platforms, but other scenarios are
+possible.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"t"</span> <span class="op">=</span> <span class="va">t</span>, <span class="st">"y"</span> <span class="op">=</span> <span class="va">wd</span><span class="op">)</span> <span class="op">|&gt;</span>    <span class="co"># create list with time - water depth information</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># transform into the strat. domain</span></span>
@@ -457,8 +466,8 @@ sedimentation rates into paleontological analyses.” PALAIOS. <a href="https://
 <li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
 Emilia. 2024. “Identification of the mode of evolution in incomplete
 carbonate successions.” BMC Ecology and Evolution, In Press. <a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link uri">https://doi.org/10.1101/2023.12.18.572098</a>.</p></li>
-<li><p>Holland, Steven M. and Patzkowsky, Mark E. 2002. “Stratigraphic
-variation in the timing of first and last occurrences.” PALAIOS. <a href="https://doi.org/10.1669/0883-1351(2002)017" class="external-link uri">https://doi.org/10.1669/0883-1351(2002)017</a>&lt;0134:SVITTO&gt;2.0.CO;2</p></li>
+<li><p>Holland, Steven M. and Patzkowsky, Mark E. 1999. “Models for
+simulating the fossil record.” Geology. <a href="https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2" class="external-link uri">https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2</a></p></li>
 <li><p>Holland, Steven M. and Patzkowsky, Mark E. 2015. “The
 stratigraphy of mass extinction.” Palaeontology. <a href="https://doi.org/10.1111/pala.12188" class="external-link uri">https://doi.org/10.1111/pala.12188</a>.</p></li>
 <li><p>Signor, Philip W.; Lipps, Jere H. 1982. “Sampling bias, gradual
