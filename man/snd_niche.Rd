@@ -13,13 +13,13 @@ snd_niche(opt, tol, prob_modifier = 1, cutoff_val = NULL)
 
 \item{prob_modifier}{collection probability modifier, collection probability at \code{opt}.}
 
-\item{cutoff_val}{NULL of a number. If a number, all collection probabilities at gradient values below \code{cutoff_value} are set to 0. This can for example be used to model exclusively marine species when the gradient is water depth (see examples).}
+\item{cutoff_val}{NULL or a number. If a number, all collection probabilities at gradient values below \code{cutoff_value} are set to 0. This can for example be used to model exclusively marine species when the gradient is water depth (see examples).}
 }
 \value{
 a function for usage with \code{apply_niche}.
 }
 \description{
-Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (2002).
+Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (1999).
 The collection probability follows the shape of a bell curve across a gradient, where \code{opt} determines the peak (mean) of the bell curve, and \code{tol} the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
 }
 \examples{

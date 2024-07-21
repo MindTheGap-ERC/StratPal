@@ -244,14 +244,14 @@ plot(t, gc(t),
      main = "Water depth 2 km offshore")
 ```
 
-Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. They determine the probability to actually observe a specimen that is present at a given time at the specified gradient.
+Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. If a specimen is present at a given time, the collection probability is the probability to observe it at the specified gradient.
 
-For our example, we use the helper function `snd_niche` (snd standing for scaled normal distribution) to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions, or `?bounded_niche` for another template niche model.
+For our example, we use the helper function `snd_niche` (*snd* standing for "scaled normal distribution") to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions, or `?bounded_niche` for another template niche model.
 
 ```{r}
 my_niche = snd_niche(opt = 10,       # preferred water depth 
                      tol = 5,        # tolerance to water depth fluctuations
-                     cutoff_val = 0)  # cut off negative values - the taxon does not survive on land
+                     cutoff_val = 0) # cut off negative values - the taxon does not survive on land
 x = seq(-2, 30, by = 0.1)
 plot(x, my_niche(x),
      type = "l",
@@ -266,7 +266,7 @@ With the niche and the change in gradient defined, we can use `apply_niche` for 
 
 ```{r}
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences of taxon based on a constant rate
-  apply_niche(niche_def = my_niche, gc = gc) |>                # apply the niche preference of the taxon as defined above
+  apply_niche(niche_def = my_niche, gc = gc) |>                     # apply the niche model
   hist(xlab = "Time [Myr]",
        main = "Fossil abundance",
        ylab = "# Fossils",
@@ -279,7 +279,7 @@ With the basic niche modeling done, we can incorporate it into our modeling pipe
 
 ```{r}
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences based on constant rate
-  apply_niche(niche_def = my_niche, gc = gc) |>                # apply niche preference
+  apply_niche(niche_def = my_niche, gc = gc) |>                     # apply niche model
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into strat. domain, destroy fossils that coincide with hiatuses 
   hist(xlab = "Stratigraphic height [m]",                           # plot results
        main = "Fossil abundance 2 km from shore",

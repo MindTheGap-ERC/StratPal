@@ -7,7 +7,7 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
   #' @param opt optimum value, gradient value where collection probability is highest
   #' @param tol tolerance to changes in gradient. For large values, collection probability drops off slower away from `opt`
   #' @param prob_modifier collection probability modifier, collection probability at `opt`.
-  #' @param cutoff_val NULL of a number. If a number, all collection probabilities at gradient values below `cutoff_value` are set to 0. This can for example be used to model exclusively marine species when the gradient is water depth (see examples).
+  #' @param cutoff_val NULL or a number. If a number, all collection probabilities at gradient values below `cutoff_value` are set to 0. This can for example be used to model exclusively marine species when the gradient is water depth (see examples).
   #'
   #' @returns a function for usage with `apply_niche`.
   #'
@@ -30,7 +30,7 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
   #'
   #' @seealso [apply_niche()] for usage of the returned function, [bounded_niche()] for another niche model
   #' @description
-    #' Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (2002).
+    #' Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (1999).
     #' The collection probability follows the shape of a bell curve across a gradient, where `opt` determines the peak (mean) of the bell curve, and `tol` the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
   #' @references * Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
 

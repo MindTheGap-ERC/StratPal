@@ -145,7 +145,7 @@ The `StratPal` package comes with some example data for age-depth models stored 
 
 ### Defining age-depth models
 
-Let's start with defining an age-depth model. This can be done with `tp_to_adm` (tie points to age-depth model):
+Let's start with defining the age-depth model 2 km from shore in scenario A. This can be done with `tp_to_adm` (tie points to age-depth model):
 
 ```{r}
 t = scenarioA$t_myr       # extract time tie points
