@@ -43,7 +43,7 @@ apply_niche = function(x, niche_def, gc){
     #'
     #' }
     #'
-  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] for the underlying mathematical procedure.
+  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] for the underlying mathematical procedure. Basic niche models available are [bounded_niche()] and [snd_niche()]
 
   # function that returns collection probability as a function of y (typically time)
   change_in_niche = function(y) niche_def(gc(y))

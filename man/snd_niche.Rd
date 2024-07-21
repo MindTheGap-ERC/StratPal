@@ -20,7 +20,7 @@ a function for usage with \code{apply_niche}.
 }
 \description{
 Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (2002).
-The collection probability follows the shape of a bell curve across a gradient, where \code{opt} determines the mean of the bell curve, and \code{tol} the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
+The collection probability follows the shape of a bell curve across a gradient, where \code{opt} determines the peak (mean) of the bell curve, and \code{tol} the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
 }
 \examples{
 \dontrun{
@@ -46,5 +46,5 @@ vignette("event_data")
 }
 }
 \seealso{
-\code{\link[=apply_niche]{apply_niche()}} for usage of the returned function
+\code{\link[=apply_niche]{apply_niche()}} for usage of the returned function, \code{\link[=bounded_niche]{bounded_niche()}} for another niche model
 }

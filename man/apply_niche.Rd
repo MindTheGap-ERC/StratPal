@@ -51,5 +51,5 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
 
 }
 \seealso{
-\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
+\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure. Basic niche models available are \code{\link[=bounded_niche]{bounded_niche()}} and \code{\link[=snd_niche]{snd_niche()}}
 }

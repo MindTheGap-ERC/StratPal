@@ -246,7 +246,7 @@ plot(t, gc(t),
 
 Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. They determine the probability to actually observe a specimen that is present at a given time at the specified gradient.
 
-For our example, we use the helper function `snd_niche` (snd standing for scaled normal distribution) to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions.
+For our example, we use the helper function `snd_niche` (snd standing for scaled normal distribution) to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions, or `?bounded_niche` for another template niche model.
 
 ```{r}
 my_niche = snd_niche(opt = 10,       # preferred water depth 

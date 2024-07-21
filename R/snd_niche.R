@@ -28,10 +28,10 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
     #' }
     #'
   #'
-  #' @seealso [apply_niche()] for usage of the returned function
+  #' @seealso [apply_niche()] for usage of the returned function, [bounded_niche()] for another niche model
   #' @description
     #' Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (2002).
-    #' The collection probability follows the shape of a bell curve across a gradient, where `opt` determines the mean of the bell curve, and `tol` the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
+    #' The collection probability follows the shape of a bell curve across a gradient, where `opt` determines the peak (mean) of the bell curve, and `tol` the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
   #' @references * Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
 
   fa = function(x){
