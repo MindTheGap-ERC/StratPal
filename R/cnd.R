@@ -6,7 +6,7 @@ cnd = function(mean, sd, inc = 1, cut_neg = TRUE){
   #'
   #' @param mean mean of normal distribution
   #' @param sd standard deviation
-  #' @param inc scalar, factor by which the pdf in multiplied
+  #' @param inc scalar, factor by which the pdf is multiplied
   #' @param cut_neg logical. should negative values be set to 0?
   #'
   #' @returns a function

@@ -224,11 +224,11 @@ In this example, the temporal range offset is `r signif(time_range_offset_myr, d
 
 So far, we have only examined the effects of stratigraphic distortions (i.e., gaps and changes in sedimentation rates) on event type data. Here, we increase the complexity of the pipeline by incorporating niche modeling. For this, we need two components:
 
--   a niche definition that describes how "comfortable" a taxon feels along an (environmental or eclogical) gradient
+-   a niche definition that describes a taxon's optimum value along an environmental gradient (cline), i.e. where is it the most abundant, and its tolerance along this gradient 
 
 -   information on how that gradient changes with time
 
-In this example we focus on *water depth* as gradient. The general modeling framework works for any type of gradient, see the "advanced functionality" vignette for details.
+In this example we focus on *water depth* as gradient. The general modeling framework works for any type of cline, see the "advanced functionality" vignette for details.
 
 First, we define a function that determines how water depth (our gradient) changes with time:
 
@@ -244,7 +244,7 @@ plot(t, gc(t),
      main = "Water depth 2 km offshore")
 ```
 
-Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. Here a 1 reflects that the taxon is fully within its preferred niche, and a 0 reflects that it is completely outside of its preferred niche. Values between 0 and 1 are interpreted as probabilities that the taxon is observed locally.
+Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. Here 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are interpreted as probabilities that the taxon is observed locally.
 
 For our example, we use the helper function `cnd` (capped normal distribution) to define a niche. It is a probability density function of the normal distribution, multiplied by the factor `inc` and capped at 1. This is identical to the *probability of collection* model by [Holland and Patzkowsky (2002)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions.
 
@@ -261,13 +261,13 @@ plot(x, my_niche(x),
      main = "Water depth preference")
 ```
 
-The taxon we are modeling prefers to live in 10 m water depth (`mean = 10`), is moderately tolerant to fluctuations in water depth (`sd = 5`) and does not survive on land (`cut_neg = TRUE`). 
+The taxon we are modeling has its environmental niche optimum in 10 m water depth (`mean = 10`), is moderately tolerant to fluctuations in water depth (`sd = 5`) and does not survive on land (`cut_neg = TRUE`). 
 
 With the niche and the change in gradient defined, we can use `apply_niche_pref` for niche modeling.
 
 ```{r}
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences of taxon based on a constant rate
-  apply_niche_pref(niche_def = my_niche, gc = gc) |>                # apply the niche preferenc of the taxon as defined above
+  apply_niche_pref(niche_def = my_niche, gc = gc) |>                # apply the niche preference of the taxon as defined above
   hist(xlab = "Time [Myr]",
        main = "Fossil abundance",
        ylab = "# Fossils",
@@ -289,7 +289,7 @@ p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occu
 
 ```
 
-In most cases, you can see a general decrease in fossil abundance, but in contrast to the time domain, no prolonged intervals without fossil are visible. This latter is because the gaps in fossil abundance in the time domain coincide with hiatuses, and will thus not be visible in the stratigraphic domain. The general decrease in fossil abundance is because as the carbonate platform ages, the water depth on top of the platform decreases:
+You can see a general decrease in fossil abundance, but in contrast to the time domain, no prolonged intervals without the fossil are visible. This is because the gaps in fossil abundance in the time domain coincide with hiatuses, and will thus not be visible in the stratigraphic domain. The decrease in fossil abundance seen here is because the carbonate platform stratigraphy used here is characterized by continuous growth of carbonates, which fill in the available accommodation space, thus reducing the water depth over time. This is a typical scenario in many carbonate platforms, but other scenarios are possible.
 
 ```{r}
 list("t" = t, "y" = wd) |>    # create list with time - water depth information
