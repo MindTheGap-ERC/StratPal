@@ -14,7 +14,7 @@ thin(x, thin)
 \description{
 Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by \emph{thin(x(i))}. Values of
 \code{thin} below 0 and above 1 are ignored.
-Is used to model niche preferences in \code{apply_niche_pref} and taphonomic effects in \code{apply_taphonomy}.
+Is used to model niche preferences in \code{apply_niche} and taphonomic effects in \code{apply_taphonomy}.
 }
 \examples{
 \dontrun{
@@ -27,5 +27,5 @@ hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
 
 }
 \seealso{
-\code{\link[=apply_niche_pref]{apply_niche_pref()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for use cases with biological meaning
+\code{\link[=apply_niche]{apply_niche()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for use cases with biological meaning
 }

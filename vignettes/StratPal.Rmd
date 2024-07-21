@@ -59,7 +59,7 @@ library(admtools)
 before running any of the examples. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
 
 ```{r, eval=FALSE}
-browseVignettes(package = "admtools") # opens in Browser
+browseVignettes(package = "admtools")
 ```
 
 or by visiting the package website at <https://mindthegap-erc.github.io/admtools/>.
@@ -87,7 +87,7 @@ plot(x = scenarioA$t_myr,
 
 ## Piping {#piping}
 
-In the `StratPal` package and its vignettes, we make heavy use of the base R *pipe* operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling *pipeline* clearer.
+In the vignettes of the `StratPal` package, we use the base R *pipe* operator `|>`. While this is not required to run the package, it simplifies the code and makes the underlying logic of a modeling *pipeline* clearer.
 
 This functionality is available from R version 4.2 on.
 
@@ -96,6 +96,7 @@ This functionality is available from R version 4.2 on.
 Consider the following code for simulating and plotting a random walk using the `random_walk` function:
 
 ```{r}
+set.seed(42)             # set seed for computational reproducibility
 t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
 l = random_walk(t)       # simulate the random walk
 plot(l, type = "l")      # line plot of the results
@@ -104,6 +105,7 @@ plot(l, type = "l")      # line plot of the results
 This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are trying to achieve: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
 
 ```{r}
+set.seed(42)            # set seed for computational reproducibility
 seq(0, 1, by = 0.01) |> # define times of simulation  
   random_walk() |>      # simulate random walk
   plot(type = "l")      # plot
@@ -125,10 +127,10 @@ seq(0, 1, by = 0.1) |>
 
 ## Age-depth models {#adm}
 
-The `StratPal` package makes heavy use of age-depth modeling functionality from the `admtools` package. Here we go through some basics of dealing with age-depth models. For more details on available functionality you can browse through the package vignettes using
+The `StratPal` package use of age-depth modeling functionality from the `admtools` package. Here we go through some basics of dealing with age-depth models. For more details on available functionality you can browse through the package vignettes using
 
 ```{r, eval=FALSE}
-browseVignettes(package = "admtools") # opens in Browser
+browseVignettes(package = "admtools")
 ```
 
 or visit the package website at <https://mindthegap-erc.github.io/admtools/>.
@@ -143,7 +145,7 @@ The `StratPal` package comes with some example data for age-depth models stored 
 
 ### Defining age-depth models
 
-Let's start with defining an age-depth model. This can be done with `tp_to_adm` (tie points to age-depth model):
+Let's start with defining the age-depth model 2 km from shore in scenario A. This can be done with `tp_to_adm` (tie points to age-depth model):
 
 ```{r}
 t = scenarioA$t_myr       # extract time tie points

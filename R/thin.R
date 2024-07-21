@@ -11,7 +11,7 @@ thin = function(x, thin){
   #' @description
     #' Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by _thin(x(i))_. Values of
     #' `thin` below 0 and above 1 are ignored.
-    #' Is used to model niche preferences in `apply_niche_pref` and taphonomic effects in `apply_taphonomy`.
+    #' Is used to model niche preferences in `apply_niche` and taphonomic effects in `apply_taphonomy`.
     #'
   #' @examples
     #' \dontrun{
@@ -22,7 +22,7 @@ thin = function(x, thin){
     #' hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
     #' }
     #'
-  #' @seealso [apply_niche_pref()] and [apply_taphonomy()] for use cases with biological meaning
+  #' @seealso [apply_niche()] and [apply_taphonomy()] for use cases with biological meaning
 
   p = pmax(pmin(thin(x), rep(1, length(x))), rep(0, length(x))) # cut off at 0 and 1
   ind = stats::rbinom(n = length(x), size = 1, prob = p) # determine if preserved or not
