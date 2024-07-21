@@ -171,7 +171,7 @@ Naturally, the same modeling pipeline is valid for first occurrences of common t
 
 ### Range offset {#Range-offset}
 
-Here we explore the idea of *range offset*, which is the offset between the last occurrence of a taxon and its actual time of extinction ([Holland and Patzkowsky 2002](#References)).
+Here we explore the idea of *range offset*, which is the offset between the last occurrence of a taxon and its actual time of extinction ([Holland and Patzkowsky 1999](#References)).
 
 First, we model all occurrences of the taxon up to its extinction in the time domain, and save it in a variable:
 
@@ -195,7 +195,7 @@ highest_occ = f_occ |>                          # take fossil occ. in time domai
   max(na.rm = TRUE)                             # find highest preserved fossil (destroyed fossils are NA)
 ```
 
-Now we can determine two types of range offset. The first is the distance in meters between the position of the last preserved fossil and the position where the taxon actually goes extinct: 
+Now we can determine two types of range offset, stratigraphic range offset and temporal range offset. Stratigraphic range offset distance (length dimension, SI units meter) between the position of the last preserved fossil and the stratigraphic position where the taxon actually goes extinct: 
 
 ```{r}
 h_true_ext = t_ext |>                           # stratigraphic position of "true" extinction
@@ -207,7 +207,7 @@ strat_range_offset_m = h_true_ext - highest_occ
 
 In this example, the stratigraphic range offset is `r signif(strat_range_offset_m, digits = 3)` meters.
 
-The second type of range offset is the difference in time between the age of the last occurrence and the actual time of extinction:
+The temporal range offset (time dimension, SI units seconds and derived units such as years) is the difference in time between the age of the last occurrence and the actual time of extinction:
 
 ```{r}
 t_last_occ = highest_occ |> # time when last preserved fossil lived
@@ -244,24 +244,23 @@ plot(t, gc(t),
      main = "Water depth 2 km offshore")
 ```
 
-Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. Here 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are interpreted as probabilities that the taxon is observed locally.
+Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. They determine the probability to actually observe a specimen that is present at a given time at the specified gradient.
 
-For our example, we use the helper function `cnd` (capped normal distribution) to define a niche. It is a probability density function of the normal distribution, multiplied by the factor `inc` and capped at 1. This is identical to the *probability of collection* model by [Holland and Patzkowsky (2002)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions.
+For our example, we use the helper function `snd_niche` (snd standing for scaled normal distribution) to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions.
 
 ```{r}
-my_niche = cnd(mean = 10,       # preferred water depth 
-               sd = 5,          # depth tolerance
-               inc = 15,        # multiplier
-               cut_neg = TRUE)  # cut off negative values - the taxon does not survive at land
+my_niche = snd_niche(opt = 10,       # preferred water depth 
+                     tol = 5,        # tolerance to water depth fluctuations
+                     cutoff_val = 0)  # cut off negative values - the taxon does not survive on land
 x = seq(-2, 30, by = 0.1)
 plot(x, my_niche(x),
      type = "l",
      xlab = "Water depth [m]",
-     ylab = "Preference",
-     main = "Water depth preference")
+     ylab = "Collection probability",
+     main = "Collection probability of taxon")
 ```
 
-The taxon we are modeling has its environmental niche optimum in 10 m water depth (`mean = 10`), is moderately tolerant to fluctuations in water depth (`sd = 5`) and does not survive on land (`cut_neg = TRUE`). 
+The taxon we are modeling has its environmental niche optimum in 10 m water depth (`opt = 10`), is moderately tolerant to fluctuations in water depth (`tol = 5`) and does not survive on land (`cutoff_val = 0`). 
 
 With the niche and the change in gradient defined, we can use `apply_niche` for niche modeling.
 
@@ -327,7 +326,7 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 * Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. https://doi.org/10.1101/2023.12.18.572098.
 
-* Holland, Steven M. and Patzkowsky, Mark E. 2002. "Stratigraphic variation in the timing of first and last occurrences." PALAIOS. https://doi.org/10.1669/0883-1351(2002)017<0134:SVITTO>2.0.CO;2
+* Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
 
 * Holland, Steven M. and Patzkowsky, Mark E. 2015. "The stratigraphy of mass extinction." Palaeontology. https://doi.org/10.1111/pala.12188.
 
