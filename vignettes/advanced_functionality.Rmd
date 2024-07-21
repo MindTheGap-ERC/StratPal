@@ -34,7 +34,7 @@ The workflow in `StratPal` does not work with `multiadm` objects as defined by `
 
 In the examples we used water depth as ecological gradient. The approach for niche modeling used in `StratPal` works for all types of niches and gradient. Potentially relevant gradients that can be extracted from forward models are for example substrate consistency, temperature, or water energy.
 
-We used a simple niche definition based on a probability density function of a normal distribution implemented in `cnd`. This can be expanded to arbitrary niche definitions along a gradient. For integration with `apply_niche_pref`, niche definitions must meet the following criteria:
+We used a simple niche definition based on a probability density function of a normal distribution implemented in `snd_niche`. This can be expanded to arbitrary niche definitions along a gradient. For integration with `apply_niche`, niche definitions must meet the following criteria:
 
 1.  They are functions that take gradient values as input and return numbers between 0 and 1 as outputs.
 2.  They are vectorized, meaning when handed a vector, they return a vector of equal length.
@@ -44,7 +44,7 @@ Similar criteria hold for the definitions of gradient change `gc`:
 1.  `gc` must be a function that takes time (or position) as input, and returns gradient values as outputs.
 2.  The function must be vectorized, meaning when handed a vector, it must return a vector of equal length.
 
-As long as these conditions for `gc` and `niche_def` are met, arbitrary niche preferences along any gradient can be modeled using `apply_niche_pref`.
+As long as these conditions for `gc` and `niche_def` are met, arbitrary niche preferences along any gradient can be modeled using `apply_niche`.
 
 ## Different models of phenotypic evolution
 

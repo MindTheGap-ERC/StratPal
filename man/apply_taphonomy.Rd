@@ -2,7 +2,7 @@
 % Please edit documentation in R/apply_taphonomy.R
 \name{apply_taphonomy}
 \alias{apply_taphonomy}
-\title{Model taphonomic effects}
+\title{model taphonomic effects}
 \usage{
 apply_taphonomy(x, pres_potential, ctc)
 }
@@ -17,5 +17,5 @@ apply_taphonomy(x, pres_potential, ctc)
 Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.
 }
 \seealso{
-\code{\link[=apply_niche_pref]{apply_niche_pref()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
+\code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
 }
