@@ -1,7 +1,7 @@
 apply_taphonomy = function(x, pres_potential, ctc){
   #' @export
   #'
-  #' @title Model taphonomic effects
+  #' @title model taphonomic effects
   #'
   #' @param x events, e.g. times/ages of fossil occurrences or their stratigraphic position.
   #' @param pres_potential function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1)
@@ -17,7 +17,7 @@ apply_taphonomy = function(x, pres_potential, ctc){
 
   # function that returns preservation potential as a function of input (e.g. time or position)
   change_pres_pot = function(y) pres_potential(ctc(y))
-  # thin events based on preservation potential
+  # thin events
   r = thin(x, change_pres_pot)
   return(r)
 }

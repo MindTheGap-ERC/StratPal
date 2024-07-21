@@ -2,20 +2,20 @@
 % Please edit documentation in R/apply_niche.R
 \name{apply_niche}
 \alias{apply_niche}
-\title{apply niche preference}
+\title{apply niche model to events}
 \usage{
 apply_niche(x, niche_def, gc)
 }
 \arguments{
 \item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position.}
 
-\item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when fully inside niche. Values between 0 and 1 are interpreted as probabilities.}
+\item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities.}
 
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
 }
 \description{
-Models niche preferences by removing events (fossil occurrences) when they are outside of a preferred niche using the function \code{thin}.
-Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' preferred environment changes with time. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
+Models niches by removing events (fossil occurrences) when they are outside of their niche using the function \code{thin}.
+Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
 }
 \examples{
 \dontrun{
@@ -28,11 +28,12 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
   main = "gradient change with time")
  # define niche
  # preferred wd 10 m, tolerant to intermediate wd changes (standard deviation 10 m), non-terrestrial
- niche_def = cnd(mean = 10, sd = 10, inc  = 40, cut_neg = TRUE)
+ niche_def = snd_niche(opt = 10, tol = 10, cutoff_val = 0)
  plot(seq(-1, 50, by = 0.5), niche_def(seq(-1, 50, by = 0.5)), type = "l",
- xlab = "water depth", ylab = "preference", main = "Niche def")
+ xlab = "water depth", ylab = "collection probability", main = "Niche def")
  # niche pref with time
- plot(t, niche_def(gc(t)), type = "l", xlab = "time", ylab = "preference", main = "pref with time")
+ plot(t, niche_def(gc(t)), type = "l", xlab = "time",
+ ylab = "collection probability", main = "collection probability with time")
 
  ## simulate fossil occurrences
  foss_occ = p3(rate = 100, from = 0, to = max(t))
@@ -44,7 +45,7 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
 
  # see also
  vignette("event_data")
- # for a longer example
+ # for a detailed example on niche modeling
 
 }
 

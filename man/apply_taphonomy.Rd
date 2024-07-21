@@ -2,7 +2,7 @@
 % Please edit documentation in R/apply_taphonomy.R
 \name{apply_taphonomy}
 \alias{apply_taphonomy}
-\title{Model taphonomic effects}
+\title{model taphonomic effects}
 \usage{
 apply_taphonomy(x, pres_potential, ctc)
 }
