@@ -1,3 +1,5 @@
+# StratPal (development version)
+
 # StratPal 0.1.0
 
 * add simulation of point processes (constant and variable rate Poisson point processes)
