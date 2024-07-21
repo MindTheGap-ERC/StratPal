@@ -1,34 +1,40 @@
 # StratPal
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 R package for stratigraphic paleobiology modeling pipelines.
 
+## Overview
+
+The fossil record is a joint expression of ecological, taphonomic, evolutionary, and stratigraphic processes ([Holland and Patzkowsky, 2012](#References)). This package allowing to simulate biological processes in the time domain (e.g., trait evolution, fossil abundance), and examine how their expression in the rock record (stratigraphic domain) is influenced based on age-depth models, ecological niche models, and taphonomic effects. Functions simulating common processes used in modeling trait evolution or event type data such as first/last occurrences are provided and can be used standalone or as part of a pipeline. The package comes with example data sets and tutorials in several vignettes, which can be used as a template to set up one's own simulation.
+
 ## Authors
 
-__Niklas Hohmann__  
-Utrecht University  
-email: n.h.hohmann [at] uu.nl  
-Web page: [uu.nl/staff/NHohmann](https://www.uu.nl/staff/NHHohmann)  
+**Niklas Hohmann**\
+Utrecht University\
+email: n.h.hohmann [at] uu.nl\
+Web page: [uu.nl/staff/NHohmann](https://www.uu.nl/staff/NHHohmann)\
 Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
 
 ## Requirements
 
-R version >= 4.2
+R version \>= 4.2
 
 ## Installation
 
-To install the package, first install the _remotes_ package by running
+To install the package, first install the *remotes* package by running
 
-```R
+``` r
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
-```R
+``` r
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -41,13 +47,13 @@ to install the latest stable version of the package.
 
 Run
 
-```R
+``` r
 library(StratPal)
 ```
 
 to load the package. Use
 
-```R
+``` r
 browseVignettes(package = "StratPal")
 ```
 
@@ -65,15 +71,16 @@ Apache 2.0, see LICENSE file for license text.
 
 Copyright 2024 Netherlands eScience Center and Utrecht University
 
-## References
+## References {#References}
+
+-   Holland, Steven M. and Patzkowsky, Mark E. "Stratigraphic Paleobiology : Understanding the Distribution of Fossil Taxa in Time and Space."" The University of Chicago Press; 2012.
 
 This package uses data from
 
-* Identification of the mode of evolution in incomplete carbonate successions
-Niklas Hohmann, Joël R Koelewijn, Peter Burgess, Emilia Jarochowska
-bioRxiv 2023.12.18.572098; doi: [10.1101/2023.12.18.572098](https://doi.org/10.1101/2023.12.18.572098), published under a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+-   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. <https://doi.org/10.1101/2023.12.18.572098>.
+
+-   Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. "Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data." Open Science Framework. <https://doi.org/10.17605/OSF.IO/ZBPWA>, published under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Funding information
 
-Funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them.
-![European Union and European Research Council logos](https://erc.europa.eu/sites/default/files/2023-06/LOGO_ERC-FLAG_FP.png)
+Funded by the European Union (ERC, MindTheGap, StG project no 101041077). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Council. Neither the European Union nor the granting authority can be held responsible for them. ![European Union and European Research Council logos](https://erc.europa.eu/sites/default/files/2023-06/LOGO_ERC-FLAG_FP.png)
