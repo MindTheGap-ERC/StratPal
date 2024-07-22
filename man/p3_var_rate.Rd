@@ -19,6 +19,9 @@ p3_var_rate(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL)
 
 \item{n}{NULL or an integer. Number of events drawn. If NULL, the number of events is determined by the rate (specified by x and y). If an integer is passed, n events are returned.}
 }
+\value{
+numeric vector, timing/location of events
+}
 \description{
 simulates events based on a variable rate Poisson point process. Rates can be either specified by a function passed to \code{x}, or by providing two vectors \code{x} and \code{y}. In this case the rate is specified by approxfun(x, y, rule = 2), i.e. by linear interpolation between the values of x (abscissa) and y (ordinate)
 In the context of paleontology, these events can be interpreted as fossil occurrences or first/last occurrences of species. In this case, the rate is the average number of fossil occurrences (resp first/last occurrences) per unit

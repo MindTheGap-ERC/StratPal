@@ -13,6 +13,9 @@ apply_niche(x, niche_def, gc)
 
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
 }
+\value{
+numeric vector, events preserved after thinning
+}
 \description{
 Models niches by removing events (fossil occurrences) when they are outside of their niche using the function \code{thin}.
 Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
