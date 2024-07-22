@@ -27,10 +27,10 @@ Scenario A as described in Hohmann et al. (2024), published in Hohmann et al. (2
 }
 \references{
 \itemize{
-\item Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. \url{https://doi.org/10.1016/j.cageo.2011.08.026}.
-\item Burgess, Peter. 2023. "CarboCATLite v1.0.1." Zenodo. \url{https://doi.org/10.5281/zenodo.8402578}
-\item Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. https://doi.org/10.1101/2023.12.18.572098.
-\item Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. “Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data.” Open Science Framework. https://doi.org/10.17605/OSF.IO/ZBPWA, published under the \href{https://creativecommons.org/licenses/by/4.0/}{CC-BY 4.0} license.
+\item Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. \doi{10.1016/j.cageo.2011.08.026}.
+\item Burgess, Peter. 2023. "CarboCATLite v1.0.1." Zenodo. \doi{10.5281/zenodo.8402578}
+\item Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. \doi{10.1101/2023.12.18.572098}.
+\item Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. “Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data.” Open Science Framework. \doi{10.17605/OSF.IO/ZBPWA}, published under the \href{https://creativecommons.org/licenses/by/4.0/}{CC-BY 4.0} license.
 }
 }
 \keyword{datasets}
