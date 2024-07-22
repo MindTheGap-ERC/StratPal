@@ -35,6 +35,8 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
     #' }
     #'
   #' @seealso [p3()] for the constant rate implementation, [rej_samp()] for the underlying random number generation.
+  #'
+  #' @returns numeric vector, timing/location of events
 
   if (from >= to){
     stop("\"from\" must be smaller than \"to\".")

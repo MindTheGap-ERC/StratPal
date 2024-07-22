@@ -11,6 +11,9 @@ thin(x, thin)
 
 \item{thin}{a function used for thinning}
 }
+\value{
+numeric vector, events after thinning
+}
 \description{
 Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by \emph{thin(x(i))}. Values of
 \code{thin} below 0 and above 1 are ignored.

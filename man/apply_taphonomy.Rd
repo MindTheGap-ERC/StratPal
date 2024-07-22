@@ -13,8 +13,19 @@ apply_taphonomy(x, pres_potential, ctc)
 
 \item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position.}
 }
+\value{
+numeric vector, events preserved after taphonomic effects are applied
+}
 \description{
 Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.
+}
+\examples{
+\dontrun{
+# see
+vignette("advanced_functionality")
+# details on usage
+}
+
 }
 \seealso{
 \code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
