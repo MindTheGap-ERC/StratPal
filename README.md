@@ -73,6 +73,14 @@ Apache 2.0, see LICENSE file for license text.
 
 Copyright 2024 Netherlands eScience Center and Utrecht University
 
+## Citation
+
+To cite the package, please use
+
+-   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.0)." Zenodo. <https://doi.org/10.5281/zenodo.12790995>.
+
+Alternatively, you can also use the CITATION.cff file at the root of the repository, or `citation("StratPal")`.
+
 ## References {#References}
 
 -   Holland, Steven M. and Patzkowsky, Mark E. "Stratigraphic Paleobiology : Understanding the Distribution of Fossil Taxa in Time and Space."" The University of Chicago Press; 2012.
