@@ -7,5 +7,6 @@
 ^pkgdown$
 
 ^CONTRIBUTING.md$
+^CITATION.cff$
 ^doc$
 ^Meta$
