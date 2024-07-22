@@ -13,7 +13,15 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #'
   #' @seealso [apply_niche()] for modeling niche preferences based on the same principle, [thin()] for the underlying mathematical procedure.
   #'
+  #' @returns numeric vector, events preserved after taphonomic effects are applied
   #'
+  #' @examples
+    #' \dontrun{
+    #' # see
+    #' vignette("advanced_functionality")
+    #' # details on usage
+    #' }
+    #'
 
   # function that returns preservation potential as a function of input (e.g. time or position)
   change_pres_pot = function(y) pres_potential(ctc(y))
