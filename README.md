@@ -4,6 +4,8 @@
 
 [![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12790995.svg)](https://doi.org/10.5281/zenodo.12790995)
+
 <!-- badges: end -->
 
 R package for stratigraphic paleobiology modeling pipelines.
