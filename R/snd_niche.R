@@ -34,6 +34,13 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
     #' The collection probability follows the shape of a bell curve across a gradient, where `opt` determines the peak (mean) of the bell curve, and `tol` the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
   #' @references * Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
 
+  if (tol <= 0){
+    stop("Need positive \"tol\" parameter.")
+  }
+  if (prob_modifier <= 0){
+    stop("Need positive \"prob_modifier\" parameter.")
+  }
+
   fa = function(x){
     f_inv  = stats::dnorm(opt, opt, tol)
     y = pmin(prob_modifier/f_inv * stats::dnorm(x, opt, tol), rep(1, length(x)))
