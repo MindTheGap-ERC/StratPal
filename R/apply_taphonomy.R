@@ -13,7 +13,7 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #'
   #' @seealso [apply_niche()] for modeling niche preferences based on the same principle, [thin()] for the underlying mathematical procedure.
   #'
-  #' @returns numeric vector, events preserved after taphonomic effects are applied
+  #' @returns numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied
   #'
   #' @examples
     #'

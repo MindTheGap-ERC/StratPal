@@ -36,7 +36,7 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
     #'
   #' @seealso [p3()] for the constant rate implementation, [rej_samp()] for the underlying random number generation.
   #'
-  #' @returns numeric vector, timing/location of events
+  #' @returns numeric vector, timing/location of events. Depending on the modeling framework, tyese events can represent location/age of fossils, or first/last occurrences of a group of taxa.
 
   if (from >= to){
     stop("\"from\" must be smaller than \"to\".")

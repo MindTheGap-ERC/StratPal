@@ -11,7 +11,7 @@ apply_niche = function(x, niche_def, gc){
     #' Models niches by removing events (fossil occurrences) when they are outside of their niche using the function `thin`.
     #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing `niche_def` and `gc`. The result is then used as a thinning on the events `x`.
   #'
-  #' @returns numeric vector, events preserved after thinning
+  #' @returns numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied
   #'
   #' @examples
     #'

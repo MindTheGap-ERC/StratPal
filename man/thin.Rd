@@ -12,7 +12,7 @@ thin(x, thin)
 \item{thin}{a function used for thinning}
 }
 \value{
-numeric vector, events after thinning
+numeric vector, events after thinning. Depending on the modeling framework, these events can represent fossil ages/locations or first/last occurrences, and the thinning taphonomic or ecological effects.
 }
 \description{
 Thins a vector of events using the function thin, meaning the probability that the ith event in x is preserved is given by \emph{thin(x(i))}. Values of

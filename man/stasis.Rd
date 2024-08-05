@@ -14,7 +14,7 @@ stasis(t, mean = 0, sd = 1)
 \item{sd}{strictly positive scalar, standard deviation of traits}
 }
 \value{
-A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
+A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
 Simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}

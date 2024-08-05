@@ -18,7 +18,7 @@ ornstein_uhlenbeck(t, mu = 0, theta = 1, sigma = 1, y0 = 0)
 \item{y0}{scalar, initial value (value of process at the first entry of t)}
 }
 \value{
-A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
+A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
 Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}.

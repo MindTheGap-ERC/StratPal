@@ -20,7 +20,7 @@ rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1){
     #'
   #' @seealso [p3_var_rate()] for the derived variable rate Poisson point process implementation.
   #'
-  #' @returns numeric vector, samples drawn from the (pseudo) pdf
+  #' @returns numeric vector, sample of size `n` drawn from the (pseudo) pdf specified by `f`
   x = c()
   warn = FALSE
   if (f_max <= 0) {stop("`f_max` must be positive.")}

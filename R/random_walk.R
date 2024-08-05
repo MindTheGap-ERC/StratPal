@@ -11,7 +11,7 @@ random_walk = function(t, sigma = 1, mu = 0, y0 = 0){
   #' @description
     #' Simulates a (continuous time) random walk as a Brownian drift
     #'
-  #' @returns A list with elements `t` and `y`. `t` is a duplicate of the input parameter and is the times at which the random walk is evaluated. `y` are the values of the random walk at said times. Output list is of class `timelist` and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
+  #' @returns A list with elements `t` and `y`. `t` is a duplicate of the input parameter and is the times at which the random walk is evaluated. `y` are the values of the random walk at said times. Output list is of S3 class `timelist` (inherits from `list`) and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
   #'
   #' @examples
     #'

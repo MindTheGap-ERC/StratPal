@@ -14,7 +14,7 @@ apply_taphonomy(x, pres_potential, ctc)
 \item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position.}
 }
 \value{
-numeric vector, events preserved after taphonomic effects are applied
+numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied
 }
 \description{
 Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.

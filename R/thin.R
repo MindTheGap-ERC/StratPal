@@ -24,7 +24,7 @@ thin = function(x, thin){
     #'
   #' @seealso [apply_niche()] and [apply_taphonomy()] for use cases with biological meaning
   #'
-  #' @returns numeric vector, events after thinning
+  #' @returns numeric vector, events after thinning. Depending on the modeling framework, these events can represent fossil ages/locations or first/last occurrences, and the thinning taphonomic or ecological effects.
 
   p = pmax(pmin(thin(x), rep(1, length(x))), rep(0, length(x))) # cut off at 0 and 1
   ind = stats::rbinom(n = length(x), size = 1, prob = p) # determine if preserved or not

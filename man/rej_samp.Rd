@@ -18,7 +18,7 @@ rej_samp(f, x_min, x_max, n = 1L, f_max = 1)
 \item{f_max}{maximum value of \code{f} in the interval from \code{x_min} to \code{x_max}. If f attains values larger than \code{f_max} a warning is throw, \code{f_max} is adjusted, and sampling is started again}
 }
 \value{
-numeric vector, samples drawn from the (pseudo) pdf
+numeric vector, sample of size \code{n} drawn from the (pseudo) pdf specified by \code{f}
 }
 \description{
 Rejection sampling from the (pseudo) pdf \code{f} in the interval between \code{x_min} and \code{x_max}. Returns \code{n} samples. Note that values of \code{f} below 0 are capped to zero

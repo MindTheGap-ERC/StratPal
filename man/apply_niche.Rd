@@ -14,7 +14,7 @@ apply_niche(x, niche_def, gc)
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
 }
 \value{
-numeric vector, events preserved after thinning
+numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied
 }
 \description{
 Models niches by removing events (fossil occurrences) when they are outside of their niche using the function \code{thin}.

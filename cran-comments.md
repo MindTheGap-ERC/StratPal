@@ -8,3 +8,4 @@ Changes made:
 
 * Added ISBN to reference in DESCRIPTION file
 * Removed \dontrun wrappers from examples
+* expanded documentation of return values
