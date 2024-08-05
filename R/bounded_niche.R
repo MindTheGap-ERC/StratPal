@@ -14,7 +14,7 @@ bounded_niche = function(g_min, g_max){
     #' Defines a simple niche model where the niche defined is given by a lower limit (`g_min`) and an upper limie (`g_max`) of a gradient the taxon can tolerate
     #'
   #' @examples
-    #' \dontrun{
+    #'
     #' x = seq(0, 10, by = 0.2)
     #' f = bounded_niche(2,5)
     #' plot(x, f(x), type = "l",
@@ -22,9 +22,9 @@ bounded_niche = function(g_min, g_max){
     #' main = "Observation probability of taxon")
     #'
     #' # see also
-    #' vignette("event_data")
+    #' #vignette("event_data")
     #' # for details how to use this functionality
-    #' }
+    #'
     #'
   if (g_max <= g_min){
     stop("inconsistent boundaries, inputs must be ordered.")

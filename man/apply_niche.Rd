@@ -14,14 +14,14 @@ apply_niche(x, niche_def, gc)
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
 }
 \value{
-numeric vector, events preserved after thinning
+numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied
 }
 \description{
 Models niches by removing events (fossil occurrences) when they are outside of their niche using the function \code{thin}.
 Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
 }
 \examples{
-\dontrun{
+
 ## setup
 # using water depth as gradient
  t = scenarioA$t_myr
@@ -47,10 +47,10 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
  hist(foss_occ_niche, xlab = "time")
 
  # see also
- vignette("event_data")
+ #vignette("event_data")
  # for a detailed example on niche modeling
 
-}
+
 
 }
 \seealso{

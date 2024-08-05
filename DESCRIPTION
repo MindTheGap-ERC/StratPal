@@ -5,7 +5,7 @@ Authors@R:
     person("Niklas", "Hohmann", , "N.H.Hohmann@uu.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1559-1838"))
 Description: The fossil record is a joint expression of ecological, taphonomic, 
-    evolutionary, and stratigraphic processes (Holland and Patzkowsky, 2012).
+    evolutionary, and stratigraphic processes (Holland and Patzkowsky, 2012, ISBN:978-0226649382).
     This package allowing to simulate biological processes in the time domain
     (e.g., trait evolution, fossil abundance), and examine how their expression
     in the rock record (stratigraphic domain) is influenced based on 

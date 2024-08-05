@@ -18,7 +18,7 @@ a function describing the niche for usage with \code{apply_niche}. The function 
 Defines a simple niche model where the niche defined is given by a lower limit (\code{g_min}) and an upper limie (\code{g_max}) of a gradient the taxon can tolerate
 }
 \examples{
-\dontrun{
+
 x = seq(0, 10, by = 0.2)
 f = bounded_niche(2,5)
 plot(x, f(x), type = "l",
@@ -26,9 +26,9 @@ xlab = "Gradient", ylab = "Observation probability",
 main = "Observation probability of taxon")
 
 # see also
-vignette("event_data")
+#vignette("event_data")
 # for details how to use this functionality
-}
+
 
 }
 \seealso{

@@ -12,7 +12,7 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
   #' @returns a function for usage with `apply_niche`.
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' # using water depth as niche
     #' wd = seq(-3, 40, by = 0.5)
     #' f = snd_niche(opt = 10, tol = 5)
@@ -23,9 +23,9 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
     #' plot(wd, f(wd), xlab = "Water depth", ylab = "Prob. of collection")
     #'
     #' # see also
-    #' vignette("event_data")
+    #' #vignette("event_data")
     #' #for examples how to use it for niche modeling
-    #' }
+    #'
     #'
   #'
   #' @seealso [apply_niche()] for usage of the returned function, [bounded_niche()] for another niche model

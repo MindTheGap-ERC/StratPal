@@ -13,14 +13,14 @@ rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1){
   #' @param f_max maximum value of `f` in the interval from `x_min` to `x_max`. If f attains values larger than `f_max` a warning is throw, `f_max` is adjusted, and sampling is started again
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' f = sin
     #' x = rej_samp(f, 0, 3*pi, n = 100)
     #' hist(x) # note that no samples are drawn where sin is negative
-    #' }
+    #'
   #' @seealso [p3_var_rate()] for the derived variable rate Poisson point process implementation.
   #'
-  #' @returns numeric vector, samples drawn from the (pseudo) pdf
+  #' @returns numeric vector, sample of size `n` drawn from the (pseudo) pdf specified by `f`
   x = c()
   warn = FALSE
   if (f_max <= 0) {stop("`f_max` must be positive.")}

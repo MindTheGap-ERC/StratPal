@@ -14,19 +14,19 @@ stasis(t, mean = 0, sd = 1)
 \item{sd}{strictly positive scalar, standard deviation of traits}
 }
 \value{
-A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of class \code{timelist} and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
+A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
 Simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
 }
 \examples{
-\dontrun{
+
  library("admtools") # required for plotting of results
  t = seq(0, 1, by = 0.01)
  l = stasis(t)
  plot(l, type = "l") # plot lineage
  l2 = stasis(t, mean = 0.5, sd = 0.3) # simulate second lineage
  lines(l2$t, l2$y, col = "red") # plot second lineage
-}
+
 
 }
