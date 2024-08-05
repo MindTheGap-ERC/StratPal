@@ -1,4 +1,6 @@
-# StratPal (development version)
+# StratPal 0.1.1
+
+* add citation and DOI
 
 # StratPal 0.1.0
 
