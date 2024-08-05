@@ -16,7 +16,7 @@ p3 = function(rate, from, to, n = NULL){
   #' @returns a numeric vector with timing/location of events.
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' # for fossil occ.
     #' x = p3(rate = 5, from = 0, to = 1) # 5 fossil occurrences per myr on avg.
     #' hist(x, xlab = "Time (Myr)", ylab = "Fossil Occurrences" )
@@ -28,9 +28,9 @@ p3 = function(rate, from, to, n = NULL){
     #' hist(x, main = paste0(length(x), " samples")) # no of events is fixed to n
     #'
     #' # see also
-    #' vignette("event_data")
+    #' #vignette("event_data")
     #' # for details on usage and applications to paleontology
-    #' }
+    #'
     #'
   #' @seealso [p3_var_rate()] for the variable rate implementation
 

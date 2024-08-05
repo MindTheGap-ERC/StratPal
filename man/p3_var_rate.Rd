@@ -27,7 +27,7 @@ simulates events based on a variable rate Poisson point process. Rates can be ei
 In the context of paleontology, these events can be interpreted as fossil occurrences or first/last occurrences of species. In this case, the rate is the average number of fossil occurrences (resp first/last occurrences) per unit
 }
 \examples{
-\dontrun{
+
 # assuming events are fossil occurrences
 # then rate is the avg rate of fossil occ. per unit
 #linear decrease in rate from 50 at x = 0 to 0 at x = 1
@@ -42,9 +42,9 @@ s = p3_var_rate(x = sin, from = 0 , to = 3 * pi, n = 50)
 hist(s) # note that negative values of f (sin) are ignored in sampling
 
 # see also
-vignette("event_data")
+#vignette("event_data")
 # for details on usage and applications to paleontology
-}
+
 
 }
 \seealso{

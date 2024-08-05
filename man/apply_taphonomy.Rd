@@ -20,11 +20,11 @@ numeric vector, events preserved after taphonomic effects are applied
 Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.
 }
 \examples{
-\dontrun{
+
 # see
-vignette("advanced_functionality")
-# details on usage
-}
+#vignette("advanced_functionality")
+# for details on usage
+
 
 }
 \seealso{

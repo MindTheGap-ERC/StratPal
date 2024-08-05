@@ -23,7 +23,7 @@ Simulates events in the interval \code{from} to \code{to} based on a Poisson poi
 In the context of paleontology, these events can be interpreted as fossil occurrences or first/last occurrences of species. In this case, the rate is the average number of fossil occurrences (resp first/last occurrences) per unit
 }
 \examples{
-\dontrun{
+
 # for fossil occ.
 x = p3(rate = 5, from = 0, to = 1) # 5 fossil occurrences per myr on avg.
 hist(x, xlab = "Time (Myr)", ylab = "Fossil Occurrences" )
@@ -35,9 +35,9 @@ x = p3(rate = 3, from = 0, to = 4, n = 10)
 hist(x, main = paste0(length(x), " samples")) # no of events is fixed to n
 
 # see also
-vignette("event_data")
+#vignette("event_data")
 # for details on usage and applications to paleontology
-}
+
 
 }
 \seealso{

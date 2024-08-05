@@ -14,13 +14,13 @@ thin = function(x, thin){
     #' Is used to model niche preferences in `apply_niche` and taphonomic effects in `apply_taphonomy`.
     #'
   #' @examples
-    #' \dontrun{
+    #'
     #' x = p3(rate = 100, from = 0, to = 3 * pi) # simulate Poisson point process
     #' y = thin(x, sin)
     #' hist(y) # not how negative values of sin are treated as 0
     #' yy = thin(x, function(x) 5 * sin(x))
     #' hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
-    #' }
+    #'
     #'
   #' @seealso [apply_niche()] and [apply_taphonomy()] for use cases with biological meaning
   #'

@@ -16,11 +16,11 @@ apply_taphonomy = function(x, pres_potential, ctc){
   #' @returns numeric vector, events preserved after taphonomic effects are applied
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' # see
-    #' vignette("advanced_functionality")
-    #' # details on usage
-    #' }
+    #' #vignette("advanced_functionality")
+    #' # for details on usage
+    #'
     #'
 
   # function that returns preservation potential as a function of input (e.g. time or position)

@@ -23,7 +23,7 @@ Defines niche model based in the "Probability of collection" model by Holland an
 The collection probability follows the shape of a bell curve across a gradient, where \code{opt} determines the peak (mean) of the bell curve, and \code{tol} the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.
 }
 \examples{
-\dontrun{
+
 # using water depth as niche
 wd = seq(-3, 40, by = 0.5)
 f = snd_niche(opt = 10, tol = 5)
@@ -34,9 +34,9 @@ f = snd_niche(opt = 10, tol = 5, cutoff_val = 0)
 plot(wd, f(wd), xlab = "Water depth", ylab = "Prob. of collection")
 
 # see also
-vignette("event_data")
+#vignette("event_data")
 #for examples how to use it for niche modeling
-}
+
 
 
 }

@@ -24,13 +24,13 @@ A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the 
 Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}.
 }
 \examples{
-\dontrun{
+
 library("admtools") # required for plotting of results
 t = seq(0, 3, by = 0.01)
 l = ornstein_uhlenbeck(t, y0 = 3) # start away from optimum (mu)
 plot(l, type = "l")
 l2 = ornstein_uhlenbeck(t, y0 = 0) # start in optimum
 lines(l2$t, l2$y, col = "red")
-}
+
 
 }

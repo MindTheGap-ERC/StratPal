@@ -24,11 +24,11 @@ numeric vector, samples drawn from the (pseudo) pdf
 Rejection sampling from the (pseudo) pdf \code{f} in the interval between \code{x_min} and \code{x_max}. Returns \code{n} samples. Note that values of \code{f} below 0 are capped to zero
 }
 \examples{
-\dontrun{
+
 f = sin
 x = rej_samp(f, 0, 3*pi, n = 100)
 hist(x) # note that no samples are drawn where sin is negative
-}
+
 }
 \seealso{
 \code{\link[=p3_var_rate]{p3_var_rate()}} for the derived variable rate Poisson point process implementation.

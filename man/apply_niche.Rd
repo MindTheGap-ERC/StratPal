@@ -21,7 +21,7 @@ Models niches by removing events (fossil occurrences) when they are outside of t
 Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
 }
 \examples{
-\dontrun{
+
 ## setup
 # using water depth as gradient
  t = scenarioA$t_myr
@@ -47,10 +47,10 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
  hist(foss_occ_niche, xlab = "time")
 
  # see also
- vignette("event_data")
+ #vignette("event_data")
  # for a detailed example on niche modeling
 
-}
+
 
 }
 \seealso{

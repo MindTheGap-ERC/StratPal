@@ -22,13 +22,13 @@ A list with elements \code{t} and \code{y}. \code{t} is a duplicate of the input
 Simulates a (continuous time) random walk as a Brownian drift
 }
 \examples{
-\dontrun{
+
 library("admtools") # required for plotting of results
 t = seq(0, 1, by = 0.01)
 l = random_walk(t, sigma = 3) # high variability, no direction
 plot(l, type = "l")
 l2 = random_walk(t, mu = 1) # low variabliity, increasing trend
 lines(l2$t, l2$y, col = "red")
-}
+
 
 }

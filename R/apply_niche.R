@@ -14,7 +14,7 @@ apply_niche = function(x, niche_def, gc){
   #' @returns numeric vector, events preserved after thinning
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' ## setup
     #' # using water depth as gradient
     #'  t = scenarioA$t_myr
@@ -40,10 +40,10 @@ apply_niche = function(x, niche_def, gc){
     #'  hist(foss_occ_niche, xlab = "time")
     #'
     #'  # see also
-    #'  vignette("event_data")
+    #'  #vignette("event_data")
     #'  # for a detailed example on niche modeling
     #'
-    #' }
+    #'
     #'
   #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] for the underlying mathematical procedure. Basic niche models available are [bounded_niche()] and [snd_niche()]
 
