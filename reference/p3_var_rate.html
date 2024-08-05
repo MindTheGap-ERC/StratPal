@@ -82,7 +82,7 @@ In the context of paleontology, these events can be interpreted as fossil occurr
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>numeric vector, timing/location of events</p>
+    <p>numeric vector, timing/location of events. Depending on the modeling framework, tyese events can represent location/age of fossils, or first/last occurrences of a group of taxa.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -91,7 +91,7 @@ In the context of paleontology, these events can be interpreted as fossil occurr
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># assuming events are fossil occurrences</span></span></span>
 <span class="r-in"><span><span class="co"># then rate is the avg rate of fossil occ. per unit</span></span></span>
 <span class="r-in"><span><span class="co">#linear decrease in rate from 50 at x = 0 to 0 at x = 1</span></span></span>
@@ -99,16 +99,18 @@ In the context of paleontology, these events can be interpreted as fossil occurr
 <span class="r-in"><span><span class="va">y</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">s</span> <span class="op">=</span> <span class="fu">p3_var_rate</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, f_max <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">s</span>, xlab <span class="op">=</span> <span class="st">"Time (myr)"</span>, main <span class="op">=</span> <span class="st">"Fossil Occurrences"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="p3_var_rate-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># conditioned to return 100 samples</span></span></span>
 <span class="r-in"><span><span class="va">s</span> <span class="op">=</span> <span class="fu">p3_var_rate</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, f_max <span class="op">=</span> <span class="fl">50</span>, n <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># hand over function</span></span></span>
 <span class="r-in"><span><span class="va">s</span> <span class="op">=</span> <span class="fu">p3_var_rate</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sin</span>, from <span class="op">=</span> <span class="fl">0</span> , to <span class="op">=</span> <span class="fl">3</span> <span class="op">*</span> <span class="va">pi</span>, n <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># note that negative values of f (sin) are ignored in sampling</span></span></span>
+<span class="r-plt img"><img src="p3_var_rate-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># see also</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"event_data"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#vignette("event_data")</span></span></span>
 <span class="r-in"><span><span class="co"># for details on usage and applications to paleontology</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
