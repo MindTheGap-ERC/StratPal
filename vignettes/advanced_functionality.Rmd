@@ -56,13 +56,17 @@ Other types of phenotypic evolution in the time domain can easily be incorporate
 
 -   They return a list with two elements: One named `t` that is a duplicate of the first argument handed to the function. The second one should be named `y` and contain the simulated trait values.
 
--   The output list `l` should be assigned both the class "list" and "timelist" via the command `class(l) = c("timelist", "list")` , see the source code of `random_walk` for an example
+-   The output list `l` should be assigned both the class "list" and "timelist" via the command `class(l) = c("timelist", "list")` , see the source code of `random_walk` for an example.
 
 The last two points make sure plotting via `admtools::plot.timelist` and `admtools::plot.stratlist` works seamlessly.
 
 ## Different models of event type data
 
 We used (constant and variable rate) Poisson point processes to simulate event type data. Any model of event-type data can be used (e.g., one with temporal correlation), as long as it returns a vector with the timing/position of the events.
+
+## Transforming data from the stratigraphic domain to the time domain
+
+Much of the explanations here focus on forward modeling, i.e., modeling the time domain and examining how it is expressed in the stratigraphic domain. The reverse direction (from the stratigraphic domain to the time domain) can be modeled using `strat_to_time`.
 
 ## Taphonomy for event type data
 
