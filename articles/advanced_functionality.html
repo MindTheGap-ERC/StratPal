@@ -155,7 +155,7 @@ trait values.</p></li>
 <li><p>The output list <code>l</code> should be assigned both the class
 “list” and “timelist” via the command
 <code>class(l) = c("timelist", "list")</code> , see the source code of
-<code>random_walk</code> for an example</p></li>
+<code>random_walk</code> for an example.</p></li>
 </ul>
 <p>The last two points make sure plotting via
 <code><a href="https://mindthegap-erc.github.io/admtools/reference/plot.timelist.html" class="external-link">admtools::plot.timelist</a></code> and
@@ -168,6 +168,16 @@ trait values.</p></li>
 simulate event type data. Any model of event-type data can be used
 (e.g., one with temporal correlation), as long as it returns a vector
 with the timing/position of the events.</p>
+</div>
+<div class="section level2">
+<h2 id="transforming-data-from-the-stratigraphic-domain-to-the-time-domain">Transforming data from the stratigraphic domain to the time
+domain<a class="anchor" aria-label="anchor" href="#transforming-data-from-the-stratigraphic-domain-to-the-time-domain"></a>
+</h2>
+<p>Much of the explanations here focus on forward modeling, i.e.,
+modeling the time domain and examining how it is expressed in the
+stratigraphic domain. The reverse direction (from the stratigraphic
+domain to the time domain) can be modeled using
+<code>strat_to_time</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="taphonomy-for-event-type-data">Taphonomy for event type data<a class="anchor" aria-label="anchor" href="#taphonomy-for-event-type-data"></a>
