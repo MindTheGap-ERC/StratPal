@@ -56,7 +56,7 @@ To use its functionality, you need to run
 library(admtools)
 ```
 
-before running any of the examples. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
+before running any of the examples. Specifically, this is needed for plotting of age-depth models and trait evolution. Below we provide a brief overview of the functionality of the `admtools` package we need. If you want more information, you can browse through the package vignettes using
 
 ```{r, eval=FALSE}
 browseVignettes(package = "admtools")
