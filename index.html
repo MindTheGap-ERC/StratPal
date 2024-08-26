@@ -83,25 +83,33 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>To install the package, first install the <em>remotes</em> package by running</p>
+<p>To install the package from CRAN, run</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"StratPal"</span><span class="op">)</span></span></code></pre></div>
+<p>in your R console.</p>
+<div class="section level3">
+<h3 id="github">Github<a class="anchor" aria-label="anchor" href="#github"></a>
+</h3>
+<p>To install the package from GitHub, first install the <em>remotes</em> package by running</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span></code></pre></div>
 <p>in the R console. Then, run</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"MindTheGap-ERC/StratPal"</span>,</span>
 <span>                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                        ref <span class="op">=</span> <span class="st">"HEAD"</span>,</span>
 <span>                        dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>to install the latest stable version of the package.</p>
 </div>
+</div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>Run</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span></code></pre></div>
 <p>to load the package. Use</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html" class="external-link">browseVignettes</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"StratPal"</span><span class="op">)</span></span></code></pre></div>
 <p>to view the available vignettes (long form documentation) with use cases or visit the package webpage (<a href="https://mindthegap-erc.github.io/StratPal/">mindthegap-erc.github.io/StratPal</a>) to get started.</p>
 </div>
@@ -125,7 +133,7 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 </h2>
 <p>To cite the package, please use</p>
 <ul>
-<li>Hohmann, Niklas. 2024. “StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.0).” Zenodo. <a href="https://doi.org/10.5281/zenodo.12790995" class="external-link uri">https://doi.org/10.5281/zenodo.12790995</a>.</li>
+<li>Hohmann, Niklas. 2024. “StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.1).” Zenodo. <a href="https://doi.org/10.5281/zenodo.13373351" class="external-link uri">https://doi.org/10.5281/zenodo.13373351</a>.</li>
 </ul>
 <p>Alternatively, you can also use the CITATION.cff file at the root of the repository, or <code>citation("StratPal")</code>.</p>
 </div>
@@ -137,7 +145,7 @@ Orcid: <a href="https://orcid.org/0000-0003-1559-1838" class="external-link">000
 </ul>
 <p>This package uses data from</p>
 <ul>
-<li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. “Identification of the mode of evolution in incomplete carbonate successions.” BMC Ecology and Evolution, In Press. <a href="https://doi.org/10.1101/2023.12.18.572098" class="external-link uri">https://doi.org/10.1101/2023.12.18.572098</a>.</p></li>
+<li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. “Identification of the mode of evolution in incomplete carbonate successions.” BMC Ecology and Evolution, <strong>24</strong>, 113. <a href="https://doi.org/10.1186/s12862-024-02287-2" class="external-link">DOI: 10.1186/s12862-024-02287-2</a>.</p></li>
 <li><p>Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. “Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data.” Open Science Framework. <a href="https://doi.org/10.17605/OSF.IO/ZBPWA" class="external-link uri">https://doi.org/10.17605/OSF.IO/ZBPWA</a>, published under the <a href="https://creativecommons.org/licenses/by/4.0/" class="external-link">CC-BY 4.0</a> license.</p></li>
 </ul>
 </div>
