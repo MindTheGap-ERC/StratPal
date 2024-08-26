@@ -37,7 +37,7 @@ We model events as *point processes*. In the `StratPal` package, we provide two 
 
 The usage of `p3` is straightforward:
 
-```{r}
+```{r, fig.alt="histogram of fossil occurrences appearing at a constant rate."}
 # simulate fossil occurrences over one Myr with an average of 15 occurrences per Myr
 p3(rate = 15, from = 0, to = 1) |>
   hist(main = "Fossil abundance",
@@ -49,7 +49,7 @@ Note that due to to random fluctuations, the histogram can differ a lot from the
 
 For `p3_var_rate`, you can pass either a function that specifies the rate to `x`:
 
-```{r}
+```{r, fig.alt = "histogram of fossil occurrences appearing at a sinusoidal rate."}
 # return 100 occurrences by setting n parameter
 # note that negative rates (where sin < 0) are ignored
 p3_var_rate(x = sin, from = 0, to = 9, n = 100) |>
@@ -60,7 +60,7 @@ p3_var_rate(x = sin, from = 0, to = 9, n = 100) |>
 
 Alternatively, you can pass it two vectors `x` and `y`. The rate is then determined by linear interpolation between these vectors. This is equivalent to using the function `approxfun(x,y, rule = 2)` as input for `x`.
 
-```{r}
+```{r, fig.alt = "histogram of fossil occurrences droping to 0."}
 # decline in last occurrences from 50 to 0 over 1 Myr
 p3_var_rate(x = c(0,1), y = c(50, 0), from = 0, to = 1, f_max = 50) |>
   hist(xlab = "Time [Myr]",
@@ -76,7 +76,7 @@ Keep in mind that it is only a matter of interpretation whether the "events" pro
 
 Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
 
-```{r, figures-side, fig.show="hold", out.width="50%"}
+```{r, figures-side, fig.show="hold", out.width="50%", fig.alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore."}
 adm_2km = tp_to_adm(t = scenarioA$t_myr,   # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
@@ -111,7 +111,7 @@ Any event type data can directly be transformed using an age-depth model via `ti
 
 Assuming the events are fossil specimens of one taxon, we can examine where specimens appear in the stratigraphic column:
 
-```{r}
+```{r, fig.alt="stratigraphic expression of fossil occurrences 2 km from shore."}
 p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
   hist(xlab = "Stratigraphic height [m]",                           # plot
@@ -124,7 +124,7 @@ Note the option `destructive = TRUE` in `time_to_strat`. This is because we assu
 
 Assuming the same rate of fossil specimens, we get a very different pattern 12 km from shore:
 
-```{r}
+```{r, fig.alt="stratigraphic occurrence of fossil occurrences 12 km from shore."}
 p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>  # same rate as 2 km from shore
   time_to_strat(adm_12km, destructive = TRUE) |>                       # use different adm for transformation
   hist(xlab = "Stratigraphic height [m]",                              # plot histogram
@@ -141,7 +141,7 @@ Not only is the section much shorter (not even 20 m), but there are 2 distinct p
 
 In the fossil record, we can not directly observe origination and extinction rates of taxa, but only their first and last occurrences. This type of event data can directly be transformed using `time_to_strat` when we assume taxa are very common. This assumption will be explored further below.
 
-```{r}
+```{r, fig.alt="stratigraphic expression of last occurrences 2 km from shore."}
 p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate of last occ
   time_to_strat(adm_2km, destructive = FALSE) |>                    # non-destructive transformation!
   hist(xlab = "Stratigraphic height [m]",                           # plot histogram
@@ -154,7 +154,7 @@ This would be the pattern of last occurrences in the section 2 km offshore when 
 
 The patter 12 km offshore is very different:
 
-```{r}
+```{r, fig.alt="stratigraphic expression of last occurrences 12 km from shore."}
 p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>
   time_to_strat(adm_12km, destructive = TRUE) |>
   hist(xlab = "Stratigraphic height [m]",
@@ -175,7 +175,7 @@ Here we explore the idea of *range offset*, which is the offset between the last
 
 First, we model all occurrences of the taxon up to its extinction in the time domain, and save it in a variable:
 
-```{r}
+```{r, fig.alt="fossil occurrences in the time domain."}
 t_ext = 1.5 # time of "true" extinction
 r = 30      # rate of fossil occurrences
 # simulate rate fossil occurrences of taxon 
@@ -232,7 +232,7 @@ In this example we focus on *water depth* as gradient. The general modeling fram
 
 First, we define a function that determines how water depth (our gradient) changes with time:
 
-```{r}
+```{r, fig.alt="water depth 2 km from shore in scenario A."}
 t = scenarioA$t_myr           # time steps of the model
 wd = scenarioA$wd_m[,"2km"]   # water depth 2 km offshore at model time steps
 gc = approxfun(t, wd)         # define function that defines how the gradient changes with time (gc = *G*radient *C*hange)
@@ -248,7 +248,7 @@ Next, we define the niche. This is done using a function that takes water depth 
 
 For our example, we use the helper function `snd_niche` (*snd* standing for "scaled normal distribution") to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions, or `?bounded_niche` for another template niche model.
 
-```{r}
+```{r, fig.alt="collection probability of a taxon along water depth."}
 my_niche = snd_niche(opt = 10,       # preferred water depth 
                      tol = 5,        # tolerance to water depth fluctuations
                      cutoff_val = 0) # cut off negative values - the taxon does not survive on land
@@ -264,7 +264,7 @@ The taxon we are modeling has its environmental niche optimum in 10 m water dept
 
 With the niche and the change in gradient defined, we can use `apply_niche` for niche modeling.
 
-```{r}
+```{r, fig.alt="fossil abundance in the time domain, with incorporation of niche modeling."}
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences of taxon based on a constant rate
   apply_niche(niche_def = my_niche, gc = gc) |>                     # apply the niche model
   hist(xlab = "Time [Myr]",
@@ -277,7 +277,7 @@ Here you can see that the taxon only occurs at times where the water depth is fa
 
 With the basic niche modeling done, we can incorporate it into our modeling pipeline to examine the joint effects of stratigraphic distortion by age-depth models and niche preferences.
 
-```{r}
+```{r, fig.alt="fossil abundance in the stratigraphic domain, with incorporation of niche modeling."}
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences based on constant rate
   apply_niche(niche_def = my_niche, gc = gc) |>                     # apply niche model
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into strat. domain, destroy fossils that coincide with hiatuses 
@@ -290,7 +290,7 @@ p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occu
 
 You can see a general decrease in fossil abundance, but in contrast to the time domain, no prolonged intervals without the fossil are visible. This is because the gaps in fossil abundance in the time domain coincide with hiatuses, and will thus not be visible in the stratigraphic domain. The decrease in fossil abundance seen here is because the carbonate platform stratigraphy used here is characterized by continuous growth of carbonates, which fill in the available accommodation space, thus reducing the water depth over time. This is a typical scenario in many carbonate platforms, but other scenarios are possible.
 
-```{r}
+```{r, fig.alt="water depth 2 km from shore expressed in the stratigraphic domain."}
 list("t" = t, "y" = wd) |>    # create list with time - water depth information
   time_to_strat(adm_2km) |>   # transform into the strat. domain
   plot(orientation = "lr",    # plot water depth information in the stratigraphic domain

@@ -41,7 +41,7 @@ Use `vignette("advanced_functionality")` for guidelines to implement your own mo
 
 You can visualize the different modes of evolution using the following pipeline:
 
-```{r}
+```{r, fig.alt="plot of a random walk"}
 seq(0, 1, by = 0.01) |>             # times of simulation in Myr. Simulate over 1 Myr years with 10 kyr resolution
   random_walk(sigma = 1, mu = 3) |> # simulate random walk with increasing trait values
   plot(type = "l",                  # plot results
@@ -61,7 +61,7 @@ As an example, we compare the preservation of trait evolution 2 km and 12 km off
 
 First define the age-depth models:
 
-```{r, figures-side, fig.show="hold", out.width="50%"}
+```{r, figures-side, fig.show="hold", out.width="50%", fig.alt = "2 plots of age-depth models, one 2 km from shore and one 12 km from shore"}
 adm_2km = tp_to_adm(t = scenarioA$t_myr,    # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
@@ -91,7 +91,7 @@ title("Age-depth model 12 km from shore")
 
 We use the defined age-depth models to transform the simulated trait values from the time domain into the depth domain via `time_to_strat`:
 
-```{r}
+```{r, fig.alt="plot of the stratigraphic experssion of a random walk 2 km from shore."}
 
 seq(from = min_time(adm_2km), to = max_time(adm_2km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
   random_walk(sigma = 1, mu = 3) |>                                 # simulate random walk
@@ -107,7 +107,7 @@ This is what a biased random walk in the time domain would look like if it was o
 
 12 km offshore, the preservation is very different:
 
-```{r}
+```{r, fig.alt="plot of the stratigraphic expression of a random walk 12 km from shore."}
 seq(from = min_time(adm_12km), to = max_time(adm_12km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
   random_walk(sigma = 1, mu = 3) |>                                   # simulate random walk
   time_to_strat(adm_12km, destructive = FALSE) |>                     # transform data from time to strat domain
@@ -138,7 +138,7 @@ To fix this, we want to prescribe where in the stratigraphic domain samples are 
 
 Let's assume we take a sample every 2 meters. Then our five steps above result in the following modeling pipeline:
 
-```{r}
+```{r, fig.alt = "plot of the stratigraphic expression of a random walk 2 km from shore, sampled every 2 km."}
 dist_between_samples_m = 2
 sampling_loc_m = seq(from = 0.5 * dist_between_samples_m,
                      to = max_height(adm_2km),

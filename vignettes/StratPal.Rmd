@@ -29,7 +29,19 @@ Throughout the vignettes there are several **tasks** that you can solve. They ar
 
 ## Installation {#installation}
 
-To install the `StratPal` package, first install the `remotes` package by running
+### CRAN
+
+To install the `StratPal` package from [CRAN](https://cran.r-project.org/), run
+
+```{r}
+install.packages("StratPal")
+```
+
+in the R console.
+
+### GitHub
+
+To install the `StratPal` package from GitHub, first install the `remotes` package by running
 
 ``` r
 install.packages("remotes")
@@ -75,7 +87,7 @@ The data contains information on the eustatic sea level curve used for the model
 
 As an example, here is the eustatic sea level curve used for the model run:
 
-```{r}
+```{r, fig.alt="Plot of a sinusoidal sea level curve."}
 plot(x = scenarioA$t_myr,
      y = scenarioA$sl_m,
      type = "l",
@@ -95,7 +107,7 @@ This functionality is available from R version 4.2 on.
 
 Consider the following code for simulating and plotting a random walk using the `random_walk` function:
 
-```{r}
+```{r, fig.alt="plot of a random walk"}
 set.seed(42)             # set seed for computational reproducibility
 t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
 l = random_walk(t)       # simulate the random walk
@@ -104,7 +116,7 @@ plot(l, type = "l")      # line plot of the results
 
 This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are trying to achieve: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
 
-```{r}
+```{r, fig.alt="plot of a random walk, identical to the one above"}
 set.seed(42)            # set seed for computational reproducibility
 seq(0, 1, by = 0.01) |> # define times of simulation  
   random_walk() |>      # simulate random walk
@@ -165,7 +177,7 @@ The nice thing about constructing age-depth models this way is that there is ple
 
 Now you can plot the age-depth model using the basic `plot` command:
 
-```{r}
+```{r, fig.alt = "plot of an  age-depth model, showing how the time and depth domain are connected"}
 # plot age-depth model, see ?plot.adm for details
 plot(adm,
      lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
@@ -188,7 +200,7 @@ summary(adm) # some summary statistics
 
 We can now use the pipe operator to do some first analysis of the age-depth model
 
-```{r}
+```{r, fig.alt="histogram of hiatus durations 2 km offshore in scenario A"}
 
 # plot histogram of hiatus durations
 adm |>    
