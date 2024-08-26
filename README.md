@@ -3,9 +3,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml)
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12790995.svg)](https://doi.org/10.5281/zenodo.12790995)
-
+[![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal)
 <!-- badges: end -->
 
 R package for stratigraphic paleobiology modeling pipelines.
