@@ -27,7 +27,17 @@ R version \>= 4.2
 
 ## Installation
 
-To install the package, first install the *remotes* package by running
+To install the package from CRAN, run
+
+``` r
+install.packages("StratPal")
+```
+
+in your R console.
+
+### Github
+
+To install the package from GitHub, first install the *remotes* package by running
 
 ``` r
 install.packages("remotes")
@@ -76,7 +86,7 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 To cite the package, please use
 
--   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.0)." Zenodo. <https://doi.org/10.5281/zenodo.12790995>.
+-   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.1)." Zenodo. <https://doi.org/10.5281/zenodo.13373351>.
 
 Alternatively, you can also use the CITATION.cff file at the root of the repository, or `citation("StratPal")`.
 
@@ -86,7 +96,7 @@ Alternatively, you can also use the CITATION.cff file at the root of the reposit
 
 This package uses data from
 
--   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. <https://doi.org/10.1101/2023.12.18.572098>.
+-   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, **24**, 113. [DOI: 10.1186/s12862-024-02287-2](https://doi.org/10.1186/s12862-024-02287-2).
 
 -   Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. "Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data." Open Science Framework. <https://doi.org/10.17605/OSF.IO/ZBPWA>, published under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 

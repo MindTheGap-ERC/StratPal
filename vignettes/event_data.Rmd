@@ -324,7 +324,7 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 * Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. https://doi.org/10.2110/palo.2020.038.
 
-* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. https://doi.org/10.1101/2023.12.18.572098.
+* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. https://doi.org/10.1186/s12862-024-02287-2.
 
 * Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
 

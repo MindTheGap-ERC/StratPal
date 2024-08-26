@@ -183,7 +183,7 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 * Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. https://doi.org/10.2110/palo.2020.038.
 
-* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions". BMC Ecology and Evolution, In Press. https://doi.org/10.1101/2023.12.18.572098.
+* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions". BMC Ecology and Evolution 24, 113. https://doi.org/10.1186/s12862-024-02287-2.
 
 * Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.
 
