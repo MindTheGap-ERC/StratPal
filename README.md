@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13373351.svg)](https://doi.org/10.5281/zenodo.13373351) [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal)
+[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13373351.svg)](https://doi.org/10.5281/zenodo.13373351) [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal) [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
 
 <!-- badges: end -->
 
