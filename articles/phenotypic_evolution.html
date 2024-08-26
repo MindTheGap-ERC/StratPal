@@ -118,7 +118,7 @@ following pipeline:</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,                  <span class="co"># plot results</span></span>
 <span>       xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-2-1.png" alt="plot of a random walk" width="700"></p>
 <p><strong>Task:</strong> Modify the pipeline to get an intuition for
 the different modes of evolution. What are the effects of their
 parameters, and what is their biological meaning?</p>
@@ -163,7 +163,7 @@ details on scenario A.</p>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/figures-side-1.png" width="50%"><img src="phenotypic_evolution_files/figure-html/figures-side-2.png" width="50%"></p>
+<p><img src="phenotypic_evolution_files/figure-html/figures-side-1.png" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore" width="50%"><img src="phenotypic_evolution_files/figure-html/figures-side-2.png" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore" width="50%"></p>
 </div>
 <div class="section level3">
 <h3 id="stratigraphic-expression-of-phenotypic-evolution">Stratigraphic expression of phenotypic evolution<a class="anchor" aria-label="anchor" href="#stratigraphic-expression-of-phenotypic-evolution"></a>
@@ -181,7 +181,7 @@ values from the time domain into the depth domain via
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Trait evolution 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-3-1.png" alt="plot of the stratigraphic experssion of a random walk 2 km from shore." width="700"></p>
 <p>This is what a biased random walk in the time domain would look like
 if it was observed 2 km offshore in the simulated carbonate platform.
 The large jumps in traits correspond to long hiatuses caused by
@@ -198,7 +198,7 @@ al. 2024</a>). Compare this figure to the random walk in the time domain
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait value"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Trait evolution 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-4-1.png" alt="plot of the stratigraphic expression of a random walk 12 km from shore." width="700"></p>
 <p>You can also see two jumps, but the first is at a different location
 compared to the section 2 km offshore. Looking at the age-depth models,
 we can see why this is: 2 km offshore, the jumps are caused by prolonged
@@ -256,7 +256,7 @@ above result in the following modeling pipeline:</p>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait Value"</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Trait evolution 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p><img src="phenotypic_evolution_files/figure-html/unnamed-chunk-5-1.png" alt="plot of the stratigraphic expression of a random walk 2 km from shore, sampled every 2 km." width="700"></p>
 <p>There we have it! This is what the lineage would look like if it was
 sampled every 2 meters in a sections 2 km from shore.</p>
 <p><strong>Task:</strong> How does prescribing a sampling strategy

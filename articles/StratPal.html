@@ -85,18 +85,30 @@ paleobiology.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>To install the <code>StratPal</code> package, first install the
-<code>remotes</code> package by running</p>
+<div class="section level3">
+<h3 id="cran">CRAN<a class="anchor" aria-label="anchor" href="#cran"></a>
+</h3>
+<p>To install the <code>StratPal</code> package from <a href="https://cran.r-project.org/" class="external-link">CRAN</a>, run</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"StratPal"</span><span class="op">)</span></span></code></pre></div>
+<p>in the R console.</p>
+</div>
+<div class="section level3">
+<h3 id="github">GitHub<a class="anchor" aria-label="anchor" href="#github"></a>
+</h3>
+<p>To install the <code>StratPal</code> package from GitHub, first
+install the <code>remotes</code> package by running</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span></code></pre></div>
 <p>in the R console. Then, run</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"MindTheGap-ERC/StratPal"</span>,</span>
 <span>                        build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                        ref <span class="op">=</span> <span class="st">"HEAD"</span>,</span>
 <span>                        dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>to install the latest stable version of the package and all its
 dependencies.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
@@ -106,14 +118,14 @@ tools provided by the <code>admtools</code> package, which is
 <em>automatically</em> installed when you install
 <code>StratPal</code>.</p>
 <p>To use its functionality, you need to run</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MindTheGap-ERC/admtools" class="external-link">admtools</a></span><span class="op">)</span></span></code></pre></div>
 <p>before running any of the examples. Specifically, this is needed for
 plotting of age-depth models and trait evolution. Below we provide a
 brief overview of the functionality of the <code>admtools</code> package
 we need. If you want more information, you can browse through the
 package vignettes using</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html" class="external-link">browseVignettes</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"admtools"</span><span class="op">)</span></span></code></pre></div>
 <p>or by visiting the package website at <a href="https://mindthegap-erc.github.io/admtools/" class="external-link uri">https://mindthegap-erc.github.io/admtools/</a>.</p>
 </div>
@@ -137,14 +149,14 @@ facies at locations 2, 4, 6, 8, 10, and 12 km from shore in the
 simulated carbonate platform.</p>
 <p>As an example, here is the eustatic sea level curve used for the
 model run:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,</span>
 <span>     y <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">sl_m</span>,</span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Eustatic sea level [m]"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Sea level curve used as model input"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-7-1.png" alt="Plot of a sinusoidal sea level curve." width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="piping">Piping<a class="anchor" aria-label="anchor" href="#piping"></a>
@@ -159,23 +171,23 @@ underlying logic of a modeling <em>pipeline</em> clearer.</p>
 </h3>
 <p>Consider the following code for simulating and plotting a random walk
 using the <code>random_walk</code> function:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>             <span class="co"># set seed for computational reproducibility</span></span>
 <span><span class="va">t</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="co"># times where we evaluate the random walk</span></span>
 <span><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>       <span class="co"># simulate the random walk</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span>      <span class="co"># line plot of the results</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-8-1.png" alt="plot of a random walk" width="700"></p>
 <p>This code does the job, but it has some flaws: We introduced a lot of
 intermediate variables, which makes it hard to trace the logic of what
 we are trying to achieve: plotting a random walk. Using the pipe
 operator <code>|&gt;</code> we can clarify the logic and simplify the
 code:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>            <span class="co"># set seed for computational reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># define times of simulation  </span></span>
 <span>  <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>      <span class="co"># simulate random walk</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span>      <span class="co"># plot</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-9-1.png" alt="plot of a random walk, identical to the one above" width="700"></p>
 <p>You see that the code does the same thing: it plots a random walk,
 but it does so in one step without intermediate variables by chaining
 together the commands using the pipe <code>|&gt;</code>. This becomes a
@@ -193,7 +205,7 @@ the function to the right of <code>|&gt;</code>.</p>
 <p>You can also use <code>|&gt;</code> to pass arguments that are not in
 the first place. For this, simply replace the argument with a underscore
 <code>_</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate deciles of normal distribution</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, p <span class="op">=</span> <span class="va">_</span><span class="op">)</span> <span class="co"># pass left hand side to the p argument</span></span>
@@ -211,11 +223,11 @@ functionality from the <code>admtools</code> package. Here we go through
 some basics of dealing with age-depth models. For more details on
 available functionality you can browse through the package vignettes
 using</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html" class="external-link">browseVignettes</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"admtools"</span><span class="op">)</span></span></code></pre></div>
 <p>or visit the package website at <a href="https://mindthegap-erc.github.io/admtools/" class="external-link uri">https://mindthegap-erc.github.io/admtools/</a>.</p>
 <p>To get started, first load the package using</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/MindTheGap-ERC/admtools" class="external-link">"admtools"</a></span><span class="op">)</span></span></code></pre></div>
 <p>The <code>StratPal</code> package comes with some example data for
 age-depth models stored in the <code>scenarioA</code> variable, see the
@@ -227,7 +239,7 @@ section on <a href="#example-data">example data</a> or
 <p>Let’s start with defining the age-depth model 2 km from shore in
 scenario A. This can be done with <code>tp_to_adm</code> (tie points to
 age-depth model):</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t</span> <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>       <span class="co"># extract time tie points</span></span>
 <span><span class="va">h</span> <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">h_m</span><span class="op">[</span>,<span class="st">"2km"</span><span class="op">]</span> <span class="co"># get height tie points 2 km offshore in scenario A</span></span>
 <span></span>
@@ -246,7 +258,7 @@ age-depth models, plot them, or transform data using them.</p>
 </h3>
 <p>Now you can plot the age-depth model using the basic
 <code>plot</code> command:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># plot age-depth model, see ?plot.adm for details</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">adm</span>,</span>
 <span>     lwd_acc <span class="op">=</span> <span class="fl">2</span>,   <span class="co"># plot thicker lines for intervals with sediment accumulation (lwd = line width)</span></span>
@@ -254,14 +266,14 @@ age-depth models, plot them, or transform data using them.</p>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add time axis label</span></span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add length axis label</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-14-1.png" alt="plot of an  age-depth model, showing how the time and depth domain are connected" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="extracting-information">Extracting information<a class="anchor" aria-label="anchor" href="#extracting-information"></a>
 </h3>
 <p>There is a lot of functionality available to extract information from
 an age-depth model:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_total_duration.html" class="external-link">get_total_duration</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span> <span class="co"># time interval covered by adm</span></span>
 <span><span class="co">#&gt; [1] 1.999</span></span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_total_thickness.html" class="external-link">get_total_thickness</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span> <span class="co"># sediment accumulated </span></span>
@@ -276,13 +288,13 @@ an age-depth model:</p>
 <span><span class="co">#&gt; 10 hiatus(es)</span></span></code></pre></div>
 <p>We can now use the pipe operator to do some first analysis of the
 age-depth model</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># plot histogram of hiatus durations</span></span>
 <span><span class="va">adm</span> <span class="op">|&gt;</span>    </span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_hiat_duration.html" class="external-link">get_hiat_duration</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span> xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Hiatus duration"</span>, <span class="st">"["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_T_unit.html" class="external-link">get_T_unit</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>,<span class="st">"]"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-16-1.png" alt="histogram of hiatus durations 2 km offshore in scenario A" width="700"></p>
 <p>You can see that there are a 8 shorter hiatuses (below 100 kyr) and 2
 long hiatuses with a duration of more than 500 kyr. To get a detailed
 list with information on hiatuses you can use
@@ -309,18 +321,18 @@ stratigraphic paleobiology see the vignettes linked below under <a href="#gettin
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p>With the preliminaries out of the way, you can go to</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"phenotypic_evolution"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to model stratigraphic paleobiology of phenotypic
 evolution, or explore the vignette online under <a href="https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html">mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution</a>.</p>
 <p>Go to</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"event_data"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to model stratigraphic paleobiology of event data
 such as individual fossils and first/last occurrences of taxa, or
 explore the vignette online under <a href="https://mindthegap-erc.github.io/StratPal/articles/event_data.html">mindthegap-erc.github.io/StratPal/articles/event_data</a>.</p>
 <p>See also</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"advanced_functionality"</span><span class="op">)</span></span></code></pre></div>
 <p>for details on how to expand on the modeling pipelines described
 here, or explore the vignette online under <a href="https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html">mindthegap-erc.github.io/StratPal/articles/advanced_functionality</a>.</p>
