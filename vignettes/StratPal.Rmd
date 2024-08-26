@@ -33,7 +33,7 @@ Throughout the vignettes there are several **tasks** that you can solve. They ar
 
 To install the `StratPal` package from [CRAN](https://cran.r-project.org/), run
 
-```{r}
+```{r, eval=FALSE}
 install.packages("StratPal")
 ```
 
@@ -43,13 +43,13 @@ in the R console.
 
 To install the `StratPal` package from GitHub, first install the `remotes` package by running
 
-``` r
+```{r, eval=FALSE}
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
-``` r
+```{r, eval=FALSE}
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
