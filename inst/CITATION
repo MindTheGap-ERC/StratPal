@@ -1,0 +1,8 @@
+bibentry("misc",
+  title = "StratPal: R package for stratigraphic paleobiology modeling pipelines",
+  author = "Niklas Hohmann",
+  year = 2024,
+  publisher = "Zenodo",
+  version = "v0.1.1",
+  doi = "10.5281/zenodo.13373351",
+  url = "https://doi.org/10.5281/zenodo.13373351")
