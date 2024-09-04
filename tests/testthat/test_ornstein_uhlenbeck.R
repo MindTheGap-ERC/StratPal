@@ -11,3 +11,7 @@ test_that("wrong parameter values are caught correctly", {
   expect_error(ornstein_uhlenbeck(c(1,2), theta = -1))
   expect_error(ornstein_uhlenbeck(c(1,2), theta = 0, y0 = "stationary"))
 })
+
+test_that("return class is correct", {
+  expect_s3_class(ornstein_uhlenbeck(c(1,2), y0 = "stationary"), "timelist")
+})
