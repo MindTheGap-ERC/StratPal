@@ -46,7 +46,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rej_samp</span><span class="op">(</span><span class="va">f</span>, <span class="va">x_min</span>, <span class="va">x_max</span>, n <span class="op">=</span> <span class="fl">1L</span>, f_max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rej_samp</span><span class="op">(</span><span class="va">f</span>, <span class="va">x_min</span>, <span class="va">x_max</span>, n <span class="op">=</span> <span class="fl">1L</span>, f_max <span class="op">=</span> <span class="fl">1</span>, max_try <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -71,6 +71,10 @@
 
 <dt id="arg-f-max">f_max<a class="anchor" aria-label="anchor" href="#arg-f-max"></a></dt>
 <dd><p>maximum value of <code>f</code> in the interval from <code>x_min</code> to <code>x_max</code>. If f attains values larger than <code>f_max</code> a warning is throw, <code>f_max</code> is adjusted, and sampling is started again</p></dd>
+
+
+<dt id="arg-max-try">max_try<a class="anchor" aria-label="anchor" href="#arg-max-try"></a></dt>
+<dd><p>maximum number of tries in the rejection sampling algorithm. If more tries are needed, an error is thrown. If this is the case, inspect of your function <code>f</code> is well-defined and positive, and if <code>f_max</code> provides a reasonable upper bound on it. Adjust <code>max_try</code> if you are certain that both is the case, e.g. if <code>f</code> is highly irregular.</p></dd>
 
 </dl></div>
     <div class="section level2">
