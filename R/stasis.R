@@ -21,6 +21,9 @@ stasis = function(t, mean = 0, sd = 1){
     #'  lines(l2$t, l2$y, col = "red") # plot second lineage
     #'
     #'
+  if (sd < 0){
+    stop("paramter \"sd\" must be positive or 0")
+  }
   l = list(t = t,
            y = stats::rnorm(n = length(t), mean = mean, sd = sd))
   class(l) = c("timelist", "list")
