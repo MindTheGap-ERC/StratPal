@@ -51,7 +51,7 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
     vol = stats::integrate(f, lower = from, upper = to)$value
     n = stats::rpois(1, lambda = vol)
   }
-  if (n <= 0){ return(c())}
+  if (n <= 0){ return(numeric())}
 
   # rejection sampling
   x = rej_samp(f = f,x_min = from, x_max = to, n = n, f_max = f_max)
