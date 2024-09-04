@@ -15,3 +15,11 @@ test_that("initial value is correct",{
   r = random_walk(t - 2, y0 = y0)
   expect_equal(r$y[1], y0)
 })
+
+test_that("throws error for negative sigma", {
+  expect_error(random_walk(c(1,2), sigma = -1))
+})
+
+test_that("throws error for too short vectors of t", {
+  expect_error(random_walk(1))
+})

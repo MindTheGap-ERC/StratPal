@@ -25,7 +25,20 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
     #'
     #'
 
+  if (length(t) < 2){
+    stop("need at least 2 entries in \"t\"")
+  }
+  if (sigma < 0){
+    stop("paramter \"sigma\" must be positive or 0")
+  }
+  if (theta < 0){
+    stop("paramter \"sigma\" must be positive or 0")
+  }
+
   if (y0 == "stationary"){
+    if (theta ==0){
+      stop("parameter \"theta\" must be positive in stationary case")
+    }
     y0 = stats::rnorm(1, mean = mu, sd = sigma / sqrt(2 * theta))
   }
 

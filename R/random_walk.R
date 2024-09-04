@@ -23,6 +23,12 @@ random_walk = function(t, sigma = 1, mu = 0, y0 = 0){
     #' lines(l2$t, l2$y, col = "red")
     #'
     #'
+  if (sigma < 0){
+    stop("paramter \"sigma\" must be positive or 0")
+  }
+  if (length(t) < 2){
+    stop("need at least 2 entries in \"t\"")
+  }
   increments = diff(t)
   acc = cumsum(c(0, stats::rnorm(n = increments, mean = 0, sd = sqrt(increments))))
   y = sigma * acc + mu * (t-min(t)) + y0
