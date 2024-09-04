@@ -1,5 +1,9 @@
 # StratPal (development version)
 
+* add more tests
+
+* add input checks
+
 # StratPal 0.1.1
 
 * add citation and DOI
