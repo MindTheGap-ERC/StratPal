@@ -8,9 +8,9 @@ reference:
 - subtitle: Trait evolution
   desc: Simulate trait evolution
   contents:
-  - stasis
-  - random_walk
   - ornstein_uhlenbeck
+  - random_walk
+  - stasis
 
 - subtitle: Event type data
   desc: Simulate event type data (e.g., fossil location/ages, first/last occurrences)
@@ -22,10 +22,10 @@ reference:
 - subtitle: Ecology and taphonomy
   desc: Ecological niche models and taphonomic effects
   contents:
-  - apply_niche
-  - snd_niche
   - bounded_niche
+  - apply_niche
   - apply_taphonomy
+  - snd_niche
   - thin
 
 - subtitle: Example data
