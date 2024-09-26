@@ -11,6 +11,7 @@ reference:
   - ornstein_uhlenbeck
   - random_walk
   - stasis
+  - stasis_sl
 
 - subtitle: Event type data
   desc: Simulate event type data (e.g., fossil location/ages, first/last occurrences)
@@ -32,3 +33,8 @@ reference:
   desc: Example data from stratigraphic forward models
   contents:
   - scenarioA
+
+- subtitle: paleoTS functionality
+  desc: Tools for linkage with the paleoTS package
+  contents:
+  - reduce_to_paleoTS
