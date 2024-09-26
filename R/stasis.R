@@ -4,11 +4,13 @@ stasis = function(t, mean = 0, sd = 1){
   #' @title simulate phenotypic stasis
   #'
   #' @param t times at which the traits are determined
-  #' @param mean scalar, mean trait value
-  #' @param sd strictly positive scalar, standard deviation of traits
+  #' @param mean number, mean trait value
+  #' @param sd strictly positive number, standard deviation of traits
+  #'
+  #' @seealso [random_walk()] and [ornstein_uhlenbeck()] to simulate other modes of evolution, [stasis_sl()] to simulate stasis on specimen level
   #'
   #' @description
-    #' Simulates stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`
+    #' Simulates stasis of mean trait values as independent, normally distributed random variables with mean `mean` and standard deviation `sd`
     #'
   #' @returns A list with two elements: `t` and `y`. `t` is a duplicate of the input `t`, `y` are the corresponding trait values. Output list is of S3 class `timelist` (inherits from `list`) and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
   #' @examples

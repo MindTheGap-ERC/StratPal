@@ -9,15 +9,15 @@ stasis(t, mean = 0, sd = 1)
 \arguments{
 \item{t}{times at which the traits are determined}
 
-\item{mean}{scalar, mean trait value}
+\item{mean}{number, mean trait value}
 
-\item{sd}{strictly positive scalar, standard deviation of traits}
+\item{sd}{strictly positive number, standard deviation of traits}
 }
 \value{
 A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the corresponding trait values. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-Simulates stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
+Simulates stasis of mean trait values as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}
 }
 \examples{
 
@@ -29,4 +29,7 @@ Simulates stasis as independent, normally distributed random variables with mean
  lines(l2$t, l2$y, col = "red") # plot second lineage
 
 
+}
+\seealso{
+\code{\link[=random_walk]{random_walk()}} and \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to simulate other modes of evolution, \code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level
 }
