@@ -27,7 +27,7 @@ stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
   r = list(t = x$t)
   vals = list()
   for (i in seq_along(x$t)){
-    vals[[i]] = rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(interpop_var))
+    vals[[i]] = stats::rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(interpop_var))
   }
   r[["vals"]] = vals
   class(r) = c("pre_paleoTS","timelist",  "list")

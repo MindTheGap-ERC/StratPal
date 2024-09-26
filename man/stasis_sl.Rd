@@ -18,11 +18,11 @@ stasis_sl(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10)
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }
 \value{
-description
+an object of S3 class "pre-paleoTS". This object can be transformed using \code{apply_taphonomy}, \code{apply_niche} or \code{time_to_strat}, and then reduced to a \code{paleoTS} object using \code{reduce_to_paleoTS}. This can then be used to test for different modes of evolution.
 }
 \description{
 simulated stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}, draws \code{n_per_sample} samples from each sampling location (population) that have specified variance \code{interpop_var}
 }
 \seealso{
-\code{\link[=stasis]{stasis()}} for the version that simulated stasis of mean trait values.
+\code{\link[=stasis]{stasis()}} for the version that simulates stasis of mean trait values.
 }
