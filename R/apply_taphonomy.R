@@ -22,7 +22,12 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #' # for details on usage
     #'
     #'
+ UseMethod("apply_taphonomy")
 
+}
+
+apply_taphonomy.numeric = function(x, pres_potential, ctc){
+  #' @export
   # function that returns preservation potential as a function of input (e.g. time or position)
   change_pres_pot = function(y) pres_potential(ctc(y))
   # thin events
