@@ -19,3 +19,14 @@ test_that("pre_paleoTS object remains unchanged for perfect preservation", {
   ctc = function(x) rep(1, length(x))
   expect_identical(apply_taphonomy(x, pres_potential, ctc), x)
 })
+
+
+test_that("works with stratigraphic data", {
+  x = stasis_sl(1:5)
+  x$h = x$t
+  x$t = NULL
+  class(x) = c("pre_paleoTS", "stratlist", "list")
+  pres_potential = function(x) rep(1, length(x))
+  ctc = function(x) rep(1, length(x))
+  expect_identical(apply_taphonomy(x, pres_potential, ctc), x)
+})
