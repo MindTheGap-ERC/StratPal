@@ -4,10 +4,14 @@
 \alias{reduce_to_paleoTS}
 \title{reduce pre-paleoTS format to paleoTS}
 \usage{
-reduce_to_paleoTS(x, ...)
+reduce_to_paleoTS(x, min_n = 1, na.rm = TRUE, ...)
 }
 \arguments{
 \item{x}{a \code{pre_paleoTS} object}
+
+\item{min_n}{minimum number of specimens. If the number of specimens at a sampling location falls below this number, the sampling location will be removed}
+
+\item{na.rm}{Logical. If sampling locations are NA (e.g., because of erosion), should the sample be removed?}
 
 \item{...}{other options. currently unused}
 }
@@ -24,5 +28,5 @@ y = reduce_to_paleoTS(x)   # reduce to standard paleoTS format
 
 }
 \seealso{
-\code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level (sl), returning an object of call \code{pre_paleoTS}
+\code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level (sl), returning an object of type \code{pre_paleoTS}
 }
