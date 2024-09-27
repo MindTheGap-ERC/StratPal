@@ -28,6 +28,7 @@ reference:
   - apply_taphonomy
   - snd_niche
   - thin
+  - prob_remove
 
 - subtitle: Example data
   desc: Example data from stratigraphic forward models
