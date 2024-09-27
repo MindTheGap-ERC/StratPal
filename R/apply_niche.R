@@ -65,8 +65,8 @@ apply_niche.pre_paleoTS = function(x, niche_def, gc){
   #'
   change_in_niche = function(y) niche_def(gc(y))
   thin_vals = change_in_niche(x$t)
-  for (i in seq_along(x$t)){
-    r = prob_remove(x$vals[[i]], prob = thin_vals)
+  for (i in seq_along(thin_vals)){
+    r = prob_remove(x$vals[[i]], prob = thin_vals[i])
     x$vals[[i]] = x$vals[[i]][as.logical(r)]
   }
   return(x)
