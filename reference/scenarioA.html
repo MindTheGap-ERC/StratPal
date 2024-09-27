@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">StratPal</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A list with 6 elements:</p><ul><li><p><code>t_myr</code> : numeric vector. timesteps of the simulation in Myr</p></li>
 <li><p><code>sl_m</code> : numeric vector. eustatic sea level in m</p></li>
-<li><p><code>dist_from_shore</code> : character vector. Distance from shore in km of locations at which the observations were made</p></li>
+<li><p><code>dist_from_shore</code> : character vector. Distance from shore in km of locations at which the observations were made. Available distances are "2km", "4km", "6km", "8km", "10km", "12km".</p></li>
 <li><p><code>h_m</code> : matrix of size length(t_myr) x length(dist_from_shore). Accumulated sediment height in m at examined locations</p></li>
 <li><p><code>wd_m</code>: matrix of size length(t_myr) x length(dist_from_shore). Water depth in m at examined locations</p></li>
 <li><p><code>strat_col</code>: list with length(dist_from shore) elements. Represents a stratigraphic column. Each element is a list with two elements:</p><ul><li><p><code>bed_thickness_m</code>: numeric vector. Bed thickness in m</p></li>
@@ -81,7 +81,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

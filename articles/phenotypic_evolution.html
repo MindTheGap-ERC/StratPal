@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">StratPal</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -251,7 +251,7 @@ above result in the following modeling pipeline:</p>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/strat_to_time.html" class="external-link">strat_to_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span> <span class="op">|&gt;</span>                        <span class="co"># determine times where lineage is sampled</span></span>
 <span>  <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span>sigma <span class="op">=</span> <span class="fl">1</span>, mu <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span>                <span class="co"># simulate trait values at these times</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># transform trait values to stratigraphic domain</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"lr"</span>,                         <span class="co"># plot stratigrahic data</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>orientation <span class="op">=</span> <span class="st">"lr"</span>,                         <span class="co"># plot stratigraphic data</span></span>
 <span>       type <span class="op">=</span> <span class="st">"l"</span>,        </span>
 <span>       ylab <span class="op">=</span> <span class="st">"Trait Value"</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Stratigraphic height ["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_L_unit.html" class="external-link">get_L_unit</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, <span class="st">"]"</span><span class="op">)</span>,</span>
@@ -293,7 +293,7 @@ Emilia. 2024. “Identification of the mode of evolution in incomplete
 carbonate successions”. BMC Ecology and Evolution 24, 113. <a href="https://doi.org/10.1186/s12862-024-02287-2" class="external-link uri">https://doi.org/10.1186/s12862-024-02287-2</a>.</p></li>
 <li><p>Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic
 Evolution: Random Walks and Beyond.” Paleobiology. <a href="https://doi.org/10.1666/05070.1" class="external-link uri">https://doi.org/10.1666/05070.1</a>.</p></li>
-<li><p>Lande, Russell. 1976. “Natural selection and random gentic drift
+<li><p>Lande, Russell. 1976. “Natural selection and random genetic drift
 in phenotypic evolution.” Evolution. <a href="https://doi.org/10.1111/j.1558-5646.1976.tb00911.x" class="external-link uri">https://doi.org/10.1111/j.1558-5646.1976.tb00911.x</a></p></li>
 </ul>
 </div>
@@ -308,7 +308,7 @@ in phenotypic evolution.” Evolution. <a href="https://doi.org/10.1111/j.1558-5
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>

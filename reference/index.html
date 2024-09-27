@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">StratPal</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,10 +57,10 @@
 
       <dl><dt>
 
-          <code><a href="stasis.html">stasis()</a></code>
+          <code><a href="ornstein_uhlenbeck.html">ornstein_uhlenbeck()</a></code>
 
         </dt>
-        <dd>simulate phenotypic stasis</dd>
+        <dd>simulate ornstein-uhlenbeck (OU) process</dd>
       </dl><dl><dt>
 
           <code><a href="random_walk.html">random_walk()</a></code>
@@ -69,10 +69,16 @@
         <dd>continuous time random walk</dd>
       </dl><dl><dt>
 
-          <code><a href="ornstein_uhlenbeck.html">ornstein_uhlenbeck()</a></code>
+          <code><a href="stasis.html">stasis()</a></code>
 
         </dt>
-        <dd>simulate ornstein-uhlenbeck (OU) process</dd>
+        <dd>simulate phenotypic stasis</dd>
+      </dl><dl><dt>
+
+          <code><a href="stasis_sl.html">stasis_sl()</a></code>
+
+        </dt>
+        <dd>simulate phenotypic stasis (pre-paleoTS format)</dd>
       </dl></div><div class="section level2">
 
       <h3 id="event-type-data">Event type data<a class="anchor" aria-label="anchor" href="#event-type-data"></a></h3>
@@ -115,22 +121,16 @@
 
       <dl><dt>
 
-          <code><a href="apply_niche.html">apply_niche()</a></code>
-
-        </dt>
-        <dd>apply niche model to events</dd>
-      </dl><dl><dt>
-
-          <code><a href="snd_niche.html">snd_niche()</a></code>
-
-        </dt>
-        <dd>simple niche model</dd>
-      </dl><dl><dt>
-
           <code><a href="bounded_niche.html">bounded_niche()</a></code>
 
         </dt>
         <dd>define niche from boundaries</dd>
+      </dl><dl><dt>
+
+          <code><a href="apply_niche.html">apply_niche()</a></code>
+
+        </dt>
+        <dd>apply niche model</dd>
       </dl><dl><dt>
 
           <code><a href="apply_taphonomy.html">apply_taphonomy()</a></code>
@@ -139,10 +139,22 @@
         <dd>model taphonomic effects</dd>
       </dl><dl><dt>
 
+          <code><a href="snd_niche.html">snd_niche()</a></code>
+
+        </dt>
+        <dd>simple niche model</dd>
+      </dl><dl><dt>
+
           <code><a href="thin.html">thin()</a></code>
 
         </dt>
         <dd>thin a series of events (e.g. fossil occurrences)</dd>
+      </dl><dl><dt>
+
+          <code><a href="prob_remove.html">prob_remove()</a></code>
+
+        </dt>
+        <dd>probabilistic removal of elements</dd>
       </dl></div><div class="section level2">
 
       <h3 id="example-data">Example data<a class="anchor" aria-label="anchor" href="#example-data"></a></h3>
@@ -160,6 +172,23 @@
 
         </dt>
         <dd>example data, scenario A from Hohmann et al. (2024)</dd>
+      </dl></div><div class="section level2">
+
+      <h3 id="paleots-functionality">paleoTS functionality<a class="anchor" aria-label="anchor" href="#paleots-functionality"></a></h3>
+      <div class="section-desc"><p>Tools for linkage with the paleoTS package</p></div>
+
+
+    </div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="reduce_to_paleoTS.html">reduce_to_paleoTS()</a></code>
+
+        </dt>
+        <dd>reduce pre-paleoTS format to paleoTS</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
@@ -170,7 +199,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
