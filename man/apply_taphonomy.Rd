@@ -7,17 +7,17 @@
 apply_taphonomy(x, pres_potential, ctc)
 }
 \arguments{
-\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position.}
+\item{x}{event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object.}
 
-\item{pres_potential}{function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1)}
+\item{pres_potential}{function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1). Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
-\item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position.}
+\item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position. . Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 }
 \value{
-numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied
+if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a \code{pre_paleoTS} object, returns another \code{pre_paleoTS} object with reduced number of specimens.
 }
 \description{
-Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}.
+Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}/ remove specimens from the \code{pre_paleoTS} object using \code{prob_remove}.
 }
 \examples{
 
@@ -28,5 +28,5 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 
 }
 \seealso{
-\code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure.
+\code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedure.
 }

@@ -3,6 +3,7 @@
 S3method(apply_niche,numeric)
 S3method(apply_niche,pre_paleoTS)
 S3method(apply_taphonomy,numeric)
+S3method(apply_taphonomy,pre_paleoTS)
 S3method(reduce_to_paleoTS,pre_paleoTS)
 export(apply_niche)
 export(apply_taphonomy)
