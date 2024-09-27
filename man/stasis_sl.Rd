@@ -11,7 +11,7 @@ stasis_sl(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10)
 
 \item{mean}{mean trait value}
 
-\item{sd}{stictly positive number, standard deviation of traits around the mean}
+\item{sd}{strictly positive number, standard deviation of traits around the mean}
 
 \item{interpop_var}{interpopulation variance, determines how much specimens from the same population vary}
 

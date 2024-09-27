@@ -14,7 +14,7 @@ apply_niche(x, niche_def, gc)
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 }
 \value{
-for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a \code{pre_paleoTS} object as input, returns a \code{pre_paleoTS} object with speciments removed according to the niche model.
+for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a \code{pre_paleoTS} object as input, returns a \code{pre_paleoTS} object with specimens removed according to the niche model.
 }
 \description{
 Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function \code{thin}, for \code{pre_paleoTS} this is done by applying the function \code{prob_remove} on the specimens.

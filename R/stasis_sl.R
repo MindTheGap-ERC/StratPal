@@ -5,7 +5,7 @@ stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
   #'
   #' @param t times at which the traits are determined
   #' @param mean mean trait value
-  #' @param sd stictly positive number, standard deviation of traits around the mean
+  #' @param sd strictly positive number, standard deviation of traits around the mean
   #' @param interpop_var interpopulation variance, determines how much specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'

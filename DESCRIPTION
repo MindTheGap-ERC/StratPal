@@ -25,6 +25,7 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
+    spelling,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Depends: 
@@ -33,3 +34,4 @@ LazyData: true
 URL: https://mindthegap-erc.github.io/StratPal/ , https://github.com/MindTheGap-ERC/StratPal
 BugReports: https://github.com/MindTheGap-ERC/StratPal/issues
 Config/testthat/edition: 3
+Language: en-US

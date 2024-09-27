@@ -11,7 +11,7 @@ bounded_niche = function(g_min, g_max){
   #' @returns a function describing the niche for usage with `apply_niche`. The function returns 1 if the taxon is within its niche (the gradient is between `g_min` and `g_max`), and 0 otherwise
   #'
   #' @description
-    #' Defines a simple niche model where the niche defined is given by a lower limit (`g_min`) and an upper limie (`g_max`) of a gradient the taxon can tolerate
+    #' Defines a simple niche model where the niche defined is given by a lower limit (`g_min`) and an upper limit (`g_max`) of a gradient the taxon can tolerate
     #'
   #' @examples
     #'
