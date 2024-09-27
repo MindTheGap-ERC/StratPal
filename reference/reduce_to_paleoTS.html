@@ -46,7 +46,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">reduce_to_paleoTS</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">reduce_to_paleoTS</span><span class="op">(</span><span class="va">x</span>, min_n <span class="op">=</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -55,6 +55,14 @@
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>a <code>pre_paleoTS</code> object</p></dd>
+
+
+<dt id="arg-min-n">min_n<a class="anchor" aria-label="anchor" href="#arg-min-n"></a></dt>
+<dd><p>minimum number of specimens. If the number of specimens at a sampling location falls below this number, the sampling location will be removed</p></dd>
+
+
+<dt id="arg-na-rm">na.rm<a class="anchor" aria-label="anchor" href="#arg-na-rm"></a></dt>
+<dd><p>Logical. If sampling locations are NA (e.g., because of erosion), should the sample be removed?</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -67,7 +75,7 @@
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="stasis_sl.html">stasis_sl()</a></code> to simulate stasis on specimen level (sl), returning an object of call <code>pre_paleoTS</code></p></div>
+    <div class="dont-index"><p><code><a href="stasis_sl.html">stasis_sl()</a></code> to simulate stasis on specimen level (sl), returning an object of type <code>pre_paleoTS</code></p></div>
     </div>
 
     <div class="section level2">
