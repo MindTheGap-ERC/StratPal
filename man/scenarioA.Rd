@@ -9,7 +9,7 @@ A list with 6 elements:
 \itemize{
 \item \code{t_myr} : numeric vector. timesteps of the simulation in Myr
 \item \code{sl_m} : numeric vector. eustatic sea level in m
-\item \code{dist_from_shore} : character vector. Distance from shore in km of locations at which the observations were made
+\item \code{dist_from_shore} : character vector. Distance from shore in km of locations at which the observations were made. Available distances are "2km", "4km", "6km", "8km", "10km", "12km".
 \item \code{h_m} : matrix of size length(t_myr) x length(dist_from_shore). Accumulated sediment height in m at examined locations
 \item \code{wd_m}: matrix of size length(t_myr) x length(dist_from_shore). Water depth in m at examined locations
 \item \code{strat_col}: list with length(dist_from shore) elements. Represents a stratigraphic column. Each element is a list with two elements:

@@ -2,26 +2,26 @@
 % Please edit documentation in R/apply_niche.R
 \name{apply_niche}
 \alias{apply_niche}
-\title{apply niche model to events}
+\title{apply niche model}
 \usage{
 apply_niche(x, niche_def, gc)
 }
 \arguments{
-\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position.}
+\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object (e.g. produced by \code{stasis_sl}).}
 
-\item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities.}
+\item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
-\item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time}
+\item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 }
 \value{
-numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied
+for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a \code{pre_paleoTS} object as input, returns a \code{pre_paleoTS} object with specimens removed according to the niche model.
 }
 \description{
-Models niches by removing events (fossil occurrences) when they are outside of their niche using the function \code{thin}.
-Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used as a thinning on the events \code{x}.
+Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function \code{thin}, for \code{pre_paleoTS} this is done by applying the function \code{prob_remove} on the specimens.
+Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used to remove events/specimens in \code{x}.
 }
 \examples{
-
+### example for event type data
 ## setup
 # using water depth as gradient
  t = scenarioA$t_myr
@@ -48,11 +48,11 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
 
  # see also
  #vignette("event_data")
- # for a detailed example on niche modeling
+ # for a detailed example on niche modeling for event type data
 
 
 
 }
 \seealso{
-\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} for the underlying mathematical procedure. Basic niche models available are \code{\link[=bounded_niche]{bounded_niche()}} and \code{\link[=snd_niche]{snd_niche()}}
+\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedure. Basic niche models available are \code{\link[=bounded_niche]{bounded_niche()}} and \code{\link[=snd_niche]{snd_niche()}}
 }

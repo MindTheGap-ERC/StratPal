@@ -148,7 +148,7 @@ sampling_loc_m |>                                  # sampling locations
   strat_to_time(adm_2km) |>                        # determine times where lineage is sampled
   random_walk(sigma = 1, mu = 3) |>                # simulate trait values at these times
   time_to_strat(adm_2km, destructive = FALSE) |>   # transform trait values to stratigraphic domain
-  plot(orientation = "lr",                         # plot stratigrahic data
+  plot(orientation = "lr",                         # plot stratigraphic data
        type = "l",        
        ylab = "Trait Value",
        xlab = paste0("Stratigraphic height [", get_L_unit(adm_2km), "]"),
@@ -187,7 +187,7 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 * Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.
 
-* Lande, Russell. 1976. "Natural selection and random gentic drift in phenotypic evolution." Evolution. https://doi.org/10.1111/j.1558-5646.1976.tb00911.x
+* Lande, Russell. 1976. "Natural selection and random genetic drift in phenotypic evolution." Evolution. https://doi.org/10.1111/j.1558-5646.1976.tb00911.x
 
 
 

@@ -15,7 +15,7 @@ bounded_niche(g_min, g_max)
 a function describing the niche for usage with \code{apply_niche}. The function returns 1 if the taxon is within its niche (the gradient is between \code{g_min} and \code{g_max}), and 0 otherwise
 }
 \description{
-Defines a simple niche model where the niche defined is given by a lower limit (\code{g_min}) and an upper limie (\code{g_max}) of a gradient the taxon can tolerate
+Defines a simple niche model where the niche defined is given by a lower limit (\code{g_min}) and an upper limit (\code{g_max}) of a gradient the taxon can tolerate
 }
 \examples{
 

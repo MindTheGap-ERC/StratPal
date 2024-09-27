@@ -1,20 +1,20 @@
 apply_niche = function(x, niche_def, gc){
   #' @export
   #'
-  #' @title apply niche model to events
+  #' @title apply niche model
   #'
-  #' @param x events, e.g. times/ages of fossil occurrences or their stratigraphic position.
-  #' @param niche_def function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities.
-  #' @param gc function, stands for "gradient change". Specifies how the gradient changes, e.g. with time
+  #' @param x events, e.g. times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object (e.g. produced by `stasis_sl`).
+  #' @param niche_def function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
+  #' @param gc function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #'
   #' @description
-    #' Models niches by removing events (fossil occurrences) when they are outside of their niche using the function `thin`.
-    #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing `niche_def` and `gc`. The result is then used as a thinning on the events `x`.
+    #' Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function `thin`, for `pre_paleoTS` this is done by applying the function `prob_remove` on the specimens.
+    #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing `niche_def` and `gc`. The result is then used to remove events/specimens in `x`.
   #'
-  #' @returns numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied
+  #' @returns for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a `pre_paleoTS` object as input, returns a `pre_paleoTS` object with specimens removed according to the niche model.
   #'
   #' @examples
-    #'
+    #' ### example for event type data
     #' ## setup
     #' # using water depth as gradient
     #'  t = scenarioA$t_myr
@@ -41,15 +41,33 @@ apply_niche = function(x, niche_def, gc){
     #'
     #'  # see also
     #'  #vignette("event_data")
-    #'  # for a detailed example on niche modeling
+    #'  # for a detailed example on niche modeling for event type data
     #'
     #'
     #'
-  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] for the underlying mathematical procedure. Basic niche models available are [bounded_niche()] and [snd_niche()]
+  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] and [prob_remove()] for the underlying mathematical procedure. Basic niche models available are [bounded_niche()] and [snd_niche()]
+ UseMethod("apply_niche")
 
+}
+
+apply_niche.numeric = function(x, niche_def, gc){
+
+  #' @export
   # function that returns collection probability as a function of y (typically time)
   change_in_niche = function(y) niche_def(gc(y))
   # thin events based on collection probability
   r = thin(x, change_in_niche)
   return(r)
+}
+
+apply_niche.pre_paleoTS = function(x, niche_def, gc){
+  #' @export
+  #'
+  change_in_niche = function(y) niche_def(gc(y))
+  thin_vals = change_in_niche(x$t)
+  for (i in seq_along(thin_vals)){
+    r = prob_remove(x$vals[[i]], prob = thin_vals[i])
+    x$vals[[i]] = x$vals[[i]][as.logical(r)]
   }
+  return(x)
+}

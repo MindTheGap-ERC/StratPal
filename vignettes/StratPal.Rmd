@@ -1,8 +1,8 @@
 ---
-title: "Intoduction to the StratPal package"
+title: "Introduction to the StratPal package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intoduction to the StratPal package}
+  %\VignetteIndexEntry{Introduction to the StratPal package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -60,7 +60,7 @@ to install the latest stable version of the package and all its dependencies.
 
 ## Dependencies {#dependencies}
 
-The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package, which is *automatically* installed when you install `StratPal`.
+The `StratPal` heavily relies on the age-depth modeling tools provided by the `admtools` package, which is *automatically* installed when you install `StratPal`.
 
 To use its functionality, you need to run
 
@@ -214,7 +214,7 @@ You can see that there are a 8 shorter hiatuses (below 100 kyr) and 2 long hiatu
 
 Given a stratigraphic position, an age-depth model can tell us how old that positions is. Conversely, if we know the timing of an event, an age-depth model can tell us at what stratigraphic position that event will occur. This can be used to transform all types of data from the time domain to the stratigraphic domain and vice versa.
 
-In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigrahic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the [vignette of the `admtools` package](https://mindthegap-erc.github.io/admtools/articles/admtools.html), for applications to stratigraphic paleobiology see the vignettes linked below under ["Getting started"](#getting-started).
+In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigraphic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the [vignette of the `admtools` package](https://mindthegap-erc.github.io/admtools/articles/admtools.html), for applications to stratigraphic paleobiology see the vignettes linked below under ["Getting started"](#getting-started).
 
 ## Getting started {#getting-started}
 

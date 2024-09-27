@@ -224,7 +224,7 @@ In this example, the temporal range offset is `r signif(time_range_offset_myr, d
 
 So far, we have only examined the effects of stratigraphic distortions (i.e., gaps and changes in sedimentation rates) on event type data. Here, we increase the complexity of the pipeline by incorporating niche modeling. For this, we need two components:
 
--   a niche definition that describes a taxon's optimum value along an environmental gradient (cline), i.e. where is it the most abundant, and its tolerance along this gradient 
+-   a niche definition that describes a taxons' optimum value along an environmental gradient (cline), i.e. where is it the most abundant, and its tolerance along this gradient 
 
 -   information on how that gradient changes with time
 
@@ -244,7 +244,7 @@ plot(t, gc(t),
      main = "Water depth 2 km offshore")
 ```
 
-Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxon's environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. If a specimen is present at a given time, the collection probability is the probability to observe it at the specified gradient.
+Next, we define the niche. This is done using a function that takes water depth (our gradient) as input, and returns numbers between 0 and 1. A 1 corresponds to the taxons' environmental optimum, and a 0 reflects that it is completely outside of its niche. Values between 0 and 1 are are interpreted as observation or collection probabilities. If a specimen is present at a given time, the collection probability is the probability to observe it at the specified gradient.
 
 For our example, we use the helper function `snd_niche` (*snd* standing for "scaled normal distribution") to define a niche. The collection probability in this model follows the shape of a bell curve with a peak at the environmental optimum, and a width specified by the `tol` parameter. This is identical to the *probability of collection* model by [Holland and Patzkowsky (1999)](#References). See the "advanced functionality" vignette for details how to construct other niche definitions, or `?bounded_niche` for another template niche model.
 
