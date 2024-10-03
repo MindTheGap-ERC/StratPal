@@ -14,6 +14,7 @@ reference:
   - stasis_sl
   - strict_stasis_sl
   - random_walk_sl
+  - ornstein_uhlenbeck_sl
 
 - subtitle: Event type data
   desc: Simulate event type data (e.g., fossil location/ages, first/last occurrences)
