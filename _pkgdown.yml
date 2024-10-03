@@ -42,3 +42,13 @@ reference:
   desc: Tools for linkage with the paleoTS package
   contents:
   - reduce_to_paleoTS
+
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - event_data
+  - phenotypic_evolution
+  - paleoTS_functionality
+  - advanced_functionality
+  - StratPal_docs
