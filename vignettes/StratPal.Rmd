@@ -78,8 +78,7 @@ or by visiting the package website at <https://mindthegap-erc.github.io/admtools
 
 ## Example data {#example-data}
 
-`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). 
-The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
+`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
 
 The data is taken from scenario A in [Hohmann et al. (2023)](#References), the modeling procedure is described in detail in [Hohmann et al. 2024](#References), see therein for a chronostratigraphic diagram and a transect through the carbonate platform.
 
@@ -95,7 +94,6 @@ plot(x = scenarioA$t_myr,
      ylab = "Eustatic sea level [m]",
      main = "Sea level curve used as model input")
 ```
-
 
 ## Piping {#piping}
 
