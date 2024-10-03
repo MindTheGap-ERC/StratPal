@@ -19,6 +19,18 @@ ornstein_uhlenbeck_sl = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0, intrap
   #'
   #' @seealso [ornstein_uhlenbeck()] to model only mean trait values
   #'
+  #' @examples
+    #' \dontrun{
+    #' library("paleoTS")
+    #' x = ornstein_uhlenbeck_sl(1:5)
+    #' y = reduce_to_paleoTS(x) # turn into paleoTS format
+    #' plot(y) # plot using the paleoTS package
+    #'
+    #' # see also
+    #' vignette("paleoTS_functionality")
+    #' #for details and advanced usage
+    #' }
+    #'
 
   if (intrapop_var <= 0){
     stop("parameter \'intrapop_var\' must me >0 ")

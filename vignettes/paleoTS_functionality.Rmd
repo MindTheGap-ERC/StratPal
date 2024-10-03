@@ -41,7 +41,7 @@ Functions to model trait evolution on specimen level have the suffix `_sl`, stan
 
 `pre_paleoTS` results can be converted to the `paleoTS` format using the function `reduce_to_paleoTS`. After this you can plot them with the standard plotting procedure from paleoTS using `plot` (resp, `plot.paleoTS`). Note that you can not plot `pre_paloeTS` objects directly, only after conversion to `paleoTS`.
 
-```{r}
+```{r fig.alt="plot of strict stasis"}
 library(StratPal)
 library(paleoTS)   # needed for plotting and conversion
 
@@ -53,7 +53,7 @@ strict_stasis_sl(t = 1:4) |>   # simulate strict stasis on specimen level in `pr
 
 Modeling of niches, taphonomic effects, and stratigraphic biases works on `pre_paleoTS` objects identical to how it is described in the vignettes on event data and modeling phenotypic evolution. As example, we plot a random walk 2 km offshore with 5 specimens per sampling location:
 
-```{r}
+```{r, fig.alt="plot of a random walk after stratigraphic transformation"}
 library(admtools)                                  # load admtools for stratigraphic transformation
 adm = tp_to_adm(t = scenarioA$t_myr,               # define age-depth model
                 h = scenarioA$h_m[,"2km"],

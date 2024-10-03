@@ -35,6 +35,19 @@ an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \cod
 \description{
 Simulates an Ornstein-Uhlenbeck process on specimen level (_sl). The mean trait value is simulated using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. At each sampling location there are \code{n_per_sample} specimens that are normally distributed around the mean trait value with a variance of \code{intrapop_var}.
 }
+\examples{
+\dontrun{
+library("paleoTS")
+x = ornstein_uhlenbeck_sl(1:5)
+y = reduce_to_paleoTS(x) # turn into paleoTS format
+plot(y) # plot using the paleoTS package
+
+# see also
+vignette("paleoTS_functionality")
+#for details and advanced usage
+}
+
+}
 \seealso{
 \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to model only mean trait values
 }

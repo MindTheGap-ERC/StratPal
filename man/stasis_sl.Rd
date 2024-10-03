@@ -24,8 +24,15 @@ an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \cod
 simulated stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}, draws \code{n_per_sample} samples from each sampling location (population) that have specified variance \code{intrapop_var}
 }
 \examples{
+\dontrun{
+library("paleoTS")
 x = stasis_sl(1:5, mean = 2, sd = 2)
-
+y = reduce_to_paleoTS(x) # turn into paleoTS format
+plot(y) # plot using paleoTS package
+# see also
+vignette("paleoTS_functionality")
+#for details and advanced usage
+}
 }
 \seealso{
 \code{\link[=stasis]{stasis()}} for the version that simulates stasis of mean trait values.

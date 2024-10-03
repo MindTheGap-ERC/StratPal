@@ -17,8 +17,15 @@ stasis_sl = function(t, mean = 0, sd = 1, intrapop_var = 1, n_per_sample = 10){
   #' @returns an object of S3 class `pre_paleoTS`, inherits from `timelist` and `list`. The list has two elements: `t`, containing a vector of times of sampling, and `vals`, a list of trait values of the same length as `t`, with element containing trait values of individual specimens.  This object can be transformed using `apply_taphonomy`, `apply_niche` or `time_to_strat`, and then reduced to a `paleoTS` object using `reduce_to_paleoTS`. This can then be used to test for different modes of evolution.
   #'
   #' @examples
+    #' \dontrun{
+    #' library("paleoTS")
     #' x = stasis_sl(1:5, mean = 2, sd = 2)
-    #'
+    #' y = reduce_to_paleoTS(x) # turn into paleoTS format
+    #' plot(y) # plot using paleoTS package
+    #' # see also
+    #' vignette("paleoTS_functionality")
+    #' #for details and advanced usage
+    #'}
 
   if (intrapop_var <= 0){
     stop("parameter \'intrapop_var\' must me >0 ")

@@ -21,6 +21,21 @@ an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \cod
 \description{
 simulates strict stasis on the population level. This means each population has the same mean trait value, and all deviations are due to the fact that specimens traits differ from this value due to randomness.
 }
+\examples{
+\dontrun{
+library("paleoTS")
+x = strict_stasis_sl(1:5, mean = 2, intrapop_var = 2) # simulate strict stasis
+y = reduce_to_paleoTS(x)   # transform into paloeTS format
+plot(y) # plot using paleoTS package
+
+# see also
+vignette("paleoTS_functionality")
+#for details and advanced usage
+}
+
+
+
+}
 \seealso{
 \code{\link[=stasis_sl]{stasis_sl()}} for the (non-strict) equivalent
 }

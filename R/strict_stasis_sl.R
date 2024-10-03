@@ -17,6 +17,20 @@ strict_stasis_sl = function(t, mean = 0, intrapop_var = 1, n_per_sample = 10){
   #'
   #' @seealso [stasis_sl()] for the (non-strict) equivalent
   #'
+  #' @examples
+    #' \dontrun{
+    #' library("paleoTS")
+    #' x = strict_stasis_sl(1:5, mean = 2, intrapop_var = 2) # simulate strict stasis
+    #' y = reduce_to_paleoTS(x)   # transform into paloeTS format
+    #' plot(y) # plot using paleoTS package
+    #'
+    #' # see also
+    #' vignette("paleoTS_functionality")
+    #' #for details and advanced usage
+    #' }
+    #'
+    #'
+  #'
   if (intrapop_var <= 0){
     stop("parameter \'intrapop_var\' must me >0 ")
   }
