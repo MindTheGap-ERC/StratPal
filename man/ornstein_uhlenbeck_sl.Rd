@@ -10,7 +10,7 @@ ornstein_uhlenbeck_sl(
   theta = 1,
   sigma = 1,
   y0 = 0,
-  interpop_var = 1,
+  intrapop_var = 1,
   n_per_sample = 10
 )
 }
@@ -25,7 +25,7 @@ ornstein_uhlenbeck_sl(
 
 \item{y0}{scalar, initial value (value of process at the first entry of t)}
 
-\item{interpop_var}{interpopulation variance, determines how many specimens from the same population vary}
+\item{intrapop_var}{intrapopulation variance, determines how many specimens from the same population vary}
 
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }
@@ -33,7 +33,7 @@ ornstein_uhlenbeck_sl(
 an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \code{list}. The list has two elements: \code{t}, containing a vector of times of sampling, and \code{vals}, a list of trait values of the same length as \code{t}, with element containing trait values of individual specimens.  This object can be transformed using \code{apply_taphonomy}, \code{apply_niche} or \code{time_to_strat}, and then reduced to a \code{paleoTS} object using \code{reduce_to_paleoTS}. This can then be used to test for different modes of evolution.
 }
 \description{
-Simulates an Ornstein-Uhlenbeck process on specimen level (_sl). The mean trait value is simulated using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. At each sampling location there are \code{n_per_sample} specimens that are normally distributed around the mean trait value with a variance of \code{interpop_var}.
+Simulates an Ornstein-Uhlenbeck process on specimen level (_sl). The mean trait value is simulated using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. At each sampling location there are \code{n_per_sample} specimens that are normally distributed around the mean trait value with a variance of \code{intrapop_var}.
 }
 \seealso{
 \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to model only mean trait values

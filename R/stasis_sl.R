@@ -1,4 +1,4 @@
-stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
+stasis_sl = function(t, mean = 0, sd = 1, intrapop_var = 1, n_per_sample = 10){
   #' @export
   #'
   #' @title simulate phenotypic stasis (pre-paleoTS format)
@@ -6,11 +6,11 @@ stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
   #' @param t times at which the traits are determined
   #' @param mean mean trait value
   #' @param sd strictly positive number, standard deviation of traits around the mean
-  #' @param interpop_var interpopulation variance, determines how much specimens from the same population vary
+  #' @param intrapop_var intrapopulation variance, determines how much specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'
   #' @description
-    #' simulated stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`, draws `n_per_sample` samples from each sampling location (population) that have specified variance `interpop_var`
+    #' simulated stasis as independent, normally distributed random variables with mean `mean` and standard deviation `sd`, draws `n_per_sample` samples from each sampling location (population) that have specified variance `intrapop_var`
     #'
   #' @seealso [stasis()] for the version that simulates stasis of mean trait values.
   #'
@@ -20,8 +20,8 @@ stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
     #' x = stasis_sl(1:5, mean = 2, sd = 2)
     #'
 
-  if (interpop_var <= 0){
-    stop("parameter \'interpop_var\' must me >0 ")
+  if (intrapop_var <= 0){
+    stop("parameter \'intrapop_var\' must me >0 ")
   }
   if (n_per_sample <1){
     stop("parameter \'n_per_sample\' must be >=1")
@@ -30,7 +30,7 @@ stasis_sl = function(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10){
   r = list(t = x$t)
   vals = list()
   for (i in seq_along(x$t)){
-    vals[[i]] = stats::rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(interpop_var))
+    vals[[i]] = stats::rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(intrapop_var))
   }
   r[["vals"]] = vals
   class(r) = c("pre_paleoTS","timelist",  "list")

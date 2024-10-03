@@ -4,7 +4,7 @@
 \alias{stasis_sl}
 \title{simulate phenotypic stasis (pre-paleoTS format)}
 \usage{
-stasis_sl(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10)
+stasis_sl(t, mean = 0, sd = 1, intrapop_var = 1, n_per_sample = 10)
 }
 \arguments{
 \item{t}{times at which the traits are determined}
@@ -13,7 +13,7 @@ stasis_sl(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10)
 
 \item{sd}{strictly positive number, standard deviation of traits around the mean}
 
-\item{interpop_var}{interpopulation variance, determines how much specimens from the same population vary}
+\item{intrapop_var}{intrapopulation variance, determines how much specimens from the same population vary}
 
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }
@@ -21,7 +21,7 @@ stasis_sl(t, mean = 0, sd = 1, interpop_var = 1, n_per_sample = 10)
 an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \code{list}. The list has two elements: \code{t}, containing a vector of times of sampling, and \code{vals}, a list of trait values of the same length as \code{t}, with element containing trait values of individual specimens.  This object can be transformed using \code{apply_taphonomy}, \code{apply_niche} or \code{time_to_strat}, and then reduced to a \code{paleoTS} object using \code{reduce_to_paleoTS}. This can then be used to test for different modes of evolution.
 }
 \description{
-simulated stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}, draws \code{n_per_sample} samples from each sampling location (population) that have specified variance \code{interpop_var}
+simulated stasis as independent, normally distributed random variables with mean \code{mean} and standard deviation \code{sd}, draws \code{n_per_sample} samples from each sampling location (population) that have specified variance \code{intrapop_var}
 }
 \examples{
 x = stasis_sl(1:5, mean = 2, sd = 2)

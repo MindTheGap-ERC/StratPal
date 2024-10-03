@@ -9,7 +9,7 @@ random_walk_sl(
   sigma = 1,
   mu = 0,
   y0 = 0,
-  interpop_var = 1,
+  intrapop_var = 1,
   n_per_sample = 10
 )
 }
@@ -22,7 +22,7 @@ random_walk_sl(
 
 \item{y0}{scalar, starting value (value of the random walk at the first entry of \code{t})}
 
-\item{interpop_var}{interpopulation variance, determines how many specimens from the same population vary}
+\item{intrapop_var}{intrapopulation variance, determines how many specimens from the same population vary}
 
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }

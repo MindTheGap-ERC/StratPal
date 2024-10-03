@@ -1,4 +1,4 @@
-random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, interpop_var = 1, n_per_sample = 10){
+random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, intrapop_var = 1, n_per_sample = 10){
   #' @export
   #'
   #' @title simulate random walk (pre-paleoTS format)
@@ -7,7 +7,7 @@ random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, interpop_var = 1, n_per_
   #' @param sigma positive scalar, variance parameter
   #' @param mu scalar, directionality parameter
   #' @param y0 scalar, starting value (value of the random walk at the first entry of `t`)
-  #' @param interpop_var interpopulation variance, determines how many specimens from the same population vary
+  #' @param intrapop_var intrapopulation variance, determines how many specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'
   #' @description
@@ -19,8 +19,8 @@ random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, interpop_var = 1, n_per_
   #'
   #' @seealso [random_walk()] for the equivalent function to simulate mean trait values
   #'
-  if (interpop_var <= 0){
-    stop("parameter \'interpop_var\' must me >0 ")
+  if (intrapop_var <= 0){
+    stop("parameter \'intrapop_var\' must me >0 ")
   }
   if (n_per_sample <1){
     stop("parameter \'n_per_sample\' must be >=1")
@@ -29,7 +29,7 @@ random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, interpop_var = 1, n_per_
   r = list(t = x$t)
   vals = list()
   for (i in seq_along(x$t)){
-    vals[[i]] = stats::rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(interpop_var))
+    vals[[i]] = stats::rnorm(n = n_per_sample, mean = x$y[i], sd = sqrt(intrapop_var))
   }
   r[["vals"]] = vals
   class(r) = c("pre_paleoTS","timelist",  "list")
