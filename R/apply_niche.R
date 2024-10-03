@@ -3,7 +3,7 @@ apply_niche = function(x, niche_def, gc){
   #'
   #' @title apply niche model
   #'
-  #' @param x events, e.g. times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object (e.g. produced by `stasis_sl`).
+  #' @param x events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object (e.g. produced by `stasis_sl`).
   #' @param niche_def function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #' @param gc function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #'
@@ -12,6 +12,12 @@ apply_niche = function(x, niche_def, gc){
     #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing `niche_def` and `gc`. The result is then used to remove events/specimens in `x`.
   #'
   #' @returns for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a `pre_paleoTS` object as input, returns a `pre_paleoTS` object with specimens removed according to the niche model.
+  #'
+  #' @seealso
+    #' * [snd_niche()] and [bounded_niche()] for template niche models
+    #' * `vignette("advanced_functionality)` for how to create user-defined niche models
+    #' * [apply_taphonomy()] to model taphonomic effects based on a similar principle
+    #' * [thin()] and [prob_remove()] for the underlying mathematical procedures
   #'
   #' @examples
     #' ### example for event type data
@@ -43,9 +49,17 @@ apply_niche = function(x, niche_def, gc){
     #'  #vignette("event_data")
     #'  # for a detailed example on niche modeling for event type data
     #'
+    #'  ### example for pre_paleoTS objects
+    #'  # we reuse the niche definition and gradient change from above!
+    #'  x = stasis_sl(seq(0, max(t), length.out = 10))
+    #'  plot(reduce_to_paleoTS(x), main = "Trait evolution before niche modeling")
+    #'  y = apply_niche(x, niche_def, gc)
+    #'  plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling")
+    #'  # note that there are fewer sampling sites
+    #'  # bc the taxon does not appear everywhere
+    #'  # and there are fewer specimens per sampling site
     #'
-    #'
-  #' @seealso [apply_taphonomy()] to model taphonomic effects based on the same principle, [thin()] and [prob_remove()] for the underlying mathematical procedure. Basic niche models available are [bounded_niche()] and [snd_niche()]
+
  UseMethod("apply_niche")
 
 }

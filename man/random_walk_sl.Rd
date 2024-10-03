@@ -2,7 +2,7 @@
 % Please edit documentation in R/random_walk_sl.R
 \name{random_walk_sl}
 \alias{random_walk_sl}
-\title{simulate random walk (pre-paleoTS format)}
+\title{simulate (un)biased random walk (specimen level)}
 \usage{
 random_walk_sl(
   t,
@@ -33,18 +33,22 @@ an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \cod
 Simulates a (continuous time) random walk as a Brownian drift on specimen level. For \code{mu = 0} the random walk is unbiased, otherwise it is biased.
 }
 \examples{
-\dontrun{
+
 library("paleoTS")
 x = random_walk_sl(1:5)
 y = reduce_to_paleoTS(x) # turn into paleoTS format
 plot(y) # plot using the paleoTS package
 # see also
-vignette("paleoTS_functionality")
+#vignette("paleoTS_functionality")
 #for details and advanced usage
-}
+
 
 
 }
 \seealso{
-\code{\link[=random_walk]{random_walk()}} for the equivalent function to simulate mean trait values
+\itemize{
+\item \code{\link[=random_walk]{random_walk()}} for the equivalent function to simulate mean trait values
+\item \code{\link[=reduce_to_paleoTS]{reduce_to_paleoTS()}} to transform outputs into \code{paleoTS} format.
+\item \code{\link[=stasis_sl]{stasis_sl()}}, \code{\link[=strict_stasis_sl]{strict_stasis_sl()}} and \code{\link[=ornstein_uhlenbeck_sl]{ornstein_uhlenbeck_sl()}} to simulate other modes of evolution
+}
 }

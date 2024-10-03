@@ -30,5 +30,7 @@ hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
 
 }
 \seealso{
-\code{\link[=apply_niche]{apply_niche()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for use cases with biological meaning
+\itemize{
+\item \code{\link[=apply_niche]{apply_niche()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for use cases with biological meaning. Use \code{thin} to model effects of taphonomy and ecology for event data.
+}
 }

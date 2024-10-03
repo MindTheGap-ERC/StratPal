@@ -1,7 +1,7 @@
 random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, intrapop_var = 1, n_per_sample = 10){
   #' @export
   #'
-  #' @title simulate random walk (pre-paleoTS format)
+  #' @title simulate (un)biased random walk (specimen level)
   #'
   #' @param t numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated
   #' @param sigma positive number, variance parameter
@@ -17,18 +17,21 @@ random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, intrapop_var = 1, n_per_
   #'
   #' @returns an object of S3 class `pre_paleoTS`, inherits from `timelist` and `list`. The list has two elements: `t`, containing a vector of times of sampling, and `vals`, a list of trait values of the same length as `t`, with element containing trait values of individual specimens.  This object can be transformed using `apply_taphonomy`, `apply_niche` or `time_to_strat`, and then reduced to a `paleoTS` object using `reduce_to_paleoTS`. This can then be used to test for different modes of evolution.
   #'
-  #' @seealso [random_walk()] for the equivalent function to simulate mean trait values
+  #' @seealso
+    #' * [random_walk()] for the equivalent function to simulate mean trait values
+    #' * [reduce_to_paleoTS()] to transform outputs into `paleoTS` format.
+    #' * [stasis_sl()], [strict_stasis_sl()] and [ornstein_uhlenbeck_sl()] to simulate other modes of evolution
   #'
   #' @examples
-    #' \dontrun{
+    #'
     #' library("paleoTS")
     #' x = random_walk_sl(1:5)
     #' y = reduce_to_paleoTS(x) # turn into paleoTS format
     #' plot(y) # plot using the paleoTS package
     #' # see also
-    #' vignette("paleoTS_functionality")
+    #' #vignette("paleoTS_functionality")
     #' #for details and advanced usage
-    #' }
+    #'
     #'
   #'
   if (intrapop_var <= 0){

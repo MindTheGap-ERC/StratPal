@@ -20,7 +20,11 @@ probabilistic removal of elements from x. For each element, the probability to b
 \examples{
 x = prob_remove(1:10, 0.5)
 x
+x = prob_remove(1:10, 0.5)
+x
 }
 \seealso{
-\code{\link[=apply_niche]{apply_niche()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} use this function for transformation of \code{pre_paleoTS} objects
+\itemize{
+\item \code{\link[=apply_niche]{apply_niche()}} and \code{\link[=apply_taphonomy]{apply_taphonomy()}} for functions that use this function for transformation of \code{pre_paleoTS} objects
+}
 }

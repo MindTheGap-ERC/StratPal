@@ -7,7 +7,7 @@
 p3(rate, from, to, n = NULL)
 }
 \arguments{
-\item{rate}{strictly positive scalar, rate of events (avg events per unit)}
+\item{rate}{strictly positive number, rate of events (avg events per unit)}
 
 \item{from}{lowest boundary of observed interval}
 

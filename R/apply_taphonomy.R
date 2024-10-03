@@ -11,7 +11,9 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #' Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using `thin`/ remove specimens from the `pre_paleoTS` object using `prob_remove`.
     #'
     #'
-  #' @seealso [apply_niche()] for modeling niche preferences based on the same principle, [thin()] and [prob_remove()] for the underlying mathematical procedure.
+  #' @seealso
+    #' * [apply_niche()] for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
+    #' * [thin()] and [prob_remove()] for the underlying mathematical procedures.
   #'
   #' @returns if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a `pre_paleoTS` object, returns another `pre_paleoTS` object with reduced number of specimens.
   #'

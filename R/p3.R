@@ -4,7 +4,7 @@ p3 = function(rate, from, to, n = NULL){
   #'
   #' @title  simulate Poisson point process
   #'
-  #' @param rate strictly positive scalar, rate of events (avg events per unit)
+  #' @param rate strictly positive number, rate of events (avg events per unit)
   #' @param from lowest boundary of observed interval
   #' @param to upper boundary of observed interval
   #' @param n integer of NULL (default). Number of events to return. If NULL, the number is random and determined by the rate parameter

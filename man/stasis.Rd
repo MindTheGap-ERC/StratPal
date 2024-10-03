@@ -31,5 +31,8 @@ Simulates stasis of mean trait values as independent, normally distributed rando
 
 }
 \seealso{
-\code{\link[=random_walk]{random_walk()}} and \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to simulate other modes of evolution, \code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level
+\itemize{
+\item \code{\link[=random_walk]{random_walk()}} and \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to simulate other modes of evolution
+\item \code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level - for usage in conjunction with the \code{paleoTS} package.
+}
 }

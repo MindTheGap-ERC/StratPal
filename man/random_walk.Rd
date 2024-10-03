@@ -2,24 +2,24 @@
 % Please edit documentation in R/random_walk.R
 \name{random_walk}
 \alias{random_walk}
-\title{continuous time random walk}
+\title{simulate (un)biased random walk}
 \usage{
 random_walk(t, sigma = 1, mu = 0, y0 = 0)
 }
 \arguments{
 \item{t}{numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated}
 
-\item{sigma}{positive scalar, variance parameter}
+\item{sigma}{positive number, variance parameter}
 
-\item{mu}{scalar, directionality parameter}
+\item{mu}{number, directionality parameter}
 
-\item{y0}{scalar, starting value (value of the random walk at the first entry of \code{t})}
+\item{y0}{number, starting value (value of the random walk at the first entry of \code{t})}
 }
 \value{
 A list with elements \code{t} and \code{y}. \code{t} is a duplicate of the input parameter and is the times at which the random walk is evaluated. \code{y} are the values of the random walk at said times. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-Simulates a (continuous time) random walk as a Brownian drift
+Simulates a (continuous time) random walk as a Brownian drift. For \code{mu = 0} the random walk is unbiased, otherwise it is biased.
 }
 \examples{
 
@@ -31,4 +31,10 @@ l2 = random_walk(t, mu = 1) # low variabliity, increasing trend
 lines(l2$t, l2$y, col = "red")
 
 
+}
+\seealso{
+\itemize{
+\item \code{\link[=stasis]{stasis()}} and \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to simulate other modes of evolution
+\item \code{\link[=random_walk_sl]{random_walk_sl()}} to simulate random walk on specimen level - for usage in conjunction with the \code{paleoTS} package
+}
 }

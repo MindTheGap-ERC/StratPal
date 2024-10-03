@@ -2,7 +2,7 @@
 % Please edit documentation in R/ornstein_uhlenbeck_sl.R
 \name{ornstein_uhlenbeck_sl}
 \alias{ornstein_uhlenbeck_sl}
-\title{simulate ornstein-uhlenbeck (OU) process (pre-paleoTS format)}
+\title{simulate ornstein-uhlenbeck (OU) process (specimen level)}
 \usage{
 ornstein_uhlenbeck_sl(
   t,
@@ -17,13 +17,13 @@ ornstein_uhlenbeck_sl(
 \arguments{
 \item{t}{times at which the process is simulated. Can be heterodistant}
 
-\item{mu}{scalar, long term mean}
+\item{mu}{number, long term mean}
 
-\item{theta}{scalar, mean reversion speed}
+\item{theta}{number, mean reversion speed}
 
-\item{sigma}{positive scalar, strength of randomness}
+\item{sigma}{positive number, strength of randomness}
 
-\item{y0}{scalar, initial value (value of process at the first entry of t)}
+\item{y0}{number, initial value (value of process at the first entry of t)}
 
 \item{intrapop_var}{intrapopulation variance, determines how many specimens from the same population vary}
 
@@ -36,18 +36,22 @@ an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \cod
 Simulates an Ornstein-Uhlenbeck process on specimen level (_sl). The mean trait value is simulated using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. At each sampling location there are \code{n_per_sample} specimens that are normally distributed around the mean trait value with a variance of \code{intrapop_var}.
 }
 \examples{
-\dontrun{
+
 library("paleoTS")
 x = ornstein_uhlenbeck_sl(1:5)
 y = reduce_to_paleoTS(x) # turn into paleoTS format
 plot(y) # plot using the paleoTS package
 
 # see also
-vignette("paleoTS_functionality")
+#vignette("paleoTS_functionality")
 #for details and advanced usage
-}
+
 
 }
 \seealso{
-\code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to model only mean trait values
+\itemize{
+\item \code{\link[=ornstein_uhlenbeck]{ornstein_uhlenbeck()}} to model mean trait values,
+\item \code{\link[=reduce_to_paleoTS]{reduce_to_paleoTS()}} to transform outputs into \code{paleoTS} format
+\item \code{\link[=stasis_sl]{stasis_sl()}}, \code{\link[=strict_stasis_sl]{strict_stasis_sl()}} and \code{\link[=random_walk_sl]{random_walk_sl()}} to simulate other modes of evolution
+}
 }

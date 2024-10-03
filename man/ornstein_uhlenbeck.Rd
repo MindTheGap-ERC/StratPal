@@ -9,13 +9,13 @@ ornstein_uhlenbeck(t, mu = 0, theta = 1, sigma = 1, y0 = 0)
 \arguments{
 \item{t}{times at which the process is simulated. Can be heterodistant}
 
-\item{mu}{scalar, long term mean}
+\item{mu}{number, long term mean}
 
-\item{theta}{scalar, mean reversion speed}
+\item{theta}{number, mean reversion speed}
 
-\item{sigma}{positive scalar, strength of randomness}
+\item{sigma}{positive number, strength of randomness}
 
-\item{y0}{scalar, initial value (value of process at the first entry of t)}
+\item{y0}{number, initial value (value of process at the first entry of t)}
 }
 \value{
 A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
@@ -33,4 +33,10 @@ l2 = ornstein_uhlenbeck(t, y0 = 0) # start in optimum
 lines(l2$t, l2$y, col = "red")
 
 
+}
+\seealso{
+\itemize{
+\item \code{\link[=ornstein_uhlenbeck_sl]{ornstein_uhlenbeck_sl()}} for simulation on specimen level - for use in conjunction with \code{paleoTS} package
+\item \code{\link[=random_walk]{random_walk()}} and \code{\link[=stasis]{stasis()}} to simulate other modes of evolution
+}
 }
