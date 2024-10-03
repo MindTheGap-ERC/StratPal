@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(StratPal)
 ```
 
-This vignette explain how to link the `StratPal` package with the `paleoTS` package. For details on the underlying data structures, see `vignette("StratPal_docs")`.
+This vignette explain how to link the `StratPal` package with the `paleoTS` package ([Hunt 2006](#References)). For details on the underlying data structures, see `vignette("StratPal_docs")`.
 
 ## Quick summary
 
@@ -43,12 +43,13 @@ Functions to model trait evolution on specimen level have the suffix `_sl`, stan
 
 ```{r fig.alt="plot of strict stasis"}
 library(StratPal)
-library(paleoTS)   # needed for plotting and conversion
+library(paleoTS)   # needed for plotting
 
 strict_stasis_sl(t = 1:4) |>   # simulate strict stasis on specimen level in `pre_paleoTS` format
   reduce_to_paleoTS() |>       # convert pre_paleoTS to paleoTS
   plot()                       # plot
 ```
+
 ## Modeling of ecological, taphonomic, and stratigraphic effects
 
 Modeling of niches, taphonomic effects, and stratigraphic biases works on `pre_paleoTS` objects identical to how it is described in the vignettes on event data and modeling phenotypic evolution. As example, we plot a random walk 2 km offshore with 5 specimens per sampling location:
@@ -78,3 +79,6 @@ seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
   fit3models()                                    # fit 3 models to time series
 ```
 
+## References {#References}
+
+* Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.

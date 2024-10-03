@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Here we describe the modeling pipeline for the stratigraphic paleobiology of phenotypic evolution. For details how this can be combined with the `paleoTS` package, see
+Here we describe the modeling pipeline for the stratigraphic paleobiology of phenotypic evolution. For details how this can be combined with the `paleoTS` package ([Hunt 2006](#References)), see
 
 ```{r, eval=FALSE}
 vignette("paleoTS_functionality")
@@ -167,7 +167,7 @@ There we have it! This is what the lineage would look like if it was sampled eve
 
 ## Further reading
 
-For details on how the `StratPal` package can be integrated with the `paleoTS` package, see
+For details on how the `StratPal` package ([Hunt 2006](#References)) can be integrated with the `paleoTS` package, see
 
 ```{r, eval=FALSE}
 vignette("paleoTS_functionality")
