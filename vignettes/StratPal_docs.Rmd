@@ -2,7 +2,7 @@
 title: "Documentation of defined S3 classes"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Documentation}
+  %\VignetteIndexEntry{Documentation of defined S3 classes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
