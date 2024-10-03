@@ -1,4 +1,4 @@
-strict_stasis_sl = function(t, mean = 0, interpop_var = 1, n_per_sample = 10){
+strict_stasis_sl = function(t, mean = 0, intrapop_var = 1, n_per_sample = 10){
 
   #' @export
   #'
@@ -6,7 +6,7 @@ strict_stasis_sl = function(t, mean = 0, interpop_var = 1, n_per_sample = 10){
   #'
   #' @param t times at which the traits are determined
   #' @param mean mean trait value
-  #' @param interpop_var interpopulation variance, determines how much specimens from the same population vary
+  #' @param intrapop_var intrapopulation variance, determines how much specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'
   #' @description
@@ -16,8 +16,15 @@ strict_stasis_sl = function(t, mean = 0, interpop_var = 1, n_per_sample = 10){
   #' @returns an object of S3 class `pre_paleoTS`, inherits from `timelist` and `list`. The list has two elements: `t`, containing a vector of times of sampling, and `vals`, a list of trait values of the same length as `t`, with element containing trait values of individual specimens.  This object can be transformed using `apply_taphonomy`, `apply_niche` or `time_to_strat`, and then reduced to a `paleoTS` object using `reduce_to_paleoTS`. This can then be used to test for different modes of evolution.
   #'
   #' @seealso [stasis_sl()] for the (non-strict) equivalent
+  #'
+  if (intrapop_var <= 0){
+    stop("parameter \'intrapop_var\' must me >0 ")
+  }
+  if (n_per_sample <1){
+    stop("parameter \'n_per_sample\' must be >=1")
+  }
 
-x = stasis_sl(t, mean = mean, sd = 0, interpop_var = interpop_var, n_per_sample = n_per_sample)
+x = stasis_sl(t, mean = mean, sd = 0, intrapop_var = intrapop_var, n_per_sample = n_per_sample)
 
 return(x)
 }

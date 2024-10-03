@@ -4,14 +4,14 @@
 \alias{strict_stasis_sl}
 \title{simulate strict phenotypic stasis (pre-paleoTS format)}
 \usage{
-strict_stasis_sl(t, mean = 0, interpop_var = 1, n_per_sample = 10)
+strict_stasis_sl(t, mean = 0, intrapop_var = 1, n_per_sample = 10)
 }
 \arguments{
 \item{t}{times at which the traits are determined}
 
 \item{mean}{mean trait value}
 
-\item{interpop_var}{interpopulation variance, determines how much specimens from the same population vary}
+\item{intrapop_var}{intrapopulation variance, determines how much specimens from the same population vary}
 
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }
