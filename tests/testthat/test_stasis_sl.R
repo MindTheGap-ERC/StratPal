@@ -3,6 +3,6 @@ test_that("correct S3 class is returned",{
 })
 
 test_that("incorrect parameters are caught", {
-  expect_error(stasis_sl(1:2, interpop_var = 0))
+  expect_error(stasis_sl(1:2, intrapop_var = 0))
   expect_error(stasis_sl(1:2, n_per_sample = 0))
 })
