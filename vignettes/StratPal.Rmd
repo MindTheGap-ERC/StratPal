@@ -232,6 +232,12 @@ vignette("event_data")
 
 for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
 
+If you want to explore how to link the `StratPal` package with the `paleoTS` package go to
+
+```{r, eval=FALSE}
+vignette("paleoTS_funcionality")
+```
+
 See also
 
 ```{r, eval=FALSE}
@@ -239,6 +245,12 @@ vignette("advanced_functionality")
 ```
 
 for details on how to expand on the modeling pipelines described here, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
+
+For details on the defined data structures, see
+
+```{r, eval=FALSE}
+vignette("StratPal_docs")
+```
 
 ## References {#References}
 

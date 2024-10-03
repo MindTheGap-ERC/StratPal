@@ -16,7 +16,13 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Here we describe the modeling pipeline for the stratigraphic paleobiology of phenotypic evolution. First, let's load all required packages:
+Here we describe the modeling pipeline for the stratigraphic paleobiology of phenotypic evolution. For details how this can be combined with the `paleoTS` package, see
+
+```{r, eval=FALSE}
+vignette("paleoTS_functionality")
+```
+
+First, let's load all required packages:
 
 ```{r setup}
 library(StratPal)
@@ -160,6 +166,12 @@ There we have it! This is what the lineage would look like if it was sampled eve
 **Task:** How does prescribing a sampling strategy change the interpretations of your last task? Can you draw any conclusions about which sampling strategy is best suited for a given environment or mode of evolution?
 
 ## Further reading
+
+For details on how the `StratPal` package can be integrated with the `paleoTS` package, see
+
+```{r, eval=FALSE}
+vignette("paleoTS_functionality")
+```
 
 Run
 

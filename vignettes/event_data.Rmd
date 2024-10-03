@@ -195,7 +195,7 @@ highest_occ = f_occ |>                          # take fossil occ. in time domai
   max(na.rm = TRUE)                             # find highest preserved fossil (destroyed fossils are NA)
 ```
 
-Now we can determine two types of range offset, stratigraphic range offset and temporal range offset. Stratigraphic range offset distance (length dimension, SI units meter) between the position of the last preserved fossil and the stratigraphic position where the taxon actually goes extinct: 
+Now we can determine two types of range offset, stratigraphic range offset and temporal range offset. Stratigraphic range offset distance (length dimension, SI units meter) between the position of the last preserved fossil and the stratigraphic position where the taxon actually goes extinct:
 
 ```{r}
 h_true_ext = t_ext |>                           # stratigraphic position of "true" extinction
@@ -224,7 +224,7 @@ In this example, the temporal range offset is `r signif(time_range_offset_myr, d
 
 So far, we have only examined the effects of stratigraphic distortions (i.e., gaps and changes in sedimentation rates) on event type data. Here, we increase the complexity of the pipeline by incorporating niche modeling. For this, we need two components:
 
--   a niche definition that describes a taxons' optimum value along an environmental gradient (cline), i.e. where is it the most abundant, and its tolerance along this gradient 
+-   a niche definition that describes a taxons' optimum value along an environmental gradient (cline), i.e. where is it the most abundant, and its tolerance along this gradient
 
 -   information on how that gradient changes with time
 
@@ -260,7 +260,7 @@ plot(x, my_niche(x),
      main = "Collection probability of taxon")
 ```
 
-The taxon we are modeling has its environmental niche optimum in 10 m water depth (`opt = 10`), is moderately tolerant to fluctuations in water depth (`tol = 5`) and does not survive on land (`cutoff_val = 0`). 
+The taxon we are modeling has its environmental niche optimum in 10 m water depth (`opt = 10`), is moderately tolerant to fluctuations in water depth (`tol = 5`) and does not survive on land (`cutoff_val = 0`).
 
 With the niche and the change in gradient defined, we can use `apply_niche` for niche modeling.
 
@@ -308,9 +308,10 @@ Go to
 
 ```{r, eval=FALSE}
 vignette("phenotypic_evolution")
+vignette("paleoTS_functionality")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
+for details on how to model stratigraphic paleobiology of phenotypic evolution and integrate it with the `paleoTS` package, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
 
 See also
 
@@ -322,12 +323,12 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 ## References {#References}
 
-* Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. https://doi.org/10.2110/palo.2020.038.
+-   Hohmann, Niklas. 2021. "Incorporating information on varying sedimentation rates into paleontological analyses." PALAIOS. <https://doi.org/10.2110/palo.2020.038>.
 
-* Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. https://doi.org/10.1186/s12862-024-02287-2.
+-   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. <https://doi.org/10.1186/s12862-024-02287-2>.
 
-* Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2
+-   Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. [https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2](https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2){.uri}
 
-* Holland, Steven M. and Patzkowsky, Mark E. 2015. "The stratigraphy of mass extinction." Palaeontology. https://doi.org/10.1111/pala.12188.
+-   Holland, Steven M. and Patzkowsky, Mark E. 2015. "The stratigraphy of mass extinction." Palaeontology. <https://doi.org/10.1111/pala.12188>.
 
-* Signor, Philip W.; Lipps, Jere H. 1982. "Sampling bias, gradual extinction patterns and catastrophes in the fossil record." Geological Society of America Special Paper 190.
+-   Signor, Philip W.; Lipps, Jere H. 1982. "Sampling bias, gradual extinction patterns and catastrophes in the fossil record." Geological Society of America Special Paper 190.
