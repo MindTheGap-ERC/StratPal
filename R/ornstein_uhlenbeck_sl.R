@@ -9,7 +9,7 @@ ornstein_uhlenbeck_sl = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0, intrap
   #' @param theta number, mean reversion speed
   #' @param sigma positive number, strength of randomness
   #' @param y0 number, initial value (value of process at the first entry of t)
-  #' @param intrapop_var intrapopulation variance, determines how many specimens from the same population vary
+  #' @param intrapop_var intrapopulation variance, determines how much specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'
   #' @description
