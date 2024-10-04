@@ -22,7 +22,8 @@ thin = function(x, thin){
     #' hist(yy) # note how values of 5 * sin above 1 are not affecting the thinning
     #'
     #'
-  #' @seealso [apply_niche()] and [apply_taphonomy()] for use cases with biological meaning
+  #' @seealso
+    #' * [apply_niche()] and [apply_taphonomy()] for use cases with biological meaning. Use `thin` to model effects of taphonomy and ecology for event data.
   #'
   #' @returns numeric vector, events after thinning. Depending on the modeling framework, these events can represent fossil ages/locations or first/last occurrences, and the thinning taphonomic or ecological effects.
 

@@ -14,7 +14,10 @@ prob_remove = function(x, prob){
   #' @examples
     #' x = prob_remove(1:10, 0.5)
     #' x
-  #' @seealso [apply_niche()] and [apply_taphonomy()] use this function for transformation of `pre_paleoTS` objects
+    #' x = prob_remove(1:10, 0.5)
+    #' x
+  #' @seealso
+    #' * [apply_niche()] and [apply_taphonomy()] for functions that use this function for transformation of `pre_paleoTS` objects
 
   r = stats::rbinom(length(x), size = 1, prob = prob)
   x = x[as.logical(r)]

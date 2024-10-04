@@ -1,16 +1,16 @@
 rej_samp = function(f, x_min, x_max, n = 1L, f_max = 1, max_try = 10^4){
   #' @export
   #'
-  #' @title rejection sampling
+  #' @title random numbers from rejection sampling
   #'
   #' @description
     #' Rejection sampling from the (pseudo) pdf `f` in the interval between `x_min` and `x_max`. Returns `n` samples. Note that values of `f` below 0 are capped to zero
     #'
   #' @param f function. (pseudo) pdf from which the sample is drawn
-  #' @param x_min scalar. lower limit of the examined interval
-  #' @param x_max scalar. upper limit of the examined interval
+  #' @param x_min number, lower limit of the examined interval
+  #' @param x_max number, upper limit of the examined interval
   #' @param n integer. number of samples drawn
-  #' @param f_max maximum value of `f` in the interval from `x_min` to `x_max`. If f attains values larger than `f_max` a warning is throw, `f_max` is adjusted, and sampling is started again
+  #' @param f_max number, maximum value of `f` in the interval from `x_min` to `x_max`. If f attains values larger than `f_max` a warning is throw, `f_max` is adjusted, and sampling is started again
   #' @param max_try maximum number of tries in the rejection sampling algorithm. If more tries are needed, an error is thrown. If this is the case, inspect of your function `f` is well-defined and positive, and if `f_max` provides a reasonable upper bound on it. Adjust `max_try` if you are certain that both is the case, e.g. if `f` is highly irregular.
   #'
   #' @examples

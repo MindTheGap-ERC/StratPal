@@ -6,15 +6,16 @@ reference:
 - title: Available functions
 
 - subtitle: Trait evolution
-  desc: Simulate trait evolution
+  desc: Simulate trait evolution along a lineage
   contents:
   - ornstein_uhlenbeck
+  - ornstein_uhlenbeck_sl
   - random_walk
+  - random_walk_sl
   - stasis
   - stasis_sl
   - strict_stasis_sl
-  - random_walk_sl
-  - ornstein_uhlenbeck_sl
+
 
 - subtitle: Event type data
   desc: Simulate event type data (e.g., fossil location/ages, first/last occurrences)
@@ -24,14 +25,15 @@ reference:
   - rej_samp
 
 - subtitle: Ecology and taphonomy
-  desc: Ecological niche models and taphonomic effects
+  desc: Model ecological niches and taphonomic effects
   contents:
-  - bounded_niche
   - apply_niche
   - apply_taphonomy
+  - bounded_niche
+  - prob_remove
   - snd_niche
   - thin
-  - prob_remove
+
 
 - subtitle: Example data
   desc: Example data from stratigraphic forward models

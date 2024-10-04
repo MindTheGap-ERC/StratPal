@@ -1,17 +1,21 @@
 random_walk = function(t, sigma = 1, mu = 0, y0 = 0){
   #' @export
   #'
-  #' @title continuous time random walk
+  #' @title simulate (un)biased random walk
   #'
   #' @param t numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated
-  #' @param sigma positive scalar, variance parameter
-  #' @param mu scalar, directionality parameter
-  #' @param y0 scalar, starting value (value of the random walk at the first entry of `t`)
+  #' @param sigma positive number, variance parameter
+  #' @param mu number, directionality parameter
+  #' @param y0 number, starting value (value of the random walk at the first entry of `t`)
   #'
   #' @description
-    #' Simulates a (continuous time) random walk as a Brownian drift
+    #' Simulates a (continuous time) random walk as a Brownian drift. For `mu = 0` the random walk is unbiased, otherwise it is biased.
     #'
   #' @returns A list with elements `t` and `y`. `t` is a duplicate of the input parameter and is the times at which the random walk is evaluated. `y` are the values of the random walk at said times. Output list is of S3 class `timelist` (inherits from `list`) and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
+  #'
+  #' @seealso
+    #' * [stasis()] and [ornstein_uhlenbeck()] to simulate other modes of evolution
+    #' * [random_walk_sl()] to simulate random walk on specimen level - for usage in conjunction with the `paleoTS` package
   #'
   #' @examples
     #'

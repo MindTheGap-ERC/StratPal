@@ -2,7 +2,7 @@
 % Please edit documentation in R/random_walk_sl.R
 \name{random_walk_sl}
 \alias{random_walk_sl}
-\title{simulate random walk (pre-paleoTS format)}
+\title{simulate (un)biased random walk (specimen level)}
 \usage{
 random_walk_sl(
   t,
@@ -16,11 +16,11 @@ random_walk_sl(
 \arguments{
 \item{t}{numeric vector with strictly increasing elements, can be heterodistant. Times at which the random walk is evaluated}
 
-\item{sigma}{positive scalar, variance parameter}
+\item{sigma}{positive number, variance parameter}
 
-\item{mu}{scalar, directionality parameter}
+\item{mu}{number, directionality parameter}
 
-\item{y0}{scalar, starting value (value of the random walk at the first entry of \code{t})}
+\item{y0}{number, starting value (value of the random walk at the first entry of \code{t})}
 
 \item{intrapop_var}{intrapopulation variance, determines how many specimens from the same population vary}
 
@@ -30,8 +30,25 @@ random_walk_sl(
 an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \code{list}. The list has two elements: \code{t}, containing a vector of times of sampling, and \code{vals}, a list of trait values of the same length as \code{t}, with element containing trait values of individual specimens.  This object can be transformed using \code{apply_taphonomy}, \code{apply_niche} or \code{time_to_strat}, and then reduced to a \code{paleoTS} object using \code{reduce_to_paleoTS}. This can then be used to test for different modes of evolution.
 }
 \description{
-Simulates a (continuous time) random walk as a Brownian drift on specimen level
+Simulates a (continuous time) random walk as a Brownian drift on specimen level. For \code{mu = 0} the random walk is unbiased, otherwise it is biased.
+}
+\examples{
+
+library("paleoTS")
+x = random_walk_sl(1:5)
+y = reduce_to_paleoTS(x) # turn into paleoTS format
+plot(y) # plot using the paleoTS package
+# see also
+#vignette("paleoTS_functionality")
+#for details and advanced usage
+
+
+
 }
 \seealso{
-\code{\link[=random_walk]{random_walk()}} for the equivalent function to simulate mean trait values
+\itemize{
+\item \code{\link[=random_walk]{random_walk()}} for the equivalent function to simulate mean trait values
+\item \code{\link[=reduce_to_paleoTS]{reduce_to_paleoTS()}} to transform outputs into \code{paleoTS} format.
+\item \code{\link[=stasis_sl]{stasis_sl()}}, \code{\link[=strict_stasis_sl]{strict_stasis_sl()}} and \code{\link[=ornstein_uhlenbeck_sl]{ornstein_uhlenbeck_sl()}} to simulate other modes of evolution
+}
 }

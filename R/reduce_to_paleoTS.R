@@ -11,13 +11,15 @@ reduce_to_paleoTS = function(x, min_n = 1, na.rm = TRUE, ...){
   #' @param na.rm Logical. If sampling locations are NA (e.g., because of erosion), should the sample be removed?
   #' @param ... other options. currently unused
   #'
-  #' @seealso [stasis_sl()] to simulate stasis on specimen level (sl), returning an object of type `pre_paleoTS`
+  #' @seealso
+    #' * [stasis_sl()], [strict_stasis_sl], [random_walk_sl], and [ornstein_uhlenbeck_sl()] to simulate trait evolution on specimen level (sl), returning an object of type `pre_paleoTS`
   #'
   #' @returns a `paleoTS` object
   #'
   #' @examples
     #' x = stasis_sl(t = 0:5)     # create pre_paleoTS object representing stasis on specimen level
     #' y = reduce_to_paleoTS(x)   # reduce to standard paleoTS format
+    #' plot(y)
     #' # now analyses using the paleoTS package can be applied to y
     #'
 

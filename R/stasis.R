@@ -7,7 +7,9 @@ stasis = function(t, mean = 0, sd = 1){
   #' @param mean number, mean trait value
   #' @param sd strictly positive number, standard deviation of traits
   #'
-  #' @seealso [random_walk()] and [ornstein_uhlenbeck()] to simulate other modes of evolution, [stasis_sl()] to simulate stasis on specimen level
+  #' @seealso
+    #' * [random_walk()] and [ornstein_uhlenbeck()] to simulate other modes of evolution
+    #' * [stasis_sl()] to simulate stasis on specimen level - for usage in conjunction with the `paleoTS` package.
   #'
   #' @description
     #' Simulates stasis of mean trait values as independent, normally distributed random variables with mean `mean` and standard deviation `sd`

@@ -28,7 +28,10 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
     #'
     #'
   #'
-  #' @seealso [apply_niche()] for usage of the returned function, [bounded_niche()] for another niche model
+  #' @seealso
+    #' * [apply_niche()] for usage of the returned function
+    #' * [bounded_niche()] for another niche model
+    #' * `vignette("advenced_functionality")` for details on how to create user defined niche models
   #' @description
     #' Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (1999).
     #' The collection probability follows the shape of a bell curve across a gradient, where `opt` determines the peak (mean) of the bell curve, and `tol` the standard deviation. "snd" stands for "scaled normal distribution", as the collection probability has the shape of the probability density of the normal distribution.

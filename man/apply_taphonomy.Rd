@@ -28,5 +28,8 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 
 }
 \seealso{
-\code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle, \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedure.
+\itemize{
+\item \code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
+\item \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedures.
+}
 }

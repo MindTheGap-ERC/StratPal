@@ -24,9 +24,12 @@ paleoTS is a format for paleontological time series. It is a summary format wher
 \examples{
 x = stasis_sl(t = 0:5)     # create pre_paleoTS object representing stasis on specimen level
 y = reduce_to_paleoTS(x)   # reduce to standard paleoTS format
+plot(y)
 # now analyses using the paleoTS package can be applied to y
 
 }
 \seealso{
-\code{\link[=stasis_sl]{stasis_sl()}} to simulate stasis on specimen level (sl), returning an object of type \code{pre_paleoTS}
+\itemize{
+\item \code{\link[=stasis_sl]{stasis_sl()}}, \link{strict_stasis_sl}, \link{random_walk_sl}, and \code{\link[=ornstein_uhlenbeck_sl]{ornstein_uhlenbeck_sl()}} to simulate trait evolution on specimen level (sl), returning an object of type \code{pre_paleoTS}
+}
 }

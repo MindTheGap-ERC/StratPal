@@ -2,7 +2,7 @@
 % Please edit documentation in R/strict_stasis_sl.R
 \name{strict_stasis_sl}
 \alias{strict_stasis_sl}
-\title{simulate strict phenotypic stasis (pre-paleoTS format)}
+\title{simulate strict phenotypic stasis (specimen level)}
 \usage{
 strict_stasis_sl(t, mean = 0, intrapop_var = 1, n_per_sample = 10)
 }
@@ -13,14 +13,38 @@ strict_stasis_sl(t, mean = 0, intrapop_var = 1, n_per_sample = 10)
 
 \item{intrapop_var}{intrapopulation variance, determines how much specimens from the same population vary}
 
-\item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
+\item{n_per_sample}{integer, number of specimens sampled per population/sampling locality/time}
 }
 \value{
 an object of S3 class \code{pre_paleoTS}, inherits from \code{timelist} and \code{list}. The list has two elements: \code{t}, containing a vector of times of sampling, and \code{vals}, a list of trait values of the same length as \code{t}, with element containing trait values of individual specimens.  This object can be transformed using \code{apply_taphonomy}, \code{apply_niche} or \code{time_to_strat}, and then reduced to a \code{paleoTS} object using \code{reduce_to_paleoTS}. This can then be used to test for different modes of evolution.
 }
 \description{
-simulates strict stasis on the population level. This means each population has the same mean trait value, and all deviations are due to the fact that specimens traits differ from this value due to randomness.
+simulates strict stasis on the population level (Hunt et al. 2015). This means each population has the same mean trait value, and all deviations are due to the fact that specimens traits differ from this value due to randomness.
+}
+\examples{
+
+library("paleoTS")
+x = strict_stasis_sl(1:5, mean = 2, intrapop_var = 2) # simulate strict stasis
+y = reduce_to_paleoTS(x)   # transform into paloeTS format
+plot(y) # plot using paleoTS package
+
+# see also
+#vignette("paleoTS_functionality")
+#for details and advanced usage
+
+
+
+
+}
+\references{
+\itemize{
+\item Hunt, Gene, Melanie J. Hopkins, and Scott Lidgard. 2015. “Simple versus Complex Models of Trait Evolution and Stasis as a Response to Environmental Change.” Proceedings of the National Academy of Sciences of the United States of America 112 (16): 4885–90. https://doi.org/10.1073/pnas.1403662111.
+}
 }
 \seealso{
-\code{\link[=stasis_sl]{stasis_sl()}} for the (non-strict) equivalent
+\itemize{
+\item \code{\link[=stasis_sl]{stasis_sl()}} for the (non-strict) equivalent
+\item \code{\link[=reduce_to_paleoTS]{reduce_to_paleoTS()}} to transform outputs into \code{paleoTS} format
+\item \code{\link[=random_walk_sl]{random_walk_sl()}} and \code{\link[=ornstein_uhlenbeck_sl]{ornstein_uhlenbeck_sl()}} for other modes of evolution
+}
 }

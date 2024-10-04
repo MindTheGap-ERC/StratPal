@@ -32,5 +32,9 @@ main = "Observation probability of taxon")
 
 }
 \seealso{
-\code{\link[=snd_niche]{snd_niche()}} for an alternative niche model, \code{\link[=apply_niche]{apply_niche()}} for the function that uses the function returned
+\itemize{
+\item \code{\link[=snd_niche]{snd_niche()}} for an alternative niche model
+\item \code{\link[=apply_niche]{apply_niche()}} for the function that uses the function returned
+\item \code{vignette("advanced_functionality")} for details how to create user-defined niche models
+}
 }

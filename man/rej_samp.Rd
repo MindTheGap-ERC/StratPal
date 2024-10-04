@@ -2,20 +2,20 @@
 % Please edit documentation in R/rej_samp.R
 \name{rej_samp}
 \alias{rej_samp}
-\title{rejection sampling}
+\title{random numbers from rejection sampling}
 \usage{
 rej_samp(f, x_min, x_max, n = 1L, f_max = 1, max_try = 10^4)
 }
 \arguments{
 \item{f}{function. (pseudo) pdf from which the sample is drawn}
 
-\item{x_min}{scalar. lower limit of the examined interval}
+\item{x_min}{number, lower limit of the examined interval}
 
-\item{x_max}{scalar. upper limit of the examined interval}
+\item{x_max}{number, upper limit of the examined interval}
 
 \item{n}{integer. number of samples drawn}
 
-\item{f_max}{maximum value of \code{f} in the interval from \code{x_min} to \code{x_max}. If f attains values larger than \code{f_max} a warning is throw, \code{f_max} is adjusted, and sampling is started again}
+\item{f_max}{number, maximum value of \code{f} in the interval from \code{x_min} to \code{x_max}. If f attains values larger than \code{f_max} a warning is throw, \code{f_max} is adjusted, and sampling is started again}
 
 \item{max_try}{maximum number of tries in the rejection sampling algorithm. If more tries are needed, an error is thrown. If this is the case, inspect of your function \code{f} is well-defined and positive, and if \code{f_max} provides a reasonable upper bound on it. Adjust \code{max_try} if you are certain that both is the case, e.g. if \code{f} is highly irregular.}
 }

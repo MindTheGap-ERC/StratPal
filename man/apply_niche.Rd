@@ -7,7 +7,7 @@
 apply_niche(x, niche_def, gc)
 }
 \arguments{
-\item{x}{events, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object (e.g. produced by \code{stasis_sl}).}
+\item{x}{events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object (e.g. produced by \code{stasis_sl}).}
 
 \item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
@@ -50,9 +50,22 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
  #vignette("event_data")
  # for a detailed example on niche modeling for event type data
 
-
+ ### example for pre_paleoTS objects
+ # we reuse the niche definition and gradient change from above!
+ x = stasis_sl(seq(0, max(t), length.out = 10))
+ plot(reduce_to_paleoTS(x), main = "Trait evolution before niche modeling")
+ y = apply_niche(x, niche_def, gc)
+ plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling")
+ # note that there are fewer sampling sites
+ # bc the taxon does not appear everywhere
+ # and there are fewer specimens per sampling site
 
 }
 \seealso{
-\code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on the same principle, \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedure. Basic niche models available are \code{\link[=bounded_niche]{bounded_niche()}} and \code{\link[=snd_niche]{snd_niche()}}
+\itemize{
+\item \code{\link[=snd_niche]{snd_niche()}} and \code{\link[=bounded_niche]{bounded_niche()}} for template niche models
+\item \verb{vignette("advanced_functionality)} for how to create user-defined niche models
+\item \code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on a similar principle
+\item \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedures
+}
 }

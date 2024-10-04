@@ -5,14 +5,14 @@ p3_var_rate = function(x, y = NULL, from = 0, to = 1, f_max = 1, n = NULL){
   #' @title simulate variable rate Poisson point process
   #'
   #' @param x numeric vector or function. If x is a function, it is used to specify the variable rate. If x is a vector, x and y together specify the variable rate using linear interpolation
-  #' @param y numeric vector. If specified, determines the variable rate. This is done by using linear interpolation between the values of y. Here x specifies the ordinate and y the abscissa
+  #' @param y numeric vector or NULL. If not NULL, determines the variable rate. This is done by using linear interpolation between the values of y. Here x specifies the ordinate and y the abscissa
   #' @param from lower boundary of the observed interval
   #' @param to upper boundary of the observed
   #' @param f_max maximum value of `x` in the interval from `x_min` to `x_max`. If x attains values larger than `f_max` a warning is throw, `f_max` is adjusted, and sampling is started again
   #' @param n NULL or an integer. Number of events drawn. If NULL, the number of events is determined by the rate (specified by x and y). If an integer is passed, n events are returned.
   #'
   #' @description
-    #' simulates events based on a variable rate Poisson point process. Rates can be either specified by a function passed to `x`, or by providing two vectors `x` and `y`. In this case the rate is specified by approxfun(x, y, rule = 2), i.e. by linear interpolation between the values of x (abscissa) and y (ordinate)
+    #' simulates events based on a variable rate Poisson point process. Rates can be either specified by a function passed to `x`, or by providing two vectors `x` and `y`. In this case the rate is specified by `approxfun(x, y, rule = 2)`, i.e. by linear interpolation between the values of x (abscissa) and y (ordinate). See `?approxfun` for details.
     #' In the context of paleontology, these events can be interpreted as fossil occurrences or first/last occurrences of species. In this case, the rate is the average number of fossil occurrences (resp first/last occurrences) per unit
   #' @examples
     #'
