@@ -3,9 +3,11 @@
 <url><loc>https://mindthegap-erc.github.io/StratPal/CONTRIBUTING.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/LICENSE-text.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/articles/StratPal.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/articles/StratPal_docs.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/articles/event_data.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/articles/index.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/articles/paleoTS_functionality.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/authors.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/index.html</loc></url>
@@ -16,6 +18,7 @@
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/bounded_niche.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/index.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck_sl.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/p3.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/p3_var_rate.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/prob_remove.html</loc></url>

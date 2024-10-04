@@ -34,9 +34,11 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
-    <li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+<li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
+    <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS package</a></li>
+    <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
+    <li><a class="dropdown-item" href="../articles/StratPal_docs.html">Documentation of defined S3 classes</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -180,25 +182,27 @@ domain to the time domain) can be modeled using
 <code>strat_to_time</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="taphonomy-for-event-type-data">Taphonomy for event type data<a class="anchor" aria-label="anchor" href="#taphonomy-for-event-type-data"></a>
+<h2 id="taphonomy">Taphonomy<a class="anchor" aria-label="anchor" href="#taphonomy"></a>
 </h2>
 <p>Taphonomic effects can be incorporated using using the
 <code>apply_taphonomy</code> function. This is based on the same
 principle as niche modeling, and makes use of the <code>thin</code>
 function, but was not shown in the examples. For
 <code>pres_potential</code> (resp. <code>ctc</code>), the same logical
-constraints apply as to <code>niche_def</code> (resp.
-<code>gc</code>).</p>
+constraints apply as to <code>niche_def</code> (resp. <code>gc</code>).
+This works for event-type data and <code>pre_paleoTS</code> objects (see
+<code><a href="../articles/paleoTS_functionality.html">vignette("paleoTS_functionality")</a></code> for details).</p>
 </div>
 <div class="section level2">
 <h2 id="transform-different-types-of-data">Transform different types of data<a class="anchor" aria-label="anchor" href="#transform-different-types-of-data"></a>
 </h2>
 <p><code>strat_to_time</code> and <code>time_to_strat</code> are generic
 functions of the <code>admtools</code> package that can transform
-different types of data. Currently they transform phylogenetic trees
-(<code>phylo</code> objects), lists (<code>list</code> class), and
-numeric data such as the event type data (class
-<code>numeric</code>).</p>
+different types of data. Currently they transform paleontological time
+series of individual specimens (<code>pre_paleoTS</code> objects),
+phylogenetic trees (<code>phylo</code> objects), lists
+(<code>list</code> class), and numeric data such as the event type data
+(class <code>numeric</code>).</p>
 <p>In general, any type of temporal (resp. stratigraphic) data can be
 transformed. For this, you need define a <code>S3</code> class for the
 object you would like to transform (if it does not already have a S3
