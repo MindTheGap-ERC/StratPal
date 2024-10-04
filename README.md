@@ -84,7 +84,7 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 To cite the package, please use
 
--   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.1.1)." Zenodo. <https://doi.org/10.5281/zenodo.13373351>.
+-   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.2.0)." Zenodo. <https://doi.org/10.5281/zenodo.12790994>.
 
 Alternatively, you can also use the CITATION.cff file at the root of the repository, or `citation("StratPal")`.
 

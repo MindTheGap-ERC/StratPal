@@ -17,11 +17,13 @@ authors:
     orcid: 'https://orcid.org/0000-0003-1559-1838'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.12790995
-    description: DOI of version 0.1.0
+    value: 10.5281/zenodo.12790994
+    description: DOI of most recent archived version
+  - type: url
+    value: 'https://doi.org/10.5281/zenodo.12790994'
+    description: URL of most recent archived version
 repository-code: 'https://github.com/MindTheGap-ERC/StratPal'
 url: 'https://mindthegap-erc.github.io/StratPal/'
-repository: 'https://zenodo.org/doi/10.5281/zenodo.10782634'
 abstract: >-
   The fossil record is a joint expression of ecological,
   taphonomic, evolutionary, and stratigraphic processes
@@ -45,5 +47,5 @@ keywords:
   - Paleobiology
 license: Apache-2.0
 commit: d476968672d99001c2485763f0f4fdc7b9458973
-version: 0.1.0
-date-released: '2024-07-22'
+version: 0.2.0
+date-released: '2024-10-08'
