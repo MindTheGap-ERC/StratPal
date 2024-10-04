@@ -1,4 +1,4 @@
-# StratPal (development version)
+# StratPal 0.2.0
 
 * introduce S3 class `pre_paleoTS` with simulation procedures for trait evolution on specimen level
 
