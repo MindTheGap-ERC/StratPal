@@ -1,4 +1,8 @@
-# StratPal (development version)
+# StratPal 0.3.0
+
+* bug fix for `apply_niche` and `apply_taphonomy` for `pre_paleoTS` format
+
+* plotting for `pre_paleoTS` fixed
 
 # StratPal 0.2.0
 

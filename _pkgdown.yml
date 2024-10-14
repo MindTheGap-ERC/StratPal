@@ -44,6 +44,7 @@ reference:
   desc: Tools for linkage with the paleoTS package
   contents:
   - reduce_to_paleoTS
+  - plot.pre_paleoTS
 
 articles:
 - title: Articles
