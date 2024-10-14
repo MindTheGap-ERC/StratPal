@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">StratPal</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,7 +135,7 @@ location.</p>
 standard plotting procedure from paleoTS using <code>plot</code> (resp,
 <code>plot.paleoTS</code>). Note that you can not plot
 <code>pre_paloeTS</code> objects directly, only after conversion to
-<code>paleoTS</code>.</p>
+<code>paleoTS</code> format.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mindthegap-erc.github.io/StratPal/">StratPal</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">paleoTS</span><span class="op">)</span>   <span class="co"># needed for plotting</span></span>
@@ -161,7 +161,7 @@ specimens per sampling location:</p>
 <span>                T_unit <span class="op">=</span> <span class="st">"Myr"</span><span class="op">)</span>    </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>                                      <span class="co"># set seed for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># sample every 0.01 Myr</span></span>
-<span>  <span class="fu"><a href="../reference/random_walk_sl.html">random_walk_sl</a></span><span class="op">(</span>n_per_sample <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span>            <span class="co"># simulate random walk on specimen level</span></span>
+<span>  <span class="fu"><a href="../reference/random_walk_sl.html">random_walk_sl</a></span><span class="op">(</span>n_per_sample <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span>            <span class="co"># simulate random walk on specimen level</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span> <span class="op">|&gt;</span>                           <span class="co"># transform into stratigraphic domain</span></span>
 <span>  <span class="fu"><a href="../reference/reduce_to_paleoTS.html">reduce_to_paleoTS</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>                          <span class="co"># transform into paleoTS format</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span>                                          <span class="co"># plot</span></span></code></pre></div>
@@ -172,7 +172,7 @@ evolution from the simulated data:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span>                                      <span class="co"># set seed for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># sample every 0.01 Myr</span></span>
-<span>  <span class="fu"><a href="../reference/random_walk_sl.html">random_walk_sl</a></span><span class="op">(</span>n_per_sample <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span>            <span class="co"># simulate random walk on specimen level</span></span>
+<span>  <span class="fu"><a href="../reference/random_walk_sl.html">random_walk_sl</a></span><span class="op">(</span>n_per_sample <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span>            <span class="co"># simulate random walk on specimen level</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span> <span class="op">|&gt;</span>                           <span class="co"># transform into stratigraphic domain</span></span>
 <span>  <span class="fu"><a href="../reference/reduce_to_paleoTS.html">reduce_to_paleoTS</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>                          <span class="co"># transform into paleoTS format</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/paleoTS/man/fit3models.html" class="external-link">fit3models</a></span><span class="op">(</span><span class="op">)</span>                                    <span class="co"># fit 3 models to time series</span></span>
@@ -182,10 +182,10 @@ evolution from the simulated data:</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Comparing 3 models [n = 64, method = Joint]</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;             logL K      AICc      dAICc Akaike.wt</span></span>
-<span><span class="co">#&gt; GRW    -29.62174 3  65.64349  0.9846877     0.379</span></span>
-<span><span class="co">#&gt; URW    -30.23104 2  64.65880  0.0000000     0.621</span></span>
-<span><span class="co">#&gt; Stasis -53.45938 2 111.11548 46.4566839     0.000</span></span></code></pre></div>
+<span><span class="co">#&gt;             logL K     AICc     dAICc Akaike.wt</span></span>
+<span><span class="co">#&gt; GRW    -47.74893 3 101.8979  1.646129     0.305</span></span>
+<span><span class="co">#&gt; URW    -48.02751 2 100.2517  0.000000     0.695</span></span>
+<span><span class="co">#&gt; Stasis -57.64831 2 119.4933 19.241610     0.000</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="References">References<a class="anchor" aria-label="anchor" href="#References"></a>
