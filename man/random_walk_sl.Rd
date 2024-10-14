@@ -22,7 +22,7 @@ random_walk_sl(
 
 \item{y0}{number, starting value (value of the random walk at the first entry of \code{t})}
 
-\item{intrapop_var}{intrapopulation variance, determines how many specimens from the same population vary}
+\item{intrapop_var}{intrapopulation variance, determines how much specimens from the same population vary}
 
 \item{n_per_sample}{integer, number of specimens sampled per population/sampling locality}
 }

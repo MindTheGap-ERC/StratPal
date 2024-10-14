@@ -327,7 +327,7 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 -   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. <https://doi.org/10.1186/s12862-024-02287-2>.
 
--   Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. [https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2](https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2){.uri}
+-   Holland, Steven M. and Patzkowsky, Mark E. 1999. "Models for simulating the fossil record." Geology. <https://doi.org/10.1130/0091-7613(1999)027%3C0491:MFSTFR%3E2.3.CO;2>
 
 -   Holland, Steven M. and Patzkowsky, Mark E. 2015. "The stratigraphy of mass extinction." Palaeontology. <https://doi.org/10.1111/pala.12188>.
 
