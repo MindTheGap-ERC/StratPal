@@ -50,7 +50,7 @@ apply_taphonomy.pre_paleoTS = function(x, pres_potential, ctc){
   }
   for (i in seq_along(thin_vals)){
     r = prob_remove(x$vals[[i]], prob = thin_vals[i])
-    x$vals[[i]] = x$vals[[i]][as.logical(r)]
+    x$vals[[i]] = r
   }
   return(x)
 }

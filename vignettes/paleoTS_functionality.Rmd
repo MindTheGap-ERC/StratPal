@@ -39,7 +39,7 @@ The `paleoTS` package defines its own `paleoTS` format to store time series. It 
 
 Functions to model trait evolution on specimen level have the suffix `_sl`, standing for "specimen level". Internally, they are of S3 class `pre_paleoTS`. In addition to the options provided to simulate mean trait values, you can simulate strict stasis using `strict_stasis_sl`. All functions have the same parametrization as the as the other functions for simulating trait evolution, which simulate mean trait evolution. In addition, they take two additional parameters: `intrapop_var` for the variance of the population around the mean trait value, and `n_per_sample` for the number of specimens per sampling location.
 
-`pre_paleoTS` results can be converted to the `paleoTS` format using the function `reduce_to_paleoTS`. After this you can plot them with the standard plotting procedure from paleoTS using `plot` (resp, `plot.paleoTS`). Note that you can not plot `pre_paloeTS` objects directly, only after conversion to `paleoTS`.
+`pre_paleoTS` results can be converted to the `paleoTS` format using the function `reduce_to_paleoTS`. After this you can plot them with the standard plotting procedure from paleoTS using `plot` (resp, `plot.paleoTS`). Note that you can not plot `pre_paloeTS` objects directly, only after conversion to `paleoTS` format.
 
 ```{r fig.alt="plot of strict stasis"}
 library(StratPal)
@@ -62,7 +62,7 @@ adm = tp_to_adm(t = scenarioA$t_myr,               # define age-depth model
                 T_unit = "Myr")    
 set.seed(42)                                      # set seed for reproducibility
 seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
-  random_walk_sl(n_per_sample = 10) |>            # simulate random walk on specimen level
+  random_walk_sl(n_per_sample = 5) |>            # simulate random walk on specimen level
   time_to_strat(adm) |>                           # transform into stratigraphic domain
   reduce_to_paleoTS() |>                          # transform into paleoTS format
   plot()                                          # plot
@@ -73,7 +73,7 @@ Of course you can also immediately add functions from `paleoTS` to the pipeline,
 ```{r}
 set.seed(42)                                      # set seed for reproducibility
 seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
-  random_walk_sl(n_per_sample = 10) |>            # simulate random walk on specimen level
+  random_walk_sl(n_per_sample = 5) |>            # simulate random walk on specimen level
   time_to_strat(adm) |>                           # transform into stratigraphic domain
   reduce_to_paleoTS() |>                          # transform into paleoTS format
   fit3models()                                    # fit 3 models to time series

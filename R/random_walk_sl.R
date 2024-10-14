@@ -7,7 +7,7 @@ random_walk_sl = function(t, sigma = 1, mu = 0, y0 = 0, intrapop_var = 1, n_per_
   #' @param sigma positive number, variance parameter
   #' @param mu number, directionality parameter
   #' @param y0 number, starting value (value of the random walk at the first entry of `t`)
-  #' @param intrapop_var intrapopulation variance, determines how many specimens from the same population vary
+  #' @param intrapop_var intrapopulation variance, determines how much specimens from the same population vary
   #' @param n_per_sample integer, number of specimens sampled per population/sampling locality
   #'
   #' @description
