@@ -2,7 +2,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13373351.svg)](https://doi.org/10.5281/zenodo.13373351) [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal) [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
+[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14202337.svg)](https://doi.org/10.5281/zenodo.14202337) [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal) [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
+
 <!-- badges: end -->
 
 R package for stratigraphic paleobiology modeling pipelines.
@@ -84,7 +85,7 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 To cite the package, please use
 
--   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.2.0)." Zenodo. <https://doi.org/10.5281/zenodo.12790994>.
+-   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.3.0)." Zenodo. <https://doi.org/10.5281/zenodo.14202337>.
 
 Alternatively, you can also use the CITATION.cff file at the root of the repository, or `citation("StratPal")`.
 
