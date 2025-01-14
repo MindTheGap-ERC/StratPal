@@ -23,7 +23,7 @@ A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the 
 \description{
 Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. Note that different parametrizations of OU processes are used in the literature. Here we use the parametrization common in mathematics. This translates to the parametrization used in evolutionary biology (specifically, the one in Hansen (1997)) as follows:
 \itemize{
-\item \code{sigma} is identical between the two
+\item \code{sigma} is identical
 \item \code{mu} used in the \code{StratPal} package corresponds to \code{theta} sensu Hansen (1997)
 \item \code{theta} as used in the \code{StratPal} package corresponds to \code{alpha} sensu Hansen (1997)
 }

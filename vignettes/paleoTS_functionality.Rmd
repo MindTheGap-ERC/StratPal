@@ -1,8 +1,8 @@
 ---
-title: "Usage with the paleoTS package"
+title: "Usage with the paleoTS and evoTS package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Usage with the paleoTS package}
+  %\VignetteIndexEntry{Usage with the paleoTS and evoTS package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,22 +18,24 @@ knitr::opts_chunk$set(
 library(StratPal)
 ```
 
-This vignette explain how to link the `StratPal` package with the `paleoTS` package ([Hunt 2006](#References)). For details on the underlying data structures, see `vignette("StratPal_docs")`.
+This vignette explain how to link the `StratPal` package with the `paleoTS` and `evoTS` packages ([Hunt 2006, Voje 2023](#References)). For details on the underlying data structures, see `vignette("StratPal_docs")`.
 
 ## Quick summary
 
-To combine the `StratPal` and the `paleoTS` packages,
+To combine the `StratPal` and the `paleoTS`/`evoTS` packages,
 
 1. simulate trait evolution using the functions with suffix `_sl` (specimen level), optionally specifying the additional parameters for intrapopulation variance and number of specimens
 2. build your pipelines as before (e.g., as described in `vignette("phenotypic_evolution")`)
 3. turn the result into `paleoTS` format using `reduce_to_paleoTS`
-4. further analyze or plot the results using the `paleoTS` package
+4. further analyze or plot the results using the `paleoTS` or `evoTS` package
+
+Note that simulation of multivariate phenotypic evolution as provided by the `evoTS` package is not yet implemented on specimen level. If you are interested in this functionality please contact the developer.
 
 ## Motivation
 
 The `paleoTS` package allows to easily analyze paleontological time series, and `StratPal` can be connected to it to study how ecological, taphonomic, and stratigraphic effects change our inferences about the tempo and mode of evolution.
 
-The `paleoTS` package defines its own `paleoTS` format to store time series. It is a summary format, as it combines trait values measured in multiple specimens into an intrapopulation variance. Because taphonomic and ecological effects act on individual specimens, they can not be modeled directly on the `paleoTS` format. To circumvent this problem, we introduce a `pre_paleoTS` format that models trait evolution on the specimen level. Stratigraphic, taphonomic, and ecological effects can act on this format. After all these effects have been applied, we can reduce this data format into the standard `paleoTS` format, and then analyze it with the standard toolbox of the `paloeTS` package.
+The `paleoTS` package defines its own `paleoTS` format to store time series. It is a summary format, as it combines trait values measured in multiple specimens into an intrapopulation variance. Because taphonomic and ecological effects act on individual specimens, they can not be modeled directly on the `paleoTS` format. To circumvent this problem, we introduce a `pre_paleoTS` format that models trait evolution on the specimen level. Stratigraphic, taphonomic, and ecological effects can act on this format. After all these effects have been applied, we can reduce this data format into the standard `paleoTS` format, and then analyze it with the standard toolbox of the `paloeTS`/`evoTS` packages.
 
 ## Modeling trait evolution on specimen level, complexity reduction, and plotting
 
@@ -81,4 +83,6 @@ seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
 
 ## References {#References}
 
-* Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.
+-   Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. <https://doi.org/10.1666/05070.1>.
+
+-   Voje, Kjetil L. 2023. “Fitting and Evaluating Univariate and Multivariate Models of Within-Lineage Evolution.” Paleobiology. <https://doi.org/10.1017/pab.2023.10>.
