@@ -167,7 +167,7 @@ There we have it! This is what the lineage would look like if it was sampled eve
 
 ## Further reading
 
-For details on how the `StratPal` package ([Hunt 2006](#References)) can be integrated with the `paleoTS` package, see
+For details on how the `paleoTS` and `evoTS` packages ([Hunt 2006, Voje 2023](#References)) can be integrated with the `StratPal` package, see
 
 ```{r, eval=FALSE}
 vignette("paleoTS_functionality")
@@ -199,7 +199,9 @@ for details on how to expand on the modeling pipelines described here, or explor
 
 * Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. https://doi.org/10.1666/05070.1.
 
-* Lande, Russell. 1976. "Natural selection and random genetic drift in phenotypic evolution." Evolution. https://doi.org/10.1111/j.1558-5646.1976.tb00911.x
+* Lande, Russell. 1976. "Natural selection and random genetic drift in phenotypic evolution." Evolution. https://doi.org/10.1111/j.1558-5646.1976.tb00911.x.
+
+* Voje, Kjetil L. 2023. “Fitting and Evaluating Univariate and Multivariate Models of Within-Lineage Evolution.” Paleobiology. https://doi.org/10.1017/pab.2023.10.
 
 
 

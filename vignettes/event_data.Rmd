@@ -311,7 +311,7 @@ vignette("phenotypic_evolution")
 vignette("paleoTS_functionality")
 ```
 
-for details on how to model stratigraphic paleobiology of phenotypic evolution and integrate it with the `paleoTS` package ([Hunt 2006](#References)), or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
+for details on how to model stratigraphic paleobiology of phenotypic evolution and integrate it with the `paleoTS` and `evoTS` packages ([Hunt 2006, Voje 2023](#References)), or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.html).
 
 See also
 
@@ -334,3 +334,5 @@ for details on how to expand on the modeling pipelines described here, or explor
 -   Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic Evolution: Random Walks and Beyond.” Paleobiology. <https://doi.org/10.1666/05070.1>.
 
 -   Signor, Philip W.; Lipps, Jere H. 1982. "Sampling bias, gradual extinction patterns and catastrophes in the fossil record." Geological Society of America Special Paper 190.
+
+-   Voje, Kjetil L. 2023. “Fitting and Evaluating Univariate and Multivariate Models of Within-Lineage Evolution.” Paleobiology. <https://doi.org/10.1017/pab.2023.10>.

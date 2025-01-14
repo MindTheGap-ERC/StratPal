@@ -10,7 +10,10 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
   #' @param y0 number, initial value (value of process at the first entry of t)
   #'
   #' @description
-    #' Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of `0.25 * min(diff(t))` and then interpolated to the values of `t`.
+    #' Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of `0.25 * min(diff(t))` and then interpolated to the values of `t`. Note that different parametrizations of OU processes are used in the literature. Here we use the parametrization common in mathematics. This translates to the parametrization used in evolutionary biology (specifically, the one in Hansen (1997)) as follows:
+    #'  * `sigma` is identical
+    #'  * `mu` used in the `StratPal` package corresponds to `theta` sensu Hansen (1997)
+    #'  * `theta` as used in the `StratPal` package corresponds to `alpha` sensu Hansen (1997)
     #'
   #' @returns A list with two elements: `t` and `y`. `t` is a duplicate of the input `t`, `y` are the values of the OU process at these times. Output list is of S3 class `timelist` (inherits from `list`) and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
   #'
@@ -27,7 +30,9 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
     #' l2 = ornstein_uhlenbeck(t, y0 = 0) # start in optimum
     #' lines(l2$t, l2$y, col = "red")
     #'
-    #'
+  #' @references
+    #' * Hansen, Thomas F. 1997. “Stabilizing Selection and the Comparative Analysis of Adaptation.” Evolution 51 (5): 1341–51. \doi{10.1111/j.1558-5646.1997.tb01457.x}.
+
 
   if (length(t) < 2){
     stop("need at least 2 entries in \"t\"")
