@@ -21,7 +21,12 @@ ornstein_uhlenbeck(t, mu = 0, theta = 1, sigma = 1, y0 = 0)
 A list with two elements: \code{t} and \code{y}. \code{t} is a duplicate of the input \code{t}, \code{y} are the values of the OU process at these times. Output list is of S3 class \code{timelist} (inherits from \code{list}) and can thus be plotted directly using \code{plot}, see \code{?admtools::plot.timelist}
 }
 \description{
-Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}.
+Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of \code{0.25 * min(diff(t))} and then interpolated to the values of \code{t}. Note that different parametrizations of OU processes are used in the literature. Here we use the parametrization common in mathematics. This translates to the parametrization used in evolutionary biology (specifically, the one in Hansen (1997)) as follows:
+\itemize{
+\item \code{sigma} is identical between the two
+\item \code{mu} used in the \code{StratPal} package corresponds to \code{theta} sensu Hansen (1997)
+\item \code{theta} as used in the \code{StratPal} package corresponds to \code{alpha} sensu Hansen (1997)
+}
 }
 \examples{
 
@@ -32,7 +37,11 @@ plot(l, type = "l")
 l2 = ornstein_uhlenbeck(t, y0 = 0) # start in optimum
 lines(l2$t, l2$y, col = "red")
 
-
+}
+\references{
+\itemize{
+\item Hansen, Thomas F. 1997. “Stabilizing Selection and the Comparative Analysis of Adaptation.” Evolution 51 (5): 1341–51. \doi{10.1111/j.1558-5646.1997.tb01457.x}.
+}
 }
 \seealso{
 \itemize{
