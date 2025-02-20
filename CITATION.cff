@@ -17,10 +17,10 @@ authors:
     orcid: 'https://orcid.org/0000-0003-1559-1838'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.12790994
+    value: 10.5281/zenodo.14202337
     description: DOI of most recent archived version
   - type: url
-    value: 'https://doi.org/10.5281/zenodo.12790994'
+    value: 'https://doi.org/10.5281/zenodo.14202337'
     description: URL of most recent archived version
 repository-code: 'https://github.com/MindTheGap-ERC/StratPal'
 url: 'https://mindthegap-erc.github.io/StratPal/'
@@ -46,6 +46,6 @@ keywords:
   - Palaeontology
   - Paleobiology
 license: Apache-2.0
-commit: d476968672d99001c2485763f0f4fdc7b9458973
-version: 0.2.0
-date-released: '2024-10-04'
+commit: 16f16e2cabd41e373e15d4b6477973019535767c
+version: 0.3.0
+date-released: '2024-11-22'
