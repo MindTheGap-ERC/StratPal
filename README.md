@@ -2,7 +2,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14202337.svg)](https://doi.org/10.5281/zenodo.14202337) [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal) [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
+[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14900063.svg)](https://doi.org/10.5281/zenodo.14900063)
+[![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal)
+[![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
 
 <!-- badges: end -->
 
@@ -83,9 +85,11 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 ## Citation
 
-To cite the package, please use
+To cite the package, please use both references:
 
--   Hohmann, Niklas. 2024. "StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.3.0)." Zenodo. <https://doi.org/10.5281/zenodo.14202337>.
+-   Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.3.1). Zenodo. <https://doi.org/10.5281/zenodo.14900063>
+
+-   Hohmann, N. and Jarochowska, E. (2024). StratPal: An R package for creating stratigraphic paleobiology modelling pipelines. Methods In Ecology and Evolution. <https://doi.org/10.1111/2041-210X.14507>
 
 Alternatively, you can also use the CITATION.cff file at the root of the repository, or `citation("StratPal")`.
 
