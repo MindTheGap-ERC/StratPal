@@ -6,3 +6,12 @@ bibentry("misc",
   version = "v0.2.0",
   doi = "10.5281/zenodo.12790994",
   url = "https://doi.org/10.5281/zenodo.12790994")
+
+
+bibentry("article",
+  title = "StratPal: An R package for creating stratigraphic paleobiology modelling pipelines",
+  author = "Niklas Hohmann, Emilia Jarochowska",
+  year = 2025,
+  journal = "Methods in Ecology and Evolution",
+  doi = "10.1111/2041-210X.14507"
+)
