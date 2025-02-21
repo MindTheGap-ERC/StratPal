@@ -20,3 +20,7 @@ test_that("for pre_paleoTS, returns identical result for trivial niche", {
   expect_equal(apply_niche(x, niche_def, gc), x)
 })
 
+test_that("for fossils objects, returns indentical result for trivial niche",{
+  # for trivial niche is the identity function
+})
+

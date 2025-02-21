@@ -54,3 +54,21 @@ apply_taphonomy.pre_paleoTS = function(x, pres_potential, ctc){
   }
   return(x)
 }
+
+apply_taphonomy.fossils = function(x, pres_potential, ctc){
+  #' @export
+  #'
+  #' @export
+  #'
+  change_pres_pot = function(y) pres_potential(ctc(y))
+
+  x_val = 0.5(x$hmin + x$hmax)
+  if (any(x$hmax != x$hmin)){
+    warning("Fossils are asociated with age uncertainty. Using midpoint of min and max ages to determine removal probability")
+  }
+
+  thin_vals = change_pres_pot(x_val)
+  r = stats::rbinom(length(thin_vals), size = 1, prob = thin_vals)
+  x = x[as.logical(r),]
+  return(x)
+}

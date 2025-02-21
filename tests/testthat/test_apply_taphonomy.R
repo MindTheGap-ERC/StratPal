@@ -30,3 +30,7 @@ test_that("works with stratigraphic data", {
   ctc = function(x) rep(1, length(x))
   expect_identical(apply_taphonomy(x, pres_potential, ctc), x)
 })
+
+test_that("fossils object remains identical for perfect preservation",{
+  # for perfect preservation, transformation is the identity
+})
