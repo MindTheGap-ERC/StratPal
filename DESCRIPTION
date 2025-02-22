@@ -23,6 +23,8 @@ Imports:
     admtools (>= 0.4.0),
     paleoTS
 Suggests: 
+    ape,
+    FossilSim,
     knitr,
     rmarkdown,
     spelling,
