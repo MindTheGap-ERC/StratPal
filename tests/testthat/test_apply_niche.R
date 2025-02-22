@@ -20,3 +20,12 @@ test_that("for pre_paleoTS, returns identical result for trivial niche", {
   expect_equal(apply_niche(x, niche_def, gc), x)
 })
 
+test_that("for fossils objects, returns indentical result for trivial niche",{
+  niche_def = function(x) rep(1, length(x))
+  gc = function(x) rep(1, length(x))
+  t = ape::rlineage(birth = 1, death = 0, Tmax = 1)
+  rate = 2
+  f = FossilSim::sim.fossils.poisson(rate = rate, tree = t)
+  expect_equal(apply_niche(f, niche_def, gc), f)
+})
+

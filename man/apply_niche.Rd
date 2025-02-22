@@ -7,17 +7,17 @@
 apply_niche(x, niche_def, gc)
 }
 \arguments{
-\item{x}{events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object (e.g. produced by \code{stasis_sl}).}
+\item{x}{events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object (e.g. produced by \code{stasis_sl}), or a \code{fossils} object produced by the \code{FossilSim} package.}
 
 \item{niche_def}{function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
 \item{gc}{function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 }
 \value{
-for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a \code{pre_paleoTS} object as input, returns a \code{pre_paleoTS} object with specimens removed according to the niche model.
+for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a \code{pre_paleoTS} object as input, returns a \code{pre_paleoTS} object with specimens removed according to the niche model. For a \code{fossils} object, returns a \code{fossils} object with some occurrences removed according to the niche definition
 }
 \description{
-Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function \code{thin}, for \code{pre_paleoTS} this is done by applying the function \code{prob_remove} on the specimens.
+Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function \code{thin}, for \code{pre_paleoTS} this is done by applying the function \code{prob_remove} on the specimens. For \code{fossils} objects produced by the \code{FossilSim} package, fossil observations are removed according to the specified niche
 Combines the functions \code{niche_def} and \code{gc} ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing \code{niche_def} and \code{gc}. The result is then used to remove events/specimens in \code{x}.
 }
 \examples{
@@ -60,6 +60,19 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
  # bc the taxon does not appear everywhere
  # and there are fewer specimens per sampling site
 
+ ### example for fossils objects
+ # we reuse the niche definition and gradient change from above
+ # simulate tree
+ t = ape::rlineage(birth = 2, death = 0, Tmax = 2)
+ # create fossils object
+ f = FossilSim::sim.fossils.poisson(rate = 2, tree = t)
+ # plot fossils along tree before niche model is applied
+ FossilSim:::plot.fossils(f, tree = t)
+ # introduce niche model
+ f_mod = apply_niche(f, niche_def, gc)
+ # plot fossils along tree after introduction of niche model
+ FossilSim:::plot.fossils(f_mod, tree = t)
+ # note how only fossils in the interval where environmental conditions are suitable are preserved
 }
 \seealso{
 \itemize{

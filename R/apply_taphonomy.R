@@ -3,7 +3,7 @@ apply_taphonomy = function(x, pres_potential, ctc){
   #'
   #' @title model taphonomic effects
   #'
-  #' @param x event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object.
+  #' @param x event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` or a `fossils` object.
   #' @param pres_potential function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1). Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #' @param ctc function, change in taphonomic conditions (ctc) with time or stratigraphic position. . Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #'
@@ -15,14 +15,14 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #' * [apply_niche()] for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
     #' * [thin()] and [prob_remove()] for the underlying mathematical procedures.
   #'
-  #' @returns if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a `pre_paleoTS` object, returns another `pre_paleoTS` object with reduced number of specimens.
+  #' @returns if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a `pre_paleoTS` object, returns another `pre_paleoTS` object with reduced number of specimens. If given a `fossils` object as created by the `FossilSim` package, returns another `fossils` object with some occurrences removed according to preservation potential.
   #'
   #' @examples
     #'
     #' # see
     #' #vignette("advanced_functionality")
     #' # for details on usage
-    #'
+    #' # or the documentation of apply_ecology for equivalent application to ecology
     #'
  UseMethod("apply_taphonomy")
 
@@ -52,5 +52,23 @@ apply_taphonomy.pre_paleoTS = function(x, pres_potential, ctc){
     r = prob_remove(x$vals[[i]], prob = thin_vals[i])
     x$vals[[i]] = r
   }
+  return(x)
+}
+
+apply_taphonomy.fossils = function(x, pres_potential, ctc){
+  #' @export
+  #'
+  #' @export
+  #'
+  change_pres_pot = function(y) pres_potential(ctc(y))
+
+  x_val = 0.5*(x$hmin + x$hmax)
+  if (any(x$hmax != x$hmin)){
+    warning("Fossils are asociated with age uncertainty. Using midpoint of min and max ages to determine removal probability")
+  }
+
+  thin_vals = change_pres_pot(x_val)
+  r = stats::rbinom(length(thin_vals), size = 1, prob = thin_vals)
+  x = x[as.logical(r),]
   return(x)
 }
