@@ -18,7 +18,13 @@ knitr::opts_chunk$set(
 library(StratPal)
 ```
 
+This vignette describes how to integrate the `StratPal` package with the `FossilSim` and the `paleotree` packages.
+
 ## Integration with the `FossilSim` package
+
+As is, the `StratPal` package handles `fossils` objects as constructed by the `FossilSim` package. These objects represent fossils sampled along a tree (phylogeny). They can be transformed using the functions `apply_taphonomy` and `apply_niche`. This will remove fossil occurrences according to preservation potential and change on taphonomic conditions (or niche definition and change in gradient). Note that this corresponds to an nonparametric expansion of the variable recovery model as implemented in `FossilSim`.
+
+For examples see the documentation of the functions `apply_niche` and `apply_taphonomy`.
 
 ## Integration with `paleotree`
 
@@ -32,7 +38,7 @@ After conversion you can proceed as described in the section *Integration with t
 
 ## References
 
-* FossilSim package
-* paleotree package
-* FossilSim publication
-* paleotree publication
+*  Barido-Sottani J, Pett W, O'Reilly JE, Warnock RCM. Fossilsim: An r package for simulating fossil occurrence data under mechanistic models of preservation and recovery. Methods Ecol Evol. 2019; 10: 835–840. <https://doi.org/10.1111/2041-210X.13170>
+*  Bapst, D.W. (2012), paleotree: an R package for paleontological and phylogenetic analyses of evolution. Methods in Ecology and Evolution, 3: 803-807. <https://doi.org/10.1111/j.2041-210X.2012.00223.x>
+*  Warnock R, Barido-Sottani J, Pett W, Joseph O, Stolz U (2024). _FossilSim: Simulation and Plots for Fossil and Taxonomy Data_. R package version 2.4.1,
+  <https://CRAN.R-project.org/package=FossilSim>

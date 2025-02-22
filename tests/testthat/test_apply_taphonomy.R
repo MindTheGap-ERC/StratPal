@@ -32,5 +32,10 @@ test_that("works with stratigraphic data", {
 })
 
 test_that("fossils object remains identical for perfect preservation",{
-  # for perfect preservation, transformation is the identity
+  pres_potential = function(x) rep(1, length(x))
+  ctc = function(x) rep(1, length(x))
+  t = ape::rlineage(birth = 1, death = 0, Tmax = 1)
+  rate = 2
+  f = FossilSim::sim.fossils.poisson(rate = rate, tree = t)
+  expect_equal(apply_taphonomy(f, pres_potential, ctc), f)
 })

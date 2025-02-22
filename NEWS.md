@@ -1,6 +1,6 @@
 # StratPal (development version)
 
-* Integration with the `FossilSim` package
+* Integration with the `FossilSim` package, specifically transformation of `fossils` objects
 
 # StratPal 0.3.1
 

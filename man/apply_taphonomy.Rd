@@ -24,7 +24,7 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 # see
 #vignette("advanced_functionality")
 # for details on usage
-
+# or the documentation of apply_ecology for equivalent application to ecology
 
 }
 \seealso{
