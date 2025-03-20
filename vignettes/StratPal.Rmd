@@ -153,6 +153,8 @@ library("admtools")
 
 The `StratPal` package comes with some example data for age-depth models stored in the `scenarioA` variable, see the section on [example data](#example-data) or `?scenarioA` for details.
 
+Note that by convention, `admtools` uses height and time (relative to an arbitrary chosen point), and not age and depth - strictly the age-depth models are time-height models. For the example data, the reference point is the start of the simulation (`t = 0`) and the bottom of the section (`h = 0`).
+
 ### Defining age-depth models
 
 Let's start with defining the age-depth model 2 km from shore in scenario A. This can be done with `tp_to_adm` (tie points to age-depth model):
