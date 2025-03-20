@@ -39,6 +39,7 @@
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
     <li><a class="dropdown-item" href="../articles/StratPal_docs.html">Documentation of defined S3 classes</a></li>
+    <li><a class="dropdown-item" href="../articles/FossilSim_integration.html">Integration with the FossilSim and paleotree packages</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -235,6 +236,12 @@ using</p>
 age-depth models stored in the <code>scenarioA</code> variable, see the
 section on <a href="#example-data">example data</a> or
 <code><a href="../reference/scenarioA.html">?scenarioA</a></code> for details.</p>
+<p>Note that by convention, <code>admtools</code> uses height and time
+(relative to an arbitrary chosen point), and not age and depth -
+strictly the age-depth models are time-height models. For the example
+data, the reference point is the start of the simulation
+(<code>t = 0</code>) and the bottom of the section
+(<code>h = 0</code>).</p>
 <div class="section level3">
 <h3 id="defining-age-depth-models">Defining age-depth models<a class="anchor" aria-label="anchor" href="#defining-age-depth-models"></a>
 </h3>

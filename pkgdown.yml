@@ -4,11 +4,12 @@ pkgdown_sha: ~
 articles:
   advanced_functionality: advanced_functionality.html
   event_data: event_data.html
+  FossilSim_integration: FossilSim_integration.html
   paleoTS_functionality: paleoTS_functionality.html
   phenotypic_evolution: phenotypic_evolution.html
   StratPal_docs: StratPal_docs.html
   StratPal: StratPal.html
-last_built: 2025-02-20T11:43Z
+last_built: 2025-03-20T19:18Z
 urls:
   reference: https://mindthegap-erc.github.io/StratPal/reference
   article: https://mindthegap-erc.github.io/StratPal/articles

@@ -24,6 +24,7 @@
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
     <li><a class="dropdown-item" href="../articles/StratPal_docs.html">Documentation of defined S3 classes</a></li>
+    <li><a class="dropdown-item" href="../articles/FossilSim_integration.html">Integration with the FossilSim and paleotree packages</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -56,7 +57,7 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a <code>pre_paleoTS</code> object.</p></dd>
+<dd><p>event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a <code>pre_paleoTS</code> or a <code>fossils</code> object.</p></dd>
 
 
 <dt id="arg-pres-potential">pres_potential<a class="anchor" aria-label="anchor" href="#arg-pres-potential"></a></dt>
@@ -69,7 +70,7 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a <code>pre_paleoTS</code> object, returns another <code>pre_paleoTS</code> object with reduced number of specimens.</p>
+    <p>if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a <code>pre_paleoTS</code> object, returns another <code>pre_paleoTS</code> object with reduced number of specimens. If given a <code>fossils</code> object as created by the <code>FossilSim</code> package, returns another <code>fossils</code> object with some occurrences removed according to preservation potential.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -85,7 +86,7 @@
 <span class="r-in"><span><span class="co"># see</span></span></span>
 <span class="r-in"><span><span class="co">#vignette("advanced_functionality")</span></span></span>
 <span class="r-in"><span><span class="co"># for details on usage</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># or the documentation of apply_ecology for equivalent application to ecology</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

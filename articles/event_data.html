@@ -39,6 +39,7 @@
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
     <li><a class="dropdown-item" href="../articles/StratPal_docs.html">Documentation of defined S3 classes</a></li>
+    <li><a class="dropdown-item" href="../articles/FossilSim_integration.html">Integration with the FossilSim and paleotree packages</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -258,7 +259,7 @@ on <a href="#Range-offset">range offset</a>.</p>
 <p>The patter 12 km offshore is very different:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_12km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_12km</span>, destructive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Stratigraphic height [m]"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Last occurrences 12 km offshore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Last occurrences"</span>,</span>
