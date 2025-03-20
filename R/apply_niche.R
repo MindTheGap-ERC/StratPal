@@ -3,15 +3,15 @@ apply_niche = function(x, niche_def, gc){
   #'
   #' @title apply niche model
   #'
-  #' @param x events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object (e.g. produced by `stasis_sl`).
+  #' @param x events type data, e.g. vector of times/ages of fossil occurrences or their stratigraphic position, or a `pre_paleoTS` object (e.g. produced by `stasis_sl`), or a `fossils` object produced by the `FossilSim` package.
   #' @param niche_def function, specifying the niche along a gradient. Should return 0 when taxon is outside of niche, and 1 when inside niche. Values between 0 and 1 are interpreted as collection probabilities. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #' @param gc function, stands for "gradient change". Specifies how the gradient changes, e.g. with time. Must be vectorized, meaning if given a vector, it must return a vector of equal length.
   #'
   #' @description
-    #' Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function `thin`, for `pre_paleoTS` this is done by applying the function `prob_remove` on the specimens.
+    #' Models niches by removing events (fossil occurrences) or specimens when they are outside of their niche. For event type data, this is done using the function `thin`, for `pre_paleoTS` this is done by applying the function `prob_remove` on the specimens. For `fossils` objects produced by the `FossilSim` package, fossil observations are removed according to the specified niche
     #' Combines the functions `niche_def` and `gc` ("gradient change") to determine how the taxons' collection probability changes with time/position. This is done by composing `niche_def` and `gc`. The result is then used to remove events/specimens in `x`.
   #'
-  #' @returns for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a `pre_paleoTS` object as input, returns a `pre_paleoTS` object with specimens removed according to the niche model.
+  #' @returns for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a `pre_paleoTS` object as input, returns a `pre_paleoTS` object with specimens removed according to the niche model. For a `fossils` object, returns a `fossils` object with some occurrences removed according to the niche definition
   #'
   #' @seealso
     #' * [snd_niche()] and [bounded_niche()] for template niche models
@@ -59,6 +59,19 @@ apply_niche = function(x, niche_def, gc){
     #'  # bc the taxon does not appear everywhere
     #'  # and there are fewer specimens per sampling site
     #'
+    #'  ### example for fossils objects
+    #'  # we reuse the niche definition and gradient change from above
+    #'  # simulate tree
+    #'  t = ape::rlineage(birth = 2, death = 0, Tmax = 2)
+    #'  # create fossils object
+    #'  f = FossilSim::sim.fossils.poisson(rate = 2, tree = t)
+    #'  # plot fossils along tree before niche model is applied
+    #'  FossilSim:::plot.fossils(f, tree = t)
+    #'  # introduce niche model
+    #'  f_mod = apply_niche(f, niche_def, gc)
+    #'  # plot fossils along tree after introduction of niche model
+    #'  FossilSim:::plot.fossils(f_mod, tree = t)
+    #'  # note how only fossils in the interval where environmental conditions are suitable are preserved
 
  UseMethod("apply_niche")
 
@@ -83,5 +96,22 @@ apply_niche.pre_paleoTS = function(x, niche_def, gc){
     r = prob_remove(x$vals[[i]], prob = thin_vals[i])
     x$vals[[i]] = r
   }
+  return(x)
+}
+
+
+apply_niche.fossils = function(x, niche_def, gc){
+  #' @export
+  #'
+  change_in_niche = function(y) niche_def(gc(y))
+
+  x_val = 0.5*(x$hmin + x$hmax)
+  if (any(x$hmax != x$hmin)){
+    warning("Fossils are asociated with age uncertainty. Using midpoint of min and max ages to determine removal probability")
+  }
+
+  thin_vals = change_in_niche(x_val)
+  r = stats::rbinom(length(thin_vals), size = 1, prob = thin_vals)
+  x = x[as.logical(r),]
   return(x)
 }

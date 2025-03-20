@@ -7,14 +7,14 @@
 apply_taphonomy(x, pres_potential, ctc)
 }
 \arguments{
-\item{x}{event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} object.}
+\item{x}{event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} or a \code{fossils} object.}
 
 \item{pres_potential}{function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1). Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
 \item{ctc}{function, change in taphonomic conditions (ctc) with time or stratigraphic position. . Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 }
 \value{
-if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a \code{pre_paleoTS} object, returns another \code{pre_paleoTS} object with reduced number of specimens.
+if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a \code{pre_paleoTS} object, returns another \code{pre_paleoTS} object with reduced number of specimens. If given a \code{fossils} object as created by the \code{FossilSim} package, returns another \code{fossils} object with some occurrences removed according to preservation potential.
 }
 \description{
 Models taphonomy by combining the change in taphonomic conditions with the preservation potential as a function of taphonomic conditions to determine how preservation potential changes. This is then used to systematically remove (thin) the event data using \code{thin}/ remove specimens from the \code{pre_paleoTS} object using \code{prob_remove}.
@@ -24,7 +24,7 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 # see
 #vignette("advanced_functionality")
 # for details on usage
-
+# or the documentation of apply_ecology for equivalent application to ecology
 
 }
 \seealso{
