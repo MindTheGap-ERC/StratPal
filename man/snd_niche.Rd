@@ -49,6 +49,7 @@ plot(wd, f(wd), xlab = "Water depth", ylab = "Prob. of collection")
 \itemize{
 \item \code{\link[=apply_niche]{apply_niche()}} for usage of the returned function
 \item \code{\link[=bounded_niche]{bounded_niche()}} for another niche model
+\item \code{\link[=discrete_niche]{discrete_niche()}} and \code{\link[=discrete_gradient]{discrete_gradient()}} to define niches based on discrete categories
 \item \code{vignette("advenced_functionality")} for details on how to create user defined niche models
 }
 }

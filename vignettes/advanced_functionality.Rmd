@@ -44,7 +44,7 @@ Similar criteria hold for the definitions of gradient change `gc`:
 1.  `gc` must be a function that takes time (or position) as input, and returns gradient values as outputs.
 2.  The function must be vectorized, meaning when handed a vector, it must return a vector of equal length.
 
-As long as these conditions for `gc` and `niche_def` are met, arbitrary niche preferences along any gradient can be modeled using `apply_niche`.
+As long as these conditions for `gc` and `niche_def` are met, arbitrary niche preferences along any gradient can be modeled using `apply_niche`. For examples on how this works for discrete categories of niches, see the functions `discrete_niche` (and examples therein) and `discrete_gradient` for the needed helper functions.
 
 ## Different models of phenotypic evolution
 
@@ -70,7 +70,7 @@ Much of the explanations here focus on forward modeling, i.e., modeling the time
 
 ## Taphonomy
 
-Taphonomic effects can be incorporated using using the `apply_taphonomy` function. This is based on the same principle as niche modeling, and makes use of the `thin` function, but was not shown in the examples. For `pres_potential` (resp. `ctc`), the same logical constraints apply as to `niche_def` (resp. `gc`). This works for event-type data and `pre_paleoTS` objects (see `vignette("paleoTS_functionality")` for details).
+Taphonomic effects can be incorporated using using the `apply_taphonomy` function. This is based on the same principle as niche modeling, and makes use of the `thin` function, but was not shown in the examples. For `pres_potential` (resp. `ctc`), the same logical constraints apply as to `niche_def` (resp. `gc`). This works for event-type data and `pre_paleoTS` objects (see `vignette("paleoTS_functionality")` for details). For examples with discrete taphonomic categories see `discrete_niche` (both source code and examples) as a template.
 
 ## Transform different types of data
 

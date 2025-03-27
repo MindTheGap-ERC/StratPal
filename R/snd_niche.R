@@ -31,6 +31,7 @@ snd_niche = function(opt, tol, prob_modifier = 1, cutoff_val = NULL){
   #' @seealso
     #' * [apply_niche()] for usage of the returned function
     #' * [bounded_niche()] for another niche model
+    #' * [discrete_niche()] and [discrete_gradient()] to define niches based on discrete categories
     #' * `vignette("advenced_functionality")` for details on how to create user defined niche models
   #' @description
     #' Defines niche model based in the "Probability of collection" model by Holland and Patzkowsky (1999).

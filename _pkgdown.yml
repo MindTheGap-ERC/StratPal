@@ -30,6 +30,8 @@ reference:
   - apply_niche
   - apply_taphonomy
   - bounded_niche
+  - discrete_gradient
+  - discrete_niche
   - prob_remove
   - snd_niche
   - thin
