@@ -38,7 +38,7 @@ bounds = c(0,1,1.8,2.8))
 # assuming constant fossil abundance before ecological effects, how many fossils do we recover?
 foss_occ = p3(rate = 100, from = 0, to = 2.8)
 occ_after_ecol = apply_niche(foss_occ, niche_def = niche, gc = gradient)
-hist(occ_after_ecol)
+hist(occ_after_ecol, xlab = "Myr")
 # Between 1 nad 1.8 Myr fossil abundance is reduced because this coincides with deep whater
 # in which the recovery potential of the taxon is reduced (from 90 \% to 10 \%)
 }

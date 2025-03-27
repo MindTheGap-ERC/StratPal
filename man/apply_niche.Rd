@@ -76,7 +76,7 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
 }
 \seealso{
 \itemize{
-\item \code{\link[=snd_niche]{snd_niche()}} and \code{\link[=bounded_niche]{bounded_niche()}} for template niche models, \code{\link[=discrete_niche]{discrete_niche()}} and \link{discrete_gradient} to construct niches from discrete categories.
+\item \code{\link[=snd_niche]{snd_niche()}} and \code{\link[=bounded_niche]{bounded_niche()}} for template niche models, \code{\link[=discrete_niche]{discrete_niche()}} and \code{\link[=discrete_gradient]{discrete_gradient()}} to construct niches from discrete categories.
 \item \verb{vignette("advanced_functionality)} for how to create user-defined niche models
 \item \code{\link[=apply_taphonomy]{apply_taphonomy()}} to model taphonomic effects based on a similar principle
 \item \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedures
