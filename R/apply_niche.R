@@ -14,7 +14,7 @@ apply_niche = function(x, niche_def, gc){
   #' @returns for a numeric vector input, returns a numeric vector, timing/location of events (e.g. fossil ages/locations) preserved after the niche model is applied. For a `pre_paleoTS` object as input, returns a `pre_paleoTS` object with specimens removed according to the niche model. For a `fossils` object, returns a `fossils` object with some occurrences removed according to the niche definition
   #'
   #' @seealso
-    #' * [snd_niche()] and [bounded_niche()] for template niche models
+    #' * [snd_niche()] and [bounded_niche()] for template niche models, [discrete_niche()] and [discrete_gradient()] to construct niches from discrete categories.
     #' * `vignette("advanced_functionality)` for how to create user-defined niche models
     #' * [apply_taphonomy()] to model taphonomic effects based on a similar principle
     #' * [thin()] and [prob_remove()] for the underlying mathematical procedures
@@ -72,6 +72,8 @@ apply_niche = function(x, niche_def, gc){
     #'  # plot fossils along tree after introduction of niche model
     #'  FossilSim:::plot.fossils(f_mod, tree = t)
     #'  # note how only fossils in the interval where environmental conditions are suitable are preserved
+    #'  # note that FossilSim uses age before the present, so the interpretation of
+    #'  # of the change in gradient is also with age, and not time!
 
  UseMethod("apply_niche")
 
