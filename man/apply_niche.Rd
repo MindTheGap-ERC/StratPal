@@ -73,6 +73,8 @@ Combines the functions \code{niche_def} and \code{gc} ("gradient change") to det
  # plot fossils along tree after introduction of niche model
  FossilSim:::plot.fossils(f_mod, tree = t)
  # note how only fossils in the interval where environmental conditions are suitable are preserved
+ # note that FossilSim uses age before the present, so the interpretation of
+ # of the change in gradient is also with age, and not time!
 }
 \seealso{
 \itemize{
