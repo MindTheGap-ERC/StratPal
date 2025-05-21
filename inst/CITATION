@@ -4,8 +4,8 @@ bibentry("misc",
   year = 2024,
   publisher = "Zenodo",
   version = "v0.4.0",
-  doi = "10.5281/zenodo.15099540",
-  url = "https://doi.org/10.5281/zenodo.15099540")
+  doi = "10.5281/zenodo.15480833",
+  url = "https://doi.org/10.5281/zenodo.15480833")
 
 
 bibentry("article",

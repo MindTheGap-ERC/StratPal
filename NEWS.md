@@ -1,5 +1,9 @@
 # StratPal (development version)
 
+# StratPal 0.5.0
+
+* Expand integration with the `FossilSim` package
+
 # StratPal 0.4.0
 
 * Convenience functions `discrete_niche` and `discrete_gradient` for defining niches from discrete categories
