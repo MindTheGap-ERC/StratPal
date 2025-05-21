@@ -17,10 +17,10 @@ authors:
     orcid: 'https://orcid.org/0000-0003-1559-1838'
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.14202337
+    value: 10.5281/zenodo.15480833
     description: DOI of most recent archived version
   - type: url
-    value: 'https://doi.org/10.5281/zenodo.14202337'
+    value: 'https://doi.org/10.5281/zenodo.15480833'
     description: URL of most recent archived version
 repository-code: 'https://github.com/MindTheGap-ERC/StratPal'
 url: 'https://mindthegap-erc.github.io/StratPal/'
@@ -37,8 +37,9 @@ abstract: >-
   type data such as first/last occurrences are provided and
   can be used standalone or as part of a pipeline. The
   package comes with example data sets and tutorials in
-  several vignettes, which can be used as a template to set
-  up one's own simulation.
+  several vignettes (e.g., for transforming phylogenetic
+  trees), which can be used as a template to set up one's
+  own simulation.
 keywords:
   - Stratigraphic Paleobiology
   - Stratigraphy
@@ -46,6 +47,6 @@ keywords:
   - Palaeontology
   - Paleobiology
 license: Apache-2.0
-commit: 16f16e2cabd41e373e15d4b6477973019535767c
-version: 0.3.0
-date-released: '2024-11-22'
+commit: 0753d6400922bab4f670e947dc571327036bcdfc
+version: 0.5.0
+date-released: '2025-05-21'

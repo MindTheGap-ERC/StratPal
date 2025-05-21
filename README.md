@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15099540.svg)](https://doi.org/10.5281/zenodo.15099540)
+[![R-CMD-check](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/MindTheGap-ERC/StratPal/actions/workflows/R-CMD-check.yaml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15480833.svg)](https://doi.org/10.5281/zenodo.15480833)
 [![CRAN status](https://www.r-pkg.org/badges/version/StratPal)](https://CRAN.R-project.org/package=StratPal)
 [![fair-software.eu](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu)
 
@@ -12,7 +12,7 @@ R package for stratigraphic paleobiology modeling pipelines.
 
 ## Overview
 
-The fossil record is a joint expression of ecological, taphonomic, evolutionary, and stratigraphic processes ([Holland and Patzkowsky, 2012](#References)). This package allowing to simulate biological processes in the time domain (e.g., trait evolution, fossil abundance), and examine how their expression in the rock record (stratigraphic domain) is influenced based on age-depth models, ecological niche models, and taphonomic effects. Functions simulating common processes used in modeling trait evolution or event type data such as first/last occurrences are provided and can be used standalone or as part of a pipeline. The package comes with example data sets and tutorials in several vignettes, which can be used as a template to set up one's own simulation.
+The fossil record is a joint expression of ecological, taphonomic, evolutionary, and stratigraphic processes ([Holland and Patzkowsky, 2012](#References)). This package allowing to simulate biological processes in the time domain (e.g., trait evolution, fossil abundance), and examine how their expression in the rock record (stratigraphic domain) is influenced based on age-depth models, ecological niche models, and taphonomic effects. Functions simulating common processes used in modeling trait evolution or event type data such as first/last occurrences are provided and can be used standalone or as part of a pipeline. The package comes with example data sets and tutorials in several vignettes (e.g., for transforming phylogenetic trees), which can be used as a template to set up one's own simulation.
 
 ## Authors
 
@@ -87,7 +87,7 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 To cite the package, please use both references:
 
--   Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.4.0). Zenodo. https://doi.org/10.5281/zenodo.15099540
+-   Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.5.0). Zenodo. https://doi.org/10.5281/zenodo.15480833
 
 -   Hohmann, N. and Jarochowska, E. (2024). StratPal: An R package for creating stratigraphic paleobiology modelling pipelines. Methods In Ecology and Evolution. <https://doi.org/10.1111/2041-210X.14507>
 
