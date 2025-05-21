@@ -62,18 +62,20 @@ apply_niche = function(x, niche_def, gc){
     #'  ### example for fossils objects
     #'  # we reuse the niche definition and gradient change from above
     #'  # simulate tree
-    #'  t = ape::rlineage(birth = 2, death = 0, Tmax = 2)
+    #'  tree = ape::rlineage(birth = 2, death = 0, Tmax = 2)
     #'  # create fossils object
-    #'  f = FossilSim::sim.fossils.poisson(rate = 2, tree = t)
+    #'  f = FossilSim::sim.fossils.poisson(rate = 2, tree = tree)
     #'  # plot fossils along tree before niche model is applied
-    #'  FossilSim:::plot.fossils(f, tree = t)
+    #'  FossilSim:::plot.fossils(f, tree = tree)
     #'  # introduce niche model
-    #'  f_mod = apply_niche(f, niche_def, gc)
+    #'  f_mod = f |>
+    #'    admtools::rev_dir(ref = max(t)) |> # reverse direction bc FossilSim uses age not time
+    #'    apply_niche(niche_def, gc) |>
+    #'    admtools::rev_dir(ref = max(t))
     #'  # plot fossils along tree after introduction of niche model
-    #'  FossilSim:::plot.fossils(f_mod, tree = t)
+    #'  FossilSim:::plot.fossils(f_mod, tree = tree)
     #'  # note how only fossils in the interval where environmental conditions are suitable are preserved
-    #'  # note that FossilSim uses age before the present, so the interpretation of
-    #'  # of the change in gradient is also with age, and not time!
+    #'  # note that FossilSim uses age before the present, which is why we use admtools::rev_dir
 
  UseMethod("apply_niche")
 

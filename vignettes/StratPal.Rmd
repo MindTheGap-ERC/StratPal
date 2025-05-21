@@ -240,6 +240,12 @@ If you want to explore how to link the `StratPal` package with the `paleoTS` and
 vignette("paleoTS_funcionality")
 ```
 
+To combine the `StratPal` package with `FossilSim`, check the vignette
+
+```{r, eval=FALSE}
+vignette("FossilSim_integration")
+```
+
 See also
 
 ```{r, eval=FALSE}
