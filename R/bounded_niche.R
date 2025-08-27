@@ -9,6 +9,7 @@ bounded_niche = function(g_min, g_max){
   #' @seealso
     #' * [snd_niche()] for an alternative niche model
     #' * [discrete_niche()] for defining niches based on discrete categories
+    #' * [trivial_niche()] to model organisms without niche specifications
     #' * [apply_niche()] for the function that uses the function returned
     #' * `vignette("advanced_functionality")` for details how to create user-defined niche models
   #'

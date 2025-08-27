@@ -5,7 +5,6 @@ Bookstein
 CMD
 CarboCAT
 CarboCATLite
-DOI
 ERC
 Evol
 FossilSim
@@ -49,8 +48,11 @@ Voje
 Warnock
 Zenodo
 al
+aphonomic
 artefactual
 automata
+biostratigraphic
+biostratigraphy
 cff
 chronostratigraphic
 cline
@@ -65,6 +67,7 @@ eustatic
 evoTS
 facies
 github
+hange
 heterodistant
 hohmann
 https
@@ -78,6 +81,7 @@ mindthegap
 modelling
 myr
 nl
+onditions
 ornstein
 paleoTS
 paleobiology
@@ -90,6 +94,7 @@ sensu
 siliciclastic
 sl
 snd
+strat
 stratigraphic
 stratigraphy
 taphonomic
@@ -98,4 +103,3 @@ timelist
 uhlenbeck
 un
 uu
-vectorized

@@ -20,21 +20,28 @@ reference:
 - subtitle: Event type data
   desc: Simulate event type data (e.g., fossil location/ages, first/last occurrences)
   contents:
+  - last_occ
   - p3
   - p3_var_rate
+  - range_offset
   - rej_samp
 
 - subtitle: Ecology and taphonomy
   desc: Model ecological niches and taphonomic effects
   contents:
+  - all_preserved
   - apply_niche
   - apply_taphonomy
   - bounded_niche
   - discrete_gradient
   - discrete_niche
+  - gradient_from_data
+  - perfect_preservation
   - prob_remove
   - snd_niche
   - thin
+  - trivial_niche
+  - trivial_gradient
 
 
 - subtitle: Example data
