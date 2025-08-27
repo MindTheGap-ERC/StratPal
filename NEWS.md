@@ -1,4 +1,4 @@
-# StratPal (development version)
+# StratPal 0.6.0
 
 * Add wrappers `last_occ` and `range_offset` to determine position/timing of last occurrences & biostratigraphic precision as a function of taphonomy, ecology, abundance, and stratigraphy.
 
