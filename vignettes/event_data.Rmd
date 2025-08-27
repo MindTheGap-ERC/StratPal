@@ -167,6 +167,8 @@ It almost perfectly matches the pattern of fossil abundance. This is because the
 
 Naturally, the same modeling pipeline is valid for first occurrences of common taxa.
 
+The assumption of common taxa can be relaxed using the wrapper `last_occ`, which provides the position and timing of the last occurrence or a taxon as a function of taxon abundance, ecology, taphonomy, and stratigraphy.
+
 **Task:** How does the pattern of last occurrences change across an onshore-offshore gradient? If you observed a spike in last occurrences in one of the section, for what stratigraphic information do you need to look to exclude the possibility that the spike is a stratigraphic artifact?
 
 ### Range offset {#Range-offset}
@@ -217,6 +219,8 @@ time_range_offset_myr = t_ext - t_last_occ
 ```
 
 In this example, the temporal range offset is `r signif(time_range_offset_myr, digits = 3)` Myr years.
+
+The wrapper `range_offset` allows to determine both stratigraphic and temporal range offset as a function of ecology, taphonomy, taxon abundance, and stratigraphy.
 
 **Task:** How does the (temporal and stratigraphic) range offset change with the rate parameter? For which rate values are taxa abundant enough to make the Signor-Lipps effect negligible (i.e. the stratigraphic range offset is sufficiently small)? How do the results vary with (1) different times of "true" extinction within a fixed section and (2) across the onshore-offshore gradient?
 
@@ -301,6 +305,14 @@ list("t" = t, "y" = wd) |>    # create list with time - water depth information
 ```
 
 **Task:** How does the effect of niche preference change across the onshore-offshore gradient? There is a dependency between stratigraphic effects (gaps, changes in sedimentation rate) and water depth/eustatic sea level. Does linking ecology to water depth strengthen or weaken the effects of stratigraphic distortions examined in section ["stratigraphic distortions of event type data"](#Stratigraphic-distortions)?
+
+## Taphonomic effects
+
+The modeling of taphonomic effects follows the same principles as niche modeling, with `apply_niche` being replaced by `apply_taphonomy`. This function takes two key arguments:
+* `pres_potential`: A function assigning a preservation potential to taphonomic conditions
+* `ctc`: A function describing **c**hange in **t**aphonomic **c**onditions with time.
+
+As with niche modeling, taphonomic effects can be incorporated in the stratigraphic and the time domain. The wrappers `last_occ` and `range_offset` incorporate taphonomic effects.
 
 ## Further reading
 

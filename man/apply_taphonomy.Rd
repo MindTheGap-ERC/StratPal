@@ -31,5 +31,6 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 \itemize{
 \item \code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
 \item \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedures.
+\item \code{\link[=perfect_preservation]{perfect_preservation()}} and \code{\link[=all_preserved]{all_preserved()}} to model perfect preservation of fossils
 }
 }

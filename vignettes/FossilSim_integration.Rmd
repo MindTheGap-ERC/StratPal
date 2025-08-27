@@ -142,7 +142,7 @@ The accumulation of fossils on the right side is due to the stratigraphic conden
 
 Naturally, both ecological and stratigraphic effects can be combined by applying the niche model to the `fossils` object: 
 
-```{R}
+```{R, fig.alt="Tree with fossils affected by ecological and stratigraphic effects."}
 ## transform tree, fossils, and taxonomy into stratigraphyc domain
 # using the age-depth model
 tree_strat = time_to_strat(tree, adm_12km) # no transformation of time to age required
@@ -167,7 +167,7 @@ axis(1)
 mtext(1, text = "Stratigraphic position [m]", line = 2)
 ```
 
-Trees and taxomony object are not modified by `apply_niche` and `apply_taphonomy`, as they are are not subject to sampling effects.
+Trees and taxonomy object are not modified by `apply_niche` and `apply_taphonomy`, as they are are not subject to sampling effects.
 
 ### Technical notes
 

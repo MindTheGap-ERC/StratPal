@@ -39,3 +39,13 @@ test_that("fossils object remains identical for perfect preservation",{
   f = FossilSim::sim.fossils.poisson(rate = rate, tree = t)
   expect_equal(apply_taphonomy(f, pres_potential, ctc), f)
 })
+
+test_that("warning is thrown with fossil age uncertainty", {
+  pres_potential = function(x) rep(1, length(x))
+  ctc = function(x) rep(1, length(x))
+  t = ape::rlineage(birth = 1, death = 0, Tmax = 1)
+  rate = 2
+  f = FossilSim::sim.fossils.poisson(rate = rate, tree = t)
+  f$hmax = f$hmax + 0.1
+  expect_warning(apply_taphonomy(f, pres_potential, ctc))
+})

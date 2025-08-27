@@ -12,7 +12,7 @@ R package for stratigraphic paleobiology modeling pipelines.
 
 ## Overview
 
-The fossil record is a joint expression of ecological, taphonomic, evolutionary, and stratigraphic processes ([Holland and Patzkowsky, 2012](#References)). This package allowing to simulate biological processes in the time domain (e.g., trait evolution, fossil abundance), and examine how their expression in the rock record (stratigraphic domain) is influenced based on age-depth models, ecological niche models, and taphonomic effects. Functions simulating common processes used in modeling trait evolution or event type data such as first/last occurrences are provided and can be used standalone or as part of a pipeline. The package comes with example data sets and tutorials in several vignettes (e.g., for transforming phylogenetic trees), which can be used as a template to set up one's own simulation.
+The fossil record is a joint expression of ecological, taphonomic, evolutionary, and stratigraphic processes ([Holland and Patzkowsky, 2012](#References)). This package allowing to simulate biological processes in the time domain (e.g., trait evolution, fossil abundance), and examine how their expression in the rock record (stratigraphic domain) is influenced based on age-depth models, ecological niche models, and taphonomic effects. Functions simulating common processes used in modeling trait evolution, biostratigraphy or event type data such as first/last occurrences are provided and can be used standalone or as part of a pipeline. The package comes with example data sets and tutorials in several vignettes (e.g., for transforming phylogenetic trees), which can be used as a template to set up one's own simulation.
 
 ## Authors
 
