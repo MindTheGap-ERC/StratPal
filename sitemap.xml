@@ -14,20 +14,25 @@
 <url><loc>https://mindthegap-erc.github.io/StratPal/index.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/news/index.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/StratPal-package.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/all_preserved.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/apply_niche.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/apply_taphonomy.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/bounded_niche.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/discrete_gradient.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/discrete_niche.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/gradient_from_data.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/index.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/last_occ.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck_sl.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/p3.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/p3_var_rate.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/perfect_preservation.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/plot.pre_paleoTS.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/prob_remove.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/random_walk.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/random_walk_sl.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/range_offset.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/reduce_to_paleoTS.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/rej_samp.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/scenarioA.html</loc></url>
@@ -36,5 +41,7 @@
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/stasis_sl.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/strict_stasis_sl.html</loc></url>
 <url><loc>https://mindthegap-erc.github.io/StratPal/reference/thin.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/trivial_gradient.html</loc></url>
+<url><loc>https://mindthegap-erc.github.io/StratPal/reference/trivial_niche.html</loc></url>
 </urlset>
 
