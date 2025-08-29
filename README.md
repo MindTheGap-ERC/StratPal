@@ -87,7 +87,7 @@ Copyright 2024 Netherlands eScience Center and Utrecht University
 
 To cite the package, please use both references:
 
--   Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.5.0). Zenodo. https://doi.org/10.5281/zenodo.15480833
+-   Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology modeling pipelines (v0.6.0). Zenodo. https://doi.org/10.5281/zenodo.12790994
 
 -   Hohmann, N. and Jarochowska, E. (2024). StratPal: An R package for creating stratigraphic paleobiology modelling pipelines. Methods In Ecology and Evolution. <https://doi.org/10.1111/2041-210X.14507>
 
