@@ -48,5 +48,5 @@ keywords:
   - Paleobiology
 license: Apache-2.0
 commit: 0753d6400922bab4f670e947dc571327036bcdfc
-version: 0.5.0
-date-released: '2025-05-21'
+version: 0.6.0
+date-released: '2025-08-29'
