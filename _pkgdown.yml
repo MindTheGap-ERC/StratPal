@@ -39,9 +39,11 @@ reference:
   - perfect_preservation
   - prob_remove
   - snd_niche
+  - strat_filter
   - thin
   - trivial_niche
   - trivial_gradient
+
 
 
 - subtitle: Example data

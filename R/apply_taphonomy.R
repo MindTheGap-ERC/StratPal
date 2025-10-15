@@ -15,6 +15,7 @@ apply_taphonomy = function(x, pres_potential, ctc){
     #' * [apply_niche()] for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
     #' * [thin()] and [prob_remove()] for the underlying mathematical procedures.
     #' * [perfect_preservation()] and [all_preserved()] to model perfect preservation of fossils
+    #' * [strat_filter()] for simple stratigraphic filtering in the time domain as taphonomic effect
   #'
   #' @returns if given event type data, a numeric vector, location/timing of events (e.g. fossil occurrences) after the taphonomic filter is applied. If given a `pre_paleoTS` object, returns another `pre_paleoTS` object with reduced number of specimens. If given a `fossils` object as created by the `FossilSim` package, returns another `fossils` object with some occurrences removed according to preservation potential.
   #'
