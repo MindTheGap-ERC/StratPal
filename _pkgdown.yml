@@ -44,8 +44,6 @@ reference:
   - trivial_niche
   - trivial_gradient
 
-
-
 - subtitle: Example data
   desc: Example data from stratigraphic forward models
   contents:
@@ -56,6 +54,12 @@ reference:
   contents:
   - reduce_to_paleoTS
   - plot.pre_paleoTS
+
+- subtitle: Miscellaneous
+  desc: Miscellaneous functions
+  contents:
+  - as_char_mat
+  - is_char_mat
 
 articles:
 - title: Articles

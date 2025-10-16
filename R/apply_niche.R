@@ -119,3 +119,9 @@ apply_niche.fossils = function(x, niche_def, gc){
   x = x[as.logical(r),]
   return(x)
 }
+
+apply_niche.char_mat = function(x, niche_def, gc){
+  #' @export
+  #'
+  stop("Can't apply niche models to character matrices. Use `apply_taphonomy` instead.")
+}

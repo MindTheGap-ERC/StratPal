@@ -49,3 +49,26 @@ test_that("warning is thrown with fossil age uncertainty", {
   f$hmax = f$hmax + 0.1
   expect_warning(apply_taphonomy(f, pres_potential, ctc))
 })
+
+test_that("character matrices remain unchanged under perfect preservation",{
+  ntax = 4
+  nchar = 10
+  tax_names = letters[1:ntax]
+  mat = matrix(data = rep(1, ntax * nchar),
+               nrow = ntax,
+               ncol = nchar,
+               dimnames = list(tax_names, NULL))
+  pos = seq(0.1, 1.8, length.out = 4)
+  names(pos)<-tax_names
+  char_mat = as_char_mat(mat, pos)
+  char_mat_after_pres = apply_taphonomy(char_mat, perfect_preservation, all_preserved)
+  expect_equal(char_mat_after_pres, char_mat)
+})
+
+test_that("error is thrown if no positional information is associated with char matrix",{
+  ntax = 4
+  nchar = 10
+  mat = matrix(data = rep(1, ntax * nchar), nrow = ntax, ncol = nchar)
+  char_mat = as_char_mat(mat)
+  expect_error(apply_taphonomy(char_mat, perfect_preservation, all_preserved))
+})
