@@ -1,5 +1,7 @@
 # StratPal (development version)
 
+* updated example data to CarboKitten.jl
+
 * `strat_filter` for simple stratigraphic filtering in the time domain
 
 * construction of `char_mat` for character matrices associated with positional data (time / height)

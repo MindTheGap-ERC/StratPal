@@ -74,7 +74,7 @@ Keep in mind that it is only a matter of interpretation whether the "events" pro
 
 ## Age-depth models
 
-Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
+Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in the example data that emulates scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
 
 ```{r, figures-side, fig.show="hold", out.width="50%", fig.alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore."}
 adm_2km = tp_to_adm(t = scenarioA$t_myr,   # 2 km from shore
