@@ -19,7 +19,7 @@ scenarioA
 }
 \description{
 Reproduces Scenario A as described in Hohmann et al. (2024), published in Hohmann et al. (2023) using CarboKitten (Hidding et al. 2025), built on CarboCAT Lite (Burgess 2013, 2023)
-Contains stratigraphic architectures from a synthetic carbonate platform. See \verb{vignette(}
+Contains stratigraphic architectures from a synthetic carbonate platform. See \code{vignette("stratigraphic_architecture")} for a full description of the platform.
 }
 \references{
 \itemize{
