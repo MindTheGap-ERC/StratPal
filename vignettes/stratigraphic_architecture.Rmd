@@ -53,9 +53,9 @@ plot(x = scenarioA$t_myr,
      type = "l")
 ```
 
-For users interested in more details, we recommend inspecting the simulation source code (writte in Julia).
+For users interested in more details, we recommend inspecting the simulation source code (written in Julia).
 
-## Platform visualisations
+## Platform visualization
 
 ```{r, echo=FALSE, out.width='100%', fig.cap="Transect through the carbonate platform. Black lines separate systems tracts."}
 knitr::include_graphics("platform_profile.png")
