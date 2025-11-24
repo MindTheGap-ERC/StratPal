@@ -6,7 +6,8 @@ expanded upon.
 ## Different forward models
 
 In the examples, we used age-depth models from a carbonate platform
-simulated with CarboCAT lite ([Burgess 2013](#References), [Burgess
+simulated with CarboKitten [Hidding et al. 2025](#References) , which is
+based on CarboCAT lite ([Burgess 2013](#References), [Burgess
 2023](#References)). This can easily be expanded to any other
 sedimentary forward model (be it marine or terrestrial, siliciclastic,
 mixed, or carbonate system).
@@ -152,6 +153,11 @@ contribute code.
 
 - Burgess, Peter. 2023. “CarboCATLite v1.0.1.” Zenodo.
   <https://doi.org/10.5281/zenodo.8402578>
+
+- Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi
+  Burgess, Peter and Spreeuw, Hanno: “CarboKitten.jl – an open source
+  toolkit for carbonate stratigraphic modeling.” Preprint.
+  <https://doi.org/10.5194/egusphere-2025-4561>
 
 - Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
   Emilia. 2024. “Identification of the mode of evolution in incomplete

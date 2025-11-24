@@ -90,6 +90,6 @@ h = scenarioA$h_m[,"2km"]
 adm = admtools::tp_to_adm(t = scenarioA$t_myr, h = h)
 offset = range_offset(t_ext = 1.8, rate = 5, adm = adm)
 offset # show timing and position of last occurrences
-#>          t          h 
-#>  0.6411079 14.2482949 
+#>         t         h 
+#> 0.7897446 7.1966946 
 ```

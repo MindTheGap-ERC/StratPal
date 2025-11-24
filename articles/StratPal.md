@@ -79,18 +79,20 @@ or by visiting the package website at
 ## Example data
 
 `StratPal` comes with synthetic example data, which contains model
-parameters and outputs of a carbonate platform simulated using CarboCAT
-Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). The
-data is stored in the variable `scenarioA`, which is automatically
-available when the package is loaded. The structure of the data is
-described under
-[`?scenarioA`](https://mindthegap-erc.github.io/StratPal/reference/scenarioA.md).
+parameters and outputs of a carbonate platform simulated using
+CarboKitten.jl ([Hidding et al. (2025)](#References)), which builds on
+[Burgess (2013)](#References), [Burgess (2023)](#References)). The data
+is stored in the variable `scenarioA`, which is automatically available
+when the package is loaded. The structure of the data is described under
+[`?scenarioA`](https://mindthegap-erc.github.io/StratPal/reference/scenarioA.md),
+figures and a full description can be found under
+[`vignette("stratigraphic_architecture")`](https://mindthegap-erc.github.io/StratPal/articles/stratigraphic_architecture.md).
 
-The data is taken from scenario A in [Hohmann et
-al. (2023)](#References), the modeling procedure is described in detail
-in [Hohmann et al. 2024](#References), see therein for a
-chronostratigraphic diagram and a transect through the carbonate
-platform.
+The data emulates scenario A in [Hohmann et al. (2023)](#References),
+the modeling procedure is described in detail in [Hohmann et
+al. 2024](#References), see therein or the vignette for a
+chronostratigraphic (Wheeler) diagram and a transect through the
+carbonate platform.
 
 The data contains information on the eustatic sea level curve used for
 the model run, elapsed model time, as well information on accumulated
@@ -256,17 +258,17 @@ age-depth model:
 
 ``` r
 get_total_duration(adm) # time interval covered by adm
-#> [1] 1.999
+#> [1] 2
 get_total_thickness(adm) # sediment accumulated 
-#> [1] 145.9416
+#> [1] 81.23346
 get_completeness(adm) # stratigraphic completeness
-#> [1] 0.3261631
+#> [1] 0.349
 summary(adm) # some summary statistics
 #> age-depth model 
-#> Total duration: 1.999 Myr
-#> Total thickness: 145.9416 m
-#> Stratigraphic completeness: 32.61631 % 
-#> 10 hiatus(es)
+#> Total duration: 2 Myr
+#> Total thickness: 81.23346 m
+#> Stratigraphic completeness: 34.9 % 
+#> 8 hiatus(es)
 ```
 
 We can now use the pipe operator to do some first analysis of the
@@ -357,6 +359,11 @@ vignette("StratPal_docs")
 ```
 
 ## References
+
+- Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi
+  Burgess, Peter and Spreeuw, Hanno: “CarboKitten.jl - an open source
+  toolkit for carbonate stratigraphic modeling.” Preprint.
+  <https://doi.org/10.5194/egusphere-2025-4561>.
 
 - Burgess, Peter. 2013. “CarboCAT: A cellular automata model of
   heterogeneous carbonate strata.” Computers & Geosciences.

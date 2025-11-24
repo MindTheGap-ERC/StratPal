@@ -35,6 +35,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic_architecture.html">Example Stratigraphic Architecture</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
@@ -77,9 +78,11 @@ expanded upon.</p>
 <h2 id="different-forward-models">Different forward models<a class="anchor" aria-label="anchor" href="#different-forward-models"></a>
 </h2>
 <p>In the examples, we used age-depth models from a carbonate platform
-simulated with CarboCAT lite (<a href="#References">Burgess 2013</a>, <a href="#References">Burgess 2023</a>). This can easily be expanded to any
-other sedimentary forward model (be it marine or terrestrial,
-siliciclastic, mixed, or carbonate system).</p>
+simulated with CarboKitten <a href="#References">Hidding et al. 2025</a>
+, which is based on CarboCAT lite (<a href="#References">Burgess
+2013</a>, <a href="#References">Burgess 2023</a>). This can easily be
+expanded to any other sedimentary forward model (be it marine or
+terrestrial, siliciclastic, mixed, or carbonate system).</p>
 <p>For this, age-depth information needs to be extracted from the
 forward model. The vectors of elapsed model time vs. accumulated height
 can then be handed over to <code>tp_to_adm</code> to define age-depth
@@ -227,6 +230,9 @@ on how to contribute code.</p>
 <li><p>Burgess, Peter. 2013. “CarboCAT: A cellular automata model of
 heterogeneous carbonate strata.” Computers &amp; Geosciences. <a href="https://doi.org/10.1016/j.cageo.2011.08.026" class="external-link uri">https://doi.org/10.1016/j.cageo.2011.08.026</a>.</p></li>
 <li><p>Burgess, Peter. 2023. “CarboCATLite v1.0.1.” Zenodo. <a href="https://doi.org/10.5281/zenodo.8402578" class="external-link uri">https://doi.org/10.5281/zenodo.8402578</a></p></li>
+<li><p>Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi
+Burgess, Peter and Spreeuw, Hanno: “CarboKitten.jl – an open source
+toolkit for carbonate stratigraphic modeling.” Preprint. <a href="https://doi.org/10.5194/egusphere-2025-4561" class="external-link uri">https://doi.org/10.5194/egusphere-2025-4561</a></p></li>
 <li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
 Emilia. 2024. “Identification of the mode of evolution in incomplete
 carbonate successions.” BMC Ecology and Evolution 24, 113. <a href="https://doi.org/10.1186/s12862-024-02287-2" class="external-link uri">https://doi.org/10.1186/s12862-024-02287-2</a>.</p></li>

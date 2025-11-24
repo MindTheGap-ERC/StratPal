@@ -4,6 +4,8 @@
 
 - [Stratigraphic Paleobiology for Event
   Data](https://mindthegap-erc.github.io/StratPal/articles/event_data.md):
+- [Example Stratigraphic
+  Architecture](https://mindthegap-erc.github.io/StratPal/articles/stratigraphic_architecture.md):
 - [Stratigraphic Paleobiology for Phenotypic
   Evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.md):
 - [Usage with the paleoTS and evoTS

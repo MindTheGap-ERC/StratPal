@@ -91,10 +91,13 @@ randomness when you run the simulation multiple times?
 ## Age-depth models
 
 Throughout this examples, we use the age-depth models from 2 km and 12
-km offshore in scenario A from [Hohmann et al. (2024)](#References). See
+km offshore in the example data that emulates scenario A from [Hohmann
+et al. (2024)](#References). See
 [`?scenarioA`](https://mindthegap-erc.github.io/StratPal/reference/scenarioA.md)
 and
 [`vignette("StratPal")`](https://mindthegap-erc.github.io/StratPal/articles/StratPal.md)
+or
+[`vignette("stratigraphic_architecture")`](https://mindthegap-erc.github.io/StratPal/articles/stratigraphic_architecture.md)
 for details on scenario A.
 
 ``` r
@@ -145,7 +148,7 @@ Assuming the events are fossil specimens of one taxon, we can examine
 where specimens appear in the stratigraphic column:
 
 ``` r
-p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
+p3(rate = 2000, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
   hist(xlab = "Stratigraphic height [m]",                           # plot
        main = "Fossil abundance 2 km offshore",
@@ -173,14 +176,6 @@ p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>  # same ra
 
 ![stratigraphic occurrence of fossil occurrences 12 km from
 shore.](event_data_files/figure-html/unnamed-chunk-6-1.png)
-
-Not only is the section much shorter (not even 20 m), but there are 2
-distinct peaks at the bottom of the section and around 13 m. Comparing
-with the age-depth model shows that these locations correspond to times
-of extreme stratigraphic condensation (low sedimentation rates,
-indicated by a near-horizontal age-depth model). As a result, more time
-is represented per stratigraphic increment, leading to fossil
-accumulations ([Hohmann 2021](#References)).
 
 **Task:** How does fossil abundance change along an onshore-offshore
 gradient when you assume the same rate of fossil occurrences in the time
@@ -306,7 +301,7 @@ h_true_ext = t_ext |>                           # stratigraphic position of "tru
 strat_range_offset_m = h_true_ext - highest_occ
 ```
 
-In this example, the stratigraphic range offset is 0.0895 meters.
+In this example, the stratigraphic range offset is 0.104 meters.
 
 The temporal range offset (time dimension, SI units seconds and derived
 units such as years) is the difference in time between the age of the
@@ -319,7 +314,7 @@ t_last_occ = highest_occ |> # time when last preserved fossil lived
 time_range_offset_myr = t_ext - t_last_occ
 ```
 
-In this example, the temporal range offset is 0.125 Myr years.
+In this example, the temporal range offset is 0.489 Myr years.
 
 The wrapper `range_offset` allows to determine both stratigraphic and
 temporal range offset as a function of ecology, taphonomy, taxon

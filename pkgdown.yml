@@ -7,9 +7,10 @@ articles:
   FossilSim_integration: FossilSim_integration.html
   paleoTS_functionality: paleoTS_functionality.html
   phenotypic_evolution: phenotypic_evolution.html
+  stratigraphic_architecture: stratigraphic_architecture.html
   StratPal_docs: StratPal_docs.html
   StratPal: StratPal.html
-last_built: 2025-11-24T12:10Z
+last_built: 2025-11-24T12:34Z
 urls:
   reference: https://mindthegap-erc.github.io/StratPal/reference
   article: https://mindthegap-erc.github.io/StratPal/articles

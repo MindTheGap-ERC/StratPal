@@ -20,6 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic_architecture.html">Example Stratigraphic Architecture</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
@@ -44,7 +45,12 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="stratpal-development-version">StratPal (development version)<a class="anchor" aria-label="anchor" href="#stratpal-development-version"></a></h2>
-</div>
+<ul><li><p>added vignette with platform figures</p></li>
+<li><p>updated example data to CarboKitten.jl</p></li>
+<li><p><code>strat_filter</code> for simple stratigraphic filtering in the time domain</p></li>
+<li><p>construction of <code>char_mat</code> for character matrices associated with positional data (time / height)</p></li>
+<li><p>taphonomic effects of <code>char_mat</code> via <code>apply_taphonomy.char_mat</code> that is associative with event type/<code>fossils</code></p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.0" id="stratpal-060">StratPal 0.6.0<a class="anchor" aria-label="anchor" href="#stratpal-060"></a></h2><p class="text-muted">CRAN release: 2025-08-27</p>
 <ul><li>Add wrappers <code>last_occ</code> and <code>range_offset</code> to determine position/timing of last occurrences &amp; biostratigraphic precision as a function of taphonomy, ecology, abundance, and stratigraphy.</li>

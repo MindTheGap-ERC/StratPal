@@ -61,6 +61,8 @@ Model ecological niches and taphonomic effects
   : probabilistic removal of elements
 - [`snd_niche()`](https://mindthegap-erc.github.io/StratPal/reference/snd_niche.md)
   : simple niche model
+- [`strat_filter()`](https://mindthegap-erc.github.io/StratPal/reference/strat_filter.md)
+  : generate basic stratigraphic filter
 - [`thin()`](https://mindthegap-erc.github.io/StratPal/reference/thin.md)
   : thin a series of events (e.g. fossil occurrences)
 - [`trivial_niche()`](https://mindthegap-erc.github.io/StratPal/reference/trivial_niche.md)
@@ -73,7 +75,7 @@ Model ecological niches and taphonomic effects
 Example data from stratigraphic forward models
 
 - [`scenarioA`](https://mindthegap-erc.github.io/StratPal/reference/scenarioA.md)
-  : example data, scenario A from Hohmann et al. (2024)
+  : example data, emulates scenario A from Hohmann et al. (2024)
 
 ### paleoTS functionality
 
@@ -83,3 +85,12 @@ Tools for linkage with the paleoTS package
   : reduce pre-paleoTS format to paleoTS
 - [`plot(`*`<pre_paleoTS>`*`)`](https://mindthegap-erc.github.io/StratPal/reference/plot.pre_paleoTS.md)
   : plot pre-paleoTS objects
+
+### Miscellaneous
+
+Miscellaneous functions
+
+- [`as_char_mat()`](https://mindthegap-erc.github.io/StratPal/reference/as_char_mat.md)
+  : construct character matrix
+- [`is_char_mat()`](https://mindthegap-erc.github.io/StratPal/reference/is_char_mat.md)
+  : validity of character matrices

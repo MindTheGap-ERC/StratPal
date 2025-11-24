@@ -35,6 +35,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic_architecture.html">Example Stratigraphic Architecture</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
@@ -134,6 +135,47 @@ format using <code>reduce_to_paleoTS</code></p>
 <code>pre_paleoTS</code>. For plotting, first use
 <code>reduce_to_paleoTS</code> and plot the results via
 <code>plot</code> after loading the <code>paleoTS</code> package.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="s3-class-char_mat">S3 class <code>char_mat</code><a class="anchor" aria-label="anchor" href="#s3-class-char_mat"></a>
+</h2>
+<p>Describes a character matrix associated with positional information
+(time/height) for application of taphonomic and stratigraphic
+effects.</p>
+<div class="section level3">
+<h3 id="structure-1">Structure<a class="anchor" aria-label="anchor" href="#structure-1"></a>
+</h3>
+<p>List with two elements:</p>
+<ul>
+<li>
+<code>mat</code>: The matrix, with taxon names as column names</li>
+<li>
+<code>pos</code>: named vector containing positional information
+(time or height) for the taxa</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="construction-1">Construction<a class="anchor" aria-label="anchor" href="#construction-1"></a>
+</h3>
+<p><code>char_mat</code> is constructed using
+<code>as_char_mat</code>.</p>
+</div>
+<div class="section level3">
+<h3 id="modification-1">Modification<a class="anchor" aria-label="anchor" href="#modification-1"></a>
+</h3>
+<p>Modified by <code>apply_taphonomy</code>. For logical reasons,
+<code>apply_niche.char_mat</code> throws an error.</p>
+</div>
+<div class="section level3">
+<h3 id="transformation-into-other-s3-classes-1">Transformation into other S3 classes<a class="anchor" aria-label="anchor" href="#transformation-into-other-s3-classes-1"></a>
+</h3>
+<p>None</p>
+</div>
+<div class="section level3">
+<h3 id="plotting-1">Plotting<a class="anchor" aria-label="anchor" href="#plotting-1"></a>
+</h3>
+<p>None</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -20,6 +20,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic_architecture.html">Example Stratigraphic Architecture</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
@@ -57,7 +58,7 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a <code>pre_paleoTS</code> or a <code>fossils</code> object.</p></dd>
+<dd><p>event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a <code>pre_paleoTS</code>, <code>fossils</code>, or <code>char_mat</code> object.</p></dd>
 
 
 <dt id="arg-pres-potential">pres_potential<a class="anchor" aria-label="anchor" href="#arg-pres-potential"></a></dt>
@@ -78,6 +79,8 @@
 <ul><li><p><code><a href="apply_niche.html">apply_niche()</a></code> for modeling niche preferences based on the same principle. Internally, these functions are structured identically.</p></li>
 <li><p><code><a href="thin.html">thin()</a></code> and <code><a href="prob_remove.html">prob_remove()</a></code> for the underlying mathematical procedures.</p></li>
 <li><p><code><a href="perfect_preservation.html">perfect_preservation()</a></code> and <code><a href="all_preserved.html">all_preserved()</a></code> to model perfect preservation of fossils</p></li>
+<li><p><code><a href="strat_filter.html">strat_filter()</a></code> for simple stratigraphic filtering in the time domain as taphonomic effect</p></li>
+<li><p><code><a href="as_char_mat.html">as_char_mat()</a></code> to construct character matrices associated with stratigraphic information</p></li>
 </ul></div>
     </div>
 

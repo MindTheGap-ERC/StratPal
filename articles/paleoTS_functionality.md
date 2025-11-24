@@ -115,12 +115,12 @@ seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
 #> fit3models(reduce_to_paleoTS(time_to_strat(random_walk_sl(seq(min_time(adm), :
 #> Sample variances not equal (P = 0 ); consider using argument pool=FALSE
 #> 
-#> Comparing 3 models [n = 64, method = Joint]
+#> Comparing 3 models [n = 72, method = Joint]
 #> 
 #>             logL K     AICc     dAICc Akaike.wt
-#> GRW    -47.74893 3 101.8979  1.646129     0.305
-#> URW    -48.02751 2 100.2517  0.000000     0.695
-#> Stasis -57.64831 2 119.4933 19.241610     0.000
+#> GRW    -52.42413 3 111.2012  1.732286     0.296
+#> URW    -52.64750 2 109.4689  0.000000     0.704
+#> Stasis -68.14366 2 140.4612 30.992332     0.000
 ```
 
 ## References

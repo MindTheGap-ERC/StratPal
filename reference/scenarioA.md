@@ -1,8 +1,11 @@
-# example data, scenario A from Hohmann et al. (2024)
+# example data, emulates scenario A from Hohmann et al. (2024)
 
-Scenario A as described in Hohmann et al. (2024), published in Hohmann
-et al. (2023). Contains data from a carbonate platform simulated using
-CarboCAT Lite (Burgess 2013, 2023)
+Reproduces Scenario A as described in Hohmann et al. (2024), published
+in Hohmann et al. (2023) using CarboKitten (Hidding et al. 2025), built
+on CarboCAT Lite (Burgess 2013, 2023) Contains stratigraphic
+architectures from a synthetic carbonate platform. See
+[`vignette("stratigraphic_architecture")`](https://mindthegap-erc.github.io/StratPal/articles/stratigraphic_architecture.md)
+for a full description of the platform.
 
 ## Usage
 
@@ -12,7 +15,7 @@ scenarioA
 
 ## Format
 
-A list with 6 elements:
+A list with 5 elements:
 
 - `t_myr` : numeric vector. timesteps of the simulation in Myr
 
@@ -28,14 +31,12 @@ A list with 6 elements:
 - `wd_m`: matrix of size length(t_myr) x length(dist_from_shore). Water
   depth in m at examined locations
 
-- `strat_col`: list with length(dist_from shore) elements. Represents a
-  stratigraphic column. Each element is a list with two elements:
-
-  - `bed_thickness_m`: numeric vector. Bed thickness in m
-
-  - `facies_code` : integer vector. facies code of the bed
-
 ## References
+
+- Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi
+  Burgess, Peter and Spreeuw, Hanno: "CarboKitten.jl – an open source
+  toolkit for carbonate stratigraphic modeling." Preprint.
+  [doi:10.5194/egusphere-2025-4561](https://doi.org/10.5194/egusphere-2025-4561)
 
 - Burgess, Peter. 2013. "CarboCAT: A cellular automata model of
   heterogeneous carbonate strata." Computers & Geosciences.

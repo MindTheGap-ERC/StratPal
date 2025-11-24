@@ -17,7 +17,8 @@ apply_taphonomy(x, pres_potential, ctc)
 - x:
 
   event type data, e.g. times/ages of fossil occurrences or their
-  stratigraphic position, or a `pre_paleoTS` or a `fossils` object.
+  stratigraphic position, or a `pre_paleoTS`, `fossils`, or `char_mat`
+  object.
 
 - pres_potential:
 
@@ -55,6 +56,14 @@ occurrences removed according to preservation potential.
   and
   [`all_preserved()`](https://mindthegap-erc.github.io/StratPal/reference/all_preserved.md)
   to model perfect preservation of fossils
+
+- [`strat_filter()`](https://mindthegap-erc.github.io/StratPal/reference/strat_filter.md)
+  for simple stratigraphic filtering in the time domain as taphonomic
+  effect
+
+- [`as_char_mat()`](https://mindthegap-erc.github.io/StratPal/reference/as_char_mat.md)
+  to construct character matrices associated with stratigraphic
+  information
 
 ## Examples
 

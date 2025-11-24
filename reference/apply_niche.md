@@ -114,7 +114,8 @@ removed according to the niche definition
  plot(reduce_to_paleoTS(x), main = "Trait evolution before niche modeling")
 
  y = apply_niche(x, niche_def, gc)
- plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling")
+ plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling",
+ ylim = c(-2, 2))
 
  # note that there are fewer sampling sites
  # bc the taxon does not appear everywhere

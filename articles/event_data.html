@@ -35,6 +35,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/event_data.html">Stratigraphic Paleobiology for Event Data</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic_architecture.html">Example Stratigraphic Architecture</a></li>
     <li><a class="dropdown-item" href="../articles/phenotypic_evolution.html">Stratigraphic Paleobiology for Phenotypic Evolution</a></li>
     <li><a class="dropdown-item" href="../articles/paleoTS_functionality.html">Usage with the paleoTS and evoTS package</a></li>
     <li><a class="dropdown-item" href="../articles/advanced_functionality.html">Advanced Functionality and Writing Extensions</a></li>
@@ -147,9 +148,10 @@ differ due to randomness when you run the simulation multiple times?</p>
 <h2 id="age-depth-models">Age-depth models<a class="anchor" aria-label="anchor" href="#age-depth-models"></a>
 </h2>
 <p>Throughout this examples, we use the age-depth models from 2 km and
-12 km offshore in scenario A from <a href="#References">Hohmann et
-al. (2024)</a>. See <code><a href="../reference/scenarioA.html">?scenarioA</a></code> and
-<code><a href="../articles/StratPal.html">vignette("StratPal")</a></code> for details on scenario A.</p>
+12 km offshore in the example data that emulates scenario A from <a href="#References">Hohmann et al. (2024)</a>. See
+<code><a href="../reference/scenarioA.html">?scenarioA</a></code> and <code><a href="../articles/StratPal.html">vignette("StratPal")</a></code> or
+<code><a href="../articles/stratigraphic_architecture.html">vignette("stratigraphic_architecture")</a></code> for details on
+scenario A.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adm_2km</span> <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/tp_to_adm.html" class="external-link">tp_to_adm</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">t_myr</span>,   <span class="co"># 2 km from shore</span></span>
 <span>                h <span class="op">=</span> <span class="va">scenarioA</span><span class="op">$</span><span class="va">h_m</span><span class="op">[</span>,<span class="st">"2km"</span><span class="op">]</span>,</span>
@@ -193,7 +195,7 @@ interpreted, we need to choose different options.</p>
 <p>Assuming the events are fossil specimens of one taxon, we can examine
 where specimens appear in the stratigraphic column:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">200</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># constant rate in time domain</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/p3.html">p3</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="fl">2000</span>, from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># constant rate in time domain</span></span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm_2km</span>, destructive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span>                     <span class="co"># transform into depth domain</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Stratigraphic height [m]"</span>,                           <span class="co"># plot</span></span>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance 2 km offshore"</span>,</span>
@@ -213,13 +215,6 @@ pattern 12 km from shore:</p>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="event_data_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="stratigraphic occurrence of fossil occurrences 12 km from shore." width="700"></p>
-<p>Not only is the section much shorter (not even 20 m), but there are 2
-distinct peaks at the bottom of the section and around 13 m. Comparing
-with the age-depth model shows that these locations correspond to times
-of extreme stratigraphic condensation (low sedimentation rates,
-indicated by a near-horizontal age-depth model). As a result, more time
-is represented per stratigraphic increment, leading to fossil
-accumulations (<a href="#References">Hohmann 2021</a>).</p>
 <p><strong>Task:</strong> How does fossil abundance change along an
 onshore-offshore gradient when you assume the same rate of fossil
 occurrences in the time domain? Are there intervals where you can not
@@ -320,7 +315,7 @@ goes extinct:</p>
 <span></span>
 <span><span class="co"># distance between last occurrence of taxon and location where they actually go extinct</span></span>
 <span><span class="va">strat_range_offset_m</span> <span class="op">=</span> <span class="va">h_true_ext</span> <span class="op">-</span> <span class="va">highest_occ</span></span></code></pre></div>
-<p>In this example, the stratigraphic range offset is 0.0895 meters.</p>
+<p>In this example, the stratigraphic range offset is 0.104 meters.</p>
 <p>The temporal range offset (time dimension, SI units seconds and
 derived units such as years) is the difference in time between the age
 of the last occurrence and the actual time of extinction:</p>
@@ -329,7 +324,7 @@ of the last occurrence and the actual time of extinction:</p>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/strat_to_time.html" class="external-link">strat_to_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span></span>
 <span><span class="co"># time offset between true extinction and time when last fossil lived.</span></span>
 <span><span class="va">time_range_offset_myr</span> <span class="op">=</span> <span class="va">t_ext</span> <span class="op">-</span> <span class="va">t_last_occ</span></span></code></pre></div>
-<p>In this example, the temporal range offset is 0.125 Myr years.</p>
+<p>In this example, the temporal range offset is 0.489 Myr years.</p>
 <p>The wrapper <code>range_offset</code> allows to determine both
 stratigraphic and temporal range offset as a function of ecology,
 taphonomy, taxon abundance, and stratigraphy.</p>

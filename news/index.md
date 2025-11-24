@@ -2,6 +2,18 @@
 
 ## StratPal (development version)
 
+- added vignette with platform figures
+
+- updated example data to CarboKitten.jl
+
+- `strat_filter` for simple stratigraphic filtering in the time domain
+
+- construction of `char_mat` for character matrices associated with
+  positional data (time / height)
+
+- taphonomic effects of `char_mat` via `apply_taphonomy.char_mat` that
+  is associative with event type/`fossils`
+
 ## StratPal 0.6.0
 
 CRAN release: 2025-08-27
