@@ -78,9 +78,9 @@ or by visiting the package website at <https://mindthegap-erc.github.io/admtools
 
 ## Example data {#example-data}
 
-`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
+`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboKitten.jl ([Hidding et al. (2025)](#References)), which builds on [Burgess (2013)](#References), [Burgess (2023)](#References)). The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`, figures and a full description can be found under `vignette("stratigraphic_architecture")`.
 
-The data is taken from scenario A in [Hohmann et al. (2023)](#References), the modeling procedure is described in detail in [Hohmann et al. 2024](#References), see therein for a chronostratigraphic diagram and a transect through the carbonate platform.
+The data emulates scenario A in [Hohmann et al. (2023)](#References), the modeling procedure is described in detail in [Hohmann et al. 2024](#References), see therein or the vignette for a chronostratigraphic (Wheeler) diagram and a transect through the carbonate platform.
 
 The data contains information on the eustatic sea level curve used for the model run, elapsed model time, as well information on accumulated sediment thickness, water depth, and bed thicknesses and facies at locations 2, 4, 6, 8, 10, and 12 km from shore in the simulated carbonate platform.
 
@@ -261,6 +261,8 @@ vignette("StratPal_docs")
 ```
 
 ## References {#References}
+
+-   Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi Burgess, Peter and Spreeuw, Hanno: "CarboKitten.jl - an open source toolkit for carbonate stratigraphic modeling." Preprint. <https://doi.org/10.5194/egusphere-2025-4561>.
 
 -   Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. <https://doi.org/10.1016/j.cageo.2011.08.026>.
 

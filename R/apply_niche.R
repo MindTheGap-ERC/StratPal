@@ -54,7 +54,8 @@ apply_niche = function(x, niche_def, gc){
     #'  x = stasis_sl(seq(0, max(t), length.out = 10))
     #'  plot(reduce_to_paleoTS(x), main = "Trait evolution before niche modeling")
     #'  y = apply_niche(x, niche_def, gc)
-    #'  plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling")
+    #'  plot(reduce_to_paleoTS(y), main = "Trait evolution after niche modeling",
+    #'  ylim = c(-2, 2))
     #'  # note that there are fewer sampling sites
     #'  # bc the taxon does not appear everywhere
     #'  # and there are fewer specimens per sampling site
@@ -118,4 +119,10 @@ apply_niche.fossils = function(x, niche_def, gc){
   r = stats::rbinom(length(thin_vals), size = 1, prob = thin_vals)
   x = x[as.logical(r),]
   return(x)
+}
+
+apply_niche.char_mat = function(x, niche_def, gc){
+  #' @export
+  #'
+  stop("Can't apply niche models to character matrices. Use `apply_taphonomy` instead.")
 }
