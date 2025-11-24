@@ -1,4 +1,4 @@
-# StratPal (development version)
+# StratPal 0.7.0
 
 # StratPal 0.6.0
 
