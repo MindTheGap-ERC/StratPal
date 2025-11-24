@@ -36,7 +36,7 @@ The structure of the dataset is explained on the help pages, which is available 
 
 ## Simulation settings
 
-The full code to generate simulation data and visualizations is available [here](https://github.com/NiklasHohmann/StratPal_ws_data_prep). The simulation was run over 2 Myr at steps of 1 kyr, with data extracted at 2, 4, 6, 8, 10, and 12 km from shore in the middle of the simulated platform. Three carbonate factories were used: euphotic, oligophotic, and aphotic:
+The full code to generate simulation data and visualizations is available [here](https://github.com/MindTheGap-ERC/StratPal_data_prep). The simulation was run over 2 Myr at steps of 1 kyr, with data extracted at 2, 4, 6, 8, 10, and 12 km from shore in the middle of the simulated platform. Three carbonate factories were used: euphotic, oligophotic, and aphotic:
 
 ```{r, echo=FALSE, fig.cap="Production profile of the three carbonate factories", out.width="70%"}
 knitr::include_graphics("platform_production_curve.png")
