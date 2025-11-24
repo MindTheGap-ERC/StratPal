@@ -148,7 +148,7 @@ standard plotting procedure from paleoTS using <code>plot</code> (resp,
 <span><span class="fu"><a href="../reference/strict_stasis_sl.html">strict_stasis_sl</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># simulate strict stasis on specimen level in `pre_paleoTS` format</span></span>
 <span>  <span class="fu"><a href="../reference/reduce_to_paleoTS.html">reduce_to_paleoTS</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>       <span class="co"># convert pre_paleoTS to paleoTS</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span>                       <span class="co"># plot</span></span></code></pre></div>
-<p><img src="paleoTS_functionality_files/figure-html/unnamed-chunk-2-1.png" alt="plot of strict stasis" width="700"></p>
+<p><img src="paleoTS_functionality_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="plot of strict stasis" width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="modeling-of-ecological-taphonomic-and-stratigraphic-effects">Modeling of ecological, taphonomic, and stratigraphic effects<a class="anchor" aria-label="anchor" href="#modeling-of-ecological-taphonomic-and-stratigraphic-effects"></a>
@@ -170,7 +170,7 @@ specimens per sampling location:</p>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/time_to_strat.html" class="external-link">time_to_strat</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span> <span class="op">|&gt;</span>                           <span class="co"># transform into stratigraphic domain</span></span>
 <span>  <span class="fu"><a href="../reference/reduce_to_paleoTS.html">reduce_to_paleoTS</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>                          <span class="co"># transform into paleoTS format</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="op">)</span>                                          <span class="co"># plot</span></span></code></pre></div>
-<p><img src="paleoTS_functionality_files/figure-html/unnamed-chunk-3-1.png" alt="plot of a random walk after stratigraphic transformation" width="700"></p>
+<p><img src="paleoTS_functionality_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="plot of a random walk after stratigraphic transformation" width="700"></p>
 <p>Of course you can also immediately add functions from
 <code>paleoTS</code> to the pipeline, e.g. to fit models of phenotypic
 evolution from the simulated data:</p>
@@ -213,7 +213,7 @@ Multivariate Models of Within-Lineage Evolution.” Paleobiology. <a href="https
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

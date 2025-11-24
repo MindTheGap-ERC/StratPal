@@ -107,7 +107,7 @@ processes to simulate events that occur at variable rates
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>main <span class="op">=</span> <span class="st">"Fossil abundance"</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Specimens"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-2-1.png" alt="histogram of fossil occurrences appearing at a constant rate." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="histogram of fossil occurrences appearing at a constant rate." width="700"></p>
 <p>Note that due to to random fluctuations, the histogram can differ a
 lot from the constant rate that we simulated. This effect is more
 pronounced for low rates.</p>
@@ -120,7 +120,7 @@ specifies the rate to <code>x</code>:</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>       ylab<span class="op">=</span> <span class="st">"# Specimens"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-3-1.png" alt="histogram of fossil occurrences appearing at a sinusoidal rate." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="histogram of fossil occurrences appearing at a sinusoidal rate." width="700"></p>
 <p>Alternatively, you can pass it two vectors <code>x</code> and
 <code>y</code>. The rate is then determined by linear interpolation
 between these vectors. This is equivalent to using the function
@@ -131,7 +131,7 @@ between these vectors. This is equivalent to using the function
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Last occurrences"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Last occurrences"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-4-1.png" alt="histogram of fossil occurrences droping to 0." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="histogram of fossil occurrences droping to 0." width="700"></p>
 <p>Keep in mind that it is only a matter of interpretation whether the
 “events” produced by <code>p3</code> and <code>p3_var_rate</code> are
 age/timing or locations of specimens from one taxon or of first/last
@@ -173,7 +173,7 @@ al. (2024)</a>. See <code><a href="../reference/scenarioA.html">?scenarioA</a><
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 12 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/figures-side-1.png" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore." width="50%"><img src="event_data_files/figure-html/figures-side-2.png" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore." width="50%"></p>
+<p><img src="event_data_files/figure-html/figures-side-1.png" class="r-plt" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore." width="50%"><img src="event_data_files/figure-html/figures-side-2.png" class="r-plt" alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore." width="50%"></p>
 <p><strong>Task:</strong> Plot the sea level curve for scenario A, and
 the water depth curves at the two locations. How is this connected to
 the age-depth models, specifically to the presence and duration of gaps
@@ -199,7 +199,7 @@ where specimens appear in the stratigraphic column:</p>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance 2 km offshore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-5-1.png" alt="stratigraphic expression of fossil occurrences 2 km from shore." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="stratigraphic expression of fossil occurrences 2 km from shore." width="700"></p>
 <p>Note the option <code>destructive = TRUE</code> in
 <code>time_to_strat</code>. This is because we assume specimens that
 lived during a hiatus are destroyed.</p>
@@ -212,7 +212,7 @@ pattern 12 km from shore:</p>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance 12 km offshore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-6-1.png" alt="stratigraphic occurrence of fossil occurrences 12 km from shore." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="stratigraphic occurrence of fossil occurrences 12 km from shore." width="700"></p>
 <p>Not only is the section much shorter (not even 20 m), but there are 2
 distinct peaks at the bottom of the section and around 13 m. Comparing
 with the age-depth model shows that these locations correspond to times
@@ -242,7 +242,7 @@ assumption will be explored further below.</p>
 <span>       main <span class="op">=</span> <span class="st">"Last occurrences 2 km offshore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Last occurrences"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-7-1.png" alt="stratigraphic expression of last occurrences 2 km from shore." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="stratigraphic expression of last occurrences 2 km from shore." width="700"></p>
 <p>This would be the pattern of last occurrences in the section 2 km
 offshore when the rate of last occurrences is constant in the time
 domain! The peaks coincide with the hiatuses, as the last occurrences of
@@ -264,7 +264,7 @@ on <a href="#Range-offset">range offset</a>.</p>
 <span>       main <span class="op">=</span> <span class="st">"Last occurrences 12 km offshore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Last occurrences"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-8-1.png" alt="stratigraphic expression of last occurrences 12 km from shore." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="stratigraphic expression of last occurrences 12 km from shore." width="700"></p>
 <p>It almost perfectly matches the pattern of fossil abundance. This is
 because the offshore section is much more dominated by condensation
 (which influences both fossil abundance and first/last occurrences
@@ -302,7 +302,7 @@ the time domain, and save it in a variable:</p>
 <span>     ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Fossil abundance"</span>,</span>
 <span>     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-9-1.png" alt="fossil occurrences in the time domain." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="fossil occurrences in the time domain." width="700"></p>
 <p>Then we can determine the stratigraphic position of the highest
 preserved fossil:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -369,7 +369,7 @@ gradient) changes with time:</p>
 <span>     xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Water depth [m]"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Water depth 2 km offshore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-13-1.png" alt="water depth 2 km from shore in scenario A." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="water depth 2 km from shore in scenario A." width="700"></p>
 <p>Next, we define the niche. This is done using a function that takes
 water depth (our gradient) as input, and returns numbers between 0 and
 1. A 1 corresponds to the taxons’ environmental optimum, and a 0
@@ -397,7 +397,7 @@ discrete categories.</p>
 <span>     xlab <span class="op">=</span> <span class="st">"Water depth [m]"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Collection probability"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Collection probability of taxon"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-14-1.png" alt="collection probability of a taxon along water depth." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="collection probability of a taxon along water depth." width="700"></p>
 <p>The taxon we are modeling has its environmental niche optimum in 10 m
 water depth (<code>opt = 10</code>), is moderately tolerant to
 fluctuations in water depth (<code>tol = 5</code>) and does not survive
@@ -411,7 +411,7 @@ on land (<code>cutoff_val = 0</code>).</p>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_time.html" class="external-link">min_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">40</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-15-1.png" alt="fossil abundance in the time domain, with incorporation of niche modeling." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-15-1.png" class="r-plt" alt="fossil abundance in the time domain, with incorporation of niche modeling." width="700"></p>
 <p>Here you can see that the taxon only occurs at times where the water
 depth is favorable for it. Around 2 Myr, the water depth is too shallow,
 and the fossil abundance is reduced.</p>
@@ -426,7 +426,7 @@ distortion by age-depth models and niche preferences.</p>
 <span>       main <span class="op">=</span> <span class="st">"Fossil abundance 2 km from shore"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"# Fossils"</span>,</span>
 <span>       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/min_height.html" class="external-link">min_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_height.html" class="external-link">max_height</a></span><span class="op">(</span><span class="va">adm_2km</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fl">40</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-16-1.png" alt="fossil abundance in the stratigraphic domain, with incorporation of niche modeling." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="fossil abundance in the stratigraphic domain, with incorporation of niche modeling." width="700"></p>
 <p>You can see a general decrease in fossil abundance, but in contrast
 to the time domain, no prolonged intervals without the fossil are
 visible. This is because the gaps in fossil abundance in the time domain
@@ -445,7 +445,7 @@ possible.</p>
 <span>       xlab <span class="op">=</span> <span class="st">"Stratigraphic position [m]"</span>,</span>
 <span>       ylab <span class="op">=</span> <span class="st">"Water depth [m]"</span>,</span>
 <span>       main <span class="op">=</span> <span class="st">"Water depth in section 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="event_data_files/figure-html/unnamed-chunk-17-1.png" alt="water depth 2 km from shore expressed in the stratigraphic domain." width="700"></p>
+<p><img src="event_data_files/figure-html/unnamed-chunk-17-1.png" class="r-plt" alt="water depth 2 km from shore expressed in the stratigraphic domain." width="700"></p>
 <p><strong>Task:</strong> How does the effect of niche preference change
 across the onshore-offshore gradient? There is a dependency between
 stratigraphic effects (gaps, changes in sedimentation rate) and water
@@ -518,7 +518,7 @@ Multivariate Models of Within-Lineage Evolution.” Paleobiology. <a href="https
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

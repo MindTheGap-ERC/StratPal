@@ -1,0 +1,159 @@
+# Advanced Functionality and Writing Extensions
+
+Here we go through how the presented workflows can be generalized and
+expanded upon.
+
+## Different forward models
+
+In the examples, we used age-depth models from a carbonate platform
+simulated with CarboCAT lite ([Burgess 2013](#References), [Burgess
+2023](#References)). This can easily be expanded to any other
+sedimentary forward model (be it marine or terrestrial, siliciclastic,
+mixed, or carbonate system).
+
+For this, age-depth information needs to be extracted from the forward
+model. The vectors of elapsed model time vs. accumulated height can then
+be handed over to `tp_to_adm` to define age-depth model objects. These
+can then be used in the pipelines as in the examples.
+
+If the forward model included erosion, you need to first account for
+time intervals where sediment is first deposited and later removed. For
+this, first define a sediment accumulation curve using
+[`admtools::tp_to_sac`](https://mindthegap-erc.github.io/admtools/reference/tp_to_sac.html),
+and pass it to
+[`admtools::sac_to_adm`](https://mindthegap-erc.github.io/admtools/reference/sac_to_adm.html)
+to turn it into an age-depth model. You can then use the resulting
+age-depth model for your analysis pipeline.
+
+## Empirical age-depth models
+
+Of course you can use empirical age-depth models in your pipeline. You
+can create them from tie points using `tp_to_adm` just as in the case
+with forward models.
+
+The workflow in `StratPal` does not work with `multiadm` objects as
+defined by `admtools`. These objects store multiple age-depth models to
+account for uncertainty. You can however reduce their complexity,
+e.g. via
+[`admtools::median_adm`](https://mindthegap-erc.github.io/admtools/reference/median_adm.html),
+and use the resulting age-depth model.
+
+## Other ecological gradients and niche definitions
+
+In the examples we used water depth as ecological gradient. The approach
+for niche modeling used in `StratPal` works for all types of niches and
+gradient. Potentially relevant gradients that can be extracted from
+forward models are for example substrate consistency, temperature, or
+water energy.
+
+We used a simple niche definition based on a probability density
+function of a normal distribution implemented in `snd_niche`. This can
+be expanded to arbitrary niche definitions along a gradient. For
+integration with `apply_niche`, niche definitions must meet the
+following criteria:
+
+1.  They are functions that take gradient values as input and return
+    numbers between 0 and 1 as outputs.
+2.  They are vectorized, meaning when handed a vector, they return a
+    vector of equal length.
+
+Similar criteria hold for the definitions of gradient change `gc`:
+
+1.  `gc` must be a function that takes time (or position) as input, and
+    returns gradient values as outputs.
+2.  The function must be vectorized, meaning when handed a vector, it
+    must return a vector of equal length.
+
+As long as these conditions for `gc` and `niche_def` are met, arbitrary
+niche preferences along any gradient can be modeled using `apply_niche`.
+For examples on how this works for discrete categories of niches, see
+the functions `discrete_niche` (and examples therein) and
+`discrete_gradient` for the needed helper functions.
+
+## Different models of phenotypic evolution
+
+Other types of phenotypic evolution in the time domain can easily be
+incorporated. For seamless integration, they need to meet the following
+criteria:
+
+- They take a vector of times as first argument
+
+- The implementation is for a continuous time version of the mode of
+  interest, as the time domain is generally sampled at irregular times
+  (see methods section in [Hohmann et al. (2024)](#References) for
+  details). More specifically, the implementation must be able to deal
+  with heterodistant sampling in time.
+
+- They return a list with two elements: One named `t` that is a
+  duplicate of the first argument handed to the function. The second one
+  should be named `y` and contain the simulated trait values.
+
+- The output list `l` should be assigned both the class “list” and
+  “timelist” via the command `class(l) = c("timelist", "list")` , see
+  the source code of `random_walk` for an example.
+
+The last two points make sure plotting via
+[`admtools::plot.timelist`](https://mindthegap-erc.github.io/admtools/reference/plot.timelist.html)
+and
+[`admtools::plot.stratlist`](https://mindthegap-erc.github.io/admtools/reference/plot.stratlist.html)
+works seamlessly.
+
+## Different models of event type data
+
+We used (constant and variable rate) Poisson point processes to simulate
+event type data. Any model of event-type data can be used (e.g., one
+with temporal correlation), as long as it returns a vector with the
+timing/position of the events.
+
+## Transforming data from the stratigraphic domain to the time domain
+
+Much of the explanations here focus on forward modeling, i.e., modeling
+the time domain and examining how it is expressed in the stratigraphic
+domain. The reverse direction (from the stratigraphic domain to the time
+domain) can be modeled using `strat_to_time`.
+
+## Taphonomy
+
+Taphonomic effects can be incorporated using using the `apply_taphonomy`
+function. This is based on the same principle as niche modeling, and
+makes use of the `thin` function, but was not shown in the examples. For
+`pres_potential` (resp. `ctc`), the same logical constraints apply as to
+`niche_def` (resp. `gc`). This works for event-type data and
+`pre_paleoTS` objects (see
+[`vignette("paleoTS_functionality")`](https://mindthegap-erc.github.io/StratPal/articles/paleoTS_functionality.md)
+for details). For examples with discrete taphonomic categories see
+`discrete_niche` (both source code and examples) as a template.
+
+## Transform different types of data
+
+`strat_to_time` and `time_to_strat` are generic functions of the
+`admtools` package that can transform different types of data. Currently
+they transform paleontological time series of individual specimens
+(`pre_paleoTS` objects), phylogenetic trees (`phylo` objects), lists
+(`list` class), and numeric data such as the event type data (class
+`numeric`).
+
+In general, any type of temporal (resp. stratigraphic) data can be
+transformed. For this, you need define a `S3` class for the object you
+would like to transform (if it does not already have a S3 class), and
+then implement the transformation of this class for `time_to_strat` and
+`strat_to_time`.
+
+If you would like to add transformations for new S3 classes to the
+`admtools` package, please see the contribution guidelines
+(CONTRIBUTING.md file) of the `admtools` package for details on how to
+contribute code.
+
+## References
+
+- Burgess, Peter. 2013. “CarboCAT: A cellular automata model of
+  heterogeneous carbonate strata.” Computers & Geosciences.
+  <https://doi.org/10.1016/j.cageo.2011.08.026>.
+
+- Burgess, Peter. 2023. “CarboCATLite v1.0.1.” Zenodo.
+  <https://doi.org/10.5281/zenodo.8402578>
+
+- Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
+  Emilia. 2024. “Identification of the mode of evolution in incomplete
+  carbonate successions.” BMC Ecology and Evolution 24, 113.
+  <https://doi.org/10.1186/s12862-024-02287-2>.

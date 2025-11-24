@@ -159,7 +159,7 @@ model run:</p>
 <span>     xlab <span class="op">=</span> <span class="st">"Time [Myr]"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Eustatic sea level [m]"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Sea level curve used as model input"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-7-1.png" alt="Plot of a sinusoidal sea level curve." width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="Plot of a sinusoidal sea level curve." width="700"></p>
 </div>
 <div class="section level2">
 <h2 id="piping">Piping<a class="anchor" aria-label="anchor" href="#piping"></a>
@@ -179,7 +179,7 @@ using the <code>random_walk</code> function:</p>
 <span><span class="va">t</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="co"># times where we evaluate the random walk</span></span>
 <span><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>       <span class="co"># simulate the random walk</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">l</span>, type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span>      <span class="co"># line plot of the results</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-8-1.png" alt="plot of a random walk" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="plot of a random walk" width="700"></p>
 <p>This code does the job, but it has some flaws: We introduced a lot of
 intermediate variables, which makes it hard to trace the logic of what
 we are trying to achieve: plotting a random walk. Using the pipe
@@ -190,7 +190,7 @@ code:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># define times of simulation  </span></span>
 <span>  <span class="fu"><a href="../reference/random_walk.html">random_walk</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span>      <span class="co"># simulate random walk</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span><span class="op">)</span>      <span class="co"># plot</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-9-1.png" alt="plot of a random walk, identical to the one above" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="plot of a random walk, identical to the one above" width="700"></p>
 <p>You see that the code does the same thing: it plots a random walk,
 but it does so in one step without intermediate variables by chaining
 together the commands using the pipe <code>|&gt;</code>. This becomes a
@@ -275,7 +275,7 @@ age-depth models, plot them, or transform data using them.</p>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add time axis label</span></span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span>        <span class="co"># add length axis label</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title</a></span><span class="op">(</span><span class="st">"Age-depth model 2 km from shore"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-14-1.png" alt="plot of an  age-depth model, showing how the time and depth domain are connected" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="plot of an  age-depth model, showing how the time and depth domain are connected" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="extracting-information">Extracting information<a class="anchor" aria-label="anchor" href="#extracting-information"></a>
@@ -303,7 +303,7 @@ age-depth model</p>
 <span><span class="va">adm</span> <span class="op">|&gt;</span>    </span>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_hiat_duration.html" class="external-link">get_hiat_duration</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span> xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Hiatus duration"</span>, <span class="st">"["</span>, <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_T_unit.html" class="external-link">get_T_unit</a></span><span class="op">(</span><span class="va">adm</span><span class="op">)</span>,<span class="st">"]"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="StratPal_files/figure-html/unnamed-chunk-16-1.png" alt="histogram of hiatus durations 2 km offshore in scenario A" width="700"></p>
+<p><img src="StratPal_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="histogram of hiatus durations 2 km offshore in scenario A" width="700"></p>
 <p>You can see that there are a 8 shorter hiatuses (below 100 kyr) and 2
 long hiatuses with a duration of more than 500 kyr. To get a detailed
 list with information on hiatuses you can use
@@ -385,7 +385,7 @@ license.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

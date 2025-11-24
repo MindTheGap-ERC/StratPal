@@ -1,0 +1,62 @@
+# Documentation of defined S3 classes
+
+This vignette documents the S3 classes defined by the `StratPal`
+package.  
+For documentation of functionality, see the help page of individual
+functions (available via `?functionname`), for working examples see the
+vignettes (available via `browseVignettes("StratPal")`).
+
+## S3 class `pre_paleoTS`
+
+Represents trait values of individual specimens of a lineage sampled
+along time or stratigraphic position. For the motivation of this class,
+see the vignette on usage with the `paleoTS` package via
+[`vignette("paleoTS_functionality")`](https://mindthegap-erc.github.io/StratPal/articles/paleoTS_functionality.md).
+
+### Structure
+
+`pre-paleoTS` is a list with two elements:
+
+- the first element is named `t` or `h`: a numeric vector, corresponding
+  to sampling heights or times
+
+- the second element is named `vals`: a list with the same number of
+  elements as the vector `h`/`t`. Each element of the list contains the
+  trait values of specimens sampled at that time/height.
+
+### Construction
+
+`pre_paleoTS` is constructed by functions to simulate trait evolution on
+a specimen level/in pre-paleoTS format. These functions have suffix
+`_sl` for “specimen level”. This is
+
+- `stasis_sl`
+
+- `strict_stasis_sl`
+
+- `random_walk_sl`
+
+- `ornstein_uhlenbeck_sl`
+
+### Modification
+
+`pre_paleoTS` can be modified using
+
+- `apply_niche`
+
+- `apply_taphonomy`
+
+- `time_to_strat`
+
+- `strat_to_time`
+
+### Transformation into other S3 classes
+
+`pre_paleoTS` can be transformed into `paleoTS` format using
+`reduce_to_paleoTS`
+
+### Plotting
+
+No standalone plotting procedure is implemented for `pre_paleoTS`. For
+plotting, first use `reduce_to_paleoTS` and plot the results via `plot`
+after loading the `paleoTS` package.

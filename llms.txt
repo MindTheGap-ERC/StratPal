@@ -1,0 +1,238 @@
+# StratPal
+
+R package for stratigraphic paleobiology modeling pipelines.
+
+## Overview
+
+The fossil record is a joint expression of ecological, taphonomic,
+evolutionary, and stratigraphic processes ([Holland and Patzkowsky,
+2012](#References)). This package allowing to simulate biological
+processes in the time domain (e.g., trait evolution, fossil abundance),
+and examine how their expression in the rock record (stratigraphic
+domain) is influenced based on age-depth models, ecological niche
+models, and taphonomic effects. Functions simulating common processes
+used in modeling trait evolution, biostratigraphy or event type data
+such as first/last occurrences are provided and can be used standalone
+or as part of a pipeline. The package comes with example data sets and
+tutorials in several vignettes (e.g., for transforming phylogenetic
+trees), which can be used as a template to set up one’s own simulation.
+
+## Authors
+
+**Niklas Hohmann**  
+Utrecht University  
+email: n.h.hohmann \[at\] uu.nl  
+Web page: [uu.nl/staff/NHohmann](https://www.uu.nl/staff/NHHohmann)  
+Orcid: [0000-0003-1559-1838](https://orcid.org/0000-0003-1559-1838)
+
+## Requirements
+
+R version \>= 4.2
+
+## Installation
+
+To install the package from CRAN, run
+
+``` r
+install.packages("StratPal")
+```
+
+in your R console.
+
+### Github
+
+To install the package from GitHub, first install the *remotes* package
+by running
+
+``` r
+install.packages("remotes")
+```
+
+in the R console. Then, run
+
+``` r
+remotes::install_github(repo = "MindTheGap-ERC/StratPal",
+                        build_vignettes = TRUE,
+                        ref = "HEAD",
+                        dependencies = TRUE)
+```
+
+to install the latest stable version of the package.
+
+## Usage
+
+Run
+
+``` r
+library(StratPal)
+```
+
+to load the package. Use
+
+``` r
+browseVignettes(package = "StratPal")
+```
+
+to view the available vignettes (long form documentation) with use cases
+or visit the package webpage
+([mindthegap-erc.github.io/StratPal](https://mindthegap-erc.github.io/StratPal/))
+to get started.
+
+## Contribution
+
+For contribution guidelines see the CONTRIBUTING.md file
+
+## License
+
+Apache 2.0, see LICENSE file for license text.
+
+## Copyright
+
+Copyright 2024 Netherlands eScience Center and Utrecht University
+
+## Citation
+
+To cite the package, please use both references:
+
+- Hohmann, N. (2025). StratPal: R package for stratigraphic paleobiology
+  modeling pipelines (v0.6.0). Zenodo.
+  <https://doi.org/10.5281/zenodo.12790994>
+
+- Hohmann, N. and Jarochowska, E. (2024). StratPal: An R package for
+  creating stratigraphic paleobiology modelling pipelines. Methods In
+  Ecology and Evolution. <https://doi.org/10.1111/2041-210X.14507>
+
+Alternatively, you can also use the CITATION.cff file at the root of the
+repository, or `citation("StratPal")`.
+
+## References
+
+- Holland, Steven M. and Patzkowsky, Mark E. “Stratigraphic Paleobiology
+  : Understanding the Distribution of Fossil Taxa in Time and Space.””
+  The University of Chicago Press; 2012.
+
+This package uses data from
+
+- Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
+  Emilia. 2024. “Identification of the mode of evolution in incomplete
+  carbonate successions.” BMC Ecology and Evolution, **24**, 113. [DOI:
+  10.1186/s12862-024-02287-2](https://doi.org/10.1186/s12862-024-02287-2).
+
+- Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
+  Emilia. 2023. “Identification of the Mode of Evolution in Incomplete
+  Carbonate Successions - Supporting Data.” Open Science Framework.
+  <https://doi.org/10.17605/OSF.IO/ZBPWA>, published under the [CC-BY
+  4.0](https://creativecommons.org/licenses/by/4.0/) license.
+
+## Funding information
+
+Funded by the European Union (ERC, MindTheGap, StG project no
+101041077). Views and opinions expressed are however those of the
+author(s) only and do not necessarily reflect those of the European
+Union or the European Research Council. Neither the European Union nor
+the granting authority can be held responsible for them. ![European
+Union and European Research Council
+logos](https://erc.europa.eu/sites/default/files/2023-06/LOGO_ERC-FLAG_FP.png)
+
+# Package index
+
+## Available functions
+
+### Trait evolution
+
+Simulate trait evolution along a lineage
+
+- [`ornstein_uhlenbeck()`](https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck.md)
+  : simulate ornstein-uhlenbeck (OU) process
+- [`ornstein_uhlenbeck_sl()`](https://mindthegap-erc.github.io/StratPal/reference/ornstein_uhlenbeck_sl.md)
+  : simulate ornstein-uhlenbeck (OU) process (specimen level)
+- [`random_walk()`](https://mindthegap-erc.github.io/StratPal/reference/random_walk.md)
+  : simulate (un)biased random walk
+- [`random_walk_sl()`](https://mindthegap-erc.github.io/StratPal/reference/random_walk_sl.md)
+  : simulate (un)biased random walk (specimen level)
+- [`stasis()`](https://mindthegap-erc.github.io/StratPal/reference/stasis.md)
+  : simulate phenotypic stasis
+- [`stasis_sl()`](https://mindthegap-erc.github.io/StratPal/reference/stasis_sl.md)
+  : simulate phenotypic stasis (specimen level)
+- [`strict_stasis_sl()`](https://mindthegap-erc.github.io/StratPal/reference/strict_stasis_sl.md)
+  : simulate strict phenotypic stasis (specimen level)
+
+### Event type data
+
+Simulate event type data (e.g., fossil location/ages, first/last
+occurrences)
+
+- [`last_occ()`](https://mindthegap-erc.github.io/StratPal/reference/last_occ.md)
+  : last occurrence of taxon
+- [`p3()`](https://mindthegap-erc.github.io/StratPal/reference/p3.md) :
+  simulate Poisson point process
+- [`p3_var_rate()`](https://mindthegap-erc.github.io/StratPal/reference/p3_var_rate.md)
+  : simulate variable rate Poisson point process
+- [`range_offset()`](https://mindthegap-erc.github.io/StratPal/reference/range_offset.md)
+  : range offset of taxon
+- [`rej_samp()`](https://mindthegap-erc.github.io/StratPal/reference/rej_samp.md)
+  : random numbers from rejection sampling
+
+### Ecology and taphonomy
+
+Model ecological niches and taphonomic effects
+
+- [`all_preserved()`](https://mindthegap-erc.github.io/StratPal/reference/all_preserved.md)
+  : Indestructible fossils
+- [`apply_niche()`](https://mindthegap-erc.github.io/StratPal/reference/apply_niche.md)
+  : apply niche model
+- [`apply_taphonomy()`](https://mindthegap-erc.github.io/StratPal/reference/apply_taphonomy.md)
+  : model taphonomic effects
+- [`bounded_niche()`](https://mindthegap-erc.github.io/StratPal/reference/bounded_niche.md)
+  : define niche from boundaries
+- [`discrete_gradient()`](https://mindthegap-erc.github.io/StratPal/reference/discrete_gradient.md)
+  : construct discretized gradient
+- [`discrete_niche()`](https://mindthegap-erc.github.io/StratPal/reference/discrete_niche.md)
+  : niche from discrete data
+- [`gradient_from_data()`](https://mindthegap-erc.github.io/StratPal/reference/gradient_from_data.md)
+  : gradient or taphonomic conditions from data
+- [`perfect_preservation()`](https://mindthegap-erc.github.io/StratPal/reference/perfect_preservation.md)
+  : perfect taphonomic conditions
+- [`prob_remove()`](https://mindthegap-erc.github.io/StratPal/reference/prob_remove.md)
+  : probabilistic removal of elements
+- [`snd_niche()`](https://mindthegap-erc.github.io/StratPal/reference/snd_niche.md)
+  : simple niche model
+- [`thin()`](https://mindthegap-erc.github.io/StratPal/reference/thin.md)
+  : thin a series of events (e.g. fossil occurrences)
+- [`trivial_niche()`](https://mindthegap-erc.github.io/StratPal/reference/trivial_niche.md)
+  : trivial niche model
+- [`trivial_gradient()`](https://mindthegap-erc.github.io/StratPal/reference/trivial_gradient.md)
+  : model absence of environmental gradients
+
+### Example data
+
+Example data from stratigraphic forward models
+
+- [`scenarioA`](https://mindthegap-erc.github.io/StratPal/reference/scenarioA.md)
+  : example data, scenario A from Hohmann et al. (2024)
+
+### paleoTS functionality
+
+Tools for linkage with the paleoTS package
+
+- [`reduce_to_paleoTS()`](https://mindthegap-erc.github.io/StratPal/reference/reduce_to_paleoTS.md)
+  : reduce pre-paleoTS format to paleoTS
+- [`plot(`*`<pre_paleoTS>`*`)`](https://mindthegap-erc.github.io/StratPal/reference/plot.pre_paleoTS.md)
+  : plot pre-paleoTS objects
+
+# Articles
+
+### Articles
+
+- [Stratigraphic Paleobiology for Event
+  Data](https://mindthegap-erc.github.io/StratPal/articles/event_data.md):
+- [Stratigraphic Paleobiology for Phenotypic
+  Evolution](https://mindthegap-erc.github.io/StratPal/articles/phenotypic_evolution.md):
+- [Usage with the paleoTS and evoTS
+  package](https://mindthegap-erc.github.io/StratPal/articles/paleoTS_functionality.md):
+- [Advanced Functionality and Writing
+  Extensions](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.md):
+- [Documentation of defined S3
+  classes](https://mindthegap-erc.github.io/StratPal/articles/StratPal_docs.md):
+- [Integration with the FossilSim and paleotree
+  packages](https://mindthegap-erc.github.io/StratPal/articles/FossilSim_integration.md):

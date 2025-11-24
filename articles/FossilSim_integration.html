@@ -106,7 +106,7 @@ platform.</p>
 <span>     lwd_destr <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/T_axis_lab.html" class="external-link">T_axis_lab</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/L_axis_lab.html" class="external-link">L_axis_lab</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-2-1.png" alt="Age-depth model and water depth 12 km offshore (proximal slope)" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="Age-depth model and water depth 12 km offshore (proximal slope)" width="700"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># water depth 12 km from shore</span></span>
@@ -118,7 +118,7 @@ platform.</p>
 <span>     ylab <span class="op">=</span> <span class="st">"Water depth [m]"</span>,</span>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>     lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-2-2.png" alt="Age-depth model and water depth 12 km offshore (proximal slope)" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-2-2.png" class="r-plt" alt="Age-depth model and water depth 12 km offshore (proximal slope)" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="trees-with-fossils">Trees with fossils<a class="anchor" aria-label="anchor" href="#trees-with-fossils"></a>
@@ -136,7 +136,7 @@ fossils in the time domain using <code>FossilSim</code>:</p>
 <span><span class="va">f</span> <span class="op">=</span> <span class="fu">FossilSim</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/FossilSim/man/sim.fossils.poisson.html" class="external-link">sim.fossils.poisson</a></span><span class="op">(</span>rate <span class="op">=</span> <span class="va">sampling_rate</span>, taxonomy <span class="op">=</span> <span class="va">s</span><span class="op">)</span></span>
 <span><span class="co"># plot tree with taxonomy and fossil times</span></span>
 <span><span class="fu">FossilSim</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/FossilSim/man/plot.fossils.html" class="external-link">plot.fossils</a></span><span class="op">(</span><span class="va">f</span>, tree <span class="op">=</span> <span class="va">tree</span>, taxonomy <span class="op">=</span> <span class="va">s</span>, show.taxonomy <span class="op">=</span> <span class="cn">TRUE</span>, rho <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-3-1.png" alt="Phylogenetic tree with sampled fossils" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="Phylogenetic tree with sampled fossils" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="ecological-effects">Ecological effects<a class="anchor" aria-label="anchor" href="#ecological-effects"></a>
@@ -157,7 +157,7 @@ depth:</p>
 <span>     type <span class="op">=</span> <span class="st">"l"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Collection probability with water depth"</span>,</span>
 <span>     lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-4-1.png" alt="Niche of taxa and collection probability with time" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="Niche of taxa and collection probability with time" width="700"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/get_T_tp.html" class="external-link">get_T_tp</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span>,</span>
@@ -167,7 +167,7 @@ depth:</p>
 <span>     ylab <span class="op">=</span> <span class="st">"Collection probability"</span>,</span>
 <span>     main <span class="op">=</span> <span class="st">"Collection probability with time"</span>,</span>
 <span>     lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-4-2.png" alt="Niche of taxa and collection probability with time" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-4-2.png" class="r-plt" alt="Niche of taxa and collection probability with time" width="700"></p>
 <p>After accounting for niches, the tree with niches looks like</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f_niche</span> <span class="op">=</span> <span class="va">f</span> <span class="op">|&gt;</span></span>
@@ -176,7 +176,7 @@ depth:</p>
 <span>  <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/rev_dir.html" class="external-link">rev_dir</a></span><span class="op">(</span>ref <span class="op">=</span> <span class="fu"><a href="https://mindthegap-erc.github.io/admtools/reference/max_time.html" class="external-link">max_time</a></span><span class="op">(</span><span class="va">adm_12km</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># plot tree after accounting for taxon niches</span></span>
 <span><span class="fu">FossilSim</span><span class="fu">:::</span><span class="fu"><a href="https://rdrr.io/pkg/FossilSim/man/plot.fossils.html" class="external-link">plot.fossils</a></span><span class="op">(</span><span class="va">f_niche</span>, <span class="va">tree</span>, taxonomy <span class="op">=</span> <span class="va">s</span>, show.taxonomy <span class="op">=</span> <span class="cn">TRUE</span>, rho <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-5-1.png" alt="Tree with fossils after accounting for niche preference" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-5-1.png" class="r-plt" alt="Tree with fossils after accounting for niche preference" width="700"></p>
 <p>Note that although there are many more lineages present at the end of
 the simulation, there are fewer fossils recovered. This is because the
 water depth is too low (the platform is drowning) to actually observe
@@ -210,7 +210,7 @@ stratigraphic domain:</p>
 <span>                         show.axis <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span><span class="fl">1</span>, text <span class="op">=</span> <span class="st">"Stratigraphic position [m]"</span>, line <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-6-1.png" alt="Tree with fossils in the stratigraphic domain" width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="Tree with fossils in the stratigraphic domain" width="700"></p>
 <p>The accumulation of fossils on the right side is due to the
 stratigraphic condensation observable at 12 m height in the age-depth
 model.</p>
@@ -243,7 +243,7 @@ by applying the niche model to the <code>fossils</code> object:</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/axis.html" class="external-link">axis</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span><span class="fl">1</span>, text <span class="op">=</span> <span class="st">"Stratigraphic position [m]"</span>, line <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-7-1.png" alt="Tree with fossils affected by ecological and stratigraphic effects." width="700"></p>
+<p><img src="FossilSim_integration_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="Tree with fossils affected by ecological and stratigraphic effects." width="700"></p>
 <p>Trees and taxonomy object are not modified by
 <code>apply_niche</code> and <code>apply_taphonomy</code>, as they are
 are not subject to sampling effects.</p>
@@ -309,7 +309,7 @@ package version 2.4.1, <a href="https://CRAN.R-project.org/package=FossilSim" cl
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
