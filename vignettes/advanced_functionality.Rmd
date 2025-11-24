@@ -18,7 +18,7 @@ Here we go through how the presented workflows can be generalized and expanded u
 
 ## Different forward models
 
-In the examples, we used age-depth models from a carbonate platform simulated with CarboCAT lite ([Burgess 2013](#References), [Burgess 2023](#References)). This can easily be expanded to any other sedimentary forward model (be it marine or terrestrial, siliciclastic, mixed, or carbonate system).
+In the examples, we used age-depth models from a carbonate platform simulated with CarboKitten [Hidding et al. 2025](#References) , which is based on CarboCAT lite ([Burgess 2013](#References), [Burgess 2023](#References)). This can easily be expanded to any other sedimentary forward model (be it marine or terrestrial, siliciclastic, mixed, or carbonate system).
 
 For this, age-depth information needs to be extracted from the forward model. The vectors of elapsed model time vs. accumulated height can then be handed over to `tp_to_adm` to define age-depth model objects. These can then be used in the pipelines as in the examples.
 
@@ -85,5 +85,7 @@ If you would like to add transformations for new S3 classes to the `admtools` pa
 -   Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. <https://doi.org/10.1016/j.cageo.2011.08.026>.
 
 -   Burgess, Peter. 2023. "CarboCATLite v1.0.1." Zenodo. <https://doi.org/10.5281/zenodo.8402578>
+
+-   Hidding, Johan, Jarochowska, Emilia, Hohmann, Niklas, Liu, Xianyi Burgess, Peter and Spreeuw, Hanno: "CarboKitten.jl – an open source toolkit for carbonate stratigraphic modeling." Preprint. <https://doi.org/10.5194/egusphere-2025-4561>
 
 -   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. <https://doi.org/10.1186/s12862-024-02287-2>.
