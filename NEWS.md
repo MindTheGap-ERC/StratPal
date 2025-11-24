@@ -1,5 +1,7 @@
 # StratPal (development version)
 
+* added vignette with platform figures
+
 * updated example data to CarboKitten.jl
 
 * `strat_filter` for simple stratigraphic filtering in the time domain
