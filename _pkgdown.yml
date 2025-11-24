@@ -66,6 +66,7 @@ articles:
   navbar: ~
   contents:
   - event_data
+  - stratigraphic_architecture
   - phenotypic_evolution
   - paleoTS_functionality
   - advanced_functionality
