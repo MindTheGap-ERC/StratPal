@@ -7,7 +7,7 @@
 apply_taphonomy(x, pres_potential, ctc)
 }
 \arguments{
-\item{x}{event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS} or a \code{fossils} object.}
+\item{x}{event type data, e.g. times/ages of fossil occurrences or their stratigraphic position, or a \code{pre_paleoTS}, \code{fossils}, or \code{char_mat} object.}
 
 \item{pres_potential}{function. Takes taphonomic conditions as input and returns the preservation potential (a number between 0 and 1). Must be vectorized, meaning if given a vector, it must return a vector of equal length.}
 
@@ -32,5 +32,7 @@ Models taphonomy by combining the change in taphonomic conditions with the prese
 \item \code{\link[=apply_niche]{apply_niche()}} for modeling niche preferences based on the same principle. Internally, these functions are structured identically.
 \item \code{\link[=thin]{thin()}} and \code{\link[=prob_remove]{prob_remove()}} for the underlying mathematical procedures.
 \item \code{\link[=perfect_preservation]{perfect_preservation()}} and \code{\link[=all_preserved]{all_preserved()}} to model perfect preservation of fossils
+\item \code{\link[=strat_filter]{strat_filter()}} for simple stratigraphic filtering in the time domain as taphonomic effect
+\item \code{\link[=as_char_mat]{as_char_mat()}} to construct character matrices associated with stratigraphic information
 }
 }

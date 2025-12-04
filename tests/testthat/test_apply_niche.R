@@ -38,3 +38,17 @@ test_that("warning is thrown for age uncertainty",{
   f$hmin = f$hmin + 0.1
   expect_warning(apply_niche(f, niche_def, gc))
 })
+
+test_that("Applying niche model to character matrix throws error",{
+  ntax = 4
+  nchar = 10
+  tax_names = letters[1:ntax]
+  mat = matrix(data = rep(1, ntax * nchar),
+               nrow = ntax,
+               ncol = nchar,
+               dimnames = list(tax_names, NULL))
+  pos = seq(0.1, 1.8, length.out = 4)
+  names(pos)<-tax_names
+  char_mat = as_char_mat(mat, pos)
+  expect_error(apply_niche(char_mat, trivial_niche, trivial_niche))
+})

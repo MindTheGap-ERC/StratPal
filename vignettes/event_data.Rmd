@@ -74,7 +74,7 @@ Keep in mind that it is only a matter of interpretation whether the "events" pro
 
 ## Age-depth models
 
-Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` for details on scenario A.
+Throughout this examples, we use the age-depth models from 2 km and 12 km offshore in the example data that emulates scenario A from [Hohmann et al. (2024)](#References). See `?scenarioA` and `vignette("StratPal")` or `vignette("stratigraphic_architecture")` for details on scenario A.
 
 ```{r, figures-side, fig.show="hold", out.width="50%", fig.alt="2 plots of age-depth models, one 2 km from shore and one 12 km from shore."}
 adm_2km = tp_to_adm(t = scenarioA$t_myr,   # 2 km from shore
@@ -112,7 +112,7 @@ Any event type data can directly be transformed using an age-depth model via `ti
 Assuming the events are fossil specimens of one taxon, we can examine where specimens appear in the stratigraphic column:
 
 ```{r, fig.alt="stratigraphic expression of fossil occurrences 2 km from shore."}
-p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
+p3(rate = 2000, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
   hist(xlab = "Stratigraphic height [m]",                           # plot
        main = "Fossil abundance 2 km offshore",
@@ -132,8 +132,6 @@ p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>  # same ra
        ylab = "# Fossils",
        breaks = seq(from = min_height(adm_12km), to = max_height(adm_12km), length.out = 20))
 ```
-
-Not only is the section much shorter (not even 20 m), but there are 2 distinct peaks at the bottom of the section and around 13 m. Comparing with the age-depth model shows that these locations correspond to times of extreme stratigraphic condensation (low sedimentation rates, indicated by a near-horizontal age-depth model). As a result, more time is represented per stratigraphic increment, leading to fossil accumulations ([Hohmann 2021](#References)).
 
 **Task:** How does fossil abundance change along an onshore-offshore gradient when you assume the same rate of fossil occurrences in the time domain? Are there intervals where you can not recover spikes in fossil abundance, i.e. an increase in rate? How are these intervals linked to the external drivers of the platform architecture such as sea level and water depth?
 

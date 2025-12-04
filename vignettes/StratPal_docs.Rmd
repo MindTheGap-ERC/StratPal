@@ -60,3 +60,30 @@ Represents trait values of individual specimens of a lineage sampled along time 
 ### Plotting
 
 No standalone plotting procedure is implemented for `pre_paleoTS`. For plotting, first use `reduce_to_paleoTS` and plot the results via `plot` after loading the `paleoTS` package.
+
+## S3 class `char_mat`
+
+Describes a character matrix associated with positional information (time/height) for application of taphonomic and stratigraphic effects.
+
+### Structure
+
+List with two elements:
+
+- `mat`: The matrix, with taxon names as column names
+- `pos`: named vector containing positional information (time or height) for the taxa
+
+### Construction
+
+`char_mat` is constructed using `as_char_mat`.
+
+### Modification
+
+Modified by `apply_taphonomy`. For logical reasons, `apply_niche.char_mat` throws an error.
+
+### Transformation into other S3 classes
+
+None
+
+### Plotting
+
+None
