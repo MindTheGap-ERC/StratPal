@@ -1,5 +1,7 @@
 # StratPal (development version)
 
+# StratPal 0.7.0
+
 * added vignette with platform figures
 
 * updated example data to CarboKitten.jl
