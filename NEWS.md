@@ -1,5 +1,7 @@
 # StratPal (development version)
 
+* fix documentation and data
+
 # StratPal 0.7.0
 
 * added vignette with platform figures
