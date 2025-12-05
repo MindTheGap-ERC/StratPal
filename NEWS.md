@@ -1,4 +1,4 @@
-# StratPal (development version)
+# StratPal 0.7.1
 
 * fix documentation and data
 
