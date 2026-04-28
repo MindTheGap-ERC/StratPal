@@ -1,6 +1,10 @@
 # Changelog
 
-## StratPal (development version)
+## StratPal 0.7.1
+
+CRAN release: 2025-12-06
+
+- fix documentation and data
 
 ## StratPal 0.7.0
 

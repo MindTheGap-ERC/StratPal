@@ -90,6 +90,6 @@ adm = admtools::tp_to_adm(t = scenarioA$t_myr, h = h)
 l_occ = last_occ(t_ext = 1.8, rate = 5, adm = adm)
 l_occ # show timing and position of last occurrences
 #>          t          h 
-#>  0.8595038 34.1536734 
+#>  0.8474781 32.3778424 
 
 ```

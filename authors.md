@@ -12,7 +12,7 @@ Source:
 
 Hohmann N (2024). “StratPal: R package for stratigraphic paleobiology
 modeling pipelines.”
-[doi:10.5281/zenodo.15480833](https://doi.org/10.5281/zenodo.15480833),
+[doi:10.5281/zenodo.15480833](https://doi.org/10.5281/zenodo.15480833).
 <https://doi.org/10.5281/zenodo.15480833>.
 
     @Misc{,
