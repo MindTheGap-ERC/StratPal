@@ -11,7 +11,7 @@ The fossil record is a joint expression of ecological, taphonomic, evolutionary,
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://mindthegap-erc.github.io/StratPal/ }
+  \item \url{https://mindthegap-erc.github.io/StratPal/} 
   \item \url{https://github.com/MindTheGap-ERC/StratPal}
   \item Report bugs at \url{https://github.com/MindTheGap-ERC/StratPal/issues}
 }
@@ -19,6 +19,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Niklas Hohmann \email{N.H.Hohmann@uu.nl} (\href{https://orcid.org/0000-0003-1559-1838}{ORCID})
+
+Authors:
+\itemize{
+  \item Niklas Hohmann \email{N.H.Hohmann@uu.nl} (\href{https://orcid.org/0000-0003-1559-1838}{ORCID})
+}
 
 }
 \keyword{internal}
