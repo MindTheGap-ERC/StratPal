@@ -1,6 +1,8 @@
 # development version
 
-# add functionality to easily remove data that falls within gaps
+* add functionality to easily remove data that falls within gaps
+
+* fix cran error
 
 # StratPal 0.7.1
 
