@@ -1,3 +1,7 @@
+# development version
+
+# add functionality to easily remove data that falls within gaps
+
 # StratPal 0.7.1
 
 * fix documentation and data

@@ -35,6 +35,7 @@ reference:
   - bounded_niche
   - discrete_gradient
   - discrete_niche
+  - gap_filter
   - gradient_from_data
   - perfect_preservation
   - prob_remove
