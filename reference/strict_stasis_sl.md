@@ -66,6 +66,7 @@ of evolution.
 ## Examples
 
 ``` r
+
 library("paleoTS")
 x = strict_stasis_sl(1:5, mean = 2, intrapop_var = 2) # simulate strict stasis
 y = reduce_to_paleoTS(x)   # transform into paloeTS format

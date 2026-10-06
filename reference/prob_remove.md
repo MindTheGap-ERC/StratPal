@@ -36,8 +36,8 @@ a vector of the same type as x
 ``` r
 x = prob_remove(1:10, 0.5)
 x
-#> [1] 1 3 5 6 7 8 9
+#> [1] 2 3 5 7 9
 x = prob_remove(1:10, 0.5)
 x
-#> [1] 1 2 4 7
+#> [1] 3 4 7
 ```

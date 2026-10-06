@@ -1,6 +1,7 @@
 # Usage with the paleoTS and evoTS package
 
 ``` r
+
 library(StratPal)
 ```
 
@@ -64,6 +65,7 @@ standard plotting procedure from paleoTS using `plot` (resp,
 directly, only after conversion to `paleoTS` format.
 
 ``` r
+
 library(StratPal)
 library(paleoTS)   # needed for plotting
 
@@ -84,6 +86,7 @@ we plot a random walk 2 km offshore with 5 specimens per sampling
 location:
 
 ``` r
+
 library(admtools)                                  # load admtools for stratigraphic transformation
 adm = tp_to_adm(t = scenarioA$t_myr,               # define age-depth model
                 h = scenarioA$h_m[,"2km"],
@@ -105,6 +108,7 @@ pipeline, e.g. to fit models of phenotypic evolution from the simulated
 data:
 
 ``` r
+
 set.seed(42)                                      # set seed for reproducibility
 seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
   random_walk_sl(n_per_sample = 5) |>            # simulate random walk on specimen level

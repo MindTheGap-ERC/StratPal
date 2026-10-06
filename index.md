@@ -34,6 +34,7 @@ R version \>= 4.2
 To install the package from CRAN, run
 
 ``` r
+
 install.packages("StratPal")
 ```
 
@@ -45,12 +46,14 @@ To install the package from GitHub, first install the *remotes* package
 by running
 
 ``` r
+
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
 ``` r
+
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -64,12 +67,14 @@ to install the latest stable version of the package.
 Run
 
 ``` r
+
 library(StratPal)
 ```
 
 to load the package. Use
 
 ``` r
+
 browseVignettes(package = "StratPal")
 ```
 

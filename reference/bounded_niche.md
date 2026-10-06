@@ -46,6 +46,7 @@ between `g_min` and `g_max`), and 0 otherwise
 ## Examples
 
 ``` r
+
 x = seq(0, 10, by = 0.2)
 f = bounded_niche(2,5)
 plot(x, f(x), type = "l",

@@ -17,7 +17,7 @@ template to set up one's own simulation.
 
 Useful links:
 
-- [https://mindthegap-erc.github.io/StratPal/](https://mindthegap-erc.github.io/StratPal/%20)
+- <https://mindthegap-erc.github.io/StratPal/>
 
 - <https://github.com/MindTheGap-ERC/StratPal>
 
@@ -27,3 +27,8 @@ Useful links:
 
 **Maintainer**: Niklas Hohmann <N.H.Hohmann@uu.nl>
 ([ORCID](https://orcid.org/0000-0003-1559-1838))
+
+Authors:
+
+- Niklas Hohmann <N.H.Hohmann@uu.nl>
+  ([ORCID](https://orcid.org/0000-0003-1559-1838))

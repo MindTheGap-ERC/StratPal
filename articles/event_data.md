@@ -9,6 +9,7 @@ and first/last occurrences of taxa.
 First, let’s load the required packages:
 
 ``` r
+
 library(StratPal)
 library(admtools)
 ```
@@ -32,6 +33,7 @@ provide two functions to simulate point processes:
 The usage of `p3` is straightforward:
 
 ``` r
+
 # simulate fossil occurrences over one Myr with an average of 15 occurrences per Myr
 p3(rate = 15, from = 0, to = 1) |>
   hist(main = "Fossil abundance",
@@ -50,6 +52,7 @@ For `p3_var_rate`, you can pass either a function that specifies the
 rate to `x`:
 
 ``` r
+
 # return 100 occurrences by setting n parameter
 # note that negative rates (where sin < 0) are ignored
 p3_var_rate(x = sin, from = 0, to = 9, n = 100) |>
@@ -67,6 +70,7 @@ equivalent to using the function `approxfun(x,y, rule = 2)` as input for
 `x`.
 
 ``` r
+
 # decline in last occurrences from 50 to 0 over 1 Myr
 p3_var_rate(x = c(0,1), y = c(50, 0), from = 0, to = 1, f_max = 50) |>
   hist(xlab = "Time [Myr]",
@@ -101,6 +105,7 @@ or
 for details on scenario A.
 
 ``` r
+
 adm_2km = tp_to_adm(t = scenarioA$t_myr,   # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
@@ -148,6 +153,7 @@ Assuming the events are fossil specimens of one taxon, we can examine
 where specimens appear in the stratigraphic column:
 
 ``` r
+
 p3(rate = 2000, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
   hist(xlab = "Stratigraphic height [m]",                           # plot
@@ -166,6 +172,7 @@ Assuming the same rate of fossil specimens, we get a very different
 pattern 12 km from shore:
 
 ``` r
+
 p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>  # same rate as 2 km from shore
   time_to_strat(adm_12km, destructive = TRUE) |>                       # use different adm for transformation
   hist(xlab = "Stratigraphic height [m]",                              # plot histogram
@@ -193,6 +200,7 @@ This type of event data can directly be transformed using
 will be explored further below.
 
 ``` r
+
 p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate of last occ
   time_to_strat(adm_2km, destructive = FALSE) |>                    # non-destructive transformation!
   hist(xlab = "Stratigraphic height [m]",                           # plot histogram
@@ -221,6 +229,7 @@ further in the section on [range offset](#Range-offset).
 The patter 12 km offshore is very different:
 
 ``` r
+
 p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>
   time_to_strat(adm_12km, destructive = FALSE) |>
   hist(xlab = "Stratigraphic height [m]",
@@ -264,6 +273,7 @@ First, we model all occurrences of the taxon up to its extinction in the
 time domain, and save it in a variable:
 
 ``` r
+
 t_ext = 1.5 # time of "true" extinction
 r = 30      # rate of fossil occurrences
 # simulate rate fossil occurrences of taxon 
@@ -282,6 +292,7 @@ Then we can determine the stratigraphic position of the highest
 preserved fossil:
 
 ``` r
+
 highest_occ = f_occ |>                          # take fossil occ. in time domain
   time_to_strat(adm_2km, destructive = TRUE) |> # transform into stratigraphic domain, destroying fossils that coincide with hiatuses
   max(na.rm = TRUE)                             # find highest preserved fossil (destroyed fossils are NA)
@@ -294,6 +305,7 @@ preserved fossil and the stratigraphic position where the taxon actually
 goes extinct:
 
 ``` r
+
 h_true_ext = t_ext |>                           # stratigraphic position of "true" extinction
   time_to_strat(adm_2km, destructive = FALSE) 
 
@@ -308,6 +320,7 @@ units such as years) is the difference in time between the age of the
 last occurrence and the actual time of extinction:
 
 ``` r
+
 t_last_occ = highest_occ |> # time when last preserved fossil lived
   strat_to_time(adm_2km)
 # time offset between true extinction and time when last fossil lived.
@@ -348,6 +361,7 @@ First, we define a function that determines how water depth (our
 gradient) changes with time:
 
 ``` r
+
 t = scenarioA$t_myr           # time steps of the model
 wd = scenarioA$wd_m[,"2km"]   # water depth 2 km offshore at model time steps
 gc = approxfun(t, wd)         # define function that defines how the gradient changes with time (gc = *G*radient *C*hange)
@@ -384,6 +398,7 @@ for another template niche mode, and
 for defining niches based on discrete categories.
 
 ``` r
+
 my_niche = snd_niche(opt = 10,       # preferred water depth 
                      tol = 5,        # tolerance to water depth fluctuations
                      cutoff_val = 0) # cut off negative values - the taxon does not survive on land
@@ -406,6 +421,7 @@ With the niche and the change in gradient defined, we can use
 `apply_niche` for niche modeling.
 
 ``` r
+
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences of taxon based on a constant rate
   apply_niche(niche_def = my_niche, gc = gc) |>                     # apply the niche model
   hist(xlab = "Time [Myr]",
@@ -426,6 +442,7 @@ modeling pipeline to examine the joint effects of stratigraphic
 distortion by age-depth models and niche preferences.
 
 ``` r
+
 p3(rate = 300, from = min_time(adm_2km), to = max_time(adm_2km)) |> # model occurrences based on constant rate
   apply_niche(niche_def = my_niche, gc = gc) |>                     # apply niche model
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into strat. domain, destroy fossils that coincide with hiatuses 
@@ -449,6 +466,7 @@ reducing the water depth over time. This is a typical scenario in many
 carbonate platforms, but other scenarios are possible.
 
 ``` r
+
 list("t" = t, "y" = wd) |>    # create list with time - water depth information
   time_to_strat(adm_2km) |>   # transform into the strat. domain
   plot(orientation = "lr",    # plot water depth information in the stratigraphic domain
@@ -486,6 +504,7 @@ stratigraphic and the time domain. The wrappers `last_occ` and
 Go to
 
 ``` r
+
 vignette("phenotypic_evolution")
 vignette("paleoTS_functionality")
 ```
@@ -499,6 +518,7 @@ under
 See also
 
 ``` r
+
 vignette("advanced_functionality")
 ```
 

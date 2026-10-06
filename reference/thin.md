@@ -40,6 +40,7 @@ effects.
 ## Examples
 
 ``` r
+
 x = p3(rate = 100, from = 0, to = 3 * pi) # simulate Poisson point process
 y = thin(x, sin)
 hist(y) # not how negative values of sin are treated as 0

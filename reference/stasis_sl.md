@@ -65,6 +65,7 @@ of evolution.
 ## Examples
 
 ``` r
+
 library("paleoTS")
 x = stasis_sl(1:5, mean = 2, sd = 2)
 y = reduce_to_paleoTS(x) # turn into paleoTS format

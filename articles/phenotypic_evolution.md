@@ -7,12 +7,14 @@ paleobiology of phenotypic evolution. For details how this can be
 combined with the `paleoTS` package ([Hunt 2006](#References)), see
 
 ``` r
+
 vignette("paleoTS_functionality")
 ```
 
 First, let’s load all required packages:
 
 ``` r
+
 library(StratPal)
 library(admtools)
 ```
@@ -50,6 +52,7 @@ You can visualize the different modes of evolution using the following
 pipeline:
 
 ``` r
+
 seq(0, 1, by = 0.01) |>             # times of simulation in Myr. Simulate over 1 Myr years with 10 kyr resolution
   random_walk(sigma = 1, mu = 3) |> # simulate random walk with increasing trait values
   plot(type = "l",                  # plot results
@@ -84,6 +87,7 @@ for details on scenario A.
 First define the age-depth models:
 
 ``` r
+
 adm_2km = tp_to_adm(t = scenarioA$t_myr,    # 2 km from shore
                 h = scenarioA$h_m[,"2km"],
                 T_unit = "Myr",
@@ -121,6 +125,7 @@ values from the time domain into the depth domain via `time_to_strat`:
 
 ``` r
 
+
 seq(from = min_time(adm_2km), to = max_time(adm_2km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
   random_walk(sigma = 1, mu = 3) |>                                 # simulate random walk
   time_to_strat(adm_2km, destructive = FALSE) |>                    # transform data from time to strat domain
@@ -144,6 +149,7 @@ stratigraphic distortions).
 12 km offshore, the preservation is very different:
 
 ``` r
+
 seq(from = min_time(adm_12km), to = max_time(adm_12km), by = 0.01) |> # sample every 10 kyr over the interval covered by the adm 
   random_walk(sigma = 1, mu = 3) |>                                   # simulate random walk
   time_to_strat(adm_12km, destructive = FALSE) |>                     # transform data from time to strat domain
@@ -201,6 +207,7 @@ Let’s assume we take a sample every 2 meters. Then our five steps above
 result in the following modeling pipeline:
 
 ``` r
+
 dist_between_samples_m = 2
 sampling_loc_m = seq(from = 0.5 * dist_between_samples_m,
                      to = max_height(adm_2km),
@@ -235,12 +242,14 @@ For details on how the `paleoTS` and `evoTS` packages ([Hunt 2006, Voje
 2023](#References)) can be integrated with the `StratPal` package, see
 
 ``` r
+
 vignette("paleoTS_functionality")
 ```
 
 Run
 
 ``` r
+
 vignette("event_data")
 ```
 
@@ -252,6 +261,7 @@ explore the vignette online under
 See also
 
 ``` r
+
 vignette("advanced_functionality")
 ```
 

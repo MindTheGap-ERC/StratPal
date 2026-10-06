@@ -46,6 +46,7 @@ A list with two elements: `t` and `y`. `t` is a duplicate of the input
 ## Examples
 
 ``` r
+
  library("admtools") # required for plotting of results
  t = seq(0, 1, by = 0.01)
  l = stasis(t)

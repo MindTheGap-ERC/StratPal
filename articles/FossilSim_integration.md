@@ -1,6 +1,7 @@
 # Integration with the FossilSim and paleotree packages
 
 ``` r
+
 library(StratPal)
 library(admtools)
 ```
@@ -25,6 +26,7 @@ taxonomy and sampled fossils 12 km from shore in a carbonate platform.
 ### Stratigraphic basis
 
 ``` r
+
 # construct age-depth model
 adm_12km = tp_to_adm(t = scenarioA$t_myr,   # 12 km from shore
                 h = scenarioA$h_m[,"12km"],
@@ -41,6 +43,7 @@ L_axis_lab()
 slope)](FossilSim_integration_files/figure-html/unnamed-chunk-2-1.png)
 
 ``` r
+
 
 # water depth 12 km from shore
 t = scenarioA$t_myr
@@ -62,6 +65,7 @@ For the biological components, we simulate a tree with taxonomy and
 fossils in the time domain using `FossilSim`:
 
 ``` r
+
 set.seed(42)
 # simulate phylogenetic tree
 tree = ape::rbdtree(birth = 3, death = 1, Tmax = max_time(adm_12km))
@@ -83,6 +87,7 @@ Lets assume all taxa have identical niches and a preferred water depth
 of around 60 m, and are rather tolerant to fluctuations in water depth:
 
 ``` r
+
 # define niche
 my_niche = snd_niche(opt = 60, tol = 40, cutoff_val = 0)
 
@@ -102,6 +107,7 @@ time](FossilSim_integration_files/figure-html/unnamed-chunk-4-1.png)
 
 ``` r
 
+
 plot(x = get_T_tp(adm_12km),
      y = adm_12km |> get_T_tp() |> gc() |> my_niche(),
      type = "l",
@@ -117,6 +123,7 @@ time](FossilSim_integration_files/figure-html/unnamed-chunk-4-2.png)
 After accounting for niches, the tree with niches looks like
 
 ``` r
+
 f_niche = f |>
   rev_dir(ref = max_time(adm_12km)) |>
   apply_niche(niche_def = my_niche, gc = gc) |>
@@ -141,6 +148,7 @@ Now let us examine how the tree would be observed in the stratigraphic
 domain:
 
 ``` r
+
 ## transform tree, fossils, and taxonomy into stratigraphyc domain
 # using the age-depth model
 tree_strat = time_to_strat(tree, adm_12km) # no transformation of time to age required
@@ -176,6 +184,7 @@ Naturally, both ecological and stratigraphic effects can be combined by
 applying the niche model to the `fossils` object:
 
 ``` r
+
 ## transform tree, fossils, and taxonomy into stratigraphyc domain
 # using the age-depth model
 tree_strat = time_to_strat(tree, adm_12km) # no transformation of time to age required
@@ -230,6 +239,7 @@ convert the `paleotree` format into the `FossilSim` format as described
 in the `paleotree` vignette of the `FossilSim` vignette:
 
 ``` r
+
 vignette("paleotree", package = "FossilSim")
 ```
 

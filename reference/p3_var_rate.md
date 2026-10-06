@@ -67,6 +67,7 @@ for the underlying random number generation.
 ## Examples
 
 ``` r
+
 # assuming events are fossil occurrences
 # then rate is the avg rate of fossil occ. per unit
 #linear decrease in rate from 50 at x = 0 to 0 at x = 1

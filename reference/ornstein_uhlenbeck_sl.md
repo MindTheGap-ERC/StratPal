@@ -92,6 +92,7 @@ of evolution.
 ## Examples
 
 ``` r
+
 library("paleoTS")
 x = ornstein_uhlenbeck_sl(1:5)
 y = reduce_to_paleoTS(x) # turn into paleoTS format

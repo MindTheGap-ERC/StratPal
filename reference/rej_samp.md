@@ -55,6 +55,7 @@ for the derived variable rate Poisson point process implementation.
 ## Examples
 
 ``` r
+
 f = sin
 x = rej_samp(f, 0, 3*pi, n = 100)
 hist(x) # note that no samples are drawn where sin is negative

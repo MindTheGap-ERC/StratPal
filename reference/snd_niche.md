@@ -67,6 +67,7 @@ a function for usage with `apply_niche`.
 ## Examples
 
 ``` r
+
 # using water depth as niche
 wd = seq(-3, 40, by = 0.5)
 f = snd_niche(opt = 10, tol = 5)

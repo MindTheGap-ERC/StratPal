@@ -52,6 +52,7 @@ using `plot`, see
 ## Examples
 
 ``` r
+
 library("admtools") # required for plotting of results
 t = seq(0, 1, by = 0.01)
 l = random_walk(t, sigma = 3) # high variability, no direction

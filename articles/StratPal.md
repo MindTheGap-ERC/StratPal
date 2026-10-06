@@ -25,6 +25,7 @@ To install the `StratPal` package from
 [CRAN](https://cran.r-project.org/), run
 
 ``` r
+
 install.packages("StratPal")
 ```
 
@@ -36,12 +37,14 @@ To install the `StratPal` package from GitHub, first install the
 `remotes` package by running
 
 ``` r
+
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
 ``` r
+
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -60,6 +63,7 @@ install `StratPal`.
 To use its functionality, you need to run
 
 ``` r
+
 library(admtools)
 ```
 
@@ -70,6 +74,7 @@ If you want more information, you can browse through the package
 vignettes using
 
 ``` r
+
 browseVignettes(package = "admtools")
 ```
 
@@ -104,6 +109,7 @@ As an example, here is the eustatic sea level curve used for the model
 run:
 
 ``` r
+
 plot(x = scenarioA$t_myr,
      y = scenarioA$sl_m,
      type = "l",
@@ -130,6 +136,7 @@ Consider the following code for simulating and plotting a random walk
 using the `random_walk` function:
 
 ``` r
+
 set.seed(42)             # set seed for computational reproducibility
 t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
 l = random_walk(t)       # simulate the random walk
@@ -145,6 +152,7 @@ we are trying to achieve: plotting a random walk. Using the pipe
 operator `|>` we can clarify the logic and simplify the code:
 
 ``` r
+
 set.seed(42)            # set seed for computational reproducibility
 seq(0, 1, by = 0.01) |> # define times of simulation  
   random_walk() |>      # simulate random walk
@@ -171,6 +179,7 @@ You can also use `|>` to pass arguments that are not in the first place.
 For this, simply replace the argument with a underscore `_`:
 
 ``` r
+
 # calculate deciles of normal distribution
 seq(0, 1, by = 0.1) |>
   quantile(x = runif(100), p = _) # pass left hand side to the p argument
@@ -188,6 +197,7 @@ age-depth models. For more details on available functionality you can
 browse through the package vignettes using
 
 ``` r
+
 browseVignettes(package = "admtools")
 ```
 
@@ -197,6 +207,7 @@ or visit the package website at
 To get started, first load the package using
 
 ``` r
+
 library("admtools")
 ```
 
@@ -219,6 +230,7 @@ scenario A. This can be done with `tp_to_adm` (tie points to age-depth
 model):
 
 ``` r
+
 t = scenarioA$t_myr       # extract time tie points
 h = scenarioA$h_m[,"2km"] # get height tie points 2 km offshore in scenario A
 
@@ -239,6 +251,7 @@ age-depth models, plot them, or transform data using them.
 Now you can plot the age-depth model using the basic `plot` command:
 
 ``` r
+
 # plot age-depth model, see ?plot.adm for details
 plot(adm,
      lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
@@ -257,6 +270,7 @@ There is a lot of functionality available to extract information from an
 age-depth model:
 
 ``` r
+
 get_total_duration(adm) # time interval covered by adm
 #> [1] 2
 get_total_thickness(adm) # sediment accumulated 
@@ -275,6 +289,7 @@ We can now use the pipe operator to do some first analysis of the
 age-depth model
 
 ``` r
+
 
 # plot histogram of hiatus durations
 adm |>    
@@ -311,6 +326,7 @@ below under [“Getting started”](#getting-started).
 With the preliminaries out of the way, you can go to
 
 ``` r
+
 vignette("phenotypic_evolution")
 ```
 
@@ -321,6 +337,7 @@ evolution, or explore the vignette online under
 Go to
 
 ``` r
+
 vignette("event_data")
 ```
 
@@ -333,18 +350,21 @@ If you want to explore how to link the `StratPal` package with the
 `paleoTS` and `evoTS` packages go to
 
 ``` r
+
 vignette("paleoTS_funcionality")
 ```
 
 To combine the `StratPal` package with `FossilSim`, check the vignette
 
 ``` r
+
 vignette("FossilSim_integration")
 ```
 
 See also
 
 ``` r
+
 vignette("advanced_functionality")
 ```
 
@@ -355,6 +375,7 @@ or explore the vignette online under
 For details on the defined data structures, see
 
 ``` r
+
 vignette("StratPal_docs")
 ```
 

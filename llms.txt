@@ -34,6 +34,7 @@ R version \>= 4.2
 To install the package from CRAN, run
 
 ``` r
+
 install.packages("StratPal")
 ```
 
@@ -45,12 +46,14 @@ To install the package from GitHub, first install the *remotes* package
 by running
 
 ``` r
+
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
 ``` r
+
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -64,12 +67,14 @@ to install the latest stable version of the package.
 Run
 
 ``` r
+
 library(StratPal)
 ```
 
 to load the package. Use
 
 ``` r
+
 browseVignettes(package = "StratPal")
 ```
 
@@ -189,6 +194,8 @@ Model ecological niches and taphonomic effects
   : construct discretized gradient
 - [`discrete_niche()`](https://mindthegap-erc.github.io/StratPal/reference/discrete_niche.md)
   : niche from discrete data
+- [`gap_filter()`](https://mindthegap-erc.github.io/StratPal/reference/gap_filter.md)
+  : remove data associated with gaps
 - [`gradient_from_data()`](https://mindthegap-erc.github.io/StratPal/reference/gradient_from_data.md)
   : gradient or taphonomic conditions from data
 - [`perfect_preservation()`](https://mindthegap-erc.github.io/StratPal/reference/perfect_preservation.md)

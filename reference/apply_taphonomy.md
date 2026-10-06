@@ -68,6 +68,7 @@ occurrences removed according to preservation potential.
 ## Examples
 
 ``` r
+
 # see
 #vignette("advanced_functionality")
 # for details on usage

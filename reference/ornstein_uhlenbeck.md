@@ -73,6 +73,7 @@ directly using `plot`, see
 ## Examples
 
 ``` r
+
 library("admtools") # required for plotting of results
 t = seq(0, 3, by = 0.01)
 l = ornstein_uhlenbeck(t, y0 = 3) # start away from optimum (mu)

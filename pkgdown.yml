@@ -1,5 +1,5 @@
-pandoc: 3.1.11
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   advanced_functionality: advanced_functionality.html
@@ -10,7 +10,7 @@ articles:
   stratigraphic_architecture: stratigraphic_architecture.html
   StratPal_docs: StratPal_docs.html
   StratPal: StratPal.html
-last_built: 2026-04-28T06:15Z
+last_built: 2026-10-06T11:53Z
 urls:
   reference: https://mindthegap-erc.github.io/StratPal/reference
   article: https://mindthegap-erc.github.io/StratPal/articles

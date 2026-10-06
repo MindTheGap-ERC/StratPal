@@ -3,6 +3,7 @@
 ## Introduction
 
 ``` r
+
 library(StratPal)
 ```
 
@@ -23,6 +24,7 @@ The structure of the dataset is explained on the help pages, which is
 available using
 
 ``` r
+
 ?scenarioA
 ```
 

@@ -53,6 +53,8 @@ Model ecological niches and taphonomic effects
   : construct discretized gradient
 - [`discrete_niche()`](https://mindthegap-erc.github.io/StratPal/reference/discrete_niche.md)
   : niche from discrete data
+- [`gap_filter()`](https://mindthegap-erc.github.io/StratPal/reference/gap_filter.md)
+  : remove data associated with gaps
 - [`gradient_from_data()`](https://mindthegap-erc.github.io/StratPal/reference/gradient_from_data.md)
   : gradient or taphonomic conditions from data
 - [`perfect_preservation()`](https://mindthegap-erc.github.io/StratPal/reference/perfect_preservation.md)
