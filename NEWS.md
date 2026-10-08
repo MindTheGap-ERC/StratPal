@@ -1,5 +1,7 @@
 # development version
 
+* transfer maintainer responsibility from Niklas Hohmann to Emilia Jarochowska
+
 * add functionality to easily remove data that falls within gaps
 
 * fix cran error
