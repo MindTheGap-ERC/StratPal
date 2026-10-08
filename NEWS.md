@@ -1,3 +1,5 @@
+# StratPal 0.8.0
+
 # development version
 
 * transfer maintainer responsibility from Niklas Hohmann to Emilia Jarochowska
