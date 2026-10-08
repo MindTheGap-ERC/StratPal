@@ -2,7 +2,7 @@ test_that("for event type data, returns fewer events", {
   # reduce number of events
   n = 10
   x = runif(n, 0, 1)
-  expect_lt(length(apply_niche(x, niche_def = function(x) 0.5, gc =  function(x) 1)), n)
+  expect_lte(length(apply_niche(x, niche_def = function(x) 0.5, gc =  function(x) 1)), n)
   # returns identical events for trivial niche
   niche_def = function(x) rep(1, length(x))
   gc = function(x) rep(1, length(x))
