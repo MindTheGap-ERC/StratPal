@@ -1,5 +1,7 @@
 # Changelog
 
+## StratPal 0.8.0
+
 ## StratPal 0.7.1
 
 CRAN release: 2025-12-06
